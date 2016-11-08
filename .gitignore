@@ -1,1 +1,6 @@
+*.pyc
+.cache
 data/*
+.DS_Store
+.idea
+*.egg-info
