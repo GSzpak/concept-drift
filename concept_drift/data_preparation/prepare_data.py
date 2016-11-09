@@ -28,6 +28,8 @@ def extract_series(row, start_index):
 def split_data_to_series(row):
     essk_features = extract_essk_features(row)
     time_measurments = extract_series(row, NUM_OF_ESSK_FEATURES)
+    # Convert ms to s
+    time_measurments = [float(time) / 1000. for time in time_measurments]
     series = [extract_series(row, start_index)
               for start_index in xrange(NUM_OF_ESSK_FEATURES + 1, NUM_OF_ESSK_FEATURES + NUM_OF_SERIES)]
     assert len(essk_features) + len(time_measurments) + sum([len(s) for s in series]) == NUM_OF_FEATURES
