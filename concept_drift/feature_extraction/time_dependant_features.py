@@ -1,23 +1,20 @@
-import numpy as np
+from concept_drift.feature_extraction.statistical_features import BASIC_STATS
 
 
-def avg_derivatives(time_series, time):
-    def derivative(sequence):
-        return [sequence[i] - sequence[i - 1] for i in xrange(1, len(sequence))]
-    first_derivative = derivative(time_series)
-    second_derivative = derivative(first_derivative)
-    return {
-        'first_derivative_avg': np.mean(first_derivative),
-        'second_derivative_avg': np.mean(second_derivative)
-    }
+def derivative(time_series, time):
+    assert len(time_series) == len(time)
+    return [(time_series[i] - time_series[i - 1]) / float(time[i] - time[i - 1])
+            for i in xrange(1, len(time_series))]
 
 
-def avg_integrals(time_series):
-    def integral(sequence):
-        return [(sequence[i] + sequence[i - 1]) / 2 for i in xrange(1, len(sequence))]
-    first_integral = integral(time_series)
-    second_integral = integral(first_integral)
-    return {
-        'first_integral_avg': sum(first_integral),
-        'second_integral_avg': sum(second_integral)
-    }
+def integral(time_series, time):
+    assert len(time_series) == len(time)
+    return [((time_series[i] + time_series[i - 1]) * (time[i] - time[i - 1])) / 2.
+            for i in xrange(1, len(time_series))]
+
+
+def time_related_features(time_series, time):
+    der = derivative(time_series, time)
+    integr = integral(time_series, time)
+    return [stats_fun(der) for stats_fun in BASIC_STATS] + \
+           [stats_fun(integr) for stats_fun in BASIC_STATS]

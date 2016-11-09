@@ -69,6 +69,6 @@ def autocorrelation(time_series):
 BASIC_STATS = [mean, std, min, max, quantiles]
 
 
-AGGREGATION_FUNCTIONS = [mean, std, min, max, quantiles, linear_weighted_average, quadratic_weighted_average,
-                         arg_max, arg_min, kurtosis, standard_mean_error,
-                         mean_absolute_deviation, median_absolute_deviation]
+STATISTICAL_FEATURES = [mean, std, min, max, quantiles, linear_weighted_average, quadratic_weighted_average,
+                        arg_max, arg_min, kurtosis, standard_mean_error,
+                        mean_absolute_deviation, median_absolute_deviation]
