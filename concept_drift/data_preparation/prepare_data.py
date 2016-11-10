@@ -4,11 +4,8 @@ import os
 import click
 import itertools
 
-from settings import DATA_DIR
 
-
-OUT_DIR = os.path.join(DATA_DIR, 'prepared')
-SERIES_DIR = os.path.join(OUT_DIR, 'series')
+SERIES_DIR_NAME = 'series'
 NUM_OF_FEATURES = 17242
 NUM_OF_SERIES = 43
 NUM_OF_ESSK_FEATURES = 42
@@ -36,20 +33,23 @@ def split_data_to_series(row):
     return essk_features, time_measurments, series
 
 
-def open_series_files():
-    series_filenames = [os.path.join(SERIES_DIR, '{}.csv'.format(i)) for i in xrange(1, NUM_OF_SERIES)]
+def open_series_files(series_dir):
+    series_filenames = [os.path.join(series_dir, '{}.csv'.format(i)) for i in xrange(1, NUM_OF_SERIES)]
     return [open(filename, 'w') for filename in series_filenames]
 
 
 @click.command()
-@click.argument('training-data-file-path', type=click.Path(exists=True, dir_okay=False))
-def main(training_data_file_path):
-    essk_file_path = os.path.join(OUT_DIR, 'essk.csv')
-    time_file_path = os.path.join(OUT_DIR, 'time.csv')
-    with open(training_data_file_path, 'r') as training_data_file, \
+@click.argument('data-file-path', type=click.Path(exists=True, dir_okay=False))
+@click.argument('out-dir', type=click.Path(exists=False, dir_okay=True))
+def main(data_file_path, out_dir):
+    essk_file_path = os.path.join(out_dir, 'essk.csv')
+    time_file_path = os.path.join(out_dir, 'time.csv')
+    series_dir = os.path.join(out_dir, SERIES_DIR_NAME)
+    os.mkdir(series_dir)
+    with open(data_file_path, 'r') as training_data_file, \
             open(essk_file_path, 'w') as essk_file, \
             open(time_file_path, 'w') as time_file:
-        series_files = open_series_files()
+        series_files = open_series_files(series_dir)
         training_data_reader = csv.reader(training_data_file)
         essk_writer = csv.writer(essk_file)
         time_writer = csv.writer(time_file)
