@@ -6,6 +6,8 @@ import itertools
 
 
 SERIES_DIR_NAME = 'series'
+BASE_FEATURES_FILE_NAME = 'essk.csv'
+TIME_FILE_NAME = 'time.csv'
 NUM_OF_FEATURES = 17242
 NUM_OF_SERIES = 43
 NUM_OF_ESSK_FEATURES = 42
@@ -42,8 +44,8 @@ def open_series_files(series_dir):
 @click.argument('data-file-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('out-dir', type=click.Path(exists=False, dir_okay=True))
 def main(data_file_path, out_dir):
-    essk_file_path = os.path.join(out_dir, 'essk.csv')
-    time_file_path = os.path.join(out_dir, 'time.csv')
+    essk_file_path = os.path.join(out_dir, BASE_FEATURES_FILE_NAME)
+    time_file_path = os.path.join(out_dir, TIME_FILE_NAME)
     series_dir = os.path.join(out_dir, SERIES_DIR_NAME)
     os.mkdir(series_dir)
     with open(data_file_path, 'r') as training_data_file, \
