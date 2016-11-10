@@ -25,28 +25,25 @@ def calculate_score(postures, postures_act, activities, activities_act):
 
 
 def get_labels_from_file(file_path):
-    postures, activities = [], []
     with open(file_path, 'r') as f:
         reader = csv.reader(f)
-        for row in reader:
-            posture, activity = row
-            postures.append(posture)
-            activities.append(activity)
-    return postures, activities
+        return [row[0] for row in reader]
 
 
-def get_score_from_file(classification_file_path, labels_file_path):
-    postures, activities = get_labels_from_file(classification_file_path)
-    postures_act, activities_act = get_labels_from_file(labels_file_path)
-    return calculate_score(postures, postures_act, activities, activities_act)
+def get_score_from_file(predictions_file_path, labels_file_path):
+    activities = get_labels_from_file(predictions_file_path)
+    activities_act = get_labels_from_file(labels_file_path)
+    return balanced_accuracy(activities, activities_act)
 
 
 @click.command()
-@click.argument('classification-file-path', type=click.Path(exists=True, dir_okay=False))
+@click.argument('predictions-file-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('labels-file-path', type=click.Path(exists=True, dir_okay=False))
-def main(classification_file_path, labels_file_path):
-    print get_score_from_file(classification_file_path, labels_file_path)
+def main(predictions_file_path, labels_file_path):
+    print get_score_from_file(predictions_file_path, labels_file_path)
 
 
 if __name__ == '__main__':
     main()
+
+# TODO: calculate final score

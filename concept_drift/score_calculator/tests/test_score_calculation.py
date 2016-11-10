@@ -13,4 +13,4 @@ class TestScoreCalculation(unittest.TestCase):
 
         result = get_score_from_file(classification_file, labels_file)
 
-        self.assertAlmostEqual(result, 0.7789, places=4)
+        self.assertAlmostEqual(result, 0.7221, places=4)
