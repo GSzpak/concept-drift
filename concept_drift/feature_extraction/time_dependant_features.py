@@ -1,4 +1,4 @@
-from concept_drift.feature_extraction.statistical_features import BASIC_STATS
+from concept_drift.feature_extraction.statistical_features import get_basic_stats
 
 
 def derivative(time_series, time):
@@ -16,5 +16,4 @@ def integral(time_series, time):
 def time_related_features(time_series, time):
     der = derivative(time_series, time)
     integr = integral(time_series, time)
-    return [stats_fun(der) for stats_fun in BASIC_STATS] + \
-           [stats_fun(integr) for stats_fun in BASIC_STATS]
+    return get_basic_stats(der) + get_basic_stats(integr)

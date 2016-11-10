@@ -1,8 +1,6 @@
 import numpy as np
 from scipy import stats
 
-from concept_drift.feature_extraction.cross_series_features import cross_correlation
-
 
 def mean(time_series):
     return np.mean(time_series)
@@ -34,6 +32,10 @@ def quantiles(time_series):
     ]
 
 
+def get_basic_stats(time_series):
+    return [mean(time_series), std(time_series), min(time_series), max(time_series)] + quantiles(time_series)
+
+
 def linear_weighted_average(time_series):
     return np.average(time_series, weights=[i + 1 for i in xrange(len(time_series))])
 
@@ -60,13 +62,6 @@ def mean_absolute_deviation(time_series):
 
 def median_absolute_deviation(time_series):
     return np.percentile(np.absolute(time_series - np.percentile(time_series, 50)), 50)
-
-
-def autocorrelation(time_series):
-    return cross_correlation(time_series, time_series)
-
-
-BASIC_STATS = [mean, std, min, max, quantiles]
 
 
 STATISTICAL_FEATURES = [mean, std, min, max, quantiles, linear_weighted_average, quadratic_weighted_average,
