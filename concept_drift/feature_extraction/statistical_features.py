@@ -52,6 +52,10 @@ def arg_min(time_series):
     return np.argmin(time_series) / float(len(time_series))
 
 
+def skewness(time_series):
+    return stats.skew(time_series)
+
+
 def kurtosis(time_series):
     return stats.kurtosis(time_series)
 
@@ -65,5 +69,5 @@ def median_absolute_deviation(time_series):
 
 
 STATISTICAL_FEATURES = [mean, std, min, max, quantiles, linear_weighted_average, quadratic_weighted_average,
-                        arg_max, arg_min, kurtosis, standard_mean_error,
+                        arg_max, arg_min, skewness, kurtosis, standard_mean_error,
                         mean_absolute_deviation, median_absolute_deviation]

@@ -6,10 +6,10 @@ import itertools
 import click
 
 
-def balanced_accuracy(y_pred, y_act):
-    labels_counts = Counter(y_act)
+def balanced_accuracy(y_true, y_pred):
+    labels_counts = Counter(y_true)
     label_accuracy = defaultdict(int)
-    for label_pred, label_act in itertools.izip(y_pred, y_act):
+    for label_pred, label_act in itertools.izip(y_pred, y_true):
         if label_pred == label_act:
             label_accuracy[label_act] += 1
     accuracy_sum = sum([label_accuracy[label] / float(label_count)
@@ -32,8 +32,8 @@ def get_labels_from_file(file_path):
 
 def get_score_from_file(predictions_file_path, labels_file_path):
     activities = get_labels_from_file(predictions_file_path)
-    activities_act = get_labels_from_file(labels_file_path)
-    return balanced_accuracy(activities, activities_act)
+    activities_true = get_labels_from_file(labels_file_path)
+    return balanced_accuracy(activities_true, activities)
 
 
 @click.command()
