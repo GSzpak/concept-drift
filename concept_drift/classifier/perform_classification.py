@@ -13,7 +13,7 @@ def balanced_accuracy_score(estimator, X, y):
 
 
 def calculate_train_score(clf, training_data, training_labels):
-    scores = cross_val_score(clf, training_data, training_labels, cv=5, scoring=balanced_accuracy_score)
+    scores = cross_val_score(clf, training_data, training_labels, cv=3, scoring=balanced_accuracy_score)
     return np.mean(scores)
 
 
@@ -29,7 +29,7 @@ def main(training_data_path, training_labels_path, test_data_path, test_labels_p
     test_labels = get_labels_from_file(test_labels_path)
     classifier = RandomForestClassifier(n_estimators=50, max_features=0.1, verbose=1, n_jobs=-1)
     train_score = calculate_train_score(classifier, training_data, training_labels)
-    print 'Training set score (5 - fold CV): {}'.format(train_score)
+    print 'Training set score (3 - fold CV): {}'.format(train_score)
     classifier.fit(training_data, training_labels)
     test_score = balanced_accuracy_score(classifier, test_data, test_labels)
     print 'Test set score: {}'.format(test_score)
