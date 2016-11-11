@@ -2,7 +2,7 @@ import click
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression, SGDClassifier
+from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_score
 
 from concept_drift.score_calculator.score_calculation import get_labels_from_file, balanced_accuracy
