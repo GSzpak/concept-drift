@@ -24,11 +24,13 @@ def max(time_series):
 
 def quantiles(time_series):
     return [
-        np.percentile(time_series, 10, interpolation='midpoint'),
+        np.percentile(time_series, 12.5, interpolation='midpoint'),
         np.percentile(time_series, 25, interpolation='midpoint'),
+        np.percentile(time_series, 37.5, interpolation='midpoint'),
         np.percentile(time_series, 50, interpolation='midpoint'),
+        np.percentile(time_series, 62.5, interpolation='midpoint'),
         np.percentile(time_series, 75, interpolation='midpoint'),
-        np.percentile(time_series, 90, interpolation='midpoint'),
+        np.percentile(time_series, 87.5, interpolation='midpoint'),
     ]
 
 
