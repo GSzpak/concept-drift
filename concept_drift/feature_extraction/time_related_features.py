@@ -13,7 +13,7 @@ def integral(time_series, time):
             for i in xrange(1, len(time_series))]
 
 
-def time_related_features(time_series, time):
+def get_time_related_features(time_series, time):
     der = derivative(time_series, time)
     integr = integral(time_series, time)
     return get_basic_stats(der) + get_basic_stats(integr)

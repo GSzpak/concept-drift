@@ -12,7 +12,7 @@ def dft_features(time_series):
     # Second half of coefficients is conjugate to first half
     dft_coeff = dft_coeff[:len(dft_coeff) / 2]
     dft_coeff_selected = sorted(dft_coeff, key=lambda elem: np.absolute(elem), reverse=True)[:TRANSFORM_FEATURES_NUM]
-    return np.real(dft_coeff_selected) + np.imag(dft_coeff_selected) + \
+    return list(np.real(dft_coeff_selected)) + list(np.imag(dft_coeff_selected)) + \
            get_basic_stats(np.real(dft_coeff)) + get_basic_stats(np.imag(dft_coeff))
 
 

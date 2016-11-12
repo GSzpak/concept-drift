@@ -9,7 +9,12 @@ import numpy as np
 
 from concept_drift.data_preparation.prepare_data import BASE_FEATURES_FILE_NAME, TIME_FILE_NAME, SERIES_DIR_NAME, \
     NUM_OF_SERIES
+from concept_drift.feature_extraction.cross_series_features import cross_correlation
+from concept_drift.feature_extraction.physical_features import PHYSICAL_FEATURES
 from concept_drift.feature_extraction.statistical_features import STATISTICAL_FEATURES
+from concept_drift.feature_extraction.time_related_features import get_time_related_features
+
+FEATURE_EXTRACTION_FUNS = STATISTICAL_FEATURES + PHYSICAL_FEATURES
 
 
 def make_series_files(series_dir):
@@ -34,11 +39,16 @@ def flatten(iterable):
     return result
 
 
-def get_features(time_series_list):
+def get_features(time_series_list, time):
     result = []
     for time_series in time_series_list:
-        features = [fun(time_series) for fun in STATISTICAL_FEATURES]
+        features = [fun(time_series) for fun in FEATURE_EXTRACTION_FUNS]
         result.extend(flatten(features))
+        time_related_features = get_time_related_features(time_series, time)
+        result.extend(flatten(time_related_features))
+    for i in xrange(len(time_series_list)):
+        for j in xrange(i + 1, len(time_series_list)):
+            result.append(cross_correlation(time_series_list[i], time_series_list[j]))
     return result
 
 
@@ -62,7 +72,7 @@ def extract_features(data_dir, out_file_path):
             # Unused so far
             time = np.asarray(time, dtype=np.float32)
             time_series_list = get_next_timeseries_list(series_readers)
-            time_series_features = get_features(time_series_list)
+            time_series_features = get_features(time_series_list, time)
             features.extend(time_series_features)
             out_writer.writerow(features)
             if progress % 100 == 0:
