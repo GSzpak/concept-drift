@@ -17,7 +17,8 @@ def read_info_from_cache_file(cache_file_path):
         reader = csv.reader(cache_file)
         rows = list(reader)
         assert len(rows) == 1
-        return rows[0]
+        result = rows[0]
+        return map(float, result)
 
 
 def write_info_to_cache_file(cache_file_path, mutual_info):
@@ -37,3 +38,5 @@ def plot_informativeness(classification_informativeness, drift_informativeness):
     plt.xlabel('classification informativeness')
     plt.ylabel('drift informativeness')
     plt.scatter(classification_informativeness, drift_informativeness)
+    plt.show()
+
