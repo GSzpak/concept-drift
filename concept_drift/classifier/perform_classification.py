@@ -48,7 +48,7 @@ def perform_classification(training_data, training_labels, test_data, test_label
 @click.argument('training-labels-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('test-data-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('test-labels-path', type=click.Path(exists=True, dir_okay=False))
-@click.option('--classifier', '-c', type=click.STRING, default='random_forest')
+@click.option('--classifier-name', '-c', type=click.STRING, default='random_forest')
 def main(training_data_path, training_labels_path, test_data_path, test_labels_path, classifier_name):
     training_data = pd.read_csv(training_data_path, header=None, dtype='float32')
     training_labels = get_labels_from_file(training_labels_path)
