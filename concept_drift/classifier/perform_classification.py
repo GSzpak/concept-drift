@@ -15,6 +15,7 @@ class ClassifierFactory(object):
         'logit': (SGDClassifier, dict(loss='log', alpha=0.0001, n_iter=100, verbose=0, n_jobs=-1)),
         'svm': (SGDClassifier, dict(loss='hinge', alpha=0.0001, n_iter=100, verbose=0, n_jobs=-1)),
     }
+    CLASSIFIERS = NAME_TO_CLF.keys()
 
     @staticmethod
     def make_classifier(clf_name):
@@ -34,22 +35,33 @@ def calculate_train_score(clf, training_data, training_labels):
     return np.mean(scores)
 
 
+def perform_classification(training_data, training_labels, test_data, test_labels, classifier_name):
+    classifier = ClassifierFactory.make_classifier(classifier_name)
+    train_score = calculate_train_score(classifier, training_data, training_labels)
+    classifier.fit(training_data, training_labels)
+    test_score = balanced_accuracy_score(classifier, test_data, test_labels)
+    return train_score, test_score
+
+
 @click.command()
 @click.argument('training-data-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('training-labels-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('test-data-path', type=click.Path(exists=True, dir_okay=False))
 @click.argument('test-labels-path', type=click.Path(exists=True, dir_okay=False))
 @click.option('--classifier', '-c', type=click.STRING, default='random_forest')
-def main(training_data_path, training_labels_path, test_data_path, test_labels_path, classifier):
+def main(training_data_path, training_labels_path, test_data_path, test_labels_path, classifier_name):
     training_data = pd.read_csv(training_data_path, header=None, dtype='float32')
     training_labels = get_labels_from_file(training_labels_path)
     test_data = pd.read_csv(test_data_path, header=None, dtype='float32')
     test_labels = get_labels_from_file(test_labels_path)
-    classifier = ClassifierFactory.make_classifier(classifier)
-    train_score = calculate_train_score(classifier, training_data, training_labels)
+    train_score, test_score = perform_classification(
+        training_data,
+        training_labels,
+        test_data,
+        test_labels,
+        classifier_name
+    )
     print 'Training set score (3 - fold CV): {}'.format(train_score)
-    classifier.fit(training_data, training_labels)
-    test_score = balanced_accuracy_score(classifier, test_data, test_labels)
     print 'Test set score: {}'.format(test_score)
 
 

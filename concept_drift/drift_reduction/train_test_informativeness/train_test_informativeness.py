@@ -14,9 +14,7 @@ def get_drift_informativeness(X_training, X_test, use_cache=True):
     num_training = X_training.shape[0]
     num_test = X_test.shape[0]
     y = ['training'] * num_training + ['test'] * num_test
-    print X_training.shape, X_test.shape
     X = X_training.append(X_test, ignore_index=True)
-    print X.shape
     X_shuffled, y_shuffled = shuffle(X, y)
     mutual_info = mutual_info_classif(X_shuffled, y_shuffled, discrete_features=False, copy=True, n_neighbors=10)
     write_info_to_cache_file(DRIFT_INFO_FILE, mutual_info)

@@ -18,3 +18,7 @@ def main(training_data_path, training_labels_path, test_data_path):
     x = get_classification_informativeness(training_data, training_labels)
     y = get_drift_informativeness(training_data, test_data)
     plot_informativeness(x, y)
+
+
+if __name__ == '__main__':
+    main()
