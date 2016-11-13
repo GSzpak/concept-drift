@@ -13,7 +13,7 @@ from concept_drift.score_calculator.score_calculation import get_labels_from_fil
 # First - classification lower bound
 # Second - drift upper bound
 THRESHOLD_PAIRS_TO_TEST = [
-    (0.0, 0.05), (0.0, 0.1), (0.0, 0.2),
+    (0.0, 0.7), (0.0, 0.05), (0.0, 0.1), (0.0, 0.2),
     (0.25, 0.05), (0.25, 0.1), (0.25, 0.2),
     (0.5, 0.05), (0.5, 0.1), (0.5, 0.2), (0.5, 0.4),
     (1.0, 0.1), (1.0, 0.3), (1.0, 0.5),
