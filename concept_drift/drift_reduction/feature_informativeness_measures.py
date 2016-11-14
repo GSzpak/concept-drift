@@ -9,7 +9,7 @@ def mutual_info(X, y):
         y,
         discrete_features=False,
         copy=True,
-        n_neighbors=3
+        n_neighbors=10
     )
 
 
