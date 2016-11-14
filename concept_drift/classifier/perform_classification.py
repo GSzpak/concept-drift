@@ -10,10 +10,20 @@ from concept_drift.score_calculator.score_calculation import get_labels_from_fil
 
 class ClassifierFactory(object):
 
+    SEED = 500
     NAME_TO_CLF = {
-        'random_forest': (RandomForestClassifier, dict(n_estimators=50, max_features=0.1, verbose=1, n_jobs=-1)),
-        'logit': (SGDClassifier, dict(loss='log', alpha=0.0001, n_iter=100, verbose=0, n_jobs=-1)),
-        'svm': (SGDClassifier, dict(loss='hinge', alpha=0.0001, n_iter=100, verbose=0, n_jobs=-1)),
+        'random_forest': (
+            RandomForestClassifier,
+            dict(n_estimators=50, max_features=0.1, random_state=SEED, verbose=1, n_jobs=-1)
+        ),
+        'logit': (
+            SGDClassifier,
+            dict(loss='log', alpha=0.0001, n_iter=100, random_state=SEED, verbose=0, n_jobs=-1)
+        ),
+        'svm': (
+            SGDClassifier,
+            dict(loss='hinge', alpha=0.0001, n_iter=100, random_state=SEED, verbose=0, n_jobs=-1)
+        ),
     }
     CLASSIFIERS = NAME_TO_CLF.keys()
 
