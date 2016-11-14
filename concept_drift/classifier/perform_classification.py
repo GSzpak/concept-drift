@@ -11,7 +11,6 @@ from settings import SEED
 
 class ClassifierFactory(object):
 
-
     NAME_TO_CLF = {
         'random_forest': (
             RandomForestClassifier,
