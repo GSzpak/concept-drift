@@ -6,11 +6,12 @@ from sklearn.linear_model import SGDClassifier
 from sklearn.model_selection import cross_val_score
 
 from concept_drift.score_calculator.score_calculation import get_labels_from_file, balanced_accuracy
+from settings import SEED
 
 
 class ClassifierFactory(object):
 
-    SEED = 500
+
     NAME_TO_CLF = {
         'random_forest': (
             RandomForestClassifier,
