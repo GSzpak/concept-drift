@@ -9,7 +9,7 @@ from concept_drift.iterative_learning.classifier import IterativeClassifier
 from concept_drift.score_calculator.score_calculation import get_labels_from_file
 from settings import THESIS_DATA_DIR
 
-PERCENTAGES_TO_TEST = [0.1, 0.25, 0.34, 0.5]
+PERCENTAGES_TO_TEST = [0.5, 0.34, 0.25, 0.1]
 
 
 def _make_report_file_path(clf_name):

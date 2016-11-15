@@ -18,6 +18,7 @@ class IterativeClassifier(BaseEstimator, ClassifierMixin):
 
     def predict(self, X):
         num_of_rows_per_iteration = int(math.ceil(self.rows_percentage * X.shape[0]))
+        print len(self.base_X), len(self.base_y), len(X)
         current_num_of_rows = 0
         current_X = self.base_X
         current_y = self.base_y
@@ -26,8 +27,9 @@ class IterativeClassifier(BaseEstimator, ClassifierMixin):
         while current_num_of_rows < X.shape[0]:
             y_predicted = self.base_classifier.predict(X)
             current_num_of_rows += num_of_rows_per_iteration
-            current_X = current_X.append(X.head(current_num_of_rows))
-            current_y = np.append(current_y, y_predicted[:current_num_of_rows])
+            current_X = self.base_X.append(X.head(current_num_of_rows))
+            current_y = np.append(self.base_y, y_predicted[:current_num_of_rows])
             print 'Learning on {} examples'.format(len(current_y))
             self.base_classifier.fit(current_X, current_y)
+        print 'Calculating final result'
         return self.base_classifier.predict(X)
