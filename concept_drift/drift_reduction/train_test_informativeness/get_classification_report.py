@@ -3,11 +3,9 @@ import csv
 import click
 import pandas as pd
 
-
-from concept_drift.classifier.perform_classification import ClassifierFactory, perform_classification
 from concept_drift.drift_reduction.train_test_informativeness.train_test_informativeness import \
     get_drift_informativeness
-from concept_drift.drift_reduction.utils import get_classification_informativeness
+from concept_drift.drift_reduction.utils import get_classification_informativeness, get_classification_report
 from concept_drift.score_calculator.score_calculation import get_labels_from_file
 
 # First - classification lower bound
@@ -37,39 +35,6 @@ THRESHOLD_PAIRS_TO_TEST = {
         (2000, 1000), (2000, 2000)
     ]
 }
-
-
-def get_columns_to_drop(classif_info, drift_info, classif_lower_bound, drift_upper_bound):
-    columns_to_drop = []
-    for index, (classif_info, drift_info) in enumerate(zip(classif_info, drift_info)):
-        if classif_info < classif_lower_bound or drift_info > drift_upper_bound:
-            columns_to_drop.append(index)
-    return columns_to_drop
-
-
-def get_classification_report(training_data, training_labels, test_data, test_labels,
-                              classif_info, drift_info, classif_lower_bound, drift_upper_bound):
-    assert training_data.shape[1] == test_data.shape[1]
-    num_of_columns = training_data.shape[1]
-    print 'Calculating report for thresholds: {}, {}'.format(classif_lower_bound, drift_upper_bound)
-    columns_to_drop = get_columns_to_drop(classif_info, drift_info, classif_lower_bound, drift_upper_bound)
-    features_selected = num_of_columns - len(columns_to_drop)
-    print '{} features selected'.format(features_selected)
-    training_data_prepared = training_data.drop(training_data.columns[columns_to_drop], axis=1, inplace=False)
-    test_data_prepared = test_data.drop(test_data.columns[columns_to_drop], axis=1, inplace=False)
-    report_rows = []
-    for classifier_name in ClassifierFactory.CLASSIFIERS:
-        train_score, test_score = perform_classification(
-            training_data_prepared,
-            training_labels,
-            test_data_prepared,
-            test_labels,
-            classifier_name
-        )
-        print '{}: train score {}, test score {}'.format(classifier_name, train_score, test_score)
-        report_rows.append([classif_lower_bound, drift_upper_bound, classifier_name,
-                            features_selected, '{0:.4f}'.format(train_score), '{0:.4f}'.format(test_score)])
-    return report_rows
 
 
 @click.command()

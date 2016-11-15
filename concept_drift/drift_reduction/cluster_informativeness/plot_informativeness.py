@@ -1,16 +1,9 @@
 import click
 import pandas as pd
 
-from concept_drift.drift_reduction.cluster_informativeness.cluster_informativeness import \
-    ClusterInformativenessCalculatorV1, ClusterInformativenessCalculatorV2
+from concept_drift.drift_reduction.cluster_informativeness.utils import VERSION_TO_INFO_CALC
 from concept_drift.drift_reduction.utils import get_classification_informativeness, plot_informativeness
 from concept_drift.score_calculator.score_calculation import get_labels_from_file
-
-
-_VERSION_TO_CLASS = {
-    1: ClusterInformativenessCalculatorV1(),
-    2: ClusterInformativenessCalculatorV2()
-}
 
 
 @click.command()
@@ -28,7 +21,7 @@ def main(training_data_path, training_labels_path, data_for_clustering_path, ver
         training_labels,
         informativeness_measure_name=info_measure_name
     )
-    info_calculator = _VERSION_TO_CLASS[version]
+    info_calculator = VERSION_TO_INFO_CALC[version]
     y = info_calculator.get_cluster_drift_informativeness(
         training_data,
         training_data_for_clustering,

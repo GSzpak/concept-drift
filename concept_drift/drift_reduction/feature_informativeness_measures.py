@@ -15,7 +15,7 @@ def mutual_info(X, y):
 
 def anova_f(X, y):
     result, _ = feature_selection.f_classif(X, y)
-    return result
+    return abs(result)
 
 
 def random_forest(X, y):
