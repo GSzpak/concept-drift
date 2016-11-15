@@ -45,12 +45,16 @@ def calculate_train_score(clf, training_data, training_labels):
     return np.mean(scores)
 
 
-def perform_classification(training_data, training_labels, test_data, test_labels, classifier_name):
-    classifier = ClassifierFactory.make_classifier(classifier_name)
+def get_classification_scores(training_data, training_labels, test_data, test_labels, classifier):
     train_score = calculate_train_score(classifier, training_data, training_labels)
     classifier.fit(training_data, training_labels)
     test_score = balanced_accuracy_score(classifier, test_data, test_labels)
     return train_score, test_score
+
+
+def perform_classification(training_data, training_labels, test_data, test_labels, classifier_name):
+    classifier = ClassifierFactory.make_classifier(classifier_name)
+    return get_classification_scores(training_data, training_labels, test_data, test_labels, classifier)
 
 
 @click.command()
