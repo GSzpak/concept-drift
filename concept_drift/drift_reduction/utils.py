@@ -7,7 +7,7 @@ from concept_drift.classifier.perform_classification import ClassifierFactory, p
 from concept_drift.drift_reduction.feature_informativeness_measures import get_feature_informativeness_measure
 from settings import DATA_DIR
 
-CACHE_DIR = os.path.join(DATA_DIR, 'drift_reduction_cache')
+CACHE_DIR = os.path.join(DATA_DIR, 'drift_reduction_cache_v2')
 if not os.path.exists(CACHE_DIR):
     os.makedirs(CACHE_DIR)
 CLASS_INFO_FILE_TEMPLATE = os.path.join(CACHE_DIR, 'classification_informativeness_{}.csv')
