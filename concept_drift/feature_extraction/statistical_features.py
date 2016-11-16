@@ -6,10 +6,6 @@ def mean(time_series):
     return np.mean(time_series)
 
 
-def standard_mean_error(time_series):
-    return stats.sem(time_series)
-
-
 def std(time_series):
     return np.std(time_series)
 
@@ -34,8 +30,17 @@ def quantiles(time_series):
     ]
 
 
+def sum(time_series):
+    return np.sum(time_series)
+
+
 def get_basic_stats(time_series):
-    return [mean(time_series), std(time_series), min(time_series), max(time_series)] + quantiles(time_series)
+    return [mean(time_series), std(time_series), min(time_series), max(time_series), sum(time_series)] + \
+           quantiles(time_series)
+
+
+def standard_mean_error(time_series):
+    return stats.sem(time_series)
 
 
 def linear_weighted_average(time_series):
