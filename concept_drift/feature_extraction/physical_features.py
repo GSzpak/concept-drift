@@ -6,6 +6,7 @@ from tsfresh.feature_extraction import feature_calculators
 
 
 TRANSFORM_FEATURES_NUM = 10
+TOLERANCE = 1e-12
 
 
 def _get_coefficients_stats(coefficients, num_to_select):
@@ -19,10 +20,14 @@ def get_fft_coeffs(time_series):
         [{'coeff': i} for i in xrange(len(time_series))]
     )
     fft_coeffs = fft_coeffs.values
+    fft_coeffs[np.abs(fft_coeffs) < TOLERANCE] = 0.0
     fft_coeffs = np.trim_zeros(fft_coeffs)
-    assert len(fft_coeffs) == (len(time_series) / 2) + 1 \
+    expected_len = (len(time_series) / 2) + 1 \
         if len(time_series) % 2 == 0 \
         else (len(time_series) + 1) / 2
+    if len(fft_coeffs) < expected_len:
+        fft_coeffs = np.append(fft_coeffs, [0.0] * (expected_len - len(fft_coeffs)), axis=0)
+    assert fft_coeffs.shape == (expected_len,)
     return fft_coeffs
 
 
