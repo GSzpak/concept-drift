@@ -1,5 +1,6 @@
 import numpy as np
 from scipy import stats
+from tsfresh.feature_extraction import feature_calculators
 
 
 def mean(time_series):
@@ -75,6 +76,65 @@ def median_absolute_deviation(time_series):
     return np.percentile(np.absolute(time_series - np.percentile(time_series, 50)), 50)
 
 
-STATISTICAL_FEATURES = [mean, std, min, max, quantiles, linear_weighted_average, quadratic_weighted_average,
+def absolute_energy(time_series):
+    return feature_calculators.abs_energy(time_series)
+
+
+def count_above_mean(time_series):
+    return feature_calculators.count_above_mean(time_series)
+
+
+def count_below_mean(time_series):
+    return feature_calculators.count_below_mean(time_series)
+
+
+def large_number_of_peaks(time_series):
+    return [
+        feature_calculators.large_number_of_peaks(time_series, 3),
+        feature_calculators.large_number_of_peaks(time_series, 5),
+        feature_calculators.large_number_of_peaks(time_series, 10),
+        feature_calculators.large_number_of_peaks(time_series, 25),
+    ]
+
+
+def longest_strike_above_mean(time_series):
+    return feature_calculators.longest_strike_above_mean(time_series)
+
+
+def longest_strike_below_mean(time_series):
+    return feature_calculators.longest_strike_below_mean(time_series)
+
+
+def mean_autocorrelation(time_series):
+    return feature_calculators.mean_autocorrelation(time_series)
+
+
+def number_peaks(time_series):
+    return [
+        feature_calculators.number_peaks(time_series, 5),
+        feature_calculators.number_peaks(time_series, 10),
+        feature_calculators.number_peaks(time_series, 20),
+        feature_calculators.number_peaks(time_series, 30),
+        feature_calculators.number_peaks(time_series, 50),
+    ]
+
+
+def time_reversal_assymmetry_statistic(time_series):
+    return [
+        feature_calculators.time_reversal_asymmetry_statistic(time_series, 25),
+        feature_calculators.time_reversal_asymmetry_statistic(time_series, 50),
+        feature_calculators.time_reversal_asymmetry_statistic(time_series, 100),
+        feature_calculators.time_reversal_asymmetry_statistic(time_series, 200),
+    ]
+
+
+def variance(time_series):
+    return feature_calculators.variance(time_series)
+
+
+STATISTICAL_FEATURES = [mean, std, min, max, quantiles, sum, linear_weighted_average, quadratic_weighted_average,
                         arg_max, arg_min, skewness, kurtosis, standard_mean_error,
-                        mean_absolute_deviation, median_absolute_deviation]
+                        mean_absolute_deviation, median_absolute_deviation,
+                        absolute_energy, count_above_mean, count_below_mean, large_number_of_peaks,
+                        longest_strike_above_mean, longest_strike_below_mean, mean_autocorrelation,
+                        number_peaks, time_reversal_assymmetry_statistic, variance]
