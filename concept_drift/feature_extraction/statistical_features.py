@@ -90,10 +90,11 @@ def count_below_mean(time_series):
 
 def large_number_of_peaks(time_series):
     return [
-        feature_calculators.large_number_of_peaks(time_series, 3),
-        feature_calculators.large_number_of_peaks(time_series, 5),
-        feature_calculators.large_number_of_peaks(time_series, 10),
-        feature_calculators.large_number_of_peaks(time_series, 25),
+        int(feature_calculators.large_number_of_peaks(time_series, 3)),
+        int(feature_calculators.large_number_of_peaks(time_series, 5)),
+        int(feature_calculators.large_number_of_peaks(time_series, 10)),
+        int(feature_calculators.large_number_of_peaks(time_series, 25)),
+        int(feature_calculators.large_number_of_peaks(time_series, 50))
     ]
 
 

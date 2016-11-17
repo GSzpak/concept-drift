@@ -1,2 +1,2 @@
 Wszystkie staty na szeregu + base stats na innych reprezentacjach + cross correlation - 5355 cech
-V2 - 121 per series + 861 korel., w sumie 5943
+V2 - 1212 per series + 861 korel., w sumie 5985 + 42 base

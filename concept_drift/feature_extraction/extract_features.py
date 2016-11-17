@@ -49,7 +49,8 @@ def get_features(time_series_list, time):
     for i in xrange(len(time_series_list)):
         for j in xrange(i + 1, len(time_series_list)):
             result.append(cross_correlation(time_series_list[i], time_series_list[j]))
-    assert len(result) == 5943
+    assert len(result) == 5985
+    assert not np.isnan(np.sum(result))
     return result
 
 
