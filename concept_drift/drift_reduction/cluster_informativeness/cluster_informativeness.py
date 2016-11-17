@@ -79,10 +79,11 @@ class ClusterInformativenessCalculatorV1(ClusterInformativenessCalculator):
     def make_cache_file_name(self, measure_name):
         return self._CACHE_FILE_TEMPLATE.format(measure_name)
 
-    def _get_cluster_labels(self, X_for_clustering, indices_for_label):
+    def _get_clustered_labels(self, X_for_clustering, indices_for_label):
         if os.path.isfile(self._CLUSTER_LABELS_FILE):
             return get_labels_from_file(self._CLUSTER_LABELS_FILE)
-        labels_after_clustering = [0 for _ in xrange(len(y))]
+        num_of_instances = sum([len(indices) for indices in indices_for_label.values()])
+        labels_after_clustering = [0 for _ in xrange(num_of_instances)]
         for base_label, indices in indices_for_label.iteritems():
             cluster_labels = self._get_cluster_labels(X_for_clustering, indices)
             for index, cluster_label in zip(indices, cluster_labels):
@@ -92,7 +93,7 @@ class ClusterInformativenessCalculatorV1(ClusterInformativenessCalculator):
         return labels_after_clustering
 
     def _calculate_drift_informativeness(self, X, X_for_clustering, indices_for_label, informativeness_measure):
-        y_cluster = self._get_cluster_labels(X_for_clustering, indices_for_label)
+        y_cluster = self._get_clustered_labels(X_for_clustering, indices_for_label)
         return informativeness_measure(X, y_cluster)
 
 

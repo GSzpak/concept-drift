@@ -2,6 +2,7 @@ import csv
 import os
 
 import matplotlib.pyplot as plt
+import numpy as np
 
 from concept_drift.classifier.perform_classification import ClassifierFactory, perform_classification
 from concept_drift.drift_reduction.feature_informativeness_measures import get_feature_informativeness_measure
@@ -35,6 +36,7 @@ def get_classification_informativeness(X, y, informativeness_measure_name='mutua
     informativeness_measure = get_feature_informativeness_measure(informativeness_measure_name)
     informativeness = informativeness_measure(X, y)
     write_info_to_cache_file(cache_file_name, informativeness)
+    return informativeness
 
 
 def plot_informativeness(classification_informativeness, drift_informativeness):
@@ -47,7 +49,8 @@ def plot_informativeness(classification_informativeness, drift_informativeness):
 def get_columns_to_drop(classif_info, drift_info, classif_lower_bound, drift_upper_bound):
     columns_to_drop = []
     for index, (classif_info, drift_info) in enumerate(zip(classif_info, drift_info)):
-        if classif_info < classif_lower_bound or drift_info > drift_upper_bound:
+        if classif_info < classif_lower_bound or drift_info > drift_upper_bound \
+                or np.isnan(classif_info) or np.isnan(drift_info):
             columns_to_drop.append(index)
     return columns_to_drop
 
