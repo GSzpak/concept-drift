@@ -63,6 +63,8 @@ def get_classification_report(training_data, training_labels, test_data, test_la
     columns_to_drop = get_columns_to_drop(classif_info, drift_info, classif_lower_bound, drift_upper_bound)
     features_selected = num_of_columns - len(columns_to_drop)
     print '{} features selected'.format(features_selected)
+    if features_selected == 0:
+        return []
     training_data_prepared = training_data.drop(training_data.columns[columns_to_drop], axis=1, inplace=False)
     test_data_prepared = test_data.drop(test_data.columns[columns_to_drop], axis=1, inplace=False)
     report_rows = []

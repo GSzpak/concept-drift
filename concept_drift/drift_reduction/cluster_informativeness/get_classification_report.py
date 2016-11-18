@@ -41,7 +41,7 @@ THRESHOLD_PAIRS_TO_TEST = {
             (0.0, 1.4e7), (0.0, 10), (0.0, 50), (0.0, 100), (0.0, 250), (0.0, 500), (0.0, 2000),
             (500, 10), (500, 50), (500, 100), (500, 250), (500, 500), (500, 2000),
             (1000, 10), (1000, 50), (1000, 100), (1000, 250), (1000, 500), (1000, 2000),
-            (2000, 10), (2000, 50), (2000, 100), (2000, 250), (2000, 500), (2000, 2000), (2000, 1.4e7),
+            (2000, 50), (2000, 100), (2000, 250), (2000, 500), (2000, 2000), (2000, 1.4e7),
             (3000, 1.4e7),
             (4000, 1.4e7),
         ]
@@ -102,7 +102,8 @@ def main(training_data_path, training_labels_path, test_data_path, test_labels_p
                         classif_lower_bound,
                         drift_upper_bound
                     )
-                    report_writer.writerows(report_rows)
+                    if report_rows:
+                        report_writer.writerows(report_rows)
 
 
 if __name__ == '__main__':
