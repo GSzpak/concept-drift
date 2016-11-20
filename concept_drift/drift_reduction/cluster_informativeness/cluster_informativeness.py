@@ -135,3 +135,15 @@ class ClusterInformativenessCalculatorV2(ClusterInformativenessCalculator):
         result = np.mean(results, axis=0)
         assert len(result) == X.shape[1]
         return result
+
+
+class ClusterInformativenessCalculatorV3(ClusterInformativenessCalculator):
+
+    _CACHE_FILE_TEMPLATE = os.path.join(CACHE_DIR, 'cluster_informativeness_v3_{}.csv')
+
+    def make_cache_file_name(self, measure_name):
+        return self._CACHE_FILE_TEMPLATE.format(measure_name)
+
+    def _calculate_drift_informativeness(self, X, X_for_clustering, indices_for_label, informativeness_measure):
+        cluster_labels = self.cluster(X_for_clustering)
+        return informativeness_measure(X, cluster_labels)
