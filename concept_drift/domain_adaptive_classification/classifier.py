@@ -1,6 +1,7 @@
 from collections import defaultdict
 
 import numpy as np
+from sklearn.base import ClassifierMixin, BaseEstimator
 from sklearn.decomposition import PCA
 from sklearn.linear_model import SGDClassifier
 
@@ -89,19 +90,45 @@ def get_discr_binary_codes(X, y, num_of_features):
         B = B.T
 
 
-def discriminative_binary_codes_adaptive_classification(X_train, y_train, X_test, num_of_features):
-    classifier = get_svm()
-    classifier.fit(X_train, y_train)
-    y_test = classifier.predict(X_test)
-    while True:
-        hyperplanes_transposed = get_discr_binary_codes(X_test, y_test, num_of_features)
-        new_X_train = np.sign(np.dot(hyperplanes_transposed, X_train.T))
-        new_X_train = new_X_train.T
-        classifier.fit(new_X_train, y_train)
-        y_test_prim = classifier.predict(np.sign(np.dot(hyperplanes_transposed, X_test.T)).T)
-        print sum(y_test_prim == y_test)
-        if sum(y_test_prim == y_test) >= 0.95 * len(y_test):
-            break
-        else:
-            y_test = y_test_prim
-    return y_test
+class BaseDomainAdaptiveClassifier(BaseEstimator, ClassifierMixin):
+
+    def __init__(self, num_of_features=10):
+        super(BaseDomainAdaptiveClassifier, self).__init__()
+        self.classifier = get_svm()
+        self.num_of_features = num_of_features
+        self.X_train = None
+        self.y_train = None
+
+    def fit(self, X, y):
+        self.X_train = X
+        self.y_train = y
+
+    def discriminative_binary_codes_adaptive_classification(self, X_test):
+        self.classifier.fit(self.X_train, self.y_train)
+        y_test = self.classifier.predict(X_test)
+        decision = self.classifier.decision_function(X_test)
+        for i in xrange(20):
+            print 'Iteration: {}'.format(i)
+            hyperplanes_transposed = get_discr_binary_codes(X_test, y_test, self.num_of_features)
+            new_X_train = np.sign(np.dot(hyperplanes_transposed, self.X_train.T))
+            new_X_train = new_X_train.T
+            self.classifier.fit(new_X_train, self.y_train)
+            X_to_predict = np.sign(np.dot(hyperplanes_transposed, X_test.T)).T
+            y_test_prim = self.classifier.predict(X_to_predict)
+            decision_prim = self.classifier.decision_function(X_to_predict)
+            print sum(y_test_prim == y_test)
+            if sum(y_test_prim == y_test) >= 0.95 * len(y_test):
+                break
+            else:
+                y_test = y_test_prim
+                decision = decision_prim
+        return y_test, decision
+
+
+    def predict(self, X):
+        y, _ = self.discriminative_binary_codes_adaptive_classification(X)
+        return y
+
+    def decision_function(self, X):
+        _, decision = self.discriminative_binary_codes_adaptive_classification(X)
+        return decision

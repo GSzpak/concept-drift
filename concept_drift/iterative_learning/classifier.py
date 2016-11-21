@@ -7,6 +7,7 @@ from sklearn.base import BaseEstimator, ClassifierMixin
 class IterativeClassifier(BaseEstimator, ClassifierMixin):
 
     def __init__(self, base_classifier=None, rows_percentage=0.34):
+        super(IterativeClassifier, self).__init__()
         self.base_classifier = base_classifier
         self.rows_percentage = rows_percentage
         self.base_X = None
