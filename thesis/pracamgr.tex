@@ -21,6 +21,18 @@
 %Jesli uzywasz kodowania polskich znakow CP-1250 to ta linia powinna byc 
 %odkomentowana
 %\usepackage[cp1250]{inputenc}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage{caption}
+\usepackage{afterpage}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{makecell}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \newpage}
+
 
 % Dane magistranta:
 
@@ -96,327 +108,115 @@
 %\listoffigures
 %\listoftables
 
-\chapter*{Wprowadzenie}
-\addcontentsline{toc}{chapter}{Wprowadzenie}
 
-Blabalizator ró¿nicowy jest podstawowym narzêdziem blabalii
-fetorycznej.  Dlatego naukowcy z~ca³ego ¶wiata prze¶cigaj± siê
-w~próbach efektywnej implementacji.  Opracowana przez prof. Fifaka
-teoria fetorów $\sigma$-$\rho$ otwiera w~tej dziedzinie nowe
-mo¿liwo¶ci.  Wykorzystujemy je w~niniejszej pracy.
+\chapter{Wprowadzenie}\label{r:wprowadzenie}
 
-Przystêpne wprowadzenie do blabalii fetorycznej mo¿na znale¼æ w~pracy
-Fifaka i~Gryzogrzechotalskiego \cite{ffgg}.  Dlatego w~niniejszym
-tek¶cie ograniczymy siê do przypomnienia pojêæ podstawowych.
+\section{Uczenie z nadzorem a \textit{concept drift}} \label{s:superv}
 
-Praca sk³ada siê z~piêciu rozdzia³ów i~dodatków.
-W~rozdziale~\ref{r:pojecia} przypomniano podstawowe pojêcia blabalii
-fetorycznej.  Dotychczasowe próby implementacji blablizatora
-ró¿nicowego zestawiono w~rozdziale~\ref{r:losers}.
-Rozdzia³~\ref{r:fifak} przedstawia teoriê Fifaka i~wyja¶nia sposób jej
-wykorzystania w~implementacji blabalizatora.  W~rozdziale \ref{r:impl}
-przedstawiono algorytm blabalizy i~realizuj±cy go program komputerowy.
-Ostatni rozdzia³ zawiera przemy¶lenia dotycz±ce mo¿liwego wp³ywu
-dostêpno¶ci efektywnej blabalizy numerycznej na rozwój blabalii
-fetorycznej.  W~dodatkach umieszczono najciekawszy fragment programu,
-przyk³adowe dane i~wyniki dzia³ania programu.
+Podstawowym problemem rozwa¿anym w teorii uczenia maszynowego jest problem uczenia z nadzorem (ang. \textit{supervised learning}). Niech dane bêd±:
+\begin{itemize}
+\item zbiór $X$ przyk³adów
+\item zbiór $Y$ decyzji
+\item funkcja $f: X \rightarrow Y$
+\item Parê zbiorów $(X_{train} \subseteq X, Y_{train} \subseteq Y)$ instancji $x_1, x_2, \dots, x_n$ oraz odpowiadaj±cych im decyzji $f(x_1), f(x_2), \dots, f(x_n)$, zwan± \textit{zbiorem treningowym}
+\end{itemize}
+Zadanie uczenia z nadzorem polega na wyznaczeniu na podstawie zbioru treningowego oraz przy u¿yciu pewnego algorytmu ucz±cego \textit{klasyfikatora} takiej funkcji $c: X \rightarrow Y$ (zwanej \textit{modelem}) bêd±cej dobr± aproksymacj± funkcji $f$. Jako¶æ modelu $c$ okre¶la siê, porównuj±c jego warto¶ci dla elementów skoñczonego \textit{zbioru testowego} $X_{test}$ z rzeczywistymi warto¶ciami funkcji $f$ dla tych elementów $Y_{test}$. Istotne jest przy tym za³o¿enie, ¿e elementy zbiorów $X_{train}$ oraz $X_{test}$ losowane s± ze zbioru $X$ wed³ug tego samego rozk³adu prawdopodobieñstwa $D$. \\
 
-\chapter{Podstawowe pojêcia}\label{r:wprowadzenie}
+Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervised}. \\
 
-Pojêciem pierwotnym blabalii fetorycznej jest \emph{blaba}.
-Blabali¶ci nie podaj± jego definicji, mówi±c za Ciach-Pfe t-\=am
-K\^un (fooistyczny mêdrzec, XIX w. p.n.e.):
-\begin{quote}
-  Blaba, który jest blaba, nie jest prawdziwym blaba.
-
-\raggedleft\slshape t³um. z~chiñskiego Robert Blarbarucki
-\end{quote}
-
-\section{Definicje}
-
-Oto dwie definicje wprowadzaj±ce podstawowe pojêcia blabalii
-fetorycznej:
-
-\begin{defi}\label{skupienie}
-  Silny, zwarty i gotowy fetor bazowy nazwiemy \emph{skupieniem}.
-\end{defi}
-
-\begin{defi}\label{fetor}
-  \emph{Fetorem} nazwiemy skupienie blaba spe³niaj±ce nastêpuj±cy
-  \emph{aksjomat reperkusatywno¶ci}:
-  $$\forall \mathcal{X}\in Z(t)\ \exists
-  \pi\subseteq\oint_{\Omega^2}\kappa\leftrightarrow 42$$
-\end{defi}
-
-
-\section{Blabalizator ró¿nicowy}
-
-Teoretycy blabalii (zob. np. pracê~\cite{grglo}) zadowalaj± siê
-niekonstruktywnym opisem natury fetorów.
-
-Podstawowym narzêdziem blabalii empirycznej jest blabalizator
-ró¿nicowy.  Przyrz±d ten pozwala w~sposób przybli¿ony uzyskaæ
-wspó³czynniki rozk³adu G³ombaskiego dla fetorów bazowych
-i~harmonicznych.  Praktyczne znaczenie tego procesu jest oczywiste:
-korzystaj±c z~reperkusatywno¶ci pozwala on przej¶æ do przestrzeni
-$\Lambda^{\nabla}$, a~tym samym znale¼æ retroizotonalne wspó³czynniki
-semi-quasi-celibatu dla klatek Rozkoszy (zob.~\cite{JR}).
-
-Klasyczne algorytmy dla blabalizatora ró¿nicowego wykorzystuj±:
-\begin{enumerate}
-\item dualizm falowo\dywiz korpuskularny, a w szczególno¶ci
-  \begin{enumerate}
-  \item korpuskularn± naturê fetorów,
-  \item falow± naturê blaba,
-  \item falowo\dywiz korpuskularn± naturê gryzmo³ów;
-  \end{enumerate}
-\item postêpuj±c± gryzmolizacjê poszczególnych dziedzin nauki, w
-  szczególno¶ci badañ systemowych i rozcieñczonych;
-\item dynamizm fazowy stetryczenia parajonizacyjnego;
-\item wreszcie tradycyjne opozycje:
-  \begin{itemize}
-  \item duch --- bakteria,
-  \item mieæ --- chcieæ,
-  \item my¶l --- owsianka,
-  \item parafina --- durszlak\footnote{Wiêcej o tym przypadku --- patrz
-      prace Gryzybór\dywiz G³ombaskiego i innych teoretyków nurtu
-      teoretyczno\dywiz praktycznego badañ w~Instytucie Podstawowych
-      Problemów Blabalii w~Fifie.},
-  \item logos --- termos%\footnote{Szpotañski}
-  \end{itemize}
-  z w³a¶ciwym im przedziwym dynamizmem.
-\end{enumerate}
-
-\begin{figure}[tp]
-  \centering
-  \framebox{\vbox to 4cm{\vfil\hbox to
-      7cm{\hfil\tiny.\hfil}\vfil}}
-  \caption{Artystyczna wizja blaba w~obrazie wêgierskiego artysty
-    Josipa~A. Rozkoszy pt.~,,Blaba''}
+\begin{figure}[t!]
+\centering
+\includegraphics[scale=0.8]{supervised.png}
+\caption{Schemat uczenia z nadzorem \label{supervised}}
 \end{figure}
 
-\chapter{Wcze¶niejsze implementacje blabalizatora
-  ró¿nicowego}\label{r:losers}
 
-\section{Podej¶cie wprost}
+Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie spamu, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. \\
 
-Najprostszym sposobem wykonania blabalizy jest si³owe przeszukanie
-ca³ej przestrzeni rozwi±zañ.  Jednak, jak ³atwo wyliczyæ, rozmiar
-przestrzeni rozwi±zañ ro¶nie wyk³adniczo z~liczb± fetorów bazowych.
-Tak wiêc przegl±d wszystkich rozwi±zañ sprawdza siê jedynie dla bardzo
-prostych przestrzeni lamblialnych.  Oznacza to, ¿e taka metoda ma
-niewielkie znaczenie praktyczne --- w~typowym przypadku z~¿ycia trzeba
-rozwa¿aæ przestrzenie lamblialne wymiaru rzêdu 1000.
+Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
+St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{1} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daume w \cite{2}. \\
 
-W~literaturze mo¿na znale¼æ kilka prób opracowania heurystyk dla
-problemu blabalizy (por. \cite{heu}).  Korzystaj±c z~heurystyk daje
-siê z~pewnym trudem dokonaæ blabalizy w~przestrzeni o~np.~500 fetorach
-bazowych.  Nale¿y jednak pamiêtaæ, ¿e heurystyka nie daje gwarancji
-znalezienia najlepszego rozwi±zania.  Fifak w~pracy~\cite{ff-sr}
-podaje, jak dla dowolnie zadanej funkcji oceniaj±cej skonstruowaæ
-dane, dla których rozwi±zanie wygenerowane przez algorytm heurystyczny
-jest dowolnie odleg³e od rzeczywistego.
+Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku klasyfikacji szeregów czasowych. W poni¿szej pracy autor przedstawia sposoby radzenia sobie z \textit{concept drift} podczas klasyfikacji szeregów czasowych oraz wykonuje studium przypadku na wybranym zbiorze danych.
 
-\section{Metody wykorzystuj±ce teoriê G³ombaskiego}
+\section{Formalizacja problemu}
 
-Teoria G³ombaskiego (zob.~\cite{grglo}) dostarcza eleganckiego
-narzêdzia opisu przej¶cia do przestrzeni $\Lambda^{\nabla}$.
-Wystarczy mianowicie przedstawiæ fetory bazowe wyj¶ciowej przestrzeni
-lamblialnej w~nieskoñczonej bazie tak zwanych wy¿szych aromatów.
-(Formaln± definicjê tego pojêcia przedstawiê w~rozdziale po¶wiêconym
-teorii Fifaka).  Podstawow± cech± wy¿szych aromatów jest ulotno¶æ.  To
-za¶ oznacza, ¿e odpowiednio dobieraj±c wspó³czynniki przej¶cia do
-przestrzeni wy¿szych aromatów mo¿na zagwarantowaæ dowoln± z~góry
-zadan± dok³adno¶æ przybli¿onego rozwi±zania problemu blabalizy.
+\subsection{Paradygmaty uczenia siê}
 
-Oczywi¶cie ze wzglêdu na nieskoñczony wymiar przestrzeni wy¿szych
-aromatów koszt poszukiwania wspó³czynników blabalizy jest liniowy ze
-wzglêdu na wymiar wyj¶ciowej przestrzeni lamblialnej.
+Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{arnold3}) zdefiniowaæ inne paradygmaty uczenia. \\
+I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy do czynienia z \textit{uczeniem bez nadzoru} (ang. \textit{unsupervised learning}). \\
+Gdy zbiór $X_{test}$ nie jest znany podczas uczenia, mowa o \textit{uczeniu indukcyjnym} (ang. \textit{inductive learning}). W przeciwnym razie takie uczenie nazywa siê \textit{uczeniem transdukcyjnym} (ang. transductive learning). \\
+W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ wykorzystywany jest zatem do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{4}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
 
-\section{Metody wykorzystuj±ce w³asno¶ci fetorów $\sigma$}
+Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}. \\
 
-Najchêtniej wykorzystywan± przestrzeni± wy¿szych aromatów jest
-przestrzeñ fetorów~$\sigma$.  Fetory $\sigma$ daj± szczególnie prost±
-bazê podprzestrzeni wid³owej.  Wi±¿e siê to z~faktem, ¿e w~tym przypadku
-fetory harmoniczne wy¿szych rzêdów s± pomijalne (rzêdu $2^{-t^3}$,
-gdzie $t$ jest wymiarem wyj¶ciowej przestrzeni lamblialnej).
+\begin{table}[ht]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak³adamy, ¿e zbiór $X_{train}$ jest dostêpny podczas uczenia, podczas gdy zbiór $Y_{test}$ nie jest znany.}
+\label{t:paradigms}
+\begin{tabular}{|c|c|c|c|}
+\hline
+Paradygmat & $Y_{train}$ dostêpny? & $X_{test}$ dostêpny? & Rozk³ad danych testowych \\ \hline
+\makecell{Indukcyjne uczenie \\ bez nadzoru}  & Nie & Nie & $D^{source}$ \\ \hline
+\makecell{Transdukcyjne uczenie \\ bez nadzoru}  & Nie & Tak & $D^{source}$ \\ \hline
+\makecell{Indukcyjne uczenie \\ z nadzorem}  & Tak & Nie & $D^{source}$ \\ \hline
+\makecell{Transdukcyjne uczenie \\ z nadzorem}  & Tak & Tak & $D^{source}$ \\ \hline
+\makecell{Indukcyjne uczenie \\ bez nadzoru \\ z przeniesieniem wiedzy}  & Nie & Nie & $D^{target}$ \\ \hline
+\makecell{Transdukcyjne uczenie \\ bez nadzoru \\ z przeniesieniem wiedzy}  & Nie & Tak & $D^{target}$ \\ \hline
+\makecell{Indukcyjne uczenie \\ z nadzorem \\ z przeniesieniem wiedzy}  & Tak & Nie & $D^{target}$ \\ \hline
+\makecell{Transdukcyjne uczenie \\ z nadzorem \\ z przeniesieniem wiedzy}  & Tak & Tak & $D^{target}$ \\ \hline
+\end{tabular}
+\end{table}
 
-Niestety z~fetorami $\sigma$ wi±¿e siê te¿ przykre ograniczenie: mo¿na
-wykazaæ (zob.~\cite[s. 374]{ff-sr}), ¿e dla dowolnie dobranej bazy
-w~podprzestrzeni wid³owej istnieje ograniczenie dolne w~metryce sierpa
-na odleg³o¶æ rzutu dok³adnego rozwi±zania problemu blabalizy na
-podprzestrzeñ wid³ow±.  Poniewa¿ rzut ten stanowi najlepsze
-przybli¿one rozwi±zanie, jakie mo¿na osi±gn±æ nie naruszaj±c aksjomatu
-reperkusatywno¶ci, wiêc istnieje pewien nieprzekraczalny próg
-dok³adno¶ci dla blabalizy wykonanej przez przej¶cie do przestrzeni
-fetorów $\sigma$.  Warto¶æ retroinicjaln± tego progu nazywa siê
-\textit{reziduum blabicznym}.
+W poni¿szej pracy autor skupi siê na problemie transdukcyjnego uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}.
 
-\chapter{Teoria fetorów $\sigma$-$\rho$}\label{r:fifak}
+\subsection{Ewolucja pojêæ a \textit{overfitting}}
 
-G³ównym odkryciem Fifaka jest, ¿e fetor suprakowariantny mo¿e
-gryzmolizowaæ dowolny idea³ w~podprzestrzeni wid³owej przestrzeni
-lamblialnej funkcji Rozkoszy.
+Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczenia (ang. \textit{overfitting}). Polega on na zbudowaniu nadmiernie skomplikowanego modelu, co skutkuje s³ab± jego jako¶ci±. \\
+Obydwa pojêcia mog± byæ mylone przy niew³a¶ciwym sposobie walidacji modelu. Je¶li jako¶æ klasyfikacji sprawdzana jest wy³±cznie na zbiorach treningowym i testowym, zarówno \textit{concept drift}, jak i \textit{overfitting} daj± podobne objawy - wysoki wynik na zbiorze treningowym oraz niski na zbiorze testowym. W przypadku przeuczenia jest to spowodowane nadmiernym dopasowaniem modelu do danych treningowych i jego nisk± zdolno¶ci± do uogólniania. Je¶li mamy do czynienia z ewoluuj±cymi pojêciami, s³aba jako¶æ modelu jest spowodowana innym rozk³adem dla zbioru testowego. \\
+W rozró¿nienu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
+Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej - w tym przypadku zbiór testowym pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik na zbiorze treningowym (tabela \ref{t:overfit}). \\ 
 
-Udowodnienie tego faktu wymaga³o wykorzystania twierdzeñ pochodz±cych
-z~kilku niezale¿nych teorii matematycznych (zob. na przyk³ad:
-\cite{russell,spyrpt,JR,beaman,hopp,srinis}).  Jednym z~filarów
-dowodu jest teoria odwzorowañ owalnych Leukocyta (zob.~\cite{leuk}).
+\begin{table}[ht]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{\textit{Concept drift} a \textit{overfitting} - obni¿ony wynik modelu 1. przy walidacji krzy¿owej ¶wiadczy o przeuczeniu, a nie wystêpowaniu ewoluuj±cych pojêæ. W drugim przypadku model mimo dobrej umiejêtno¶ci klasyfikacji elementów pochodz±cych z rozk³adu $D^{source}$, cierpi na spadek jako¶ci przy ewaluacji na zbiorze pochodz±cym z rozk³adu $D^{target}$.}
+\label{t:overfit}
+\begin{tabular}{|c|c|c|c|}
+\hline
+  & Wynik na $X_{train}$ & Wynik CV & Wynik na $X_{test}$ \\ \hline
+Model 1  & 0.98 & 0.73 & 0.68 \\ \hline
+Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
+\end{tabular}
+\end{table}
 
-Znaczenie twierdzenia Fifaka dla problemu blabalizy polega na tym, ¿e
-znaj±c retroizotonalne wspó³czynniki dla klatek Rozkoszy mo¿na
-przeprowadziæ fetory bazowe na dwie nieskoñczone bazy fetorów $\sigma$
-w~przestrzeni $K_7$ i~fetorów $\rho$ w~odpowiedniej
-quasi-quasi-przestrzeni równoleg³ej (zob.~\cite{hopp}).  Zasadnicza
-ró¿nica w~stosunku do innych metod blabalizy polega na tym, ¿e
-przedstawienie to jest dok³adne.
 
-\chapter{Dokumentacja u¿ytkowa i~opis implementacji}\label{r:impl}
+\chapter{Opis przeprowadzanego eksperymentu}\label{r:wprowadzenie}
 
-Program przygotowany dla systemu operacyjnego M\$ Windows uruchamia
-siê energicznym dwumlaskiem na jego ikonce w~folderze
-\verb+\\FIDO\FOO\BLABA+.  Nastêpnie kolistym ruchem rêki nale¿y
-naprowadziæ kursor na menu \texttt{Blabaliza} i~uaktywniæ pozycjê
-\texttt{Otwórz plik}.  Po wybraniu pliku i~zatwierdzeniu wyboru
-przyciskiem \texttt{OK} rozpocznie siê proces blabalizy.  Wyniki
-zostan± zapisane w~pliku o~nazwie \texttt{99-1a.tx.43} w~bie¿±cym
-folderze.
+\section{Przedstawienie badanego zbioru danych} \label{s:data}
 
-\chapter{Podsumowanie}
-
-W~pracy przedstawiono pierwsz± efektywn± implementacjê blabalizatora
-ró¿nicowego.  Umiejêtno¶æ wykonania blabalizy numerycznej dla danych
-,,z ¿ycia'' stanowi dla blabalii fetorycznej podobny prze³om, jak dla
-innych dziedzin wiedzy stanowi³o og³oszenie teorii Miko³aja Kopernika
-i~Gryzybór G³ombaskiego.  Z~pewno¶ci± w~rozpocznynaj±cym siê XXI wieku
-bêdziemy obserwowaæ rozkwit blabalii fetorycznej.
-
-Trudno przewidzieæ wszystkie nowe mo¿liwo¶ci, ale te co bardziej
-oczywiste mo¿na wskazaæ ju¿ teraz.  S± to:
-\begin{itemize}
-\item degryzmolizacja wieñców telecentrycznych,
-\item realizacja zimnej reakcji lambliarnej,
-\item loty celulityczne,
-\item dok³adne obliczenie wieku Wszech¶wiata.
-\end{itemize}
-
-\section{Perspektywy wykorzystania w~przemy¶le}
-
-Ze wzglêdu na znaczenie strategiczne wyników pracy ten punkt uleg³
-utajnieniu.
-
-\appendix
-
-\chapter{G³ówna pêtla programu zapisana w~jêzyku T\=oFoo}
-
-\begin{verbatim}
-[[foo]{,}[[a3,(([(,),{[[]]}]),
-  [1; [{,13},[[[11],11],231]]].
-  [13;[!xz]].
-  [42;[{,x},[[2],{'a'},14]]].
-  [br;[XQ*10]].
- ), 2q, for, [1,]2, [..].[7]{x}],[(((,[[1{{123,},},;.112]],
-        else 42;
-   . 'b'.. '9', [[13141],{13414}], 11),
- [1; [[134,sigma],22]].
- [2; [[rho,-],11]].
- )[14].
- ), {1234}],]. [map [cc], 1, 22]. [rho x 1]. {22; [22]},
-       dd.
- [11; sigma].
-        ss.4.c.q.42.b.ll.ls.chmod.aux.rm.foo;
- [112.34; rho];
-        001110101010101010101010101010101111101001@
- [22%f4].
- cq. rep. else 7;
- ]. hlt
-\end{verbatim}
-
-\chapter{Przyk³adowe dane wej¶ciowe algorytmu}
-
-\begin{center}
-  \begin{tabular}{rrr}
-    $\alpha$ & $\beta$ & $\gamma_7$ \\
-    901384 & 13784 & 1341\\
-    68746546 & 13498& 09165\\
-    918324719& 1789 & 1310 \\
-    9089 & 91032874& 1873 \\
-    1 & 9187 & 19032874193 \\
-    90143 & 01938 & 0193284 \\
-    309132 & $-1349$ & $-149089088$ \\
-    0202122 & 1234132 & 918324098 \\
-    11234 & $-109234$ & 1934 \\
-  \end{tabular}
-\end{center}
-
-\chapter{Przyk³adowe wyniki blabalizy
-    (ze~wspó³czynnikami~$\sigma$-$\rho$)}
-
-\begin{center}
-  \begin{tabular}{lrrrr}
-    & Wspó³czynniki \\
-    & G³ombaskiego & $\rho$ & $\sigma$ & $\sigma$-$\rho$\\
-    $\gamma_{0}$ & 1,331 & 2,01 & 13,42 & 0,01 \\
-    $\gamma_{1}$ & 1,331 & 113,01 & 13,42 & 0,01 \\
-    $\gamma_{2}$ & 1,332 & 0,01 & 13,42 & 0,01 \\
-    $\gamma_{3}$ & 1,331 & 51,01 & 13,42 & 0,01 \\
-    $\gamma_{4}$ & 1,332 & 3165,01 & 13,42 & 0,01 \\
-    $\gamma_{5}$ & 1,331 & 1,01 & 13,42 & 0,01 \\
-    $\gamma_{6}$ & 1,330 & 0,01 & 13,42 & 0,01 \\
-    $\gamma_{7}$ & 1,331 & 16435,01 & 13,42 & 0,01 \\
-    $\gamma_{8}$ & 1,332 & 865336,01 & 13,42 & 0,01 \\
-    $\gamma_{9}$ & 1,331 & 34,01 & 13,42 & 0,01 \\
-    $\gamma_{10}$ & 1,332 & 7891432,01 & 13,42 & 0,01 \\
-    $\gamma_{11}$ & 1,331 & 8913,01 & 13,42 & 0,01 \\
-    $\gamma_{12}$ & 1,331 & 13,01 & 13,42 & 0,01 \\
-    $\gamma_{13}$ & 1,334 & 789,01 & 13,42 & 0,01 \\
-    $\gamma_{14}$ & 1,331 & 4897453,01 & 13,42 & 0,01 \\
-    $\gamma_{15}$ & 1,329 & 783591,01 & 13,42 & 0,01 \\
-  \end{tabular}
-\end{center}
+Dane, na których sprawdzana bêdzie jako¶æ analizowanych algorytmów, pochodz± z konkursu \textit{AAIA'15 Data Mining Competition: Tagging Firefighter Activities at a Fire Scene}\footnote{https://knowledgepit.fedcsis.org/contest/view.php?id=106} organizowanego przez Uniwersytet Warszawski oraz Szko³ê G³ówn± S³u¿by Po¿arniczej w Warszawie. \\
+Na potrzeby konkursu zebrano dane pochodz±ce z "inteligentnego kombinezonu", który monitoruje
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
 
-\bibitem[Bea65]{beaman} Juliusz Beaman, \textit{Morbidity of the Jolly
-    function}, Mathematica Absurdica, 117 (1965) 338--9.
+\bibitem[1]{1} John Blitzer, Ryan McDonald, Fernando Pereira, \textit{Domain adaptation with Structural Correspondence Learning}
+
+\bibitem[2]{2} Hall Daume, \textit{Frustratingly easy domain adaptation}
+
+\bibitem[3]{3} Andrew Arnold, Ramesh Nallapati, William W. Cohen, \textit{A comparative study of methods for transductive transfer learning}
+
+\bibitem[4]{4} R. K. Ando, T. Zhang, \textit{A framework for learning pre- dictive structures from multiple tasks and unlabeled data}
+
+
 
 \bibitem[Blar16]{eb1} Elizjusz Blarbarucki, \textit{O pewnych
     aspektach pewnych aspektów}, Astrolog Polski, Zeszyt 16, Warszawa
   1916.
 
-\bibitem[Fif00]{ffgg} Filigran Fifak, Gizbert Gryzogrzechotalski,
-  \textit{O blabalii fetorycznej}, Materia³y Konferencji Euroblabal
-  2000.
-
-\bibitem[Fif01]{ff-sr} Filigran Fifak, \textit{O fetorach
-    $\sigma$-$\rho$}, Acta Fetorica, 2001.
-
-\bibitem[G³omb04]{grglo} Gryzybór G³ombaski, \textit{Parazytonikacja
-    blabiczna fetorów --- nowa teoria wszystkiego}, Warszawa 1904.
-
-\bibitem[Hopp96]{hopp} Claude Hopper, \textit{On some $\Pi$-hedral
-    surfaces in quasi-quasi space}, Omnius University Press, 1996.
-
-\bibitem[Leuk00]{leuk} Lechoslav Leukocyt, \textit{Oval mappings ab ovo},
-  Materia³y Bia³ostockiej Konferencji Hodowców Drobiu, 2000.
-
-\bibitem[Rozk93]{JR} Josip A.~Rozkosza, \textit{O pewnych w³asno¶ciach
-    pewnych funkcji}, Pó³nocnopomorski Dziennik Matematyczny 63491
-  (1993).
-
-\bibitem[Spy59]{spyrpt} Mrowclaw Spyrpt, \textit{A matrix is a matrix
-    is a matrix}, Mat. Zburp., 91 (1959) 28--35.
-
-\bibitem[Sri64]{srinis} Rajagopalachari Sriniswamiramanathan,
-  \textit{Some expansions on the Flausgloten Theorem on locally
-    congested lutches}, J. Math.  Soc., North Bombay, 13 (1964) 72--6.
-
-\bibitem[Whi25]{russell} Alfred N. Whitehead, Bertrand Russell,
-  \textit{Principia Mathematica}, Cambridge University Press, 1925.
-
-\bibitem[Zen69]{heu} Zenon Zenon, \textit{U¿yteczne heurystyki
-    w~blabalizie}, M³ody Technik, nr~11, 1969.
 
 \end{thebibliography}
 
