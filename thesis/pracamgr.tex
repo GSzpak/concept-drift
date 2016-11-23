@@ -26,6 +26,7 @@
 \usepackage{afterpage}
 \usepackage{graphicx}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{makecell}
 
 \newcommand\blankpage{%
@@ -120,7 +121,7 @@ Podstawowym problemem rozwa¿anym w teorii uczenia maszynowego jest problem uczen
 \item funkcja $f: X \rightarrow Y$
 \item Parê zbiorów $(X_{train} \subseteq X, Y_{train} \subseteq Y)$ instancji $x_1, x_2, \dots, x_n$ oraz odpowiadaj±cych im decyzji $f(x_1), f(x_2), \dots, f(x_n)$, zwan± \textit{zbiorem treningowym}
 \end{itemize}
-Zadanie uczenia z nadzorem polega na wyznaczeniu na podstawie zbioru treningowego oraz przy u¿yciu pewnego algorytmu ucz±cego \textit{klasyfikatora} takiej funkcji $c: X \rightarrow Y$ (zwanej \textit{modelem}) bêd±cej dobr± aproksymacj± funkcji $f$. Jako¶æ modelu $c$ okre¶la siê, porównuj±c jego warto¶ci dla elementów skoñczonego \textit{zbioru testowego} $X_{test}$ z rzeczywistymi warto¶ciami funkcji $f$ dla tych elementów $Y_{test}$. Istotne jest przy tym za³o¿enie, ¿e elementy zbiorów $X_{train}$ oraz $X_{test}$ losowane s± ze zbioru $X$ wed³ug tego samego rozk³adu prawdopodobieñstwa $D$. \\
+Zadanie uczenia z nadzorem polega na wyznaczeniu na podstawie zbioru treningowego oraz przy u¿yciu pewnego algorytmu ucz±cego (\textit{klasyfikatora}) takiej funkcji $c: X \rightarrow Y$ (zwanej \textit{modelem}) bêd±cej dobr± aproksymacj± funkcji $f$. Jako¶æ modelu $c$ okre¶la siê, porównuj±c jego warto¶ci dla elementów skoñczonego \textit{zbioru testowego} $X_{test}$ z rzeczywistymi warto¶ciami funkcji $f$ dla tych elementów. Istotne jest przy tym za³o¿enie, ¿e elementy zbiorów $X_{train}$ oraz $X_{test}$ losowane s± ze zbioru $X$ wed³ug tego samego rozk³adu prawdopodobieñstwa $D$. \\
 
 Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervised}. \\
 
@@ -197,19 +198,86 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 
 \section{Przedstawienie badanego zbioru danych} \label{s:data}
 
-Dane, na których sprawdzana bêdzie jako¶æ analizowanych algorytmów, pochodz± z konkursu \textit{AAIA'15 Data Mining Competition: Tagging Firefighter Activities at a Fire Scene}\footnote{https://knowledgepit.fedcsis.org/contest/view.php?id=106} organizowanego przez Uniwersytet Warszawski oraz Szko³ê G³ówn± S³u¿by Po¿arniczej w Warszawie. \\
-Na potrzeby konkursu zebrano dane pochodz±ce z "inteligentnego kombinezonu", który monitoruje
+Dane, na których sprawdzana by³a jako¶æ analizowanych algorytmów, pochodz± z konkursu \textit{AAIA'15 Data Mining Competition: Tagging Firefighter Activities at a Fire Scene}\footnote{https://knowledgepit.fedcsis.org/contest/view.php?id=106} organizowanego przez Uniwersytet Warszawski oraz Szko³ê G³ówn± S³u¿by Po¿arniczej w Warszawie. \\
+Na potrzeby konkursu zebrano odczyty pochodz±ce z "inteligentnego kombinezonu", który monitoruje ruchy oraz funkcje ¿yciowe stra¿aka. W sk³ad kombinezonu wchodzi³o po siedem akcelerometrów i ¿yroskopów umieszczonych na: tu³owiu, ramionach, d³oniach i nogach (rys. \ref{fireman}).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.4]{fireman.png}
+\caption{Rozmieszczenie czujników na ciele stra¿aka \label{fireman}}
+\end{figure}
+
+Ka¿da instancja w zbiorze danych sk³ada³a siê z zebranych w krótkich odcinkach czasu (oko³o 1.8 s) odczytów z zamontowanych sensorów. Dla ka¿dego akcelerometru oraz ¿yroskopu zebrano po 400 odczytów wzd³u¿ osi $x$, $y$, $z$, wraz ze wzglêdnym czasem wykonania odczytu. Dla ka¿dego wiersza daje to 42 - wymiarowy szereg czasowy o d³ugo¶ci 400. Jak ³atwo wywnioskowaæ, ¶redni odstêp miêdzy kolejnymi odczytami wynosi³ oko³o 4.5 ms. Zestaw atrybutów uzupe³nia³y dodatkowo 42 agregaty ze wskazañ urz±dzeñ monitoruj±cych funkcje ¿yciowe stra¿aka (takie jak EKG, czêstotliwo¶æ oddechu, temperatura skóry). Nieprzetworzone dane zawiera³y wiêc $400 * 43 + 42 = 17242$ atrybuty. Zarówno zbiór treningowy, jak i testowy sk³ada³y siê z $20000$ przyk³adów. Bardzo istotny dla dla analizy tego zbioru danych okaza³ siê fakt, ¿e dane treningowe i testowe pochodzi³y od ró¿nych czteroosobowych grup stra¿aków. \\
+Zadaniem uczestników konkursu by³o przypisanie ka¿dej instancji w zbiorze postury stra¿aka w danym momencie oraz wykonywanej przez niego czynno¶ci. Zastosowane algorytmy mia³y pomóc w stworzeniu systemu monitoruj±cego bezpieczeñstwo stra¿aka podczas akcji. \\
+
+Jako ¿e problem klasyfikacji wieloetykietowej nie jest tematem niniejszej pracy, autor postanowi³ skupiæ siê na problemie przewidywania czynno¶ci wykonywanej przez stra¿aka. Zbiór klas liczy³ wiêc $16$ elementów. Postawiony problem utrudnia³ dodatkowo fakt, ¿e klasy by³y wysoce niezbalansowane - najczêstsza klasa ($manipulating$) wyst±pi³a w zbiorze treningowym $6349$ razy, podczas gdy najrzadsza ($signal\_hose\_pullback$) - jedynie 98 razy.\\
+Rozk³ad klas przedstawia rys. \ref{classes}. \\
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.6]{classes.png}
+\caption{Rozk³ad klas w zbiorze treningowym \label{classes}}
+\end{figure}
+
+\section{Opis u¿ytych klasyfikatorów} \label{s:klasyfikatory}
+
+W kolejnych rozdzia³ach przedstawione zostan± metody maj±ce na celu zwiêkszenie jako¶ci modelu budowanego na danych, w których obecny jest problem ewoluuj±cych pojêæ. U¿yteczno¶æ tych metod sprawdzana bêdzie dla trzech ró¿nych algorytmów uczenia: klasyfikatorze opartym na regresji logistycznej, maszynie wektorów no¶nych (ang. \textit{support vector machine}, SVM) oraz drzewach decyzyjnych.
+
+\subsection{Klasyfikator liniowy} \label{ss:linear}
+
+Regresja logistyczna i maszyna wektorów wspieraj±cych nale¿± do grupy klasyfikatorów liniowych. Przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Za³ó¿my, ¿e zbiór klas $Y$ jest dwuelementowy - dla uproszczenia niech $Y = \{+1, -1 \}$. Niech dalej $y \in Y$ bêdzie decyzj± dla elementu $\textbf{x} = (x_1, x_2, \dots, x_m) \in X \subseteq \mathbb{R}^m$, natomiast niech wektor $\textbf{w} = (w_1, w_2, \dots, w_m) \in \mathbb{R}^m$ nazywany bêdzie wektorem wag. Uczenie klasyfikatora liniowego polega na minimalizacji warto¶ci pewnej funkcji b³êdu $l(\textbf{w})$ (zale¿nej od iloczynu skalarnego $\textbf{w}^\intercal\textbf{x}$) na zbiorze treningowym.
+
+\subsubsection{Klasyfikacja oparta na regresji logistycznej}
+
+Niech
+\begin{displaymath}
+g(z) = \frac{1}{1 + e^{-z}}
+\end{displaymath}
+zwana bêdzie funkcj± logistyczn±. Jej wykres przedstawia rysunek \ref{sigmoid}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.3]{sigmoid.png}
+\caption{Wykres funkcji sigmoidalnej \label{sigmoid}}
+\end{figure}
+
+Funkcja $g$ jest oczywi¶cie ci±g³a. Jednocze¶nie $lim_{z \to -\inf} g(z) = 0$ oraz $lim_{z \to \inf} g(z) = 1$. Dziêki tym w³a¶ciwo¶ciom nadaje siê ona do modelowania prawdopodobieñstwa jakiego¶ zjawiska. Klasyfikator bazuj±cy na regresji logistycznej modeluje prawdopodobieñstwo nale¿enia do klasy pozytywnej przez funkcjê:
+\begin{displaymath}
+p_w(\textbf{x}) = g(\textbf{w}^\intercal\textbf{x}) = \frac{1}{1 + e^{-\textbf{w}^\intercal\textbf{x}}},
+\end{displaymath}
+
+przy czym klasyfikacja dokonywana jest przez: 
+
+\begin{displaymath}
+c_w(\textbf{x}) = 1 \leftrightarrow p_w(\textbf{x}) \geq \frac{1}{2}.
+\end{displaymath}
+
+Funkcja straty zdefiniowana jest nastêpuj±co:
+
+\begin{displaymath}
+l(\textbf{w}) = \sum_{\textbf{x} \in X_{train}} log(1 + e^{-y_i\textbf{w}^\intercal\textbf{x}}).
+\end{displaymath}
+
+\subsubsection{Maszyna wektorów wspieraj±cych}
+
+\subsubsection{Klasyfikator "jeden przeciwko wszystkim"}
+
+\subsection{Lasy losowe} \label{ss:random_forest}
+
+
+\section{\textit{Concept drift} w analizowanym zbiorze} \label{s:data_concept_drift}
+
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
 
-\bibitem[1]{1} John Blitzer, Ryan McDonald, Fernando Pereira, \textit{Domain adaptation with Structural Correspondence Learning}
+\bibitem[1]{1} John Blitzer, Ryan McDonald, Fernando Pereira, \textit{Domain adaptation with structural correspondence learning}
 
 \bibitem[2]{2} Hall Daume, \textit{Frustratingly easy domain adaptation}
 
 \bibitem[3]{3} Andrew Arnold, Ramesh Nallapati, William W. Cohen, \textit{A comparative study of methods for transductive transfer learning}
 
-\bibitem[4]{4} R. K. Ando, T. Zhang, \textit{A framework for learning pre- dictive structures from multiple tasks and unlabeled data}
+\bibitem[4]{4} R. K. Ando, T. Zhang, \textit{A framework for learning predictive structures from multiple tasks and unlabeled data}
 
 
 

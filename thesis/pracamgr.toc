@@ -5,4 +5,11 @@
 \contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a \textit {overfitting}}{8}
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{9}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego zbioru danych}{9}
-\contentsline {chapter}{Bibliografia}{11}
+\contentsline {section}{\numberline {2.2}Opis u\.zytych klasyfikator\'ow}{11}
+\contentsline {subsection}{\numberline {2.2.1}Klasyfikator liniowy}{11}
+\contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej}{11}
+\contentsline {subsubsection}{Maszyna wektor\'ow wspieraj\k acych}{12}
+\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{12}
+\contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{12}
+\contentsline {section}{\numberline {2.3}\textit {Concept drift} w analizowanym zbiorze}{12}
+\contentsline {chapter}{Bibliografia}{13}
