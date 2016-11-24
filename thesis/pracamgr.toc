@@ -4,12 +4,15 @@
 \contentsline {subsection}{\numberline {1.2.1}Paradygmaty uczenia si\k e}{6}
 \contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a \textit {overfitting}}{8}
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{9}
-\contentsline {section}{\numberline {2.1}Przedstawienie badanego zbioru danych}{9}
+\contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{9}
+\contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{9}
+\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{11}
 \contentsline {section}{\numberline {2.2}Opis u\.zytych klasyfikator\'ow}{11}
 \contentsline {subsection}{\numberline {2.2.1}Klasyfikator liniowy}{11}
-\contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej}{11}
-\contentsline {subsubsection}{Maszyna wektor\'ow wspieraj\k acych}{12}
-\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{12}
-\contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{12}
-\contentsline {section}{\numberline {2.3}\textit {Concept drift} w analizowanym zbiorze}{12}
-\contentsline {chapter}{Bibliografia}{13}
+\contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej (\textit {logit})}{11}
+\contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{12}
+\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{13}
+\contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{13}
+\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{13}
+\contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{15}
+\contentsline {chapter}{Bibliografia}{17}

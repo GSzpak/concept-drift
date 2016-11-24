@@ -79,15 +79,14 @@
 %11.1 Matematyka\\ 
 %11.2 Statystyka\\ 
 %11.3 Informatyka\\ 
-11.4 Sztuczna inteligencja\\ 
+11.4 Sztuczna inteligencja TODO\\ 
 %11.5 Nauki aktuarialne\\
 %11.9 Inne nauki matematyczne i informatyczne
 }
 
 %Klasyfikacja tematyczna wedlug AMS (matematyka) lub ACM (informatyka)
-\klasyfikacja{D. Software\\
-  D.127. Blabalgorithms\\
-  D.127.6. Numerical blabalysis}
+\klasyfikacja{D. Software TODO\\
+}
 
 % S³owa kluczowe:
 \keywords{Eksploracja danych, wielowymiarowy szereg czasowy, ewoluuj±ce pojêcia, dopasowanie dziedziny, ekstrakcja cech, selekcja cech, lasy losowe, regresja logistyczna, maszyna wektorów wspieraj±cych}
@@ -196,7 +195,9 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 
 \chapter{Opis przeprowadzanego eksperymentu}\label{r:wprowadzenie}
 
-\section{Przedstawienie badanego zbioru danych} \label{s:data}
+\section{Przedstawienie badanego problemu} \label{s:problem}
+
+\subsection{Opis zbioru danych} \label{ss:data}
 
 Dane, na których sprawdzana by³a jako¶æ analizowanych algorytmów, pochodz± z konkursu \textit{AAIA'15 Data Mining Competition: Tagging Firefighter Activities at a Fire Scene}\footnote{https://knowledgepit.fedcsis.org/contest/view.php?id=106} organizowanego przez Uniwersytet Warszawski oraz Szko³ê G³ówn± S³u¿by Po¿arniczej w Warszawie. \\
 Na potrzeby konkursu zebrano odczyty pochodz±ce z "inteligentnego kombinezonu", który monitoruje ruchy oraz funkcje ¿yciowe stra¿aka. W sk³ad kombinezonu wchodzi³o po siedem akcelerometrów i ¿yroskopów umieszczonych na: tu³owiu, ramionach, d³oniach i nogach (rys. \ref{fireman}).
@@ -219,15 +220,33 @@ Rozk³ad klas przedstawia rys. \ref{classes}. \\
 \caption{Rozk³ad klas w zbiorze treningowym \label{classes}}
 \end{figure}
 
+\subsection{Ewaluacja jako¶ci klasyfikatora} \label{ss:evaluation}
+
+Standardow± miar± jako¶ci jest prezycja (ang. \textit{accuracy}):
+\begin{displaymath}
+ACC(c) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}[c(\textbf{x}_i) = y_i]
+\end{displaymath}
+
+W opisywanym konkursie zastosowano modyfikacjê tej miary zwan± \textit{balanced accuracy}, zdefiniowan± nastêpuj±co:
+
+\begin{equation}
+ACC_i(c) = \frac{|j: \,c(\textbf{x}_j) = y_j = i|}{|j: y_j = i|} \\
+\end{equation}
+
+\begin{equation} \label{bac}
+BAC(c) = \frac{\sum_{i=1}^l ACC_i(c)}{l} 
+\end{equation}
+Nietrudno zauwa¿yæ, ¿e miara $BAC$ jest bardziej wra¿liwa na b³êdn± klasyfikacjê rzadkich klas ni¿ standardowa miara $ACC$.
+
 \section{Opis u¿ytych klasyfikatorów} \label{s:klasyfikatory}
 
 W kolejnych rozdzia³ach przedstawione zostan± metody maj±ce na celu zwiêkszenie jako¶ci modelu budowanego na danych, w których obecny jest problem ewoluuj±cych pojêæ. U¿yteczno¶æ tych metod sprawdzana bêdzie dla trzech ró¿nych algorytmów uczenia: klasyfikatorze opartym na regresji logistycznej, maszynie wektorów no¶nych (ang. \textit{support vector machine}, SVM) oraz drzewach decyzyjnych.
 
 \subsection{Klasyfikator liniowy} \label{ss:linear}
 
-Regresja logistyczna i maszyna wektorów wspieraj±cych nale¿± do grupy klasyfikatorów liniowych. Przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Za³ó¿my, ¿e zbiór klas $Y$ jest dwuelementowy - dla uproszczenia niech $Y = \{+1, -1 \}$. Niech dalej $y \in Y$ bêdzie decyzj± dla elementu $\textbf{x} = (x_1, x_2, \dots, x_m) \in X \subseteq \mathbb{R}^m$, natomiast niech wektor $\textbf{w} = (w_1, w_2, \dots, w_m) \in \mathbb{R}^m$ nazywany bêdzie wektorem wag. Uczenie klasyfikatora liniowego polega na minimalizacji warto¶ci pewnej funkcji b³êdu $l(\textbf{w})$ (zale¿nej od iloczynu skalarnego $\textbf{w}^\intercal\textbf{x}$) na zbiorze treningowym.
+Regresja logistyczna i maszyna wektorów wspieraj±cych nale¿± do grupy klasyfikatorów liniowych. Przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Za³ó¿my, ¿e zbiór klas $Y$ jest dwuelementowy - dla uproszczenia niech $Y = \{+1, -1 \}$. Niech dalej $y \in Y$ bêdzie decyzj± dla elementu $\textbf{x} = (x_1, x_2, \dots, x_m) \in X \subseteq \mathbb{R}^m$. Klasyfikatorem liniowym nazywamy $m - 1$ - wymiarow± hiepr³aszczyznê rozdzielaj±c± punkty z $X$. Niech $\textbf{w} = (w_1, w_2, \dots, w_m) \in \mathbb{R}^m$ bêdzie wektorem wspó³czynników tej hiperp³aszczyzny. Uczenie klasyfikatora liniowego zwykle polega na minimalizacji warto¶ci pewnej funkcji b³êdu $l(\textbf{w})$ na zbiorze treningowym.
 
-\subsubsection{Klasyfikacja oparta na regresji logistycznej}
+\subsubsection{Klasyfikacja oparta na regresji logistycznej (\textit{logit})}
 
 Niech
 \begin{displaymath}
@@ -249,24 +268,66 @@ p_w(\textbf{x}) = g(\textbf{w}^\intercal\textbf{x}) = \frac{1}{1 + e^{-\textbf{w
 przy czym klasyfikacja dokonywana jest przez: 
 
 \begin{displaymath}
-c_w(\textbf{x}) = 1 \leftrightarrow p_w(\textbf{x}) \geq \frac{1}{2}.
+c_w(\textbf{x}) = 1 \iff p_w(\textbf{x}) \geq \frac{1}{2}.
 \end{displaymath}
 
 Funkcja straty zdefiniowana jest nastêpuj±co:
 
 \begin{displaymath}
-l(\textbf{w}) = \sum_{\textbf{x} \in X_{train}} log(1 + e^{-y_i\textbf{w}^\intercal\textbf{x}}).
+l_{log\_loss}(\textbf{w}) = \sum_{i = i}^n log(1 + e^{-y_i\textbf{w}^\intercal\textbf{x}_i}).
 \end{displaymath}
 
-\subsubsection{Maszyna wektorów wspieraj±cych}
+\subsubsection{Maszyna wektorów no¶nych}
+
+Innym typem klasyfikatora liniowego jest (ang. \textit{support vector machine}, SVM). Uczenie SVM polega na znalezieniu hiperp³aszczyzny o najwiêkszej odleg³o¶ci od punktów obydwu klas (rys. \ref{svm}) - z tego powodu SVM nazywany jest klasyfikatorem maksymalnego marginesu (ang. \textit{max margin classifier}).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.4]{svm.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{P³aszczyzna $H_1$ nie rozdziela klas. \\ P³aszczyzna $H_2$ rozdziela je, ale z niewielkim marginesem. \\P³aszczyzna $H_3$ rozdziela je z maksymalnym marginesem. \label{svm}}
+\end{figure}
+
+Za³o¿enie o liniowej separowalno¶ci klas jest jednak rzadko spe³nione. Uczenie klasyfikatora SVM polega wiêc na znalezieniu hiperp³aszczyzny $\textbf{w}$, która minimalizuje funkcjê
+straty dan± jako
+
+\begin{displaymath}
+l_{hinge\_loss}(\textbf{w}) = \sum_{i = i}^n max(0, 1 - y_i\textbf{w}^\intercal\textbf{x}_i).
+\end{displaymath}
 
 \subsubsection{Klasyfikator "jeden przeciwko wszystkim"}
 
+Jak wspomniano wcze¶niej, zarówno regresja logistyczna, jak i SVM s± klasyfikatorami binarnymi - zak³adaj±, ¿e zbiór klas $Y$ jest dwuelementowy. Aby u¿yæ ich do klasyfikacji danego zbioru, potrzebna by³a metoda klasyfikacji wieloklasowej. Zastosowano podej¶cie zwane "jeden przeciw wszystkim" (ang. \textit{one-vs.-all}, OvA, b±d¼ \textit{one-vs.-rest}, OvR). \\
+Niech $Y = \{1, 2, \dots, k \}$. Klasyfikacja OvA polega na nauczeniu $k$ binarnych klasyfikatorów $c_1, c_2, \dots, c_k$. Klasa dla $j$ - tego klasyfikatora zdefiniowana jest nastêpuj±co:
+
+\begin{displaymath}
+y^j_i = 1 \iff y_i = j
+\end{displaymath}
+
+Ostatecznie elementowi $x$ przypisywana jest klasa, której klasyfikator daje najmniejsz± warto¶æ funkcji b³êdu:
+
+\begin{displaymath}
+c(\textbf{x}) = arg \min_{j \in 1\dots k} \,  l_j(\textbf{x})
+\end{displaymath}
+
+
 \subsection{Lasy losowe} \label{ss:random_forest}
+Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy prostszy klasyfikator - drzewo decyzyjne. Drzewo decyzyjne to etykietowane drzewo, którego ka¿dy wêze³ odpowiada przeprowadzeniu pewnego testu na warto¶ciach atrybutów. Z wêz³a wewnêtrznego wychodzi tyle ga³êzi, ile jest mo¿liwych wyników testu odpowiadaj±cego temu wêz³owi. Ka¿dy li¶æ zawiera decyzjê o klasyfikacji obiektu. Przyk³adowe drzewo decyzyjne przedstawia rys. \ref{dec_tree}.
 
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.6]{decision_tree.png}
+\caption{Przyk³adowe drzewo decyzyjne \label{dec_tree}}
+\end{figure}
 
-\section{\textit{Concept drift} w analizowanym zbiorze} \label{s:data_concept_drift}
+Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka¿dego na losowej podprzestrzeni atrybutów. Finalna klasa jest mod± klas wyznaczonych przez poszczególne drzewa. Lasy losowe, podpbnie jak drzewa decyzyjne, wspieraj± klasyfikacjê wieloklasow±.
 
+\section{Przyk³ad Ewolucji pojêæ w analizowanym zbiorze} \label{s:data_concept_drift}
+
+Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} s± ró¿nice w wykonywaniu poszczególnych czynno¶ci miêdzy stra¿akami. Aby siê o tym przekonaæ, nauczono las losowy na $42$ atrybutach opisuj±cych funkcje ¿yciowe, nastêpnie zmierzono jego jako¶æ (u¿ywaj±c miary $BAC$) na zbiorach treningowym i testowym. Do pomiaru jako¶ci na zbiorze treningowym zastosowano trójwarstwow± walidacjê krzy¿ow±. Problem \textit{concept drift} spowodowa³ drastyczne obni¿enie jako¶ci klasyfikatora, która spad³a z $0.993$ na $0.079$. 
+
+\chapter{Ekstrakcja cech z szeregów czasowych} \label{c:features}
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
@@ -279,11 +340,7 @@ l(\textbf{w}) = \sum_{\textbf{x} \in X_{train}} log(1 + e^{-y_i\textbf{w}^\inter
 
 \bibitem[4]{4} R. K. Ando, T. Zhang, \textit{A framework for learning predictive structures from multiple tasks and unlabeled data}
 
-
-
-\bibitem[Blar16]{eb1} Elizjusz Blarbarucki, \textit{O pewnych
-    aspektach pewnych aspektów}, Astrolog Polski, Zeszyt 16, Warszawa
-  1916.
+\bibitem[4]{4} L. Breiman, \textit{Random forests}, Machine Learning, 45(1), 5-32, 2001.
 
 
 \end{thebibliography}
