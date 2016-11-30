@@ -17,5 +17,6 @@
 \contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{15}
 \contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{15}
 \contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{15}
-\contentsline {subsection}{\numberline {3.2.1}Lala}{16}
-\contentsline {chapter}{Bibliografia}{17}
+\contentsline {subsection}{\numberline {3.2.1}Statystyki wyliczane z reprezentacji szeregu}{16}
+\contentsline {subsection}{\numberline {3.2.2}Reprezentacje pochodne szeregu czasowego}{17}
+\contentsline {chapter}{Bibliografia}{19}

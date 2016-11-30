@@ -355,10 +355,119 @@ Proces ekstrakcji cech dla szeregu czasowego przebiega³ nastêpuj±co:
 
 W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
 
+\subsection{Statystyki wyliczane z reprezentacji szeregu} \label{ss:feaures}
+
+Poni¿ej znajduje siê lista statystyk (wraz z opisem) u¿ytych w procesie ekstrakcji cech. \\
+
+\begin{itemize}
+\item \textbf{Minimum}
+
+Minimalna warto¶æ przyjmowana w szeregu czasowym:
+\begin{equation}
+min(T_n) = \min_{1 \leq i \leq n} x_i
+\end{equation}
+
+\item \textbf{Maksimum}
+
+Maksymalna warto¶æ przyjmowana w szeregu czasowym:
+\begin{equation}
+max(T_n) = \max_{1 \leq i \leq n} x_i
+\end{equation}
+
+\item \textbf{¦rednia arytmetyczna}
+
+¦rednia arytmetyczna warto¶ci przyjmowanych w szeregu czasowym:
+\begin{equation}
+mean(T_n) = \frac{\sum_{i = 1}^n x_i}{n}
+\end{equation}
+
+\item \textbf{Suma}
+
+Suma warto¶ci przyjmowanych w szeregu czasowym:
+\begin{equation}
+sum(T_n) = \sum_{i = 1}^n x_i
+\end{equation}
+
+\item \textbf{Odchylenie standardowe}
+
+Odchylenie warto¶ci przyjmowanych w szeregu czasowym:
+\begin{equation}
+std(T_n) = \sqrt{\frac{\sum_{i = 1}^n(x_i - mean(T_n))^2}{n}}
+\end{equation}
+
+\item \textbf{Kwantyle}
+
+Kwantylem rzêdu $p$ $q_p(T_n)$ nazwiemy taki element $x_k$, ¿e dok³adnie $p$ elementów szeregu jest od niego mniejszych. W procesie ekstrakcji cech u¿yto siedmiu kwantyli, rzêdów kolejno: 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875. 
+
+\item \textbf{Wariancja}
+
+Wariancja warto¶ci w szeregu czasowym:
+\begin{equation}
+var(T_n) = std^2(T_n)
+\end{equation}
+
+\item \textbf{B³±d standardowy}
+
+B³±d standardowy okre¶la odchylenie standardowe dla rozk³adu ¶redniej z próby. Zdefiniowany jest jako:
+\begin{equation}
+sem(T_n) = \frac{std(T_n)}{\sqrt{n}}
+\end{equation}
+
+\item \textbf{¦rednia wa¿ona liniowo}
+
+¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj± Wiens i in. w \cite{11}):
+\begin{equation}
+linear\_weighted\_mean(T_n) = \frac{2}{n(n + 1)} \sum_{i=1}^n ix_i
+\end{equation}
+
+\item \textbf{¦rednia wa¿ona kwadratowo}
+
+Jak wy¿ej - z t± ró¿nic±, ¿e wagi rosn± kwadratowo wraz z indeksem:
+\begin{equation}
+quadratic\_weighted\_mean(T_n) = \frac{6}{n(n + 1)(2n + 1)} \sum_{i=1}^n i^2x_i
+\end{equation}
+
+\item \textbf{Indeks pierwszego maksimum}
+
+Indeks pierwszego maksimum szeregu (normalizowany przez d³ugo¶æ szeregu):
+\begin{equation}
+first\_argmax(T_n) = \frac{\min(\{i: x_i = max(T_n)\}}{n}
+\end{equation}
+
+\item \textbf{Indeks pierwszego minimum}
+
+Indeks pierwszego minimum szeregu (normalizowany przez d³ugo¶æ szeregu):
+\begin{equation}
+first\_argmin(T_n) = \frac{\min(\{i: x_i = min(T_n)\}}{n}
+\end{equation}
+
+\item \textbf{Wspó³czynnik sko¶no¶ci}
+
+Wspó³czynnik sko¶no¶ci rozk³adu to miara asymetrii rozk³adu. Przyjmuje on warto¶æ zero dla rozk³adu dla rozk³adu symetrycznego, warto¶ci ujemne dla rozk³adów o lewostronnej asymetrii (wyd³u¿one lewe ramiê rozk³adu) i warto¶ci dodatnie dla rozk³adów o prawostronnej asymetrii (wyd³u¿one prawe ramiê rozk³adu) (rys. \ref{skew}). \\
+Traktuj±c warto¶ci szeregu jako warto¶ci pewnej próbki statystycznej, mo¿na wyznaczyæ jego wspó³czynnik sko¶no¶ci, zdefiniowany jako:
+\begin{equation}
+skew(T_n) = \frac{3(mean(T_n) - median(T_n))}{std(T_n)}
+\end{equation}
+
+\begin{figure}[ht!]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\includegraphics[scale=0.8]{skewness.png}
+\caption{Rozk³ady o ujemnym (pierwszy wykres) i dodatnim (drugi wykres) wspó³czynniku sko¶no¶ci \label{skew}}
+\end{figure}
+
+\item \textbf{Kurtoza}
+
+Lalalalala \\
+TODO
+
+\end{itemize}
+
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
 \begin{defi}\label{d:repr}
-  Reprezentacj± pochodn± \emph{szeregu czasowego $T$ nazwiemy skoñczony ci±g par}
-  $$(t_1, x_1), (t_2, x_2), \dots, (t_n, x_n),$$
+  Reprezentacj± pochodn± \emph{szeregu czasowego $T_n$ nazwiemy funkcjê}
+  $$f: T_n -> $$
  gdzie $x_k$ jest warto¶ci± szeregu w czasie $t_k$. 
 \end{defi}
 
