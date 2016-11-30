@@ -397,7 +397,8 @@ std(T_n) = \sqrt{\frac{\sum_{i = 1}^n(x_i - mean(T_n))^2}{n}}
 
 \item \textbf{Kwantyle}
 
-Kwantylem rzêdu $p$ $q_p(T_n)$ nazwiemy taki element $x_k$, ¿e dok³adnie $p$ elementów szeregu jest od niego mniejszych. W procesie ekstrakcji cech u¿yto siedmiu kwantyli, rzêdów kolejno: 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875. 
+Kwantylem $q_p(T_n)$ rzêdu $p$ nazwiemy taki element $x_k$, ¿e dok³adnie $p$ elementów szeregu jest od niego mniejszych. W procesie ekstrakcji cech u¿yto siedmiu kwantyli, rzêdów kolejno: 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875. \\
+Kwantyl rzêdu $0.5$ oznaczany bêdzie dalej przez $median(T_n)$.
 
 \item \textbf{Wariancja}
 
@@ -411,20 +412,6 @@ var(T_n) = std^2(T_n)
 B³±d standardowy okre¶la odchylenie standardowe dla rozk³adu ¶redniej z próby. Zdefiniowany jest jako:
 \begin{equation}
 sem(T_n) = \frac{std(T_n)}{\sqrt{n}}
-\end{equation}
-
-\item \textbf{¦rednia wa¿ona liniowo}
-
-¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj± Wiens i in. w \cite{11}):
-\begin{equation}
-linear\_weighted\_mean(T_n) = \frac{2}{n(n + 1)} \sum_{i=1}^n ix_i
-\end{equation}
-
-\item \textbf{¦rednia wa¿ona kwadratowo}
-
-Jak wy¿ej - z t± ró¿nic±, ¿e wagi rosn± kwadratowo wraz z indeksem:
-\begin{equation}
-quadratic\_weighted\_mean(T_n) = \frac{6}{n(n + 1)(2n + 1)} \sum_{i=1}^n i^2x_i
 \end{equation}
 
 \item \textbf{Indeks pierwszego maksimum}
@@ -453,16 +440,59 @@ skew(T_n) = \frac{3(mean(T_n) - median(T_n))}{std(T_n)}
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\includegraphics[scale=0.8]{skewness.png}
+\includegraphics[scale=0.6]{skewness.png}
 \caption{Rozk³ady o ujemnym (pierwszy wykres) i dodatnim (drugi wykres) wspó³czynniku sko¶no¶ci \label{skew}}
 \end{figure}
 
 \item \textbf{Kurtoza}
 
-Lalalalala \\
-TODO
+Kurtoza to miara koncentracji wyników wokó³ warto¶ci centralnej. Jest to druga, obok sko¶no¶ci, miara kszta³tu rozk³adu.\\
+Kurtoza rozk³adu normalnego wynosi 0. Je¶li warto¶æ tej statystyki jest dodatnia, mamy do czyniena z rozk³adem leptokurtycznym (wysmuk³ym). Je¶li za¶ jest ujemna, rozk³ad jest rozk³adem platykurtycznym (sp³aszczonym) (rys. \ref{kurthosis})
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.5]{kurthosis.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Kszta³t rozk³adu w zale¿no¶ci od warto¶ci kurtozy \label{kurthosis}}
+\end{figure}
+
+Formalnie kurtozê definiuje siê nastêpuj±co:
+\begin{equation}
+kurt(T_n) = \frac{\frac{1}{n}\sum_{i=1}^n(x_i - mean(T_n))^4}{std^4(T_n)}
+\end{equation}
+
+\item \textbf{¦rednia wa¿ona liniowo}
+
+¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj± Wiens i in. w \cite{11}):
+\begin{equation}
+linear\_weighted\_mean(T_n) = \frac{2}{n(n + 1)} \sum_{i=1}^n ix_i
+\end{equation}
+
+\item \textbf{¦rednia wa¿ona kwadratowo}
+
+Jak wy¿ej - z t± ró¿nic±, ¿e wagi rosn± kwadratowo wraz z indeksem:
+\begin{equation}
+quadratic\_weighted\_mean(T_n) = \frac{6}{n(n + 1)(2n + 1)} \sum_{i=1}^n i^2x_i
+\end{equation}
+
+\item \textbf{¦rednie odchylenie bezwzglêdne od ¶redniej}
+
+¦rednie odchylenie bezwzglêdne to kolejna, obok odchylenia standardowego i wariancji, miara rozrzutu próbki. Definuje siê je nastêpuj±co:
+\begin{equation}
+mean\_absolute\_deviation(T_n) = \frac{\sum_{i=1}^n |x_i - mean(T_n)|}{n}
+\end{equation}
+
+\item \textbf{Mediana bezwzglêdnego odchylenia}
+
+Jeszcze inn± miar± rozrzutu jest mediana bezwzglêdnego odchylenia (ang. \textit{median absolute deviation}, MAD). Jest to mediana ci±gu bezwzglêdnych odchyleñ od mediany:
+\begin{equation}
+median\_absolute\_deviation(T_n) = median_{1 \leq i \leq n}(|x_i - median(T_n)|)
+\end{equation}
 
 \end{itemize}
+
+
 
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
 \begin{defi}\label{d:repr}
