@@ -28,6 +28,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{makecell}
+\usepackage{enumitem}
 
 \newcommand\blankpage{%
     \null
@@ -142,7 +143,7 @@ Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku 
 
 \subsection{Paradygmaty uczenia siê}
 
-Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{arnold3}) zdefiniowaæ inne paradygmaty uczenia. \\
+Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{3}) zdefiniowaæ inne paradygmaty uczenia. \\
 I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy do czynienia z \textit{uczeniem bez nadzoru} (ang. \textit{unsupervised learning}). \\
 Gdy zbiór $X_{test}$ nie jest znany podczas uczenia, mowa o \textit{uczeniu indukcyjnym} (ang. \textit{inductive learning}). W przeciwnym razie takie uczenie nazywa siê \textit{uczeniem transdukcyjnym} (ang. transductive learning). \\
 W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ wykorzystywany jest zatem do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{4}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
@@ -193,7 +194,7 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 \end{table}
 
 
-\chapter{Opis przeprowadzanego eksperymentu}\label{r:wprowadzenie}
+\chapter{Opis przeprowadzanego eksperymentu}\label{r:experiment}
 
 \section{Przedstawienie badanego problemu} \label{s:problem}
 
@@ -283,7 +284,7 @@ Innym typem klasyfikatora liniowego jest (ang. \textit{support vector machine}, 
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.4]{svm.png}
+\includegraphics[scale=0.5]{svm.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
 \caption{P³aszczyzna $H_1$ nie rozdziela klas. \\ P³aszczyzna $H_2$ rozdziela je, ale z niewielkim marginesem. \\P³aszczyzna $H_3$ rozdziela je z maksymalnym marginesem. \label{svm}}
@@ -329,6 +330,40 @@ Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} 
 
 \chapter{Ekstrakcja cech z szeregów czasowych} \label{c:features}
 
+\section{Metody klasyfikacji szeregów czasowych}
+
+Szeregi czasowe obecne s± w wielu ró¿nych dziedzinach ¿ycia - od medycyny, przez finanse, i wyszukiwanie informacji po przetwarzanie sygna³ów oraz prognozê pogody. W ostatnich latach opisanych zosta³o wiele metod do wykrywania wzorców czasowych w takich zadaniach jak: okre¶lanie stanu zdrowia pacjenta na podstawie odczytów elektrokardiografu, przewidywanie wahañ na gie³dzie, analiza mowy czy prognozowanie temperatur. \\
+W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}), w skrócie k-NN - wiêcej w \cite{6}), sieci neuronowe (\cite{7}) czy ukryty model Markowa (\cite{8}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{9}. \\
+W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê na ekstrakcji cech opartych na statystycznych w³asno¶ciach szeregów. Cechy te wylliczane s± z ró¿nych reprezentacji danego szeregu. Nastêpnie na tak przekszta³conych danych uczone by³y klasyfikatory opisane w sekcji \ref{s:klasyfikatory}. Jak pokazuj± niektóre badania (przyk³adowo - \cite{8}, \cite{9}), takie podej¶cie daje czêsto lepsze wyniki ni¿ algorytmy bazuj±ce na podobieñstwie szeregów.
+
+\section{Proces ekstrakcji cech} \label{s:extraction}
+
+Zacznijmy od formalnego zdefiniowania \textit{szeregu czasowego}.
+
+\begin{defi}\label{d:series}
+  Jednowymiarowym szeregiem czasowym $T_n$ \emph{nazwiemy skoñczony ci±g par}
+  $$(t_1, x_1), (t_2, x_2), \dots, (t_n, x_n)$$
+ o d³ugo¶ci $n$, gdzie $x_k$ jest warto¶ci± szeregu w czasie $t_k$. 
+\end{defi}
+\hfill \\
+Proces ekstrakcji cech dla szeregu czasowego przebiega³ nastêpuj±co:
+\begin{enumerate}[label*=\arabic*.]
+\item wyznaczenie pochodnych reprezentacji szeregu czasowego (wiêcej w sekcji \ref{ss:representations})
+\item Wyliczenie statystyk z wyznaczonych reprezentacji
+\item Dodanie cech bazuj±cych na korelacji miêdzy szeregami
+\end{enumerate}
+
+W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
+
+\subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
+\begin{defi}\label{d:repr}
+  Reprezentacj± pochodn± \emph{szeregu czasowego $T$ nazwiemy skoñczony ci±g par}
+  $$(t_1, x_1), (t_2, x_2), \dots, (t_n, x_n),$$
+ gdzie $x_k$ jest warto¶ci± szeregu w czasie $t_k$. 
+\end{defi}
+
+
+
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
 
@@ -340,8 +375,21 @@ Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} 
 
 \bibitem[4]{4} R. K. Ando, T. Zhang, \textit{A framework for learning predictive structures from multiple tasks and unlabeled data}
 
-\bibitem[4]{4} L. Breiman, \textit{Random forests}, Machine Learning, 45(1), 5-32, 2001.
+\bibitem[5]{5} L. Breiman, \textit{Random forests}, Machine Learning, 45(1), 5-32, 2001.
 
+\bibitem[6]{6} Wanpracha Art Chaovalitwongse, Ya-Ju Fan, Rajesh C. Sachdeo, \textit{On the time series k-nearest neighbor
+classification of abnormal brain activity}
+
+\bibitem[7]{7} Alex Nanopoulos, Rob Alcock, Yannis Manolopoulos, \textit{Feature-based classification of time-series data}
+
+\bibitem[8]{8} Seyoung Kim, Padhraic Smyth, \textit{Segmental hidden markov models with random effects for
+waveform modeling}
+
+\bibitem[9]{9} Chotirat Ann Ratanamahatana, Eamonn Keogh, \textit{Everything you know about Dynamic Time Warping is wrong}
+
+\bibitem[10]{10} Dominique Gay, Romain Guigoures, Marc Boulle, Fabrice Clerot \textit{Feature Extraction over Multiple Representations for Time Series Classification}
+
+\bibitem[11]{11} Jenna Wiens, John V. Guttag, Eric Horvitz, \textit{Patient Risk Stratification for Hospital-Associated C. diff as a Time-Series Classification Task}
 
 \end{thebibliography}
 
