@@ -351,10 +351,18 @@ Proces ekstrakcji cech dla szeregu czasowego przebiega³ nastêpuj±co:
 \begin{enumerate}[label*=\arabic*.]
 \item wyznaczenie pochodnych reprezentacji szeregu czasowego (wiêcej w sekcji \ref{ss:representations})
 \item Wyliczenie statystyk z wyznaczonych reprezentacji
-\item Dodanie cech bazuj±cych na korelacji miêdzy szeregami
+\item Dodanie pozosta³ych cech (bazuj±cych miêdzy innymi na korelacji miêdzy szeregami)
 \end{enumerate}
 
 W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
+
+\subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
+\begin{defi}\label{d:repr}
+\emph{Reprezentacj± pochodn±} szeregu czasowego $T_n$ nazwiemy ci±g
+$$(y_1, y_2, \dots, y_k)$$
+o warto¶ciach wyliczonych na podstawie warto¶ci ci±gu $T_n$.
+\end{defi}
+
 
 \subsection{Statystyki wyliczane z reprezentacji szeregu} \label{ss:feaures}
 
@@ -460,7 +468,7 @@ Kurtoza rozk³adu normalnego wynosi 0. Je¶li warto¶æ tej statystyki jest dodatnia
 
 Formalnie kurtozê definiuje siê nastêpuj±co:
 \begin{equation}
-kurt(T_n) = \frac{\frac{1}{n}\sum_{i=1}^n(x_i - mean(T_n))^4}{std^4(T_n)}
+kurt(T_n) = \frac{\frac{1}{n}\sum_{i=1}^n(x_i - mean(T_n))^4}{std^4(T_n)} - 3
 \end{equation}
 
 \item \textbf{¦rednia wa¿ona liniowo}
@@ -529,10 +537,19 @@ strike\_above\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_
 \item \textbf{¦rednia autokorelacja}
 
 \begin{defi}\label{d:repr}
-\emph{Wspó³czynnik korelacji Pearsona} wektorów prób losowych $x, y \in \mathbb{R}^n$ zdefiniowany jest jako
-  $$pearson\_corr(x, y) = \frac{\sum_{i=1}^n(x_i - \mean{x})(y_i - \mean{y})}{\sqrt{\sum_{i=1}^n (x_i - \mean{x})^2}\sqrt{\sum_{i=1}^n (y_i - \mean{y})^2}},$$ gdzie $\mean{x}$, $\mean{y}$ oznaczaj± warto¶ci ¶rednie z tych prób, tj. $\mean{x} = \frac{\sum_{i=1}^n x_i}{n}$, $\mean{y} = \frac{\sum_{i=1}^n y_i}{n}$.
+\emph{Wspó³czynnik korelacji Pearsona} wektorów prób losowych $\textbf{x}, \textbf{y} \in \mathbb{R}^n$ zdefiniowany jest jako
+  $$pearson\_corr(\textbf{x}, \textbf{y}) = \frac{\sum_{i=1}^n(x_i - \mean{x})(y_i - \mean{y})}{\sqrt{\sum_{i=1}^n (x_i - \mean{x})^2}\sqrt{\sum_{i=1}^n (y_i - \mean{y})^2}},$$ gdzie $\mean{x}$, $\mean{y}$ oznaczaj± warto¶ci ¶rednie z tych prób, tj. $\mean{x} = \frac{\sum_{i=1}^n x_i}{n}$, $\mean{y} = \frac{\sum_{i=1}^n y_i}{n}$.
 \end{defi}
-Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowymi i przyjmuje on warto¶ci z przedzia³u $[-1,1]$. Warto¶ci bliskie $1$ oznaczaj± siln± zale¿no¶æ liniow± miêdzy próbkami, warto¶ci bliskie zera - brak liniowej zale¿no¶ci, natomiast warto¶ci bliskie $-1$ - ujemn± liniow± zale¿no¶æ.
+Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowymi i przyjmuje on warto¶ci z przedzia³u $[-1,1]$. Warto¶ci bliskie $1$ oznaczaj± siln± zale¿no¶æ liniow± miêdzy próbkami, warto¶ci bliskie zera - brak liniowej zale¿no¶ci, natomiast warto¶ci bliskie $-1$ - ujemn± liniow± zale¿no¶æ (rys. \ref{pearson}). \\
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.3]{pearson.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.7\textwidth}
+\caption{Przyk³adowe wykresy danych $(x, y)$ i odpowiadaj±ce im warto¶ci wspó³czynnika korelacji liniowej Pearsona \label{pearson}}
+\end{figure}
+
 
 Korelacja Pearsona wykorzystywana jest przy wyliczaniu autokorelacji. Autokorelacja jest funkcj±, która argumentowi naturalnemu $k$ przypisuje warto¶æ wspó³czynnika korelacji pomiêdzy szeregiem czasowym a tym samym szeregiem cofniêtym o $k$ jednostek czasu:
 \begin{displaymath}
@@ -544,14 +561,25 @@ Jako cecha u¿ywana by³a ¶rednia warto¶æ autokorelacji obliczanych dla wszystkich
 mean\_autocorr(T_n) = \frac{\sum_{k=1}^n autocorr_k(T_n)}{n}
 \end{equation}
 
+\item \textbf{\textit{Time-reversal asymmetry statistic}}
+
+Ta statystyka zosta³a zaproponowana przez Fulchera i Jonesa w TODO. Zdefiniowana jest w zale¿no¶ci od parametru $k$ przez:
+\begin{equation}
+TRAS_{k}(T_n) = \frac{1}{n - 2k} \sum_{i = 0}^{n - 2k} x_{i + 2k}^2 \cdot x_{i + k} - x_{i + k} \cdot x_i^2
+\end{equation}
+Jako cechy wykorzystane zosta³y warto¶ci $TRAS$ dla $k = 25, 50, 100, 200$.
+
+\item \textbf{Infromacje o warto¶ciach szczytowych}
+
+(TODO Jak sensownie przet³umaczyæ "peak"??????)
+\begin{defi}\label{d:peak}
+\emph{Szczytem o wsparciu $n$} nazwiemy podci±g szeregu $T_n$, w którym istnieje warto¶æ $x$ bêd±ca wiêksza ni¿ $n$ warto¶ci wystêpuj±cych bezpo¶rednio przed ni± oraz $n$ wystêpuj±cych bezpo¶rednio po niej.
+\end{defi}
+
+Przyk³adowo w ci±gu $(3, 0, 0, 4, 0, 0, 13)$ warto¶æ $4$ jest szczytem o wsparciu 1 i 2, ale nie jest szczytem o wsparciu 3. \\
+Szczyty wykorzystano przy ekstrakcji piêciu kolejnych cech, oznaczaj±cych (kolejno) liczbê szczytów o wsparciu: 5, 10, 25, 50, 100.
 \end{itemize}
 
-\subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
-\begin{defi}\label{d:repr}
-  Reprezentacj± pochodn± \emph{szeregu czasowego $T_n$ nazwiemy funkcjê}
-  $$f: T_n -> $$
- gdzie $x_k$ jest warto¶ci± szeregu w czasie $t_k$. 
-\end{defi}
 
 
 
@@ -573,8 +601,7 @@ classification of abnormal brain activity}
 
 \bibitem[7]{7} Alex Nanopoulos, Rob Alcock, Yannis Manolopoulos, \textit{Feature-based classification of time-series data}
 
-\bibitem[8]{8} Seyoung Kim, Padhraic Smyth, \textit{Segmental hidden markov models with random effects for
-waveform modeling}
+\bibitem[8]{8} Seyoung Kim, Padhraic Smyth, \textit{Segmental hidden markov models with random effects for waveform modeling}
 
 \bibitem[9]{9} Chotirat Ann Ratanamahatana, Eamonn Keogh, \textit{Everything you know about Dynamic Time Warping is wrong}
 
