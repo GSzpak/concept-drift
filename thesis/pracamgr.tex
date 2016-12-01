@@ -357,12 +357,47 @@ Proces ekstrakcji cech dla szeregu czasowego przebiega³ nastêpuj±co:
 W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
 
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
-\begin{defi}\label{d:repr}
-\emph{Reprezentacj± pochodn±} szeregu czasowego $T_n$ nazwiemy ci±g
-$$(y_1, y_2, \dots, y_k)$$
-o warto¶ciach wyliczonych na podstawie warto¶ci ci±gu $T_n$.
-\end{defi}
 
+Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w literaturze - ich szerszy przegl±d mo¿na znale¼æ miêdzy innymi w TODO. Celem takich przekszta³ceñ jest wykrycie wzorców charakterystycznych dla klas wynikowych, które nie s± wykrywalne przy u¿yciu podstawowej reprezentacji $T_n$. \\
+Gay i in. w TODO podaj± przyk³ad, kiedy to badanie drugiej pochodnej szeregu po czasie znacznie zwiêksza jako¶æ klasyfikacji (rys. \ref{example}). Dzia³aj±c na oryginalnych danych, trudno jest rozró¿nic dwie klasy. Policzenie drugiej pochodnej sprawia, ¿e klasyfikacja staje siê niemal¿e trywialna.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.8]{example.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Po lewej widaæ oryginalny zbiór danych, natomiast po prawej - drug± pochodn± po czasie \label{example}}
+\end{figure}
+
+Autor, poza reprezentacj± oryginaln± $T_n$, zdecydowa³ siê wykorzystaæ w procesie ekstrakcji cech cztery inn reprezentacje: 
+\begin{itemize}
+\item pochodn± szeregu po czasie $der_{T_n}$
+\item ca³kê szeregu po czasie $int_{T_n}$
+\item transformacjê Fouriera $fourier_{T_n}$
+\item transformacjê falkow± Haara $wavelet_{T_n}$
+\end{itemize}
+
+\subsubsection{Pochodna szeregu po czasie}
+
+Dyskretna pochodna szeregu $T_n = (t_1, x_1), (t_2, x_2), \dots, (t_n, x_n)$ po czasie wyliczana by³a w sposób nastêpuj±cy:
+
+\begin{equation}
+der_{T_n}(i) = \frac{x_i - x_{i - 1}}{t_i - t_{i - 1}}
+\end{equation}
+
+Takie przekszta³cenie pozwala na badanie lokalnej zmienno¶ci (monotoniczno¶ci i jej tempa) danego szeregu. Jako ¿e badane dane (opisywane szerzej w sekcji \ref{ss:data}) sk³ada³y siê z odczytów z sensorów (akcelerometrów i ¿yroskopów), pochodna po czasie mo¿e byæ równie¿ interpretowana w sensie fizycznym. Przyk³adowo, miara zmienno¶ci przyspieszenia w czasie zwana jest zrywem\footnote{https://pl.wikipedia.org/wiki/Zryw}.
+
+\subsubsection{Ca³ka szeregu po czasie}
+
+Analogicznie do pochodnej zdefiniowaæ mo¿na dyskretn± ca³kê z szeregu \\ $T_n = (t_1, x_1), (t_2, x_2), \dots, (t_n, x_n)$, wyliczan± metod± trapezów:
+
+\begin{equation}
+int_{T_n}(i) = \sum_{j= 1}^i \frac{(x_j + x_{j - 1})(t_i - t_{i - 1})}{2}
+\end{equation}
+
+Tak wyliczonej ca³ce tak¿e mo¿na przypisaæ interpretacjê fizyczn± - dla przyk³adu, warto¶æ $int_{T_n}(i)$ dla odczytu $T_n$ z akcelerometru umieszczonego na lewej rêce stra¿aka oznacza prêdko¶æ, z jak± porusza³a siê ta rêka w czasie $t_i$. 
+
+\subsection{Transformacja Fouriera}
 
 \subsection{Statystyki wyliczane z reprezentacji szeregu} \label{ss:feaures}
 

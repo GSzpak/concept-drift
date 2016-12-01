@@ -18,5 +18,8 @@
 \contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{15}
 \contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{15}
 \contentsline {subsection}{\numberline {3.2.1}Reprezentacje pochodne szeregu czasowego}{16}
-\contentsline {subsection}{\numberline {3.2.2}Statystyki wyliczane z reprezentacji szeregu}{16}
-\contentsline {chapter}{Bibliografia}{21}
+\contentsline {subsubsection}{Pochodna szeregu po czasie}{16}
+\contentsline {subsubsection}{Ca\IeC {\l }ka szeregu po czasie}{17}
+\contentsline {subsection}{\numberline {3.2.2}Transformacja Fouriera}{17}
+\contentsline {subsection}{\numberline {3.2.3}Statystyki wyliczane z reprezentacji szeregu}{17}
+\contentsline {chapter}{Bibliografia}{23}
