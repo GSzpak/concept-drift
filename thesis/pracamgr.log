@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  30 NOV 2016 22:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  1 DEC 2016 01:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -281,27 +281,30 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 )
 \c@defi=\count108
 
-(./pracamgr.aux)
+(./pracamgr.aux
+
+LaTeX Warning: Label `d:repr' multiply defined.
+
+)
 \openout1 = `pracamgr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 100.
-LaTeX Font Info:    ... okay on input line 100.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 101.
+LaTeX Font Info:    ... okay on input line 101.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-
-(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count109
 \scratchdimen=\dimen131
@@ -362,48 +365,48 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for OML+plm on input line 101.
+LaTeX Font Info:    Try loading font information for OML+plm on input line 102.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/polski/omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 101
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 102
 .
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/polski/omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 101
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 102
 .
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/polski/omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 101.
+(Font)              <12> on input line 102.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 101.
+(Font)              <8> on input line 102.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 101.
-LaTeX Font Info:    Try loading font information for U+msa on input line 101.
+(Font)              <6> on input line 102.
+LaTeX Font Info:    Try loading font information for U+msa on input line 102.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 101.
+LaTeX Font Info:    Try loading font information for U+msb on input line 102.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 106--106
+Underfull \hbox (badness 10000) in paragraph at lines 107--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 106--106
+Underfull \hbox (badness 10000) in paragraph at lines 107--107
 
  []
 
@@ -422,60 +425,60 @@ LaTeX Font Info:    External font `plex10' loaded for size
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 119.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 120.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 119.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 120.
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--125
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 <supervised.png, id=27, 587.19376pt x 413.545pt>
 File: supervised.png Graphic file (type png)
  <use supervised.png>
-Package pdftex.def Info: supervised.png used on input line 130.
+Package pdftex.def Info: supervised.png used on input line 131.
 (pdftex.def)             Requested size: 469.75565pt x 330.83644pt.
 
-Overfull \hbox (28.73792pt too wide) in paragraph at lines 130--131
+Overfull \hbox (28.73792pt too wide) in paragraph at lines 131--132
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 135--136
+Underfull \hbox (badness 10000) in paragraph at lines 136--137
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 137--139
+Underfull \hbox (badness 10000) in paragraph at lines 138--140
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 146--150
+Underfull \hbox (badness 10000) in paragraph at lines 147--151
 
  []
 
 [6 <./supervised.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 151--152
+Underfull \hbox (badness 10000) in paragraph at lines 152--153
 
  []
 
 
-Overfull \hbox (3.90472pt too wide) in paragraph at lines 159--171
+Overfull \hbox (3.90472pt too wide) in paragraph at lines 160--172
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 177--181
+Underfull \hbox (badness 10000) in paragraph at lines 178--182
 
  []
 
@@ -486,30 +489,30 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 [8]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 203.
+(Font)              <9> on input line 204.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 203.
+(Font)              <5> on input line 204.
 <fireman.png, id=49, 523.9575pt x 435.6275pt>
 File: fireman.png Graphic file (type png)
  <use fireman.png>
-Package pdftex.def Info: fireman.png used on input line 208.
+Package pdftex.def Info: fireman.png used on input line 209.
 (pdftex.def)             Requested size: 209.57928pt x 174.24791pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
 [9
 
  <./fireman.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 215--217
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
 
  []
 
 <classes.png, id=56, 715.67375pt x 628.3475pt>
 File: classes.png Graphic file (type png)
  <use classes.png>
-Package pdftex.def Info: classes.png used on input line 220.
+Package pdftex.def Info: classes.png used on input line 221.
 (pdftex.def)             Requested size: 429.40756pt x 377.0114pt.
 
 Underfull \vbox (badness 1852) has occurred while \output is active []
@@ -517,80 +520,83 @@ Underfull \vbox (badness 1852) has occurred while \output is active []
  [10 <./classes.png>] <sigmoid.png, id=61, 642.4pt x 428.60126pt>
 File: sigmoid.png Graphic file (type png)
  <use sigmoid.png>
-Package pdftex.def Info: sigmoid.png used on input line 260.
+Package pdftex.def Info: sigmoid.png used on input line 261.
 (pdftex.def)             Requested size: 192.72148pt x 128.58136pt.
 
 [11] <svm.png, id=72, 441.65pt x 382.42876pt>
 File: svm.png Graphic file (type png)
  <use svm.png>
-Package pdftex.def Info: svm.png used on input line 287.
+Package pdftex.def Info: svm.png used on input line 288.
 (pdftex.def)             Requested size: 220.82445pt x 191.2139pt.
  [12 <./sigmoid.png> <./svm.png>] <decision_tree.png, id=79, 505.89pt x 288.076
 25pt>
 File: decision_tree.png Graphic file (type png)
 
 <use decision_tree.png>
-Package pdftex.def Info: decision_tree.png used on input line 321.
+Package pdftex.def Info: decision_tree.png used on input line 322.
 (pdftex.def)             Requested size: 303.53633pt x 172.84708pt.
  [13 <./decision_tree.png>] [14]
 Rozdzia\PlPrIeC {\l } 3.
 [15
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 360--361
+Underfull \hbox (badness 10000) in paragraph at lines 361--362
 
  []
 
 [16] <skewness.png, id=93, 447.6725pt x 159.59625pt>
 File: skewness.png Graphic file (type png)
  <use skewness.png>
-Package pdftex.def Info: skewness.png used on input line 443.
+Package pdftex.def Info: skewness.png used on input line 444.
 (pdftex.def)             Requested size: 268.60556pt x 95.75847pt.
 
 <kurthosis.png, id=94, 421.575pt x 273.02pt>
 File: kurthosis.png Graphic file (type png)
  <use kurthosis.png>
-Package pdftex.def Info: kurthosis.png used on input line 454.
+Package pdftex.def Info: kurthosis.png used on input line 455.
 (pdftex.def)             Requested size: 210.78697pt x 136.50966pt.
- [17 <./skewness.png>] [18 <./kurthosis.png>] [19
+ [17 <./skewness.png>] [18 <./kurthosis.png>] [19] [20
 
-] (./pracamgr.aux) ) 
+] [21] (./pracamgr.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5743 strings out of 493089
- 83366 string characters out of 6134843
- 168620 words of memory out of 5000000
- 9115 multiletter control sequences out of 15000+600000
- 22003 words of font info for 63 fonts, out of 8000000 for 9000
+ 5749 strings out of 493089
+ 83423 string characters out of 6134843
+ 168666 words of memory out of 5000000
+ 9119 multiletter control sequences out of 15000+600000
+ 23085 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,14n,38p,1024b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plmi
-.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/loca
-l/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/texlive/2015/
-texmf-dist/fonts/enc/dvips/pl/plme.enc}{/usr/local/texlive/2015/texmf-dist/font
-s/enc/dvips/pl/plit.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msam10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msam7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/pl/plbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-pl/plbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbx8.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbxti10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plex10.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/pl/plmi10.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/pl/plmi6.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/pl/plmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/pl/plr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/
-plr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr17.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr6.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/pl/plr9.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/
-plti10.pfb>
-Output written on pracamgr.pdf (21 pages, 1669415 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plmi.enc}{/usr/local/t
+exlive/2015/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/local/texlive/2015/tex
+mf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/texlive/2015/texmf-dist/fonts/e
+nc/dvips/pl/plme.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/pli
+t.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
+am10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbol
+s/msam7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/sym
+bols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbx1
+0.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbx12.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbx8.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/pl/plbxti10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/pl/plex10.pfb></usr/local/texlive/2015/texmf-di
+st/fonts/type1/public/pl/plmi10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/pl/plmi6.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
+/pl/plmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr10.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr12.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/pl/plr17.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/pl/plr6.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/public/pl/plr9.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
+pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plsy8.p
+fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plti10.pfb>
+Output written on pracamgr.pdf (23 pages, 1675401 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
+ 184 PDF objects out of 1000 (max. 8388607)
+ 121 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

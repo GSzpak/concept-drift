@@ -35,6 +35,7 @@
     \thispagestyle{empty}%
     \newpage}
 
+\newcommand*\mean[1]{\bar{#1}}
 
 % Dane magistranta:
 
@@ -272,7 +273,7 @@ przy czym klasyfikacja dokonywana jest przez:
 c_w(\textbf{x}) = 1 \iff p_w(\textbf{x}) \geq \frac{1}{2}.
 \end{displaymath}
 
-Funkcja straty zdefiniowana jest nastêpuj±co:
+Uczenie klasyfikatora opartego na regresji logistycznej polega wiêc na znalezieniu hiperp³aszczyzny $\textbf{w}$, która minimalizuje nastêpuj±c± funkcjê straty:
 
 \begin{displaymath}
 l_{log\_loss}(\textbf{w}) = \sum_{i = i}^n log(1 + e^{-y_i\textbf{w}^\intercal\textbf{x}_i}).
@@ -341,7 +342,7 @@ W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê n
 Zacznijmy od formalnego zdefiniowania \textit{szeregu czasowego}.
 
 \begin{defi}\label{d:series}
-  Jednowymiarowym szeregiem czasowym $T_n$ \emph{nazwiemy skoñczony ci±g par}
+  \emph{Jednowymiarowym szeregiem czasowym} $T_n$ nazwiemy skoñczony ci±g par
   $$(t_1, x_1), (t_2, x_2), \dots, (t_n, x_n)$$
  o d³ugo¶ci $n$, gdzie $x_k$ jest warto¶ci± szeregu w czasie $t_k$. 
 \end{defi}
@@ -490,9 +491,60 @@ Jeszcze inn± miar± rozrzutu jest mediana bezwzglêdnego odchylenia (ang. \textit{
 median\_absolute\_deviation(T_n) = median_{1 \leq i \leq n}(|x_i - median(T_n)|)
 \end{equation}
 
+\item \textbf{Ca³kowita energia}
+
+Ca³kowit± energiê szeregu definiuje siê jako sumê kwadratów jego warto¶ci:
+\begin{equation}
+E(T_n) = \sum_{i=1}^n x_i^2
+\end{equation}
+
+\item \textbf{Liczba elementów mniejszych od ¶redniej}
+
+Zdefiniowana w oczywisty sposób:
+\begin{equation}
+count\_below\_mean(T_n) = |\{i: x_i < mean(T_n)\}|
+\end{equation}
+
+\item \textbf{Liczba elementów wiêkszych od ¶redniej}
+
+Analogicznie do powy¿szego:
+\begin{equation}
+count\_above\_mean(T_n) = |\{i: x_i > mean(T_n)\}|
+\end{equation}
+
+\item \textbf{D³ugo¶æ najd³u¿szego podci±gu o warto¶ciach poni¿ej ¶redniej}
+
+Zdefiniowana formalnie:
+\begin{equation}
+strike\_below\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_{i \leq k \leq j} \; x_k < mean(T_n)\})
+\end{equation}
+
+\item \textbf{D³ugo¶æ najd³u¿szego podci±gu o warto¶ciach powy¿ej ¶redniej}
+
+Analogicznie do powy¿szego:
+\begin{equation}
+strike\_above\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_{i \leq k \leq j} \; x_k > mean(T_n)\})
+\end{equation}
+
+\item \textbf{¦rednia autokorelacja}
+
+\begin{defi}\label{d:repr}
+\emph{Wspó³czynnik korelacji Pearsona} wektorów prób losowych $x, y \in \mathbb{R}^n$ zdefiniowany jest jako
+  $$pearson\_corr(x, y) = \frac{\sum_{i=1}^n(x_i - \mean{x})(y_i - \mean{y})}{\sqrt{\sum_{i=1}^n (x_i - \mean{x})^2}\sqrt{\sum_{i=1}^n (y_i - \mean{y})^2}},$$ gdzie $\mean{x}$, $\mean{y}$ oznaczaj± warto¶ci ¶rednie z tych prób, tj. $\mean{x} = \frac{\sum_{i=1}^n x_i}{n}$, $\mean{y} = \frac{\sum_{i=1}^n y_i}{n}$.
+\end{defi}
+Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowymi i przyjmuje on warto¶ci z przedzia³u $[-1,1]$. Warto¶ci bliskie $1$ oznaczaj± siln± zale¿no¶æ liniow± miêdzy próbkami, warto¶ci bliskie zera - brak liniowej zale¿no¶ci, natomiast warto¶ci bliskie $-1$ - ujemn± liniow± zale¿no¶æ.
+
+Korelacja Pearsona wykorzystywana jest przy wyliczaniu autokorelacji. Autokorelacja jest funkcj±, która argumentowi naturalnemu $k$ przypisuje warto¶æ wspó³czynnika korelacji pomiêdzy szeregiem czasowym a tym samym szeregiem cofniêtym o $k$ jednostek czasu:
+\begin{displaymath}
+autocorr_k(T_n) = \frac{1}{(n - k)std^2(T_n)} \sum_{i = 1}^{n - k} (x_i - mean(T_n))(x_{i + k} - mean(T_n))
+\end{displaymath}
+
+Jako cecha u¿ywana by³a ¶rednia warto¶æ autokorelacji obliczanych dla wszystkich  przesuniêæ $k$ (od 1 do $n$):
+\begin{equation}
+mean\_autocorr(T_n) = \frac{\sum_{k=1}^n autocorr_k(T_n)}{n}
+\end{equation}
+
 \end{itemize}
-
-
 
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
 \begin{defi}\label{d:repr}
