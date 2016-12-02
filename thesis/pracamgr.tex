@@ -373,8 +373,8 @@ Autor, poza reprezentacj± oryginaln± $T_n$, zdecydowa³ siê wykorzystaæ w procesi
 \begin{itemize}
 \item pochodn± szeregu po czasie $der_{T_n}$
 \item ca³kê szeregu po czasie $int_{T_n}$
-\item transformacjê Fouriera $fourier_{T_n}$
-\item transformacjê falkow± Haara $wavelet_{T_n}$
+\item dyskretn± transformatê Fouriera $fourier_{T_n}$
+\item dyskretn± transformatê falkow± Haara $wavelet_{T_n}$
 \end{itemize}
 
 \subsubsection{Pochodna szeregu po czasie}
@@ -395,13 +395,73 @@ Analogicznie do pochodnej zdefiniowaæ mo¿na dyskretn± ca³kê z szeregu \\ $T_n = 
 int_{T_n}(i) = \sum_{j= 1}^i \frac{(x_j + x_{j - 1})(t_i - t_{i - 1})}{2}
 \end{equation}
 
-Tak wyliczonej ca³ce tak¿e mo¿na przypisaæ interpretacjê fizyczn± - dla przyk³adu, warto¶æ $int_{T_n}(i)$ dla odczytu $T_n$ z akcelerometru umieszczonego na lewej rêce stra¿aka oznacza prêdko¶æ, z jak± porusza³a siê ta rêka w czasie $t_i$. 
+Tak wyliczonej ca³ce tak¿e mo¿na przypisaæ interpretacjê fizyczn± - dla przyk³adu, warto¶æ $int_{T_n}(i)$ dla odczytu $T_n$ z akcelerometru umieszczonego na lewej rêce stra¿aka oznacza prêdko¶æ, z jak± porusza³a siê ta rêka w czasie $t_i$.  \\
 
-\subsection{Transformacja Fouriera}
+\hfill \\
+Pozosta³e dwa przekszta³cenia (transformata Fouriera oraz transformata falkowa) wyra¿aj± szereg czasowy w bazie pewnej przestrzeni funkcyjnych. \\
+
+\subsubsection{Transformacja Fouriera}
+
+Transformacja Fouriera jest jednym z najwa¿niejszych przekszta³ceñ u¿ywanych do analizy sygna³ów. Bazuje ona na odkryciu, ¿e ka¿dy szereg czasowy mo¿e byæ rozbity na sumê prostych, okresowych sygna³ów - sinusów i cosinusów o zmieniaj±cych siê amplitudzie i fazie (rys. \ref{fourier}).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.54]{fourier.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Cosinusowe fale $s_1$, $s_2$, $s_3$ daj± razem bardziej z³o¿ony sygna³ \label{fourier}}
+\end{figure}
+
+Formalnie wspó³czynniki dyskretnej transformaty Fouriera zdefiniowane s± nastêpuj±co:
+
+\begin{equation}
+fourier_{T_n}(k) = \sum_{i = 0}^{n - 1} x_i \cdot (\cos(\frac{-2\pi k i}{n}) + i\sin(\frac{-2\pi k i}{n}))
+\end{equation}
+
+Wspó³czynniki $fourier_{T_n}(k)$ s± liczbami zespolonymi i reprezentuj± amplitudy oraz fazy sinusoidalnych sk³adowych sygna³u. Dla szeregów o warto¶ciach rzeczywistych, $fourier_{T_n}(i)$ jest zespolonym sprzê¿eniem $fourier_{T_n}(n - i + 1)$ (dla $i = 2, 3, \dots, \frac{n}{2}$). \\
+Istnieje algorytm (zwany \textit{szybk± transformacj± Fouriera}, ang. \textit{fast Fourier Transform}), obliczaj±cy wspó³czynniki transformaty Fouriera w czasie $\mathcal{O}(n\log n)$.
+
+\subsubsection{Transformacja falkowa}
+
+Przekszta³ceniem podobnym do transformaty Fouriera jest transformacja falkowa. Jej g³ówn± przewag± nad transformacj± opracowan± przez francuskiego matematyka jest zachowywanie informacji zarówno o czêstotliwo¶ci, jak i o czasie. Podczas gdy przekszta³cenie Fouriera rzutuje sygna³ z dziedziny czasu na dziedzinê czêstotliwo¶ci, transformata falkowa mierzy czêstotliwo¶æ w ró¿nych momentach czasu - sygna³ jest wiêc rzutowany na p³aszczyznê czasu i czêstotliwo¶ci. \\
+\textit{Dyskretna transformacja falkowa} równie¿ polega na przedstawieniu sygna³u jako sumy sygna³ów podstawowych. Podczas gdy transformata Fouriera u¿ywa³a funkcji sinusoidalnych, tutaj funkcjê podstawow± nazywa siê \textit{falk±}. Funkcje falkowe s± postaci:
+
+\begin{displaymath}
+\Psi_{j,k}(t) = 2^{\frac{j}{2}}\Psi(2^jt - k),
+\end{displaymath}
+gdzie $\Psi$ jest \textit{macierzyst± funkcj± falkow±}. Wtedy ka¿da funkcja $f \in L^2(\mathbb{R})$ mo¿e byæ przedstawiona w tej bazie jako
+\begin{displaymath}
+f(t) = \sum_{j, k} c_{j,k}\Psi_{j,k}(t),
+\end{displaymath}
+a $c_{j,k} = \left\langle \Psi_{j,k}(t), f(t) \right\rangle$ s± wspó³czynnikami dyskretnej transformaty falkowej. \\
+Najbardziej znan± macierzyst± funkcj± falkow± jest falka Haara, zdefiniowana nastêpuj±co:
+\[
+    \Psi_{Haar}(t) = 
+    \begin{cases} 
+      0 & t < 0 \\
+      1 & 0 \leq t < 0,5 \\
+      -1 & 0,5 \leq t < 1 \\
+      0 & t \geq 1 
+   \end{cases}
+\]
+
+Wykres falki Haara przedstawia rys. \ref{haar}. Funkcja wêgierskiego matematyka zosta³a u¿yta przez autora w procesie ekstrakcji cech.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.15]{haar.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Wykres falki Haara \label{haar}}
+\end{figure}
+
+Podobnie jak w przypadku dyskretnej transformaty Fouriera, tak i tu istnieje szybki algorytm obliczaj±cy wspó³czynniki dyskretnej transformaty falkowej (dzia³aj±cy w czasie $\mathcal{O}(n)$ - TODO bibliografia). Czyni to obydwa przekszta³cenia niezwykle u¿yteczne w praktyce.
+\newpage
 
 \subsection{Statystyki wyliczane z reprezentacji szeregu} \label{ss:feaures}
 
-Poni¿ej znajduje siê lista statystyk (wraz z opisem) u¿ytych w procesie ekstrakcji cech. \\
+Kolejnym krokiem w ekstrakcji cech by³o opisanie reprezentacji (przedstawionych w poprzedniej sekcji) za pomoc± zbioru statystyk, maj±cych jak najlepiej oddaæ charakter danego szeregu.
+Poni¿ej znajduje siê lista statystyk (wraz z formalnym opisem) wykorzystanych przez autora. \\
 
 \begin{itemize}
 \item \textbf{Minimum}
@@ -571,7 +631,7 @@ strike\_above\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_
 
 \item \textbf{¦rednia autokorelacja}
 
-\begin{defi}\label{d:repr}
+\begin{defi}\label{d:pearson}
 \emph{Wspó³czynnik korelacji Pearsona} wektorów prób losowych $\textbf{x}, \textbf{y} \in \mathbb{R}^n$ zdefiniowany jest jako
   $$pearson\_corr(\textbf{x}, \textbf{y}) = \frac{\sum_{i=1}^n(x_i - \mean{x})(y_i - \mean{y})}{\sqrt{\sum_{i=1}^n (x_i - \mean{x})^2}\sqrt{\sum_{i=1}^n (y_i - \mean{y})^2}},$$ gdzie $\mean{x}$, $\mean{y}$ oznaczaj± warto¶ci ¶rednie z tych prób, tj. $\mean{x} = \frac{\sum_{i=1}^n x_i}{n}$, $\mean{y} = \frac{\sum_{i=1}^n y_i}{n}$.
 \end{defi}
@@ -579,7 +639,7 @@ Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowy
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[scale=0.3]{pearson.png}
+\includegraphics[scale=0.35]{pearson.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.7\textwidth}
 \caption{Przyk³adowe wykresy danych $(x, y)$ i odpowiadaj±ce im warto¶ci wspó³czynnika korelacji liniowej Pearsona \label{pearson}}
@@ -596,26 +656,38 @@ Jako cecha u¿ywana by³a ¶rednia warto¶æ autokorelacji obliczanych dla wszystkich
 mean\_autocorr(T_n) = \frac{\sum_{k=1}^n autocorr_k(T_n)}{n}
 \end{equation}
 
-\item \textbf{\textit{Time-reversal asymmetry statistic}}
+\item \textbf{Asymetryczno¶æ odwracalna w czasie}
 
-Ta statystyka zosta³a zaproponowana przez Fulchera i Jonesa w TODO. Zdefiniowana jest w zale¿no¶ci od parametru $k$ przez:
+Ta statystyka (ang. \textit{time-reversal asymmetry statistic}) zosta³a zaproponowana przez Fulchera i Jonesa w TODO. Zdefiniowana jest w zale¿no¶ci od parametru $k$ przez:
 \begin{equation}
 TRAS_{k}(T_n) = \frac{1}{n - 2k} \sum_{i = 0}^{n - 2k} x_{i + 2k}^2 \cdot x_{i + k} - x_{i + k} \cdot x_i^2
 \end{equation}
 Jako cechy wykorzystane zosta³y warto¶ci $TRAS$ dla $k = 25, 50, 100, 200$.
 
-\item \textbf{Infromacje o warto¶ciach szczytowych}
+\item \textbf{Infromacje o skokach}
 
 (TODO Jak sensownie przet³umaczyæ "peak"??????)
 \begin{defi}\label{d:peak}
-\emph{Szczytem o wsparciu $n$} nazwiemy podci±g szeregu $T_n$, w którym istnieje warto¶æ $x$ bêd±ca wiêksza ni¿ $n$ warto¶ci wystêpuj±cych bezpo¶rednio przed ni± oraz $n$ wystêpuj±cych bezpo¶rednio po niej.
+\emph{Skokiem o wsparciu $n$} nazwiemy podci±g szeregu $T_n$, w którym istnieje warto¶æ $x$ bêd±ca wiêksza ni¿ $n$ warto¶ci wystêpuj±cych bezpo¶rednio przed ni± oraz $n$ warto¶ci wystêpuj±cych bezpo¶rednio po niej.
 \end{defi}
 
-Przyk³adowo w ci±gu $(3, 0, 0, 4, 0, 0, 13)$ warto¶æ $4$ jest szczytem o wsparciu 1 i 2, ale nie jest szczytem o wsparciu 3. \\
-Szczyty wykorzystano przy ekstrakcji piêciu kolejnych cech, oznaczaj±cych (kolejno) liczbê szczytów o wsparciu: 5, 10, 25, 50, 100.
+Przyk³adowo w ci±gu $(3, 0, 0, 4, 0, 0, 13)$ warto¶æ $4$ jest skokiem o wsparciu $1$ i $2$, ale nie jest skokiem o wsparciu $3$. \\
+Skoki wykorzystano przy ekstrakcji piêciu kolejnych cech, które oznacza³y (kolejno) liczbê skoków o wsparciu: 5, 10, 25, 50, 100.
 \end{itemize}
 
+\hfill \\
+Funkcje $min$, $max$, $mean$, $std$, $quantiles$ nazywane bêd± \textit{statystykami podstawowymi}. Z reprezentacji pochodnych (pochodnej, ca³ki, transformaty Fouriera, transformaty falkowej) wyliczane by³y tylko statystyki podstawowe. Warto¶ci wszystkich opisanych wy¿ej statystyk obliczono tylko dla bazowej reprezentacji szeregu. \\
+W ten sposób z $42$ szeregów obecnych w zbiorze danych otrzymano oko³o $5000$ cech.
 
+\subsection{Pozosta³e cechy} \label{ss:additional}
+
+Moerchen udowadnia w (TODO biblio), ¿e u¿yteczne przy klasyfikacji szeregów czasowych jest $k$ najwiêkszych wspó³czynników transformaty Fouriera oraz transformaty falkowej. Autor zdecydowa³ siê wiêc dodaæ po 10 najwiêkszych wspó³czynników dla obydwu transformat wyliczonych dla ka¿dego z szeregów. \\
+Kolejne cechy oparte by³y na korelacji miêdzy dwoma szeregami czasowymi. Analogicznie do autokorelacji, korelacjê miêdzy szeregami  $T_n = (t_1, x_1), \dots, (t_n, x_n)$  i  
+$T'_n = (t_1, x'_1), \dots, (t_n, x'_n)$ definuje siê jako korelacjê Pearsona (def \ref{d:pearson}) miêdzy wektorami $(x_1, \dots x_n)$ oraz $(x_1', \dots, x_n')$. \\
+
+Ostatecznie otrzymano oko³o 6500 cech (przypomnijmy - pocz±tkowa reprezentacja zbioru danych zawiera³a 17242 atrybuty). \\
+
+Warto zwróæiæ uwagê, jak elastyczna jest powy¿sza metoda ekstrakcji cech - mo¿na zastosowaæ j± do praktycznie dowolnego szeregu. Inn± zalet± tej metody jest jej nied³ugi czas dzia³ania. Przyk³adowo, przekszta³cenie zbioru treningowego (sk³adaj±cego siê z 20000 instancji) zajê³o oko³o dwóch godzin na komputerze wyposa¿onym w dwurdzeniowy procesor Intel Core i5 o taktowaniu 2,7 GHz.
 
 
 \begin{thebibliography}{99}
