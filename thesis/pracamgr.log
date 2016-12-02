@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  2 DEC 2016 15:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  2 DEC 2016 19:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,7 +439,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-<supervised.png, id=27, 587.19376pt x 413.545pt>
+<supervised.png, id=28, 587.19376pt x 413.545pt>
 File: supervised.png Graphic file (type png)
  <use supervised.png>
 Package pdftex.def Info: supervised.png used on input line 131.
@@ -608,45 +608,49 @@ Underfull \hbox (badness 10000) in paragraph at lines 688--689
 
  []
 
-[24] [25
+[24]
+Rozdzia\PlPrIeC {\l } 4.
+[25
 
-] (./pracamgr.aux) ) 
+] [26
+
+] [27] (./pracamgr.aux) ) 
 Here is how much of TeX's memory you used:
- 5781 strings out of 493089
- 83831 string characters out of 6134843
- 168697 words of memory out of 5000000
- 9145 multiletter control sequences out of 15000+600000
- 25191 words of font info for 69 fonts, out of 8000000 for 9000
+ 5783 strings out of 493089
+ 83869 string characters out of 6134843
+ 168706 words of memory out of 5000000
+ 9147 multiletter control sequences out of 15000+600000
+ 25738 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,14n,38p,1024b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plmi
-.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr/loca
-l/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/texlive/2015/
-texmf-dist/fonts/enc/dvips/pl/plme.enc}{/usr/local/texlive/2015/texmf-dist/font
-s/enc/dvips/pl/plit.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/symbols/msam10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msam7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/p
-ublic/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
-e1/public/pl/plbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/
-pl/plbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbx8.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbxti10.pfb></usr
-/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plex10.pfb></usr/local/tex
-live/2015/texmf-dist/fonts/type1/public/pl/plmi10.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/pl/plmi6.pfb></usr/local/texlive/2015/texmf-dist/
-fonts/type1/public/pl/plmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/pl/plr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/
-plr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr17.pfb><
-/usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr6.pfb></usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/public/pl/plr9.pfb></usr/local/texlive/2015/texmf-dist/f
-onts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
-/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/
-plti10.pfb>
-Output written on pracamgr.pdf (27 pages, 2108728 bytes).
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl
+/plmi.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr
+/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/texlive/
+2015/texmf-dist/fonts/enc/dvips/pl/plme.enc}{/usr/local/texlive/2015/texmf-dist
+/fonts/enc/dvips/pl/plit.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
+lic/amsfonts/symbols/msam10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/pl/plbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pu
+blic/pl/plbx12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/pl
+bx8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plbxti10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plex10.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/pl/plmi10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/pl/plmi6.pfb></usr/local/texlive/2015/texmf-
+dist/fonts/type1/public/pl/plmi8.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/pl/plr10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/pl/plr12.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr17.
+pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plr6.pfb></usr/lo
+cal/texlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/public/pl/plr9.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
+c/pl/plti10.pfb>
+Output written on pracamgr.pdf (29 pages, 2109946 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 130 compressed objects within 2 object streams
+ 210 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
