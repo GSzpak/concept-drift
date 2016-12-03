@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  2 DEC 2016 19:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  3 DEC 2016 03:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -465,11 +465,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 147--151
  []
 
 [6 <./supervised.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
-
- []
-
-
 Overfull \hbox (3.90472pt too wide) in paragraph at lines 160--172
  [][] 
  []
@@ -479,11 +474,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 178--182
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-[8]
+[7] [8]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    External font `plex10' loaded for size
 (Font)              <9> on input line 204.
@@ -610,16 +601,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 688--689
 
 [24]
 Rozdzia\PlPrIeC {\l } 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 714--716
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--724
+
+ []
+
 [25
 
-] [26
+] <drift_example.png, id=132, 578.16pt x 433.62pt>
+File: drift_example.png Graphic file (type png)
+ <use drift_example.png>
+Package pdftex.def Info: drift_example.png used on input line 735.
+(pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
 
-] [27] (./pracamgr.aux) ) 
+[26 <./drift_example.png>] [27] [28] [29] [30
+
+] [31] (./pracamgr.aux) ) 
 Here is how much of TeX's memory you used:
- 5783 strings out of 493089
- 83869 string characters out of 6134843
- 168706 words of memory out of 5000000
- 9147 multiletter control sequences out of 15000+600000
+ 5792 strings out of 493089
+ 84017 string characters out of 6134843
+ 168754 words of memory out of 5000000
+ 9155 multiletter control sequences out of 15000+600000
  25738 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,14n,38p,1024b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -647,10 +654,10 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/
 ist/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publi
 c/pl/plti10.pfb>
-Output written on pracamgr.pdf (29 pages, 2109946 bytes).
+Output written on pracamgr.pdf (33 pages, 2166878 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
- 134 compressed objects within 2 object streams
+ 225 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

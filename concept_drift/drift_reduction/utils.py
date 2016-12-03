@@ -40,6 +40,8 @@ def get_classification_informativeness(X, y, informativeness_measure_name='mutua
 def plot_informativeness(classification_informativeness, drift_informativeness):
     plt.xlabel('classification informativeness')
     plt.ylabel('drift informativeness')
+    # plt.axhline(y=0.0005, color='r', linestyle='--', label='Drift threshold')
+    # plt.axvline(x=0.00025, color='g', linestyle='--', label='Classification threshold')
     plt.scatter(classification_informativeness, drift_informativeness)
     plt.show()
 

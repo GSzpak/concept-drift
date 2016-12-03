@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1.1}Uczenie z nadzorem a \textit {concept drift}}{5}
 \contentsline {section}{\numberline {1.2}Formalizacja problemu}{6}
 \contentsline {subsection}{\numberline {1.2.1}Paradygmaty uczenia si\k e}{6}
-\contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a \textit {overfitting}}{8}
+\contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a \textit {overfitting}}{7}
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{9}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{9}
 \contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{9}
@@ -26,4 +26,11 @@
 \contentsline {subsection}{\numberline {3.2.3}Pozosta\IeC {\l }e cechy}{23}
 \contentsline {chapter}{\numberline {4}Redukcja \textit {concept drift} poprzez selekcj\k e cech}{25}
 \contentsline {section}{\numberline {4.1}Sprowadzenie problemu adaptacji dziedziny do problemu klasyfikacji}{25}
-\contentsline {chapter}{Bibliografia}{27}
+\contentsline {section}{\numberline {4.2}Miary jako\'sci cech}{27}
+\contentsline {subsubsection}{Wsp\'o\IeC {\l }czynnik korelacji Pearsona}{27}
+\contentsline {subsubsection}{Test $\chi ^2$}{27}
+\contentsline {subsubsection}{Informacja wzajemna}{27}
+\contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{28}
+\contentsline {subsubsection}{Zysk Giniego}{28}
+\contentsline {section}{\numberline {4.3}Wykrywanie ewolucji poj\k e\'c mi\k edzy zbiorem treningowym a testowym}{29}
+\contentsline {chapter}{Bibliografia}{31}

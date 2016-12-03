@@ -149,7 +149,7 @@ I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy d
 Gdy zbiór $X_{test}$ nie jest znany podczas uczenia, mowa o \textit{uczeniu indukcyjnym} (ang. \textit{inductive learning}). W przeciwnym razie takie uczenie nazywa siê \textit{uczeniem transdukcyjnym} (ang. transductive learning). \\
 W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ wykorzystywany jest zatem do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{4}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
 
-Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}. \\
+Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}.
 
 \begin{table}[ht]
 \centering
@@ -677,7 +677,7 @@ Skoki wykorzystano przy ekstrakcji piêciu kolejnych cech, które oznacza³y (kolej
 
 \hfill \\
 Funkcje $min$, $max$, $mean$, $std$, $quantiles$ nazywane bêd± \textit{statystykami podstawowymi}. Z reprezentacji pochodnych (pochodnej, ca³ki, transformaty Fouriera, transformaty falkowej) wyliczane by³y tylko statystyki podstawowe. Warto¶ci wszystkich opisanych wy¿ej statystyk obliczono tylko dla bazowej reprezentacji szeregu. \\
-W ten sposób z $42$ szeregów obecnych w zbiorze danych otrzymano oko³o $5000$ cech.
+W ten sposób z $42$ szeregów obecnych w zbiorze danych otrzymano oko³o 4500 cech.
 
 \subsection{Pozosta³e cechy} \label{ss:additional}
 
@@ -685,7 +685,7 @@ Moerchen udowadnia w (TODO biblio), ¿e u¿yteczne przy klasyfikacji szeregów czas
 Kolejne cechy oparte by³y na korelacji miêdzy dwoma szeregami czasowymi. Analogicznie do autokorelacji, korelacjê miêdzy szeregami  $T_n = (t_1, x_1), \dots, (t_n, x_n)$  i  
 $T'_n = (t_1, x'_1), \dots, (t_n, x'_n)$ definuje siê jako korelacjê Pearsona (def \ref{d:pearson}) miêdzy wektorami $(x_1, \dots x_n)$ oraz $(x_1', \dots, x_n')$. \\
 
-Ostatecznie otrzymano oko³o 6500 cech (przypomnijmy - pocz±tkowa reprezentacja zbioru danych zawiera³a 17242 atrybuty). \\
+Ostatecznie otrzymano oko³o 6000 cech (przypomnijmy - pocz±tkowa reprezentacja zbioru danych zawiera³a 17242 atrybuty). \\
 
 Warto zwróæiæ uwagê, jak elastyczna jest powy¿sza metoda ekstrakcji cech - mo¿na zastosowaæ j± do praktycznie dowolnego szeregu. Inn± zalet± tej metody jest jej nied³ugi czas dzia³ania. Przyk³adowo, przekszta³cenie zbioru treningowego (sk³adaj±cego siê z 20000 instancji) zajê³o oko³o dwóch godzin na komputerze wyposa¿onym w dwurdzeniowy procesor Intel Core i5 o taktowaniu 2,7 GHz.
 
@@ -694,6 +694,138 @@ Warto zwróæiæ uwagê, jak elastyczna jest powy¿sza metoda ekstrakcji cech - mo¿na
 
 \section{Sprowadzenie problemu adaptacji dziedziny do problemu klasyfikacji}
 
+Zacznijmy od sprawdzenia jako¶ci klasyfikatorów przedstawionych w rozdziale \ref{r:experiment} na reprezentacji opisanej w poprzednim rozdziale przy u¿yciu metryki $BAC$. Wynik na zbiorze treningowym wyliczany by³ za pomoc± trójwarstwowej walidacji krzy¿owej. Rezultaty przedstawia tabela \ref{t:res1}.
+
+\begin{table}[ht]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji na wyekstrahowanych cechach}
+\label{t:res1}
+\begin{tabular}{|c|c|c|}
+\hline
+  & Wynik na $X_{train}$ & Wynik na $X_{test}$ \\ \hline
+Regresja logistyczna & 0.95 & 0.53 \\ \hline
+SVM  & 0.96 & 0.53 \\ \hline
+Lasy losowe & 0.99 & 0.71 \\ \hline
+\end{tabular}
+\end{table}
+
+\hfill \\
+Ponownie widoczny jest problem ewoluuj±cych pojêæ. Mimo rewelacyjnych wyników na zborze treningowym (klasyfikator bazuj±cy na lasach losowych  by³ niemal¿e bezb³êdny), jako¶æ predyktorów testowanych na innej grupie stra¿aków okaza³a siê du¿o ni¿sza - wynik pogorszy³ siê o ok. $0.3$ w przypadku lasów losowych oraz o prawie $0.5$ dla klasyfikatorów liniowych. \\
+
+Celem tego rozdzia³u bêdzie przedstawienie metody wyboru takiej poprzestrzeni cech, która bêdzie spe³niaæ dwa wymogi:
+\begin{itemize}
+\item bêdzie umo¿liwiaæ zbudowanie wydajnego klasyfikatora,
+\item bêdzie mozliwie odpodrna na zmiany dziedziny
+\end{itemize}
+
+Opisywane podej¶cie stanowi rozszerzenie pomys³u zaproponowanego przez M. Boulle w (TODO bib) oraz (TODO bib). Intuicja jest nastêpuj±ca: za³ó¿my, ¿e jeste¶my w stanie sprowadziæ problem wykrywania \textit{concept drift} do problemu klasyfikacji (zostanie to opisane szerzej w kolejnych podrozdzia³ach). Za³ó¿my te¿, ¿e mamy dan± funkcjê $f$, która dla danego atrybutu okre¶la jego jako¶æ w odniesieniu do ustalonego problemu klasyfikacji (przyk³adem takich funkcji jest test $\chi^2$.). \\
+
+Celem jest wybranie tych cech, które jednocze¶nie:
+\begin{itemize}
+\item daj± najwy¿szy wynik dla oryginalnego problemu klasyfikacji,
+\item daj± najni¿szy wynik dla problemu wykrywania ewoluuj±cych pojêæ.
+\end{itemize}
+
+Przy takim wyborze w oczywisty sposób zostan± spe³nione postawione wcze¶niej wymagania. Rysunek \ref{drift_example} przedstawia przyk³adowy rozk³ad jako¶ci cech.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.7]{drift_example.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.7\textwidth}
+\caption{Przyk³adowy rozk³ad jako¶ci cech dla problemu klasyfikacji oraz wykrywania ewoluuj±cych pojêæ \label{drift_example}}
+\end{figure}
+
+O¶ $x$ przedstawia jako¶æ cech dla bazowego problemu klasyfikacji, natomiast o¶ $y$ - jako¶æ dla problemu detekcji \textit{concept drift}. Przyk³adowym wyborem jest selekcja cech poni¿ej czerwonej linii (atrybuty s³abo rozró¿niaj±ce ró¿ne dziedziny) oraz na prawo od linii zielonej (cechy o wysokim wyniku dla postawionego problemu klasyfikacji). Oczywi¶cie nie zawsze taki wybór bêdzie mo¿liwy, co poka¿± kolejne podrozdzia³y. \\
+G³ównym wyzwaniem w opisywanym podej¶ciu jest sprowadzenie problemu wykrywania zmiennej dziedziny do problemu klasyfikacji. Zanim jednak poruszona zostanie ta kwestia, autor zaprezentuje u¿ywane najczê¶ciej miary jako¶ci cech.
+\newpage
+
+\section{Miary jako¶ci cech}
+
+Podstawowe miary jako¶ci atrybutów pochodz± ze statystki oraz teorii informacji. Do najbardziej znanych nale¿±:
+
+\begin{itemize}
+\item wspó³czynnik korelacji Pearsona
+\item test $\chi^2$
+\item informacja wzajemna
+\item jednoczynnikowa analiza wariancji (ang. \textit{ANOVA F-value})
+\item zysk Giniego
+\end{itemize}
+
+W bie¿±cej sekcji zostanie przedstawiony opis ka¿dej z tych miar.
+
+\subsubsection{Wspó³czynnik korelacji Pearsona}
+
+Zdefiniowany w \ref{d:pearson} wspó³czynnik korelacji liniowej Pearsona mo¿e byæ te¿ u¿ywany do mierzenia jako¶ci atrybutu. Niech przewidywana zmienna $y$ bêdzie ci±g³a. Dla danego ci±g³ego atrybutu $x$ warto¶æ $pearson\_corr(x, y)$ okre¶la poziom liniowej zale¿no¶ci miêdzy tym atrybutem a $y$. Badanie korelacji jest czêsto wykorzystywane przy analizie mikromacierzowej DNA (TODO bib).
+
+\subsubsection{Test $\chi^2$}
+
+W statystyce testu $\chi^2$ u¿ywa siê do badania niezale¿no¶ci dwóch zdarzeñ $A$ i $B$, gdzie dwa zdarzenia s± uznawane za niezale¿ne, je¶li $P(A \cap B) = P(A)P(B)$, b±d¼ równowa¿nie: $P(A | B) = P(A)$ i analogicznie $P(B | A) = P(B)$. W uczeniu maszynowym test $\chi^2$ stosowany jest do badania niezale¿no¶ci pomiêdzy atrybutami a klas± wynikow±. Za warto¶ciowe uwa¿ane s± te cechy, które nie s± niezale¿nie od przewidywanej zmiennej. \\
+Test ten mo¿e byæ zastosowany tylko w przypadku gdy zarówno atrybut, jak i klasa wynikowa s± zmiennymi kategorycznymi. W przypadku zmiennych ci±g³ych stosuje siê dyskretyzacjê.
+
+\subsubsection{Informacja wzajemna}
+
+Z punktu widzenia teorii informacji klasyfikator mo¿e byæ traktowany jako narzêdzie redukuj±ce poziom \textit{niepewno¶ci} odno¶nie przewidywanej zmiennej. Klasyfikator, "konsumuj±c" informacjê niesion± przez kolejne instancje zbioru treningowego, stopniowo zmniejsza pocz±tkow± niepewno¶æ zmiennej wynikowej. W przypadku klasyfikatora idealnego (to jest takiego, który zawsze dobrze przewiduje klasê wynikow±) koñcowa niepewno¶æ bêdzie wynosi³a 0. \\
+W teorii informacji pocz±tkow± niepewno¶æ definiuje siê formalnie przez pojêcie \textit{entropii}.
+\begin{defi}\label{entropy}
+Je¶li przewidywana zmienna $C$ jest zmienn± dyskretn± przyjmuj±c± $m$ warto¶ci $c_1, c_2, \dots, c_m$, \emph{entropia} - inaczej mówi±c, pocz±tkowa niepewno¶æ - definiowana jest jako
+$$H(C) = -\sum_{i=1}^m P_C(c_i) \log P_C(c_i)$$
+\end{defi}
+Niech teraz atrybut $F$ bêdzie atrybutem dyskretnym przyjmuj±cym $k$ warto¶ci $f_1, f_2, \dots, f_k$. Wtedy niepewno¶æ po poznaniu warto¶ci cechy $F$ nazywa siê \textit{entropi± warunkow±}:
+\begin{displaymath}
+H(C | F) = \sum_{i=1}^k P_C(f_i) H(C|F=f_i) = 
+\end{displaymath}
+\begin{displaymath}
+= -\sum_{i=1}^k P_F(f_i) (\sum_{j=1}^m P_{C|F}(c_j | f_i) \log P_{C|F}(c_j | f_i) )
+\end{displaymath}
+Zachodzi wtedy:
+\begin{displaymath}
+H(C | F) \leq H(C),
+\end{displaymath}
+czyli entropia warunkowa jest nie wiêksza ni¿ entropia pocz±tkowa. Równo¶æ zachodzi wtedy i tylko wtedy, gdy zmienne $C$ i $F$ s± niezale¿ne. \\
+\textit{Informacjê wzajemn±} $I(C; F)$ definiuje siê wtedy jako warto¶æ, o jak± pocz±tkowa niepewno¶æ odno¶nie klasy wynikowej zosta³a pomniejszona po poznaniu warto¶ci cechy $F$, czyli formalnie:
+\begin{equation}
+I(C; F) = H(C) - H(C | F)
+\end{equation}
+Po nietrudnych przekszta³ceniach mo¿na otrzymaæ zwarty wzór na informacjê wzajemn±:
+\begin{equation}
+I(C; F) = \sum_{i=1}^k \sum_{j=1}^m P_{CF}(c_j, f_i) \log(\frac{P_{CF}(c_j, f_i)}{P_C(c_j)P_F(f_i)})
+\end{equation}
+\subsubsection{Jednoczynnikowa analiza wariancji}
+
+Jednoczynnikowa analiza wariancji u¿ywa testu statystycznego $F$ do mierzenia jako¶ci cechy. Test $F$ okre¶la, czy warto¶ci oczekiwane danej cechy $X$ wewn±trz $m$ okre¶lonych grup (odpowiadaj±cych $m$ warto¶ciom klasy wynikowej) ró¿ni± siê miêdzy sob±. Warto¶æ $F$-testu zdefiniowana jest jako:
+\begin{displaymath}
+F = \frac{MS_M}{MS_W}
+\end{displaymath}
+$MS_M$ okre¶la wariancjê miêdzy grupami i jest zdefiniowana jako:
+\begin{displaymath}
+MS_M = \frac{\sum_{i=1}^m n_i(\mean{x_i} - \mean{x})^2}{m - 1},
+\end{displaymath}
+gdzie $n_i$ oznacza liczbê obserwacji w $i$-tej grupie, $\mean{x_i}$ oznacza ¶redni± w $i$ - tej grupie, a $\mean{x}$ - ¶redni± z ca³ej próbki. $MS_W$ okre¶la z kolei wariancjê wewn±trz grup, zdefiniowan± jako:
+\begin{displaymath}
+MS_W = \frac{\sum_{ij} (x_{ij} - \mean{x_i})^2}{n - m},
+\end{displaymath}
+gdzie $x_{ij}$ oznacza$j$-t± obserwacjê $i$-tej grupy.
+
+\subsubsection{Zysk Giniego}
+
+Niech ponownie zmienna przewidywana $C$ bêdzie zmienn± dyskretn± przyjmuj±c± $m$ warto¶ci $c_1, c_2, \dots, c_m$.
+\begin{defi}\label{gini_index}
+\emph{Indeksem Giniego} zmiennej C nazywa siê warto¶æ
+$$Gini(C) = 1 - \sum_{i=1}^m P_C^2(c_i)$$
+\end{defi}
+Podobnie jak entropia, indeks Giniego jest miar± \textit{niejednorodno¶ci} zbioru. Przyk³adowo, dla jednej klasy indeks Giniego - niejednorodno¶æ zbioru wynosi $1 - 1^2 = 0$. Je¶li rozk³ad klas jest jednorodny (czyli $P_C(c_i) = \frac{1}{m}$, indeks Giniego osi±ga maksimum. \\
+Ze wzglêdu na podobieñstwo miêdzy indeksem Giniego a entropi±, \textit{zysk Giniego} definiuje siê analogicznie do informacji wzajemnej. Dla atrybutu dyskretnego $F$ przyjmuj±cego warto¶ci $f_1, f_2, \dots, f_k$ zysk Giniego wyra¿a, o ile zmala³a niejednorodno¶æ zbioru (jego indeks Giniego) po pozaniu warto¶ci cechy $F$:
+\begin{equation}
+GiniGain(C; F) = Gini(C) - Gini(C | F) = Gini(C) - \sum_{i=1}^k P_F(f_i) Gini(C | F = f_i)
+\end{equation}
+
+\hfill \\  
+W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê wzajemn±, jednoczynnikow± analizê wariancji oraz zysk Giniego.
+
+\section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym}
 
 
 \begin{thebibliography}{99}
