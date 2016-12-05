@@ -773,7 +773,7 @@ Test ten mo¿e byæ zastosowany tylko w przypadku gdy zarówno atrybut, jak i klasa
 Z punktu widzenia teorii informacji klasyfikator mo¿e byæ traktowany jako narzêdzie redukuj±ce poziom \textit{niepewno¶ci} odno¶nie przewidywanej zmiennej. Klasyfikator, "konsumuj±c" informacjê niesion± przez kolejne instancje zbioru treningowego, stopniowo zmniejsza pocz±tkow± niepewno¶æ zmiennej wynikowej. W przypadku klasyfikatora idealnego (to jest takiego, który zawsze dobrze przewiduje klasê wynikow±) koñcowa niepewno¶æ bêdzie wynosi³a 0. \\
 W teorii informacji pocz±tkow± niepewno¶æ definiuje siê formalnie przez pojêcie \textit{entropii}.
 \begin{defi}\label{entropy}
-Je¶li przewidywana zmienna $C$ jest zmienn± dyskretn± przyjmuj±c± $m$ warto¶ci $c_1, c_2, \dots, c_m$, \emph{entropia} - inaczej mówi±c, pocz±tkowa niepewno¶æ - definiowana jest jako
+Je¶li przewidywana zmienna $C$ jest zmienn± dyskretn± przyjmuj±c± $m$ warto¶ci $c_1, c_2, \dots, c_m$, \emph{entropia} definiowana jest jako
 $$H(C) = -\sum_{i=1}^m P_C(c_i) \log P_C(c_i)$$
 \end{defi}
 Niech teraz atrybut $F$ bêdzie atrybutem dyskretnym przyjmuj±cym $k$ warto¶ci $f_1, f_2, \dots, f_k$. Wtedy niepewno¶æ po poznaniu warto¶ci cechy $F$ nazywa siê \textit{entropi± warunkow±}:
@@ -946,7 +946,8 @@ Rozk³ad jako¶ci atrybutów mierzony przy u¿yciu jednoczynnikowej analizy wariancj
 \caption{Rozk³ad jako¶ci cech przy u¿yciu jednoczynnikowej analizy wariancji \label{tt_anova}}
 \end{figure}
 
-Znajduje to swoje odwzierciedlenie w otrzymanych rezultatach. Najwiêkszy zysk wydajno¶ci zaobserwowano dla klasyfikatorów liniowych. Wynik na zbiorze testowym dla regresji logistycznej i SVM dla odpowiednich warto¶ci progów poprawi³ siê nawet o $0.15$ , przy jednoczesnym niewielkim spadku $BAC$ na zbiorze treningowym.
+Znajduje to swoje odwzierciedlenie w otrzymanych rezultatach. Najwiêkszy zysk wydajno¶ci zaobserwowano dla klasyfikatorów liniowych. Wynik na zbiorze testowym dla regresji logistycznej i SVM przy odpowiednich warto¶ci progów poprawi³ siê nawet o $0.15$ , przy jednoczesnym niewielkim spadku $BAC$ na zbiorze treningowym. Dla lasów losowych poprawa miary jako¶ci wynios³a oko³o $0.05$ w najlepszym przypadku. Nale¿y przy tym zauwa¿yæ, ¿e polepszenie jako¶ci klasyfikatora nast±pi³a wraz z redukcj± przestrzeni cech - najlepsze wyniki uzyskano dla ok. $1500$ atrybutów. Niesie to ze sob± kolejn± zaletê, jak± jest obni¿enie czasu budowy modelu. \\
+Warto te¿ zwróciæ uwagê na wyniki klasyfikatorów dla ustalonej warto¶ci $threshold_{class}$. Praktycznie w ka¿dym przypadku eliminowanie wiêkszej liczby cech wra¿liwych na zmianê dziedziny skutkuje wzrostem jako¶ci.
 
 \newpage
 
@@ -1019,12 +1020,12 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech   & $X_{train}$ $BAC$ & 
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 $threshold_{class}$ & $threshold_{drift}$ & Liczba cech   & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
-0.0                 & 8000                & 5355          & 0.9948            & 0.7222           \\ \hline
+0.0                 & 8000                & 5355          & 0.9948            & 0.7118           \\ \hline
 0.0                 & 250                 & 3813          & 0.9915            & 0.7401           \\ \hline
 0.0                 & 500                 & 4434          & 0.9923            & 0.7362           \\ \hline
 0.0                 & 750                 & 4694          & 0.9922            & 0.7311           \\ \hline
 0.0                 & 1000                & 4871          & 0.9929            & 0.7275           \\ \hline
-\textbf{250}        & \textbf{250}        & \textbf{1890} & \textbf{0.9919}   & \textbf{0.7459}  \\ \hline
+\textbf{250}        & \textbf{250}        & \textbf{1890} & \textbf{0.9919}   & \textbf{0.7659}  \\ \hline
 250                 & 500                 & 2278          & 0.9933            & 0.7225           \\ \hline
 250                 & 750                 & 2446          & 0.9927            & 0.7300           \\ \hline
 250                 & 1000                & 2560          & 0.9931            & 0.7233           \\ \hline
