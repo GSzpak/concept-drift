@@ -29,6 +29,8 @@
 \usepackage{amssymb}
 \usepackage{makecell}
 \usepackage{enumitem}
+\usepackage{csvsimple}
+\usepackage{float}
 
 \newcommand\blankpage{%
     \null
@@ -128,7 +130,7 @@ Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervis
 
 \begin{figure}[t!]
 \centering
-\includegraphics[scale=0.8]{supervised.png}
+\includegraphics[scale=0.7]{supervised.png}
 \caption{Schemat uczenia z nadzorem \label{supervised}}
 \end{figure}
 
@@ -154,7 +156,7 @@ Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}.
 \begin{table}[ht]
 \centering
 \captionsetup{justification=centering}
-\captionsetup{width=0.8\textwidth}
+\captionsetup{width=0.7\textwidth}
 \caption{Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak³adamy, ¿e zbiór $X_{train}$ jest dostêpny podczas uczenia, podczas gdy zbiór $Y_{test}$ nie jest znany.}
 \label{t:paradigms}
 \begin{tabular}{|c|c|c|c|}
@@ -728,7 +730,8 @@ Celem jest wybranie tych cech, które jednocze¶nie:
 \item daj± najni¿szy wynik dla problemu wykrywania ewoluuj±cych pojêæ.
 \end{itemize}
 
-Przy takim wyborze w oczywisty sposób zostan± spe³nione postawione wcze¶niej wymagania. Rysunek \ref{drift_example} przedstawia przyk³adowy rozk³ad jako¶ci cech.
+Przy takim wyborze w oczywisty sposób zostan± spe³nione postawione wcze¶niej wymagania. Intuicyjnie, je¶li bêdziemy wstanie wybraæ reprezentacjê, która daje dobr± jako¶æ klasyfikacji, ale s³abo wykrywa zmianê dziedziny, to nasz klasyfikator bêdzie mniej czu³y na ewolucjê pojêæ, co skutkowaæ bêdzie zmniejszeniem ró¿nic miêdzy zbiorami treningowym a testowym. \\
+Rysunek \ref{drift_example} przedstawia rozk³ad jako¶ci cech wraz z przyk³adowym wyborem intuicyjnie "dobrej" reprezentacji.
 
 \begin{figure}[ht!]
 \centering
@@ -827,6 +830,111 @@ W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê 
 
 \section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym}
 
+Wróæmy do problemu wykrywania ewolucji pojêæ. \\
+
+W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w (TODO biblio). Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków i jednocze¶nie s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego. \\
+
+Poni¿ej zaprezentowane zostan± rezultaty selekcji cech przy u¿yciu trzech miar jako¶ci wspomnianych w poprzedniej sekcji. W opisie ka¿dego z eksperymentów $threshold_{drift}$ bêdzie oznacza³ górny próg warto¶ci miary przy detekcji \textit{concept drift}, natomiast $threshold_{class}$ - dolny próg warto¶ci przy klasyfikacji czynno¶ci wykonywanej przez stra¿aka.
+
+\subsubsection*{Informacja wzajemna}
+
+Rysunek \ref{tt_mutual_info} przedstawia rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej jako miary. 
+Widoczna jest wysoka dodatnia korelacja miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla problemu ewolucji pojêæ. Utrudnia to w oczywisty sposób dobranie dobrych warto¶ci dla progów $threshold_{drift}$ oraz $threshold_{class}$ - eliminuj±c atrybuty "s³abe" dla detekcji \textit{concept drift}, eliminujemy jednocze¶nie cechy "dobre" dla klasyfikacji czynno¶ci stra¿aka. Znajduje to swoje odzwierciedlenie w jako¶ci otrzymanych klasyfikatorów. Tabele \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm}, \ref{t:tt_mutual_info_random} prezentuj± jako¶æ klasyfikacji dla ró¿nych warto¶ci $threshold_{class}$ i $threshold_{drift}$ odpowiedni dla klasyfikatorów: regresji logistycznej, SVM i lasów losowych.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[scale=0.5]{train_test_mutual_info.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.7\textwidth}
+\caption{Rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej \label{tt_mutual_info}}
+\end{figure}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu regresji logistycznej}
+\label{t:tt_mutual_info_logit}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 0.7                 & 5355        & 0.9341            & 0.5227           \\ \hline
+0.0                 & 0.05                & 2867        & 0.9116            & 0.516            \\ \hline
+0.0                 & 0.1                 & 3559        & 0.9201            & 0.509            \\ \hline
+0.0                 & 0.2                 & 4362        & 0.9209            & 0.5492           \\ \hline
+\textbf{0.25}                & \textbf{0.05}                & \textbf{950}         & \textbf{0.8494}            & \textbf{0.5468}           \\ \hline
+0.25                & 0.1                 & 1448        & 0.915             & 0.4899           \\ \hline
+0.25                & 0.2                 & 2246        & 0.9471            & 0.5313           \\ \hline
+0.5                 & 0.05                & 266         & 0.7615            & 0.5008           \\ \hline
+0.5                 & 0.1                 & 597         & 0.9292            & 0.5499           \\ \hline
+0.5                 & 0.2                 & 1379        & 0.9662            & 0.5453           \\ \hline
+0.5                 & 0.4                 & 2044        & 0.944             & 0.5225           \\ \hline
+1.0                 & 0.1                 & 15          & 0.1636            & 0.1358           \\ \hline
+1.0                 & 0.3                 & 443         & 0.7416            & 0.4221           \\ \hline
+1.0                 & 0.5                 & 920         & 0.7788            & 0.4255           \\ \hline
+1.5                 & 0.7                 & 486         & 0.6942            & 0.4673           \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu SVM}
+\label{t:tt_mutual_info_lsvm}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 0.7                 & 5355        & 0.9501            & 0.53             \\ \hline
+0.0                 & 0.05                & 2867        & 0.9062            & 0.5668           \\ \hline
+0.0                 & 0.1                 & 3559        & 0.9256            & 0.5374           \\ \hline
+0.0                 & 0.2                 & 4362        & 0.9267            & 0.5379           \\ \hline
+\textbf{0.25}                & \textbf{0.05}                & \textbf{950}         & \textbf{0.8594}            & \textbf{0.5756}           \\ \hline
+0.25                & 0.1                 & 1448        & 0.8985            & 0.5295           \\ \hline
+0.25                & 0.2                 & 2246        & 0.9342            & 0.5507           \\ \hline
+0.5                 & 0.05                & 266         & 0.7179            & 0.3884           \\ \hline
+0.5                 & 0.1                 & 597         & 0.9039            & 0.524            \\ \hline
+0.5                 & 0.2                 & 1379        & 0.9114            & 0.5153           \\ \hline
+0.5                 & 0.4                 & 2044        & 0.9213            & 0.5266           \\ \hline
+1.0                 & 0.1                 & 15          & 0.1719            & 0.1192           \\ \hline
+1.0                 & 0.3                 & 443         & 0.7094            & 0.4488           \\ \hline
+1.0                 & 0.5                 & 920         & 0.6926            & 0.4644           \\ \hline
+1.5                 & 0.7                 & 486         & 0.696             & 0.2582          \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu lasów losowych}
+\label{t:tt_mutual_info_random}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 0.7                 & 5355        & 0.9952            & 0.7118           \\ \hline
+0.0                 & 0.05                & 2867        & 0.9862            & 0.6932           \\ \hline
+0.0                 & 0.1                 & 3559        & 0.992             & 0.7194           \\ \hline
+0.0                 & 0.2                 & 4362        & 0.9933            & 0.7055           \\ \hline
+0.25                & 0.05                & 950         & 0.9892            & 0.7044           \\ \hline
+0.25                & 0.1                 & 1448        & 0.9923            & 0.7167           \\ \hline
+\textbf{0.25}                & \textbf{0.2}                 & \textbf{2246}        & \textbf{0.9927}            & \textbf{0.7249}           \\ \hline
+0.5                 & 0.05                & 266         & 0.9868            & 0.6625           \\ \hline
+0.5                 & 0.1                 & 597         & 0.9924            & 0.7172           \\ \hline
+0.5                 & 0.2                 & 1379        & 0.9935            & 0.6886           \\ \hline
+0.5                 & 0.4                 & 2044        & 0.9954            & 0.7089           \\ \hline
+1.0                 & 0.1                 & 15          & 0.8553            & 0.2661           \\ \hline
+1.0                 & 0.3                 & 443         & 0.9935            & 0.6888           \\ \hline
+1.0                 & 0.5                 & 920         & 0.9951            & 0.7064           \\ \hline
+1.5                 & 0.7                 & 486         & 0.9914            & 0.6438           \\ \hline
+\end{tabular}
+\end{table}
+
+Zastosowanie opisanej selekcji cech pomog³o poprawiæ wynik o oko³o $0.045$ w najlepszym przypadku. Oczekiwane rezultaty zaobserwowaæ mo¿na przyk³adowo dla warto¶ci \\ $threshold_{class} = 0.25$ i $threshold_{drift} = 0.05$ - po wybraniu 950 cech, wynik na zbiorze treningowym obni¿y³ siê, podczas gdy wynik na zbiorze testowym wzrós³. Wybrana reprezentacja, mimo ¿e teoretycznie gorsza je¶li chodzi o klasyfikacjê czynno¶ci stra¿aków, okaza³a siê bardziej odporna na zmianê dziedziny.
+
+\subsubsection{Jednoczynnikowa analiza wariancji}
+
+Lalala
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
