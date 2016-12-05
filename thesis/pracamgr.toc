@@ -33,6 +33,9 @@
 \contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{28}
 \contentsline {subsubsection}{Zysk Giniego}{28}
 \contentsline {section}{\numberline {4.3}Wykrywanie ewolucji poj\k e\'c mi\k edzy zbiorem treningowym a testowym}{29}
+\contentsline {subsection}{\numberline {4.3.1}Wyniki eksperyment\'ow}{29}
 \contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{32}
-\contentsline {subsubsection}{Indeks Giniego}{34}
-\contentsline {chapter}{Bibliografia}{35}
+\contentsline {subsubsection}{Zysk Giniego}{34}
+\contentsline {section}{\numberline {4.4}Detekcja dziedziny przy u\.zyciu klasteryzacji}{36}
+\contentsline {section}{\numberline {4.5}Wnioski z otrzymanych wynik\'ow}{36}
+\contentsline {chapter}{Bibliografia}{39}
