@@ -839,7 +839,7 @@ Poni¿ej zaprezentowane zostan± rezultaty selekcji cech przy u¿yciu trzech miar j
 \subsubsection*{Informacja wzajemna}
 
 Rysunek \ref{tt_mutual_info} przedstawia rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej jako miary. 
-Widoczna jest wysoka dodatnia korelacja miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla problemu ewolucji pojêæ. Utrudnia to w oczywisty sposób dobranie dobrych warto¶ci dla progów $threshold_{drift}$ oraz $threshold_{class}$ - eliminuj±c atrybuty "s³abe" dla detekcji \textit{concept drift}, eliminujemy jednocze¶nie cechy "dobre" dla klasyfikacji czynno¶ci stra¿aka. Znajduje to swoje odzwierciedlenie w jako¶ci otrzymanych klasyfikatorów. Tabele \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm}, \ref{t:tt_mutual_info_random} prezentuj± jako¶æ klasyfikacji dla ró¿nych warto¶ci $threshold_{class}$ i $threshold_{drift}$ odpowiedni dla klasyfikatorów: regresji logistycznej, SVM i lasów losowych.
+Widoczna jest wysoka dodatnia korelacja miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla problemu ewolucji pojêæ. Utrudnia to w oczywisty sposób dobranie dobrych warto¶ci dla progów $threshold_{drift}$ oraz $threshold_{class}$ - eliminuj±c atrybuty "s³abe" dla detekcji \textit{concept drift}, eliminujemy jednocze¶nie cechy "dobre" dla klasyfikacji czynno¶ci stra¿aka. Znajduje to swoje odzwierciedlenie w jako¶ci otrzymanych klasyfikatorów. Tabele \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm}, \ref{t:tt_mutual_info_random} prezentuj± jako¶æ klasyfikacji dla ró¿nych warto¶ci $threshold_{class}$ i $threshold_{drift}$ odpowiednio dla klasyfikatorów: regresji logistycznej, SVM i lasów losowych. Pierwszy wiersz ka¿dej tabeli zawiera wyniki bez selekcji atrybutów.
 
 \begin{figure}[!htbp]
 \centering
@@ -853,7 +853,7 @@ Widoczna jest wysoka dodatnia korelacja miêdzy jako¶ci± cechy dla klasyfikacji a
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu regresji logistycznej}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu informacji wzajemnej i regresji logistycznej}
 \label{t:tt_mutual_info_logit}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -876,11 +876,13 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech & $X_{train}$ $BAC$ & $X
 \end{tabular}
 \end{table}
 
+\newpage
+
 \begin{table}[!htbp]
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu SVM}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu informacji wzajemnej i SVM}
 \label{t:tt_mutual_info_lsvm}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -907,7 +909,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech & $X_{train}$ $BAC$ & $X
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu lasów losowych}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu informacji wzajemnej i lasów losowych}
 \label{t:tt_mutual_info_random}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -934,7 +936,111 @@ Zastosowanie opisanej selekcji cech pomog³o poprawiæ wynik o oko³o $0.045$ w naj
 
 \subsubsection{Jednoczynnikowa analiza wariancji}
 
-Lalala
+Rozk³ad jako¶ci atrybutów mierzony przy u¿yciu jednoczynnikowej analizy wariancji (wykres \ref{tt_anova}) prezentuje siê du¿o korzystniej ni¿ w poprzednim przypadku. Cechy skupione s± przy osiach $x$ i $y$, zatem wybiór zmienne odporne na zmianê dziedziny nie powinnien powodowaæ spadku jako¶ci klasyfikatora.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[scale=0.7]{train_test_anova_f.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.7\textwidth}
+\caption{Rozk³ad jako¶ci cech przy u¿yciu jednoczynnikowej analizy wariancji \label{tt_anova}}
+\end{figure}
+
+Znajduje to swoje odwzierciedlenie w otrzymanych rezultatach. Najwiêkszy zysk wydajno¶ci zaobserwowano dla klasyfikatorów liniowych. Wynik na zbiorze testowym dla regresji logistycznej i SVM dla odpowiednich warto¶ci progów poprawi³ siê nawet o $0.15$ , przy jednoczesnym niewielkim spadku $BAC$ na zbiorze treningowym.
+
+\newpage
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu analizy wariancji i regresji logistycznej}
+\label{t:tt_anova_logit}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech   & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 8000                & 5355          & 0.9497            & 0.5348           \\ \hline
+0.0                 & 250                 & 3813          & 0.9067            & 0.5853           \\ \hline
+0.0                 & 500                 & 4434          & 0.9295            & 0.5940           \\ \hline
+0.0                 & 750                 & 4694          & 0.9387            & 0.5931           \\ \hline
+0.0                 & 1000                & 4871          & 0.9445            & 0.5838           \\ \hline
+\textbf{250}        & \textbf{250}        & \textbf{1890} & \textbf{0.9188}   & \textbf{0.6711}  \\ \hline
+250                 & 500                 & 2278          & 0.9426            & 0.6333           \\ \hline
+250                 & 750                 & 2446          & 0.9538            & 0.6102           \\ \hline
+250                 & 1000                & 2560          & 0.9559            & 0.6289           \\ \hline
+\textbf{500}        & \textbf{250}        & \textbf{1309} & \textbf{0.8926}   & \textbf{0.6680}  \\ \hline
+500                 & 500                 & 1566          & 0.9124            & 0.6050           \\ \hline
+500                 & 750                 & 1656          & 0.9171            & 0.5898           \\ \hline
+500                 & 1000                & 1714          & 0.9310            & 0.6169           \\ \hline
+500                 & 2000                & 1805          & 0.9214            & 0.5495           \\ \hline
+1000                & 500                 & 873           & 0.7031            & 0.5725           \\ \hline
+1000                & 1000                & 927           & 0.7118            & 0.5436           \\ \hline
+1000                & 2000                & 946           & 0.8019            & 0.4943           \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu analizy wariancji i SVM}
+\label{t:tt_anova_svm}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech   & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 8000                & 5355          & 0.9586            & 0.5346           \\ \hline
+0.0                 & 250                 & 3813          & 0.9064            & 0.5603           \\ \hline
+0.0                 & 500                 & 4434          & 0.9334            & 0.5857           \\ \hline
+0.0                 & 750                 & 4694          & 0.9301            & 0.6035           \\ \hline
+0.0                 & 1000                & 4871          & 0.9342            & 0.6054           \\ \hline
+\textbf{250}        & \textbf{250}        & \textbf{1890} & \textbf{0.9254}   & \textbf{0.6733}  \\ \hline
+250                 & 500                 & 2278          & 0.9357            & 0.6492           \\ \hline
+250                 & 750                 & 2446          & 0.9510            & 0.6015           \\ \hline
+250                 & 1000                & 2560          & 0.9578            & 0.6176           \\ \hline
+\textbf{500}        & \textbf{250}        & \textbf{1309} & \textbf{0.8599}   & \textbf{0.6849}  \\ \hline
+500                 & 500                 & 1566          & 0.9069            & 0.5904           \\ \hline
+500                 & 750                 & 1656          & 0.9135            & 0.6239           \\ \hline
+500                 & 1000                & 1714          & 0.9188            & 0.6006           \\ \hline
+500                 & 2000                & 1805          & 0.9128            & 0.5373           \\ \hline
+1000                & 500                 & 873           & 0.7966            & 0.4923           \\ \hline
+1000                & 1000                & 927           & 0.8039            & 0.5589           \\ \hline
+1000                & 2000                & 946           & 0.8005            & 0.5950           \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu analizy wariancji i lasów losowych}
+\label{t:tt_anova_random}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech   & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 8000                & 5355          & 0.9948            & 0.7222           \\ \hline
+0.0                 & 250                 & 3813          & 0.9915            & 0.7401           \\ \hline
+0.0                 & 500                 & 4434          & 0.9923            & 0.7362           \\ \hline
+0.0                 & 750                 & 4694          & 0.9922            & 0.7311           \\ \hline
+0.0                 & 1000                & 4871          & 0.9929            & 0.7275           \\ \hline
+\textbf{250}        & \textbf{250}        & \textbf{1890} & \textbf{0.9919}   & \textbf{0.7459}  \\ \hline
+250                 & 500                 & 2278          & 0.9933            & 0.7225           \\ \hline
+250                 & 750                 & 2446          & 0.9927            & 0.7300           \\ \hline
+250                 & 1000                & 2560          & 0.9931            & 0.7233           \\ \hline
+500                 & 250                 & 1309          & 0.9911            & 0.7171           \\ \hline
+500                 & 500                 & 1566          & 0.9921            & 0.7235           \\ \hline
+500                 & 750                 & 1656          & 0.9920            & 0.7238           \\ \hline
+500                 & 1000                & 1714          & 0.9933            & 0.7056           \\ \hline
+500                 & 2000                & 1805          & 0.9935            & 0.7113           \\ \hline
+1000                & 500                 & 873           & 0.9912            & 0.6692           \\ \hline
+1000                & 1000                & 927           & 0.9915            & 0.6685           \\ \hline
+1000                & 2000                & 946           & 0.9919            & 0.6679           \\ \hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Indeks Giniego}
+
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}

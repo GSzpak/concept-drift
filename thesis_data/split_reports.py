@@ -7,7 +7,7 @@ def split_report(file_path):
     basename, ext = os.path.splitext(file_path)
     clf_names = ['logit', 'svm', 'random_forest']
     clf_to_file = {
-        clf: open('{}_{}.{}'.format(basename, clf, ext), 'w') for clf in clf_names
+        clf: open('{}_{}{}'.format(basename, clf, ext), 'w') for clf in clf_names
     }
     clf_to_writer = {
         clf: csv.writer(f) for clf, f in clf_to_file.iteritems()
