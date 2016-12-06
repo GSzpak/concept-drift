@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  6 DEC 2016 15:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  6 DEC 2016 18:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -750,13 +750,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 1239--1282
 
  []
 
-[40]
+[40] [41] [42
+
+]
 Rozdzia\PlPrIeC {\l } 6.
-[41
+[43] [44
 
-] [42
-
-] [43] (./pracamgr.aux) ) 
+] [45] (./pracamgr.aux) ) 
 Here is how much of TeX's memory you used:
  8396 strings out of 493089
  130982 string characters out of 6134843
@@ -790,10 +790,10 @@ al/texlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2
 st/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /pl/plti10.pfb>
-Output written on pracamgr.pdf (45 pages, 2370340 bytes).
+Output written on pracamgr.pdf (47 pages, 2374613 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
+ 283 PDF objects out of 1000 (max. 8388607)
+ 178 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  86 words of extra memory for PDF output out of 10000 (max. 10000000)
 
