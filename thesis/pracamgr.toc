@@ -36,6 +36,17 @@
 \contentsline {subsection}{\numberline {4.3.1}Wyniki eksperyment\'ow}{29}
 \contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{32}
 \contentsline {subsubsection}{Zysk Giniego}{34}
-\contentsline {section}{\numberline {4.4}Detekcja dziedziny przy u\.zyciu klasteryzacji}{36}
-\contentsline {section}{\numberline {4.5}Wnioski z otrzymanych wynik\'ow}{36}
-\contentsline {chapter}{Bibliografia}{39}
+\contentsline {section}{\numberline {4.4}Detekcja zmiany dziedziny przy u\.zyciu klasteryzacji}{36}
+\contentsline {subsection}{\numberline {4.4.1}Algorytmy klasteryzacji}{37}
+\contentsline {subsubsection}{Algorytm k-centroid\'ow}{37}
+\contentsline {subsection}{\numberline {4.4.2}Opis algorytmu detekcji dziedziny}{37}
+\contentsline {section}{\numberline {4.5}Wnioski z przeprowadzonych eksperyment\'ow}{37}
+\contentsline {chapter}{\numberline {5}Inne metody adaptacji dziedziny}{39}
+\contentsline {section}{\numberline {5.1}Uczenie iteracyjne}{39}
+\contentsline {subsection}{\numberline {5.1.1}Opis algorytmu}{39}
+\contentsline {subsection}{\numberline {5.1.2}Wyniki i wnioski}{39}
+\contentsline {section}{\numberline {5.2}Modyfikacja przestrzeni cech}{39}
+\contentsline {subsection}{\numberline {5.2.1}Opis algorytmu}{39}
+\contentsline {subsection}{\numberline {5.2.2}Wyniki i wnioski}{39}
+\contentsline {chapter}{\numberline {6}Podsumowanie}{41}
+\contentsline {chapter}{Bibliografia}{43}

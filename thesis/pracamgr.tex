@@ -127,8 +127,7 @@ Podstawowym problemem rozwa¿anym w teorii uczenia maszynowego jest problem uczen
 \item Parê zbiorów $(X_{train} \subseteq X, Y_{train} \subseteq Y)$ instancji $x_1, x_2, \dots, x_n$ oraz odpowiadaj±cych im decyzji $f(x_1), f(x_2), \dots, f(x_n)$, zwan± \textit{zbiorem treningowym}
 \end{itemize}
 Zadanie uczenia z nadzorem polega na wyznaczeniu na podstawie zbioru treningowego oraz przy u¿yciu pewnego algorytmu ucz±cego (\textit{klasyfikatora}) takiej funkcji $c: X \rightarrow Y$ (zwanej \textit{modelem}) bêd±cej dobr± aproksymacj± funkcji $f$. Jako¶æ modelu $c$ okre¶la siê, porównuj±c jego warto¶ci dla elementów skoñczonego \textit{zbioru testowego} $X_{test}$ z rzeczywistymi warto¶ciami funkcji $f$ dla tych elementów. Istotne jest przy tym za³o¿enie, ¿e elementy zbiorów $X_{train}$ oraz $X_{test}$ losowane s± ze zbioru $X$ wed³ug tego samego rozk³adu prawdopodobieñstwa $D$. \\
-
-Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervised}. \\
+Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervised}.
 
 \begin{figure}[t!]
 \centering
@@ -138,15 +137,14 @@ Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervis
 
 
 Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie spamu, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. \\
-
-Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
+Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Wiele klasyfikatorów cierpi wtedy na znaczny spadek jako¶ci. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
 St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{1} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daume w \cite{2}. \\
 
 Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku klasyfikacji szeregów czasowych. W poni¿szej pracy autor przedstawia sposoby radzenia sobie z \textit{concept drift} podczas klasyfikacji szeregów czasowych oraz wykonuje studium przypadku na wybranym zbiorze danych.
 
 \section{Formalizacja problemu}
 
-\subsection{Paradygmaty uczenia siê}
+\subsection{Paradygmaty uczenia siê} \label{ss:pardigms}
 
 Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{3}) zdefiniowaæ inne paradygmaty uczenia. \\
 I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy do czynienia z \textit{uczeniem bez nadzoru} (ang. \textit{unsupervised learning}). \\
@@ -1154,7 +1152,27 @@ Warto te¿ zwróciæ uwagê, ¿e mimo korzystnego rozk³adu cech, obni¿anie $threshold
 \item Obni¿enie progu nie poskutkowa³o drastycznym spadkiem liczby wybranych cech (z 4386 na 3776)
 \end{itemize}
 
-\section{Detekcja dziedziny przy u¿yciu klasteryzacji}
+\section{Detekcja zmiany dziedziny przy u¿yciu klasteryzacji}
+
+Problem adaptacji dziedziny w kontek¶cie analizowanego zbioru danych dotyczy ró¿nic w wykonywaniu tych samych czynno¶ci przez ró¿nych stra¿aków. Szukaj±c cech odpornych na ewolucjê pojêæ, naturalne by³oby wiêc wybieranie tych atrybutów, które najgorzej rozró¿niaj± stra¿aków miêdzy sob±. Problemem okaza³ siê jednak brak identyfikatora stra¿aka. W zamian dostêpna by³a inna informacja: liczba osób, od których zbierane by³y dane w ka¿dym ze zbiorów (gwoli przypomnienia: zbiór treningowy i testowy pochodzi³y od ró¿nych czteroosobowych grup stra¿aków). Wykorzystuj±c tê wiedzê, autor proponuje opart± o klasteryzacjê modyfikacjê metody opisanej na wstêpie rozdzia³u.
+
+\subsection{Algorytmy klasteryzacji}
+
+Klasteryzacja (inaczej analiza skupieñ) jest metod± uczenia bez nadzoru (por. z sekcj± \ref{ss:pardigms}). Jest to metoda grupowania elementów danego zbioru we wzglêdnie jednorodne klasy. Podstaw± grupowania w wiêkszo¶ci algorytmów jest podobieñstwo miêdzy elementami - wyra¿one przy pomocy pewnej funkcji podobieñstwa. Algorytmy analizy skupieñ dzieli siê na kilka podstawowych kategorii:
+\begin{itemize}
+\item metody hierarchiczne 
+\item grupa metod k-centroidów
+\item metody rozmytej analizy skupieñ
+\end{itemize}
+
+Autor u¿y³ implementacji algorytmu k-centroidów z biblioteki scikit-learn\footnote{http://scikit-learn.org}.
+
+\subsubsection{Algorytm k-centroidów}
+TODO
+
+\subsection{Opis algorytmu detekcji dziedziny}
+
+Maj±c dany identyfikator stra¿aka, sprowadzenie problemu wykrycia \textit{concept drift} do problemu klasyfikacji jest trywialne: wystarczy ów identyfikator potraktowaæ jako klasê wynikow±.
 
 \begin{figure}[!htbp]
 \centering
@@ -1172,7 +1190,23 @@ Warto te¿ zwróciæ uwagê, ¿e mimo korzystnego rozk³adu cech, obni¿anie $threshold
 \label{clustering_mutual_anova}
 \end{figure}
 
-\section{Wnioski z otrzymanych wyników}
+\section{Wnioski z przeprowadzonych eksperymentów}
+
+\chapter{Inne metody adaptacji dziedziny}
+
+\section{Uczenie iteracyjne}
+
+\subsection{Opis algorytmu}
+
+\subsection{Wyniki i wnioski}
+
+\section{Modyfikacja przestrzeni cech}
+
+\subsection{Opis algorytmu}
+
+\subsection{Wyniki i wnioski}
+
+\chapter{Podsumowanie}
 
 \begin{thebibliography}{99}
 \addcontentsline{toc}{chapter}{Bibliografia}
