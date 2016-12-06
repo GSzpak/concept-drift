@@ -33,6 +33,7 @@
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{listings}
 
 \newcommand\blankpage{%
     \null
@@ -1194,9 +1195,41 @@ Maj±c dany identyfikator stra¿aka, sprowadzenie problemu wykrycia \textit{concep
 
 \chapter{Inne metody adaptacji dziedziny}
 
+W poni¿szym rozdziale przedstawione zostan± dwie inne metody adaptacji dziedziny: uczenie iteracyjne oraz metoda zmiany przestrzeni cech zaproponowana przez Daume w (TODO biblio).
+
 \section{Uczenie iteracyjne}
 
 \subsection{Opis algorytmu}
+
+Idea uczenia iteracyjnego jest stosunkowo intuicyjna. Polega na iteracyjnym powiêkszaniu zbioru treningowego na czê¶ci poprzednio sklasyfikowanych przyk³adów ze zbioru testowego. Bardziej szczegó³owo, uczenie iteracyjne dzia³a wed³ug nastêpuj±cego schematu:
+
+\begin{enumerate}
+\item klasyfikator $c$ jest uczony na zbiorze treningowym
+\item $c$ klasyfikuje czê¶æ przyk³adów ze zbioru testowego
+\item zbiór treningowy powiêkszany jest o uprzednio sklasyfikowane instancje
+\end{enumerate}
+
+Poni¿ej znajduje siê pseudokod algorytmu uczenia iteracyjnego. \\
+
+\begin{lstlisting}[mathescape=true][frame=single][language=Python]
+def iterative(self, classifier, X_train, y_train,
+        X_test, rows_percentage):
+    num_of_rows_per_iteration = rows_percentage * size(X_test)
+    classifier.learn(X_train, y_train)
+    y_test = []
+    while size(X_test) > 0:
+        current_sample = sample(X_test, num_of_rows_per_iteration)
+        X_test = X_test \ current_sample
+        current_y = classifier.classify(current_sample)
+        y_test = y_test $\cup$ current_y
+        y_train = y_train $\cup$ current_y
+        X_train = X_train $\cup$ current_sample
+        classifier.learn(X_train, y_train)
+    return y_test
+\end{lstlisting}
+
+\hfill \\
+Argument $rows\_percentage$ jest liczb± z przedzia³u $(0, 1]$ i okre¶la, jaka czê¶æ zbioru testowego jest do³±czana do zbioru treningowego w ka¿dej iteracji.
 
 \subsection{Wyniki i wnioski}
 
