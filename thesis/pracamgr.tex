@@ -1233,6 +1233,60 @@ Argument $rows\_percentage$ jest liczb± z przedzia³u $(0, 1]$ i okre¶la, jaka cz
 
 \subsection{Wyniki i wnioski}
 
+Wyniki klasyfikacji przy zastosowaniu zaprezentowanego wy¿ej algorytmu opisuj± tabele \ref{t:iterative}. Pierwszy wiersz ka¿dej z tabel podaje jako¶æ klasyfikacji bez zastosowania uczenia iteracyjnego. \\
+
+\begin{table}[!htpb]
+    \begin{subtable}{.55\linewidth}
+      \centering
+\begin{tabular}{|c|c|c|}
+\hline
+$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+-                & 0.9497            & 0.5348           \\ \hline
+0.5                & 0.9541            & 0.5449           \\ \hline
+0.34               & 0.9411            & 0.5302           \\ \hline
+0.25               & 0.9474            & 0.5274           \\ \hline
+0.1                & 0.9507            & 0.5073           \\ \hline
+\end{tabular}
+\caption{Regresja logistyczna}
+    \end{subtable}%
+    \begin{subtable}{.55\linewidth}
+      \centering
+        
+\begin{tabular}{|c|c|c|}
+\hline
+$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{train}$ $BAC$ \\ \hline
+-                & 0.9586            & 0.5348             \\ \hline
+0.5                & 0.9535            & 0.537             \\ \hline
+0.34               & 0.9457            & 0.5389            \\ \hline
+0.25               & 0.9525            & 0.5282            \\ \hline
+0.1                & 0.95127           & 0.5091            \\ \hline
+\end{tabular}
+\caption{SVM}
+    \end{subtable}
+    \begin{subtable}{1.0\linewidth}
+      \centering
+
+\begin{tabular}{|c|c|c|}
+\hline
+$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{train}$ $BAC$ \\ \hline
+-              & 0.9948      & 0.7118     \\ \hline
+0.5             & 0.9949      & 0.7249     \\ \hline
+0.34            & 0.9945      & 0.7257     \\ \hline
+0.25            & 0.995       & 0.7273     \\ \hline
+0.1             & 0.9948      & 0.7317     \\ \hline
+\end{tabular}
+        \caption{Lasy losowe}
+    \end{subtable} 
+    \captionsetup{justification=centering}
+    \captionsetup{width=0.8\textwidth}
+    \caption{Jako¶æ klasyfikatora budowanego przy u¿yciu uczenia iteracyjnego dla ró¿nych algorytmów ucz±cych i warto¶ci $rows\_percentage$}
+    \label{t:iterative}    
+\end{table}
+
+
+Zastosowanie \textit{iterative learning} nie mia³o znacz±cego wp³ywu na jako¶æ klasyfikacji. Mo¿na zauwa¿yæ, ¿e w przypadku "s³abszych" algorytmów (regresji logistycznej i SVM) nast±pi³o obni¿enie wyniku. By³o to najpewniej spowodowane tym, ¿e klasyfikator z ka¿d± iteracj± dopasowywa³ siê coraz bardziej do du¿ej liczby b³êdnie sklasyfikowanych obiektów. \\
+W przypadku lasów losowych mo¿na z kolei zauwa¿yæ nieznaczny, ale sta³y wzrost jako¶ci przy obni¿aniu warto¶ci $rows\_percentage$.
+
 \section{Modyfikacja przestrzeni cech}
 
 \subsection{Opis algorytmu}
