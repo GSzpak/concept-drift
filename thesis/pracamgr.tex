@@ -108,7 +108,7 @@
 
 %tu idzie streszczenie na strone poczatkowa
 \begin{abstract}
-  W pracy przedstawiono sposoby wydajnej klasyfikacji szeregów czasowych dla danych pochodz±cych ze ¼ród³a o zmiennym rozk³adzie. Opisane zosta³y metody ekstrakcji cech z wielowymiarowego szeregu czasowego. Autor opisuje tak¿e metody wyboru przestrzeni atrybutów odpornej na zmiany rozk³adu ¼ród³a.
+  W pracy przedstawiono sposoby wydajnej klasyfikacji szeregów czasowych dla danych pochodz±cych ze ¼ród³a o zmiennym rozk³adzie. Opisane zosta³y metody ekstrakcji cech z wielowymiarowego szeregu czasowego. Autor opisuje tak¿e metody wyboru przestrzeni atrybutów odpornej na zmiany rozk³adu ¼ród³a. Przedstawia równie¿ algorytmy adaptacji dziedziny opisywane w literaturze.
 \end{abstract}
 
 \tableofcontents
@@ -265,7 +265,7 @@ zwana bêdzie funkcj± logistyczn±. Jej wykres przedstawia rysunek \ref{sigmoid}.
 \caption{Wykres funkcji sigmoidalnej \label{sigmoid}}
 \end{figure}
 
-Funkcja $g$ jest oczywi¶cie ci±g³a. Jednocze¶nie $lim_{z \to -\inf} g(z) = 0$ oraz $lim_{z \to \inf} g(z) = 1$. Dziêki tym w³a¶ciwo¶ciom nadaje siê ona do modelowania prawdopodobieñstwa jakiego¶ zjawiska. Klasyfikator bazuj±cy na regresji logistycznej modeluje prawdopodobieñstwo nale¿enia do klasy pozytywnej przez funkcjê:
+Funkcja $g$ jest oczywi¶cie ci±g³a. Jednocze¶nie $\lim_{z \to -\inf} \; g(z) = 0$ oraz $\lim_{z \to \inf} \; g(z) = 1$. Dziêki tym w³a¶ciwo¶ciom nadaje siê ona do modelowania prawdopodobieñstwa danego zjawiska. Klasyfikator bazuj±cy na regresji logistycznej modeluje prawdopodobieñstwo nale¿enia do klasy pozytywnej przez funkcjê:
 \begin{displaymath}
 p_w(\textbf{x}) = g(\textbf{w}^\intercal\textbf{x}) = \frac{1}{1 + e^{-\textbf{w}^\intercal\textbf{x}}},
 \end{displaymath}
@@ -1201,7 +1201,7 @@ W poni¿szym rozdziale przedstawione zostan± dwie inne metody adaptacji dziedziny
 
 \subsection{Opis algorytmu}
 
-Idea uczenia iteracyjnego jest stosunkowo intuicyjna. Polega na iteracyjnym powiêkszaniu zbioru treningowego na czê¶ci poprzednio sklasyfikowanych przyk³adów ze zbioru testowego. Bardziej szczegó³owo, uczenie iteracyjne dzia³a wed³ug nastêpuj±cego schematu:
+Idea uczenia iteracyjnego jest stosunkowo intuicyjna. Algorytm ten polega na iteracyjnym powiêkszaniu zbioru treningowego na czê¶ci poprzednio sklasyfikowanych przyk³adów ze zbioru testowego. Bardziej szczegó³owo, uczenie iteracyjne dzia³a wed³ug nastêpuj±cego schematu:
 
 \begin{enumerate}
 \item klasyfikator $c$ jest uczony na zbiorze treningowym
@@ -1211,8 +1211,8 @@ Idea uczenia iteracyjnego jest stosunkowo intuicyjna. Polega na iteracyjnym powi
 
 Poni¿ej znajduje siê pseudokod algorytmu uczenia iteracyjnego. \\
 
-\begin{lstlisting}[mathescape=true][frame=single][language=Python]
-def iterative(self, classifier, X_train, y_train,
+\begin{lstlisting}[mathescape=true, numbers=left][language=Python]
+def iterative_learning(self, classifier, X_train, y_train,
         X_test, rows_percentage):
     num_of_rows_per_iteration = rows_percentage * size(X_test)
     classifier.learn(X_train, y_train)
@@ -1229,11 +1229,13 @@ def iterative(self, classifier, X_train, y_train,
 \end{lstlisting}
 
 \hfill \\
-Argument $rows\_percentage$ jest liczb± z przedzia³u $(0, 1]$ i okre¶la, jaka czê¶æ zbioru testowego jest do³±czana do zbioru treningowego w ka¿dej iteracji.
+Argument $rows\_percentage$ jest liczb± z przedzia³u $(0, 1]$ i okre¶la, jaka czê¶æ zbioru testowego jest do³±czana do zbioru treningowego w ka¿dej iteracji. \\
+Jedn± z zalet uczenia iteracyjnego jest z pewno¶ci± prostota implementacji. Kolejn± - mo¿liwo¶æ stosowania go dla dowolnych danych oraz klasyfikatora bazowego. Wad± mo¿e natomiast okazaæ siê zwiêkszona czas uczenia - w zale¿no¶ci od warto¶ci $rows\_percentage$, model trenowany jest kilka razy.
 
 \subsection{Wyniki i wnioski}
 
 Wyniki klasyfikacji przy zastosowaniu zaprezentowanego wy¿ej algorytmu opisuj± tabele \ref{t:iterative}. Pierwszy wiersz ka¿dej z tabel podaje jako¶æ klasyfikacji bez zastosowania uczenia iteracyjnego. \\
+
 
 \begin{table}[!htpb]
     \begin{subtable}{.55\linewidth}
@@ -1283,7 +1285,7 @@ $rows\_percentage$ & $X_{train}$ $BAC$ & $X_{train}$ $BAC$ \\ \hline
     \label{t:iterative}    
 \end{table}
 
-Zastosowanie \textit{iterative learning} nie mia³o znacz±cego wp³ywu na jako¶æ klasyfikacji. Mo¿na zauwa¿yæ, ¿e w przypadku "s³abszych" algorytmów (regresji logistycznej i SVM) nast±pi³o obni¿enie wyniku. By³o to najpewniej spowodowane tym, ¿e klasyfikator z ka¿d± iteracj± dopasowywa³ siê coraz bardziej do du¿ej liczby b³êdnie sklasyfikowanych obiektów. \\
+Zastosowanie \textit{iterative learning} nie mia³o znacz±cego wp³ywu na jako¶æ klasyfikacji. Mo¿na zauwa¿yæ, ¿e w przypadku "s³abszych" algorytmów (regresji logistycznej i SVM) nast±pi³o obni¿enie wyniku. By³o to najpewniej spowodowane tym, ¿e klasyfikator z ka¿d± iteracj± dopasowywa³ siê coraz bardziej do du¿ej liczby b³êdnie sklasyfikowanych obiektów. Jest to jedna z wad uczenia iteracyjnego - dla klasyfikatora bazowego miernej jako¶ci wynik najpewniej nie ulegnie poprawie. \\
 W przypadku lasów losowych mo¿na z kolei zauwa¿yæ nieznaczny, ale sta³y wzrost jako¶ci przy obni¿aniu warto¶ci $rows\_percentage$.
 
 \section{Powiêkszenie przestrzeni cech}
@@ -1306,6 +1308,60 @@ Rozwa¿my prosty przypadek, w którym $X = \mathbb{R}^2$, gdzie wymiar $x_1$ odpow
 Zastanówmy siê teraz, co mo¿e zrobiæ algorytm ucz±cy, aby zauwa¿yæ, ¿e "in" powinno byæ traktowane jako przyimek w obydwu dziedzinach, natomiast klasyfikacja s³owa "monitor" mo¿e siê ró¿niæ w zale¿no¶ci od dziedziny. W tym przypadku, wektor wag odpowiadaj±cy klasie "przyimek" bêdzie wygl±da³ nastêpuj±co: $(1, 0, 0, 0, 0, 0)$. Podkre¶la to, ¿e "in" jest przyimkiem niezale¿nie od dziedziny. Z kolei wektor wag dla klasy "rzeczownik" bêdzie postaci $(0, 0, 0, 0, 0, 1)$, co oznacza, ¿e "monitor" jest rzeczownikiem tylko w zbiorze testowym. Analogicznie, wektor dla klasy "czasownik" bêdzie postaci $(0, 0, 0, 1, 0, 0)$.
 
 \subsection{Wyniki i wnioski}
+
+Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{c:features} daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
+Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daume mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przetrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
+
+
+\begin{table}[!htpb]
+    \begin{subtable}{1.\linewidth}
+      \centering
+\begin{tabular}{|c|c|c|c|}
+\hline
+Klasyfikator & Liczba cech & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+logit        & 5355        & 0.9497            & 0.5348           \\ \hline
+SVM          & 5355        & 0.9586            & 0.5346           \\ \hline
+lasy losowe  & 5355        & 0.9948            & 0.7118           \\ \hline
+logit        & 1309        & 0.8926            & 0.6680           \\ \hline
+SVM          & 1309        & 0.8599            & 0.6849           \\ \hline
+lasy losowe  & 1309        & 0.9911            & 0.7171           \\ \hline
+logit        & 1890        & 0.9188            & 0.6711           \\ \hline
+SVM          & 1890        & 0.9254            & 0.6733           \\ \hline
+lasy losowe  & 1890        & 0.9919            & 0.7659           \\ \hline
+logit        & 2278        & 0.9426            & 0.6333           \\ \hline
+SVM          & 2278        & 0.9357            & 0.6492           \\ \hline
+lasy losowe  & 2278        & 0.9933            & 0.7225           \\ \hline
+\end{tabular}
+\caption{Oryginalne wyniki}
+\label{t:easy_original}
+    \end{subtable}
+    \begin{subtable}{1.\linewidth}
+      \centering
+        
+\begin{tabular}{|c|c|c|c|}
+\hline
+Klasyfikator & Liczba cech & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+logit        & 5355        & 0.9498            & 0.5348           \\ \hline
+SVM          & 5355        & 0.9568            & 0.5346           \\ \hline
+lasy losowe  & 5355        & 0.9957            & 0.2080           \\ \hline
+logit        & 1309        & 0.8964            & 0.6516           \\ \hline
+SVM          & 1309        & 0.8652            & 0.6800           \\ \hline
+lasy losowe  & 1309        & 0.9902            & 0.1682           \\ \hline
+logit        & 1890        & 0.9382            & 0.6726           \\ \hline
+SVM          & 1890        & 0.9209            & 0.6606           \\ \hline
+lasy losowe  & 1890        & 0.9908            & 0.1460           \\ \hline
+logit        & 2278        & 0.9407            & 0.6333           \\ \hline
+SVM          & 2278        & 0.9428            & 0.6438           \\ \hline
+lasy losowe  & 2278        & 0.9921            & 0.1647           \\ \hline
+\end{tabular}
+\caption{Wyniki po powiêkszeniu przestrzeni cech}
+\label{t:easy_augmented}
+    \end{subtable}
+    \captionsetup{justification=centering}
+    \captionsetup{width=0.8\textwidth}
+    \caption{Jako¶æ klasyfikatora budowanego przy u¿yciu metody powiêkszania przestrzeni cech}
+    \label{t:augmentation}    
+\end{table}
 
 \chapter{Podsumowanie}
 

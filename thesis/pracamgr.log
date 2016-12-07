@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  6 DEC 2016 18:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  7 DEC 2016 22:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -732,36 +732,41 @@ File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 1220.
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1236--1237
+ [39]
+Underfull \hbox (badness 10000) in paragraph at lines 1237--1238
 
  []
 
-[39]
-Overfull \hbox (44.10446pt too wide) in paragraph at lines 1239--1282
+
+Overfull \hbox (44.10446pt too wide) in paragraph at lines 1241--1284
 []$[]$$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1239--1282
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1284
 
  []
 
-[40] [41] [42
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 1317--1362
 
-]
+ []
+
+[41] [42]
 Rozdzia\PlPrIeC {\l } 6.
-[43] [44
+[43
+
+] [44
 
 ] [45] (./pracamgr.aux) ) 
 Here is how much of TeX's memory you used:
- 8396 strings out of 493089
- 130982 string characters out of 6134843
- 219299 words of memory out of 5000000
- 11719 multiletter control sequences out of 15000+600000
+ 8401 strings out of 493089
+ 131076 string characters out of 6134843
+ 219352 words of memory out of 5000000
+ 11724 multiletter control sequences out of 15000+600000
  26593 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,14n,46p,1024b,1236s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 40i,14n,46p,1024b,1240s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl
 /plmi.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plrm.enc}{/usr
 /local/texlive/2015/texmf-dist/fonts/enc/dvips/pl/plms.enc}{/usr/local/texlive/
@@ -787,7 +792,7 @@ al/texlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2
 st/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /pl/plti10.pfb>
-Output written on pracamgr.pdf (47 pages, 2374665 bytes).
+Output written on pracamgr.pdf (47 pages, 2378110 bytes).
 PDF statistics:
  283 PDF objects out of 1000 (max. 8388607)
  178 compressed objects within 2 object streams
