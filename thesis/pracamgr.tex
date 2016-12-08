@@ -42,6 +42,10 @@
 
 \newcommand*\mean[1]{\bar{#1}}
 
+\DeclareCaptionFormat{listing}{\rule{\dimexpr\textwidth+17pt\relax}{0.4pt}\vskip1pt#1#2#3}
+\captionsetup[lstlisting]{format=listing,singlelinecheck=false, margin=0pt, font={sf},labelsep=space,labelfont=bf}
+
+\renewcommand\lstlistingname{Algorytm}
 % Dane magistranta:
 
 \author{Grzegorz Szpak}
@@ -1182,7 +1186,7 @@ Przyk³ad obiektów pogrupowanych przy u¿yciu algorytmu k-centroidów przedstawia r
 \end{itemize}
 \newpage
 
-\subsection{Opis algorytmu detekcji dziedziny}
+\subsection{Opis algorytmu}
 
 W sekcji \ref{s:tt} wyliczano jako¶æ cech wzglêdem etykiet "train" i "test" w celu wykrycia cech najbardziej odpornych na \textit{concept drift}. Intuicyjnie, lepsze wyniki powinno siê uzyskaæ, u¿ywaj±c jako klas rzeczywistych identyfikatorów dziedzin - w tym przypadku, identyfikatorów stra¿aków. Te identyfikatory nie by³y jednak obecne w zbiorze danych. Jak wspomniano na pocz±tku bie¿±cej sekcji, mo¿na je jednak imitowaæ na podstawie wyników analizy skupieñ. \\
 Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿aków dostarczy³o danych, a nastêpnie wykorzystanie identyfikatorów tak powsta³ych klastrów do wyznaczenia jako¶ci cech. Taka metoda wyda³a siê jednak autorowi niewystarczaj±ca - klastry mog³y skupiaæ w sobie instancje odpowiadaj±ce podobnym czynno¶ciom (tak jak $running$ i $stairs\_up$), a nie pomiary pobrane od jednego stra¿aka. Z tego powodu autor zastosowa³ inny algorytm, w którym grupowanie dokonywane by³o osobno na zbiorach obiektów nale¿±cych do tej samej klasy. Nastêpnie jako¶æ danej cechy dla problemu \textit{concept drift} by³a mierzona osobno na ka¿dym z tych zbiorów, a ostateczny wynik by³ ¶redni± wyników czê¶ciowych. \\
@@ -1190,7 +1194,7 @@ Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿a
 Schemat algorytmu dla cechy $f$ i miary $quality\_measure$ przedstawia poni¿szy pseudokod: \\
 
 
-\begin{lstlisting}[mathescape=true, numbers=left, frame=single][language=Python]
+\begin{lstlisting}[mathescape=true, frame=top, frame=bottom, caption={Algorytm pomiaru jako¶ci cechy dla problemu wykrycia ewoluuj±cych pojêæ przy u¿yciu klasteryzacji}, label=alg_cluster][language=Python]
 def get_quality(f, quality_measure, X_train, y_train):
     labels = set(y_train)
     partial_qualities = []
@@ -1217,9 +1221,8 @@ Poniewa¿ liczba klastrów by³a z góry ustalona, do klastrowania u¿yto algorytmu k
 
 \subsubsection{Informacja wzajemna i jednoczynnikowa analiza wariancji}
 
-Jako¶æ cech okre¶lana przy u¿yciu 
-
-
+Analogicznie do eksperymentów opisanych w sekcji \ref{s:tt}, rozpatrzmy rozk³ad jako¶ci cech dla dwóch problemów: klasyfikacji czynno¶ci stra¿aka oraz wykrywania ewoluuj±cych pojêæ. W tym przypadku jako¶æ cechy dla problemu detekcji \textit{concept drift} wyznaczana by³a przy u¿yciu algorytmu \ref{alg_cluster}. \\
+Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu informacji wzajemnej i jednoczynnikowej analizy wariancji jako miar. W obu przypadkach widaæ wysok± korelacjê miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla wykrycia dziedziny. Jak wspomniano w sekcji \ref{s:tt}, znacznie utrudnia to dobranie odpowiednich warto¶ci progów $threshold_{drift}$ oraz $threshold_{class}$. Znalaz³o to swoje odzwierciedlenie w jako¶ci klasyfikacji - w obu przypadkach zastosowanie selekcji atrybutów albo pogarsza³o wynik, albo poprawia³o go nieznacznie. Rezultaty uzyskane dla ró¿nych klasyfikatorów by³y bardzo zbli¿one do tych prezentowanych w tabelach \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm} i \ref{t:tt_mutual_info_random}.
 
 \begin{figure}[!htbp]
 \centering
@@ -1236,6 +1239,27 @@ Jako¶æ cech okre¶lana przy u¿yciu
 \caption{Rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej (po lewej) i jednoczynnikowej analizy wariancji (po prawej)}
 \label{clustering_mutual_anova}
 \end{figure}
+
+\subsubsection{Zysk Giniego}
+
+Sytuacja prezentuje siê znacznie korzystniej, gdy jako miary u¿yje siê zysku Giniego (rys. \ref{clustering_gini}).
+
+\begin{figure}[!htbp]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.99\linewidth]{clustering_gini.png}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=.99\linewidth]{clustering_gini_zoomed.png}
+\end{subfigure}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego. Wykres po prawej stronie stanowi przybli¿enie wykresu po stronie lewej}
+\label{clustering_gini}
+\end{figure}
+
 
 \section{Wnioski z przeprowadzonych eksperymentów}
 
@@ -1257,7 +1281,7 @@ Idea uczenia iteracyjnego jest stosunkowo intuicyjna. Algorytm ten polega na ite
 
 Poni¿ej znajduje siê pseudokod algorytmu uczenia iteracyjnego. \\
 
-\begin{lstlisting}[mathescape=true, numbers=left, frame=single][language=Python]
+\begin{lstlisting}[mathescape=true, frame=top, frame=bottom, caption={Algorytm uczenia iteracyjnego}][language=Python]
 def iterative_learning(classifier, X_train, y_train,
         X_test, rows_percentage):
     num_of_rows_per_iteration = rows_percentage * size(X_test)
