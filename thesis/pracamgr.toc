@@ -38,15 +38,15 @@
 \contentsline {subsubsection}{Zysk Giniego}{34}
 \contentsline {section}{\numberline {4.4}Detekcja zmiany dziedziny przy u\.zyciu klasteryzacji}{36}
 \contentsline {subsection}{\numberline {4.4.1}Algorytmy klasteryzacji}{37}
-\contentsline {subsubsection}{Algorytm k-centroid\'ow}{37}
-\contentsline {subsection}{\numberline {4.4.2}Opis algorytmu detekcji dziedziny}{37}
-\contentsline {section}{\numberline {4.5}Wnioski z przeprowadzonych eksperyment\'ow}{37}
-\contentsline {chapter}{\numberline {5}Inne metody adaptacji dziedziny}{39}
-\contentsline {section}{\numberline {5.1}Uczenie iteracyjne}{39}
-\contentsline {subsection}{\numberline {5.1.1}Opis algorytmu}{39}
-\contentsline {subsection}{\numberline {5.1.2}Wyniki i wnioski}{40}
-\contentsline {section}{\numberline {5.2}Powi\k ekszenie przestrzeni cech}{40}
-\contentsline {subsection}{\numberline {5.2.1}Opis algorytmu}{40}
-\contentsline {subsection}{\numberline {5.2.2}Wyniki i wnioski}{41}
-\contentsline {chapter}{\numberline {6}Podsumowanie}{43}
-\contentsline {chapter}{Bibliografia}{45}
+\contentsline {subsection}{\numberline {4.4.2}Opis algorytmu detekcji dziedziny}{38}
+\contentsline {subsection}{\numberline {4.4.3}Wyniki eksperyment\'ow}{38}
+\contentsline {section}{\numberline {4.5}Wnioski z przeprowadzonych eksperyment\'ow}{38}
+\contentsline {chapter}{\numberline {5}Inne metody adaptacji dziedziny}{41}
+\contentsline {section}{\numberline {5.1}Uczenie iteracyjne}{41}
+\contentsline {subsection}{\numberline {5.1.1}Opis algorytmu}{41}
+\contentsline {subsection}{\numberline {5.1.2}Eksperymenty i wnioski}{42}
+\contentsline {section}{\numberline {5.2}Powi\k ekszenie przestrzeni cech}{42}
+\contentsline {subsection}{\numberline {5.2.1}Opis algorytmu}{42}
+\contentsline {subsection}{\numberline {5.2.2}Eksperymenty i wnioski}{43}
+\contentsline {chapter}{\numberline {6}Podsumowanie}{45}
+\contentsline {chapter}{Bibliografia}{47}

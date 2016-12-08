@@ -829,7 +829,7 @@ GiniGain(C; F) = Gini(C) - Gini(C | F) = Gini(C) - \sum_{i=1}^k P_F(f_i) Gini(C 
 \hfill \\  
 W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê wzajemn±, jednoczynnikow± analizê wariancji oraz zysk Giniego.
 
-\section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym}
+\section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym} \label{s:tt}
 
 Wróæmy do problemu wykrywania ewolucji pojêæ. \\
 
@@ -1161,19 +1161,61 @@ Problem adaptacji dziedziny w kontek¶cie analizowanego zbioru danych dotyczy ró¿
 
 Klasteryzacja (inaczej analiza skupieñ) jest metod± uczenia bez nadzoru (por. z sekcj± \ref{ss:pardigms}). Jest to metoda grupowania elementów danego zbioru we wzglêdnie jednorodne klasy. Podstaw± grupowania w wiêkszo¶ci algorytmów jest podobieñstwo miêdzy elementami - wyra¿one przy pomocy pewnej funkcji podobieñstwa. Algorytmy analizy skupieñ dzieli siê na kilka podstawowych kategorii:
 \begin{itemize}
-\item metody hierarchiczne 
-\item grupa metod k-centroidów
-\item metody rozmytej analizy skupieñ
+\item metody hierarchiczne - tworzy dla zbioru obiektów hierarchiê klasyfikacji, zaczynaj±c od takiego podzia³u, w którym ka¿dy obiekt stanowi samodzielne skupienie, a koñcz±c na podziale, w którym wszystkie obiekty nale¿± do jednego skupienia.
+\item metody rozmytej analizy skupieñ - metody z tej grupy mog± przydzielaæ element do wiêcej ni¿ jednego klastra. Z tego powodu algorytmy rozmytej analizy skupieñ stosowane s± w zadaniu kategoryzacji (przydzia³u obiektów do jednej lub wielu kategorii).
+\item grupa metod k-centroidów - polega na podzieleniu zbioru na dan± z góry liczbê klas. Polega na iteracyjnym przyporz±dkowaniu danego obiektu do klastra, którego ¶rodek znajduje siê najbli¿ej. Schemat algorytmu jest nastêpuj±cy:
+\begin{enumerate}
+\item losowy wybór ¶rodków (centroidów) klastrów
+\item przypisanie punktów do najbli¿szych centroidów
+\item wyliczenie nowych ¶rodków skupieñ
+\item powtarzanie algorytmu a¿ do osi±gniêcia kryterium zbie¿no¶ci
+\end{enumerate}
+Przyk³ad obiektów pogrupowanych przy u¿yciu algorytmu k-centroidów przedstawia rys. \ref{kcentroids}.
+\begin{figure}[!htbp]
+\centering
+\includegraphics[scale=0.55]{kmeans.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.7\textwidth}
+\caption{Przyk³ad klastrowania danych przy u¿yciu algorytmu k-centroidów}
+\label{kcentroids}
+\end{figure}
 \end{itemize}
-
-Autor u¿y³ implementacji algorytmu k-centroidów z biblioteki scikit-learn\footnote{http://scikit-learn.org}.
-
-\subsubsection{Algorytm k-centroidów}
-TODO
+\newpage
 
 \subsection{Opis algorytmu detekcji dziedziny}
 
-Maj±c dany identyfikator stra¿aka, sprowadzenie problemu wykrycia \textit{concept drift} do problemu klasyfikacji jest trywialne: wystarczy ów identyfikator potraktowaæ jako klasê wynikow±.
+W sekcji \ref{s:tt} wyliczano jako¶æ cech wzglêdem etykiet "train" i "test" w celu wykrycia cech najbardziej odpornych na \textit{concept drift}. Intuicyjnie, lepsze wyniki powinno siê uzyskaæ, u¿ywaj±c jako klas rzeczywistych identyfikatorów dziedzin - w tym przypadku, identyfikatorów stra¿aków. Te identyfikatory nie by³y jednak obecne w zbiorze danych. Jak wspomniano na pocz±tku bie¿±cej sekcji, mo¿na je jednak imitowaæ na podstawie wyników analizy skupieñ. \\
+Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿aków dostarczy³o danych, a nastêpnie wykorzystanie identyfikatorów tak powsta³ych klastrów do wyznaczenia jako¶ci cech. Taka metoda wyda³a siê jednak autorowi niewystarczaj±ca - klastry mog³y skupiaæ w sobie instancje odpowiadaj±ce podobnym czynno¶ciom (tak jak $running$ i $stairs\_up$), a nie pomiary pobrane od jednego stra¿aka. Z tego powodu autor zastosowa³ inny algorytm, w którym grupowanie dokonywane by³o osobno na zbiorach obiektów nale¿±cych do tej samej klasy. Nastêpnie jako¶æ danej cechy dla problemu \textit{concept drift} by³a mierzona osobno na ka¿dym z tych zbiorów, a ostateczny wynik by³ ¶redni± wyników czê¶ciowych. \\
+
+Schemat algorytmu dla cechy $f$ i miary $quality\_measure$ przedstawia poni¿szy pseudokod: \\
+
+
+\begin{lstlisting}[mathescape=true, numbers=left, frame=single][language=Python]
+def get_quality(f, quality_measure, X_train, y_train):
+    labels = set(y_train)
+    partial_qualities = []
+    for label in labels:
+        X_label = {x_i $\in$ X_train: y_i = label}
+        # Zbiór treningowy pochodzi³ od 4 stra¿aków - 
+        # st±d podzia³ na 4 klastry
+        firefighter_ids = cluster(X_label, 4)
+        # Pomiar jako¶ci cechy dla czêsciowego zbioru
+        # wzglêdem identyfikatorów stra¿aków
+        partial_quality = quality_measure(
+            X_label,
+            f,
+            firefighter_ids
+        )
+        partial_qualities.append(partial_quality)
+    return mean(partial_qualities)
+\end{lstlisting}
+
+\hfill \\
+Poniewa¿ liczba klastrów by³a z góry ustalona, do klastrowania u¿yto algorytmu k-centroidów. Jako miarê jako¶ci zastosowano, podobnie jak w poprzedniej sekcji: informacjê wzajemn±, jednoczynnikow± analizê wariancji oraz zysk Giniego.
+
+\subsection{Wyniki eksperymentów}
+
+
 
 \begin{figure}[!htbp]
 \centering
@@ -1211,8 +1253,8 @@ Idea uczenia iteracyjnego jest stosunkowo intuicyjna. Algorytm ten polega na ite
 
 Poni¿ej znajduje siê pseudokod algorytmu uczenia iteracyjnego. \\
 
-\begin{lstlisting}[mathescape=true, numbers=left][language=Python]
-def iterative_learning(self, classifier, X_train, y_train,
+\begin{lstlisting}[mathescape=true, numbers=left, frame=single][language=Python]
+def iterative_learning(classifier, X_train, y_train,
         X_test, rows_percentage):
     num_of_rows_per_iteration = rows_percentage * size(X_test)
     classifier.learn(X_train, y_train)
@@ -1232,7 +1274,7 @@ def iterative_learning(self, classifier, X_train, y_train,
 Argument $rows\_percentage$ jest liczb± z przedzia³u $(0, 1]$ i okre¶la, jaka czê¶æ zbioru testowego jest do³±czana do zbioru treningowego w ka¿dej iteracji. \\
 Jedn± z zalet uczenia iteracyjnego jest z pewno¶ci± prostota implementacji. Kolejn± - mo¿liwo¶æ stosowania go dla dowolnych danych oraz klasyfikatora bazowego. Wad± mo¿e natomiast okazaæ siê zwiêkszona czas uczenia - w zale¿no¶ci od warto¶ci $rows\_percentage$, model trenowany jest kilka razy.
 
-\subsection{Wyniki i wnioski}
+\subsection{Eksperymenty i wnioski}
 
 Wyniki klasyfikacji przy zastosowaniu zaprezentowanego wy¿ej algorytmu opisuj± tabele \ref{t:iterative}. Pierwszy wiersz ka¿dej z tabel podaje jako¶æ klasyfikacji bez zastosowania uczenia iteracyjnego. \\
 
@@ -1307,7 +1349,7 @@ Spróbujmy wyja¶niæ intuicjê stoj±c± za takim podej¶ciem. Rozwa¿my problem rozpoz
 Rozwa¿my prosty przypadek, w którym $X = \mathbb{R}^2$, gdzie wymiar $x_1$ odpowiada s³owu "in", a wymiar $x_2$ - s³owu "monitor". Wtedy, w $\hat{X}$, $\hat{x}_1$ i $\hat{x}_2$ odpowiadaj± "ogólnym" znaczeniom tych s³ów, $\hat{x}_3$ i $\hat{x}_4$ - znaczeniom w dziedzinie artyku³ów finansowych, a $\hat{x}_5$ i $\hat{x}_6$ - znaczeniom w dziedzinie artyku³ów komputerowych. \\
 Zastanówmy siê teraz, co mo¿e zrobiæ algorytm ucz±cy, aby zauwa¿yæ, ¿e "in" powinno byæ traktowane jako przyimek w obydwu dziedzinach, natomiast klasyfikacja s³owa "monitor" mo¿e siê ró¿niæ w zale¿no¶ci od dziedziny. W tym przypadku, wektor wag odpowiadaj±cy klasie "przyimek" bêdzie wygl±da³ nastêpuj±co: $(1, 0, 0, 0, 0, 0)$. Podkre¶la to, ¿e "in" jest przyimkiem niezale¿nie od dziedziny. Z kolei wektor wag dla klasy "rzeczownik" bêdzie postaci $(0, 0, 0, 0, 0, 1)$, co oznacza, ¿e "monitor" jest rzeczownikiem tylko w zbiorze testowym. Analogicznie, wektor dla klasy "czasownik" bêdzie postaci $(0, 0, 0, 1, 0, 0)$.
 
-\subsection{Wyniki i wnioski}
+\subsection{Eksperymenty i wnioski}
 
 Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{c:features} daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
 Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daume mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przetrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
