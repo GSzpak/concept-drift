@@ -40,6 +40,7 @@
 \contentsline {subsection}{\numberline {4.4.1}Algorytmy klasteryzacji}{37}
 \contentsline {subsection}{\numberline {4.4.2}Opis algorytmu detekcji dziedziny}{38}
 \contentsline {subsection}{\numberline {4.4.3}Wyniki eksperyment\'ow}{38}
+\contentsline {subsubsection}{Informacja wzajemna i jednoczynnikowa analiza wariancji}{38}
 \contentsline {section}{\numberline {4.5}Wnioski z przeprowadzonych eksperyment\'ow}{38}
 \contentsline {chapter}{\numberline {5}Inne metody adaptacji dziedziny}{41}
 \contentsline {section}{\numberline {5.1}Uczenie iteracyjne}{41}

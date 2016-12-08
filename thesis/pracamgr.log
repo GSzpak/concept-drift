@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  8 DEC 2016 01:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  8 DEC 2016 02:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -719,54 +719,62 @@ Underfull \hbox (badness 10000) in paragraph at lines 1190--1191
 Package Listings Warning: Text dropped after begin of listing on input line 119
 3.
 
-File: train_test_random_forest.png Graphic file (type png)
-<use train_test_random_forest.png>
-Package pdftex.def Info: train_test_random_forest.png used on input line 1224.
-(pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
-File: train_test_random_forest_zoomed.png Graphic file (type png)
- <use train_test_random_forest_zoomed.png>
-Package pdftex.def Info: train_test_random_forest_zoomed.png used on input line
- 1228.
-(pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
+<clustering_mutual_info.png, id=182, 578.16pt x 433.62pt>
+File: clustering_mutual_info.png Graphic file (type png)
 
-[38] [39] [40
+<use clustering_mutual_info.png>
+Package pdftex.def Info: clustering_mutual_info.png used on input line 1228.
+(pdftex.def)             Requested size: 240.13681pt x 180.10112pt.
+
+<clustering_anova_f.png, id=183, 578.16pt x 433.62pt>
+File: clustering_anova_f.png Graphic file (type png)
+
+<use clustering_anova_f.png>
+Package pdftex.def Info: clustering_anova_f.png used on input line 1232.
+(pdftex.def)             Requested size: 240.13681pt x 180.10112pt.
+
+Overfull \hbox (44.10446pt too wide) in paragraph at lines 1226--1236
+ []$[]$$[]$ 
+ []
+
+[38] [39 <./clustering_mutual_info.png> <./clustering_anova_f.png>] [40
 
 ]
 Rozdzia\PlPrIeC {\l } 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1254--1255
+Underfull \hbox (badness 10000) in paragraph at lines 1258--1259
 
  []
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 125
-6.
+Package Listings Warning: Text dropped after begin of listing on input line 126
+0.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1262
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1266
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1262.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1266.
 
  [41]
-Underfull \hbox (badness 10000) in paragraph at lines 1279--1280
+Underfull \hbox (badness 10000) in paragraph at lines 1283--1284
 
  []
 
 
-Overfull \hbox (44.10446pt too wide) in paragraph at lines 1283--1326
+Overfull \hbox (44.10446pt too wide) in paragraph at lines 1287--1330
 []$[]$$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1283--1326
+Underfull \hbox (badness 10000) in paragraph at lines 1287--1330
 
  []
 
 [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1359--1404
+Underfull \hbox (badness 10000) in paragraph at lines 1363--1408
 
  []
 
@@ -778,10 +786,10 @@ Rozdzia\PlPrIeC {\l } 6.
 
 ] [47] (./pracamgr.aux) ) 
 Here is how much of TeX's memory you used:
- 8411 strings out of 493089
- 131210 string characters out of 6134843
+ 8421 strings out of 493089
+ 131488 string characters out of 6134843
  221374 words of memory out of 5000000
- 11733 multiletter control sequences out of 15000+600000
+ 11741 multiletter control sequences out of 15000+600000
  26593 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,46p,1024b,1261s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -810,10 +818,10 @@ al/texlive/2015/texmf-dist/fonts/type1/public/pl/plr8.pfb></usr/local/texlive/2
 st/fonts/type1/public/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/pl/plsy8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public
 /pl/plti10.pfb>
-Output written on pracamgr.pdf (49 pages, 2415977 bytes).
+Output written on pracamgr.pdf (49 pages, 2499162 bytes).
 PDF statistics:
- 292 PDF objects out of 1000 (max. 8388607)
+ 296 PDF objects out of 1000 (max. 8388607)
  183 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
