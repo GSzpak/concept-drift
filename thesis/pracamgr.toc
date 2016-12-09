@@ -21,7 +21,7 @@
 \contentsline {subsubsection}{Pochodna szeregu po czasie}{16}
 \contentsline {subsubsection}{Ca\IeC {\l }ka szeregu po czasie}{17}
 \contentsline {subsubsection}{Transformacja Fouriera}{17}
-\contentsline {subsubsection}{Transformacja falkowa}{18}
+\contentsline {subsubsection}{Transformacja falkowa}{17}
 \contentsline {subsection}{\numberline {3.2.2}Statystyki wyliczane z reprezentacji szeregu}{19}
 \contentsline {subsection}{\numberline {3.2.3}Pozosta\IeC {\l }e cechy}{23}
 \contentsline {chapter}{\numberline {4}Redukcja \textit {concept drift} poprzez selekcj\k e cech}{25}

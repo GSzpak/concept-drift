@@ -34,7 +34,6 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{listings}
-\usepackage{cite}
 
 \newcommand\blankpage{%
     \null
@@ -144,7 +143,7 @@ Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervis
 
 Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie spamu, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. \\
 Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Wiele klasyfikatorów cierpi wtedy na znaczny spadek jako¶ci. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
-St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{1} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daume w \cite{2}. \\
+St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{BlitzerMP06} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daum{\'{e}} w \cite{Daume07}. \\
 
 Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku klasyfikacji szeregów czasowych. W poni¿szej pracy autor przedstawia sposoby radzenia sobie z \textit{concept drift} podczas klasyfikacji szeregów czasowych oraz wykonuje studium przypadku na wybranym zbiorze danych.
 
@@ -152,10 +151,10 @@ Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku 
 
 \subsection{Paradygmaty uczenia siê} \label{ss:pardigms}
 
-Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{3}) zdefiniowaæ inne paradygmaty uczenia. \\
+Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{ArnoldNC07}) zdefiniowaæ inne paradygmaty uczenia. \\
 I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy do czynienia z \textit{uczeniem bez nadzoru} (ang. \textit{unsupervised learning}). \\
 Gdy zbiór $X_{test}$ nie jest znany podczas uczenia, mowa o \textit{uczeniu indukcyjnym} (ang. \textit{inductive learning}). W przeciwnym razie takie uczenie nazywa siê \textit{uczeniem transdukcyjnym} (ang. transductive learning). \\
-W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ wykorzystywany jest zatem do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{4}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
+W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ wykorzystywany jest zatem do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{AndoZ05}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
 
 Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}.
 
@@ -331,7 +330,7 @@ Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy p
 \caption{Przyk³adowe drzewo decyzyjne \label{dec_tree}}
 \end{figure}
 
-Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka¿dego na losowej podprzestrzeni atrybutów. Finalna klasa jest mod± klas wyznaczonych przez poszczególne drzewa. Lasy losowe, podpbnie jak drzewa decyzyjne, wspieraj± klasyfikacjê wieloklasow±.
+Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka¿dego na losowej podprzestrzeni atrybutów. Finalna klasa jest mod± klas wyznaczonych przez poszczególne drzewa. Lasy losowe, podpbnie jak drzewa decyzyjne, wspieraj± klasyfikacjê wieloklasow±. Pe³en algorytm uczenia lasów losowych opisany jest w \cite{Breiman01}.
 
 \section{Przyk³ad Ewolucji pojêæ w analizowanym zbiorze} \label{s:data_concept_drift}
 
@@ -342,8 +341,8 @@ Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} 
 \section{Metody klasyfikacji szeregów czasowych}
 
 Szeregi czasowe obecne s± w wielu ró¿nych dziedzinach ¿ycia - od medycyny, przez finanse, i wyszukiwanie informacji po przetwarzanie sygna³ów oraz prognozê pogody. W ostatnich latach opisanych zosta³o wiele metod do wykrywania wzorców czasowych w takich zadaniach jak: okre¶lanie stanu zdrowia pacjenta na podstawie odczytów elektrokardiografu, przewidywanie wahañ na gie³dzie, analiza mowy czy prognozowanie temperatur. \\
-W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}), w skrócie k-NN - wiêcej w \cite{6}), sieci neuronowe (\cite{7}) czy ukryty model Markowa (\cite{8}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{9}. \\
-W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê na ekstrakcji cech opartych na statystycznych w³asno¶ciach szeregów. Cechy te wylliczane s± z ró¿nych reprezentacji danego szeregu. Nastêpnie na tak przekszta³conych danych uczone by³y klasyfikatory opisane w sekcji \ref{s:klasyfikatory}. Jak pokazuj± niektóre badania (przyk³adowo - \cite{8}, \cite{9}), takie podej¶cie daje czêsto lepsze wyniki ni¿ algorytmy bazuj±ce na podobieñstwie szeregów.
+W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}), w skrócie k-NN - wiêcej w \cite{ChaovalitwongseFS07}), sieci neuronowe (\cite{RavikumarD14}) czy ukryty model Markowa (\cite{KimS06}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{dtwyouknow}. \\
+W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê na ekstrakcji cech opartych na statystycznych w³asno¶ciach szeregów. Cechy te wylliczane s± z ró¿nych reprezentacji danego szeregu. Nastêpnie na tak przekszta³conych danych uczone by³y klasyfikatory opisane w sekcji \ref{s:klasyfikatory}. Jak pokazuj± niektóre badania (przyk³adowo - \cite{RavikumarD14}, \cite{GayGBC13}), takie podej¶cie daje czêsto lepsze wyniki ni¿ algorytmy bazuj±ce na podobieñstwie szeregów.
 
 \section{Proces ekstrakcji cech} \label{s:extraction}
 
@@ -366,8 +365,8 @@ W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
 
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
 
-Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w literaturze - ich szerszy przegl±d mo¿na znale¼æ miêdzy innymi w TODO. Celem takich przekszta³ceñ jest wykrycie wzorców charakterystycznych dla klas wynikowych, które nie s± wykrywalne przy u¿yciu podstawowej reprezentacji $T_n$. \\
-Gay i in. w TODO podaj± przyk³ad, kiedy to badanie drugiej pochodnej szeregu po czasie znacznie zwiêksza jako¶æ klasyfikacji (rys. \ref{example}). Dzia³aj±c na oryginalnych danych, trudno jest rozró¿nic dwie klasy. Policzenie drugiej pochodnej sprawia, ¿e klasyfikacja staje siê niemal¿e trywialna.
+Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w literaturze - ich szerszy przegl±d mo¿na znale¼æ miêdzy innymi w \cite{FulcherJ14}. Celem takich przekszta³ceñ jest wykrycie wzorców charakterystycznych dla klas wynikowych, które nie s± wykrywalne przy u¿yciu podstawowej reprezentacji $T_n$. \\
+Gay i in. w \cite{GayGBC13} podaj± przyk³ad, kiedy to badanie drugiej pochodnej szeregu po czasie znacznie zwiêksza jako¶æ klasyfikacji (rys. \ref{example}). Dzia³aj±c na oryginalnych danych, trudno jest rozró¿nic dwie klasy. Policzenie drugiej pochodnej sprawia, ¿e klasyfikacja staje siê niemal¿e trywialna.
 
 \begin{figure}[ht!]
 \centering
@@ -463,7 +462,7 @@ Wykres falki Haara przedstawia rys. \ref{haar}. Funkcja wêgierskiego matematyka 
 \caption{Wykres falki Haara \label{haar}}
 \end{figure}
 
-Podobnie jak w przypadku dyskretnej transformaty Fouriera, tak i tu istnieje szybki algorytm obliczaj±cy wspó³czynniki dyskretnej transformaty falkowej (dzia³aj±cy w czasie $\mathcal{O}(n)$ - TODO bibliografia). Czyni to obydwa przekszta³cenia niezwykle u¿yteczne w praktyce.
+Podobnie jak w przypadku dyskretnej transformaty Fouriera, tak i tu istnieje szybki algorytm obliczaj±cy wspó³czynniki dyskretnej transformaty falkowej (dzia³aj±cy w czasie $\mathcal{O}(n)$ - \cite{Mallat}). Czyni to obydwa przekszta³cenia niezwykle u¿yteczne w praktyce.
 \newpage
 
 \subsection{Statystyki wyliczane z reprezentacji szeregu} \label{ss:feaures}
@@ -576,7 +575,7 @@ kurt(T_n) = \frac{\frac{1}{n}\sum_{i=1}^n(x_i - mean(T_n))^4}{std^4(T_n)} - 3
 
 \item \textbf{¦rednia wa¿ona liniowo}
 
-¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj± Wiens i in. w \cite{11}):
+¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj± Wiens i in. w \cite{WiensGH12}):
 \begin{equation}
 linear\_weighted\_mean(T_n) = \frac{2}{n(n + 1)} \sum_{i=1}^n ix_i
 \end{equation}
@@ -666,7 +665,7 @@ mean\_autocorr(T_n) = \frac{\sum_{k=1}^n autocorr_k(T_n)}{n}
 
 \item \textbf{Asymetryczno¶æ odwracalna w czasie}
 
-Ta statystyka (ang. \textit{time-reversal asymmetry statistic}) zosta³a zaproponowana przez Fulchera i Jonesa w TODO. Zdefiniowana jest w zale¿no¶ci od parametru $k$ przez:
+Ta statystyka (ang. \textit{time-reversal asymmetry statistic}) zosta³a zaproponowana przez Fulchera i Jonesa w \cite{FulcherJ14}. Zdefiniowana jest w zale¿no¶ci od parametru $k$ przez:
 \begin{equation}
 TRAS_{k}(T_n) = \frac{1}{n - 2k} \sum_{i = 0}^{n - 2k} x_{i + 2k}^2 \cdot x_{i + k} - x_{i + k} \cdot x_i^2
 \end{equation}
@@ -674,7 +673,6 @@ Jako cechy wykorzystane zosta³y warto¶ci $TRAS$ dla $k = 25, 50, 100, 200$.
 
 \item \textbf{Infromacje o skokach}
 
-(TODO Jak sensownie przet³umaczyæ "peak"??????)
 \begin{defi}\label{d:peak}
 \emph{Skokiem o wsparciu $n$} nazwiemy podci±g szeregu $T_n$, w którym istnieje warto¶æ $x$ bêd±ca wiêksza ni¿ $n$ warto¶ci wystêpuj±cych bezpo¶rednio przed ni± oraz $n$ warto¶ci wystêpuj±cych bezpo¶rednio po niej.
 \end{defi}
@@ -689,7 +687,7 @@ W ten sposób z $42$ szeregów obecnych w zbiorze danych otrzymano oko³o 4500 cech
 
 \subsection{Pozosta³e cechy} \label{ss:additional}
 
-Moerchen udowadnia w (TODO biblio), ¿e u¿yteczne przy klasyfikacji szeregów czasowych jest $k$ najwiêkszych wspó³czynników transformaty Fouriera oraz transformaty falkowej. Autor zdecydowa³ siê wiêc dodaæ po 10 najwiêkszych wspó³czynników dla obydwu transformat wyliczonych dla ka¿dego z szeregów. \\
+M\"{o}rchen udowadnia w \cite{Morchen_2003_time}, ¿e u¿yteczne przy klasyfikacji szeregów czasowych jest $k$ najwiêkszych wspó³czynników transformaty Fouriera oraz transformaty falkowej. Autor zdecydowa³ siê wiêc dodaæ po 10 najwiêkszych wspó³czynników dla obydwu transformat wyliczonych dla ka¿dego z szeregów. \\
 Kolejne cechy oparte by³y na korelacji miêdzy dwoma szeregami czasowymi. Analogicznie do autokorelacji, korelacjê miêdzy szeregami  $T_n = (t_1, x_1), \dots, (t_n, x_n)$  i  
 $T'_n = (t_1, x'_1), \dots, (t_n, x'_n)$ definuje siê jako korelacjê Pearsona (def \ref{d:pearson}) miêdzy wektorami $(x_1, \dots x_n)$ oraz $(x_1', \dots, x_n')$. \\
 
@@ -728,7 +726,7 @@ Celem tego rozdzia³u bêdzie przedstawienie metody wyboru takiej poprzestrzeni ce
 \item bêdzie mozliwie odpodrna na zmiany dziedziny
 \end{itemize}
 
-Opisywane podej¶cie stanowi rozszerzenie pomys³u zaproponowanego przez M. Boulle w (TODO bib) oraz (TODO bib). Intuicja jest nastêpuj±ca: za³ó¿my, ¿e jeste¶my w stanie sprowadziæ problem wykrywania \textit{concept drift} do problemu klasyfikacji (zostanie to opisane szerzej w kolejnych podrozdzia³ach). Za³ó¿my te¿, ¿e mamy dan± funkcjê $f$, która dla danego atrybutu okre¶la jego jako¶æ w odniesieniu do ustalonego problemu klasyfikacji (przyk³adem takich funkcji jest test $\chi^2$.). \\
+Opisywane podej¶cie stanowi rozszerzenie pomys³u zaproponowanego przez Boull{\'{e}} w \cite{Boulle15} oraz \cite{BonduB11}. Intuicja jest nastêpuj±ca: za³ó¿my, ¿e jeste¶my w stanie sprowadziæ problem wykrywania \textit{concept drift} do problemu klasyfikacji (zostanie to opisane szerzej w kolejnych podrozdzia³ach). Za³ó¿my te¿, ¿e mamy dan± funkcjê $f$, która dla danego atrybutu okre¶la jego jako¶æ w odniesieniu do ustalonego problemu klasyfikacji (przyk³adem takich funkcji jest test $\chi^2$.). \\
 
 Celem jest wybranie tych cech, które jednocze¶nie:
 \begin{itemize}
@@ -767,7 +765,7 @@ W bie¿±cej sekcji zostanie przedstawiony opis ka¿dej z tych miar.
 
 \subsubsection{Wspó³czynnik korelacji Pearsona}
 
-Zdefiniowany w \ref{d:pearson} wspó³czynnik korelacji liniowej Pearsona mo¿e byæ te¿ u¿ywany do mierzenia jako¶ci atrybutu. Niech przewidywana zmienna $y$ bêdzie ci±g³a. Dla danego ci±g³ego atrybutu $x$ warto¶æ $pearson\_corr(x, y)$ okre¶la poziom liniowej zale¿no¶ci miêdzy tym atrybutem a $y$. Badanie korelacji jest czêsto wykorzystywane przy analizie mikromacierzowej DNA (TODO bib).
+Zdefiniowany w \ref{d:pearson} wspó³czynnik korelacji liniowej Pearsona mo¿e byæ te¿ u¿ywany do mierzenia jako¶ci atrybutu. Niech przewidywana zmienna $y$ bêdzie ci±g³a. Dla danego ci±g³ego atrybutu $x$ warto¶æ $pearson\_corr(x, y)$ okre¶la poziom liniowej zale¿no¶ci miêdzy tym atrybutem a $y$. Badanie korelacji jest czêsto wykorzystywane przy analizie mikromacierzowej DNA (\cite{GuyonE03}).
 
 \subsubsection{Test $\chi^2$}
 
@@ -838,7 +836,7 @@ W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê 
 
 Wróæmy do problemu wykrywania ewolucji pojêæ. \\
 
-W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w (TODO biblio). Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków i jednocze¶nie s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego.
+W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w \cite{Boulle15}. Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków i jednocze¶nie s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego.
 
 \subsection{Wyniki eksperymentów}
 
@@ -1350,7 +1348,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 
 
 Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.9$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
-Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}), mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem zachowywaæ siê lepiej ni¿ metoda zaproponowana przez Boulle w (TODO biblio).
+Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}), mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem zachowywaæ siê lepiej ni¿ metoda zaproponowana przez Boull{\'{e}} w \cite{Boulle15}.
 
 \section{Wnioski z przeprowadzonych eksperymentów}
 
@@ -1359,7 +1357,7 @@ Do wad zaliczyæ nale¿y natomiast zale¿no¶æ skuteczno¶ci metody od danej przestrz
 
 \chapter{Inne metody adaptacji dziedziny}
 
-W poni¿szym rozdziale przedstawione zostan± dwie inne metody adaptacji dziedziny: uczenie iteracyjne oraz metoda zmiany przestrzeni cech zaproponowana przez Daume w (TODO biblio).
+W poni¿szym rozdziale przedstawione zostan± dwie inne metody adaptacji dziedziny: uczenie iteracyjne oraz metoda zmiany przestrzeni cech zaproponowana przez Daum{\'{e}} w \cite{Daume07}.
 
 \section{Uczenie iteracyjne}
 
@@ -1456,7 +1454,7 @@ W przypadku lasów losowych mo¿na z kolei zauwa¿yæ nieznaczny, ale sta³y wzrost j
 
 \subsection{Opis algorytmu}
 
-Adaptacja dziedziny przez powiêkszenie przestrzeni cech zosta³a zaproponowana przez Daume w (TODO bibl). Jak wiêkszo¶æ tego typu metod, pochodzi ona z dziedziny przetwarzania jêzyka naturalnego. Powiêkszenie przestrzeni cech polega na zast±pieniu ka¿dego atrybutu jego trzema wersjami: wersj± ogóln±, wersj± odpowiadaj±c± dziedzinie ¼ród³owej $D^{source}$ oraz wersj± odpowiadaj±c± dziedzinie docelowej $D^{target}$. \\
+Adaptacja dziedziny przez powiêkszenie przestrzeni cech zosta³a zaproponowana przez Daum{\'{e}} w \cite{Daume07}. Jak wiêkszo¶æ tego typu metod, pochodzi ona z dziedziny przetwarzania jêzyka naturalnego. Powiêkszenie przestrzeni cech polega na zast±pieniu ka¿dego atrybutu jego trzema wersjami: wersj± ogóln±, wersj± odpowiadaj±c± dziedzinie ¼ród³owej $D^{source}$ oraz wersj± odpowiadaj±c± dziedzinie docelowej $D^{target}$. \\
 Aby zdefiniowaæ tê operacjê bardziej formalnie, przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Niech dla czytelno¶ci $X = \mathbb{R}^F$, dla pewnego $F > 0$. Wtedy powiêkszona przestrzeñ przyk³adów zdefiniowana jest jako $\hat{X} = \mathbb{R}^{3F}$.
 Nastêpnie definiuje siê funkcje:
 \begin{displaymath}
@@ -1474,7 +1472,7 @@ Zastanówmy siê teraz, co mo¿e zrobiæ algorytm ucz±cy, aby zauwa¿yæ, ¿e "in" powi
 \subsection{Eksperymenty i wnioski}
 
 Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{c:features} daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
-Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daume mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przetrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
+Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daum{\'{e}} mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przetrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
 
 
 \begin{table}[!htpb]

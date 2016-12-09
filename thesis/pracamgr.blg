@@ -3,54 +3,48 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: pracamgr.aux
 The style file: apalike.bst
 Database file #1: pracamgr.bib.bib
-Warning--I didn't find a database entry for "1"
-Warning--I didn't find a database entry for "2"
-Warning--I didn't find a database entry for "3"
-Warning--I didn't find a database entry for "4"
-Warning--I didn't find a database entry for "6"
-Warning--I didn't find a database entry for "7"
-Warning--I didn't find a database entry for "8"
-Warning--I didn't find a database entry for "9"
-Warning--I didn't find a database entry for "11"
-You've used 2 entries,
+Warning--to sort, need editor or key in DBLP:conf/icdm/2007w
+Warning--to sort, need editor or key in DBLP:conf/cidm/2014
+Warning--to sort, need editor or key in DBLP:conf/ijcnn/2011
+You've used 27 entries,
             1935 wiz_defined-function locations,
-            487 strings with 4080 characters,
-and the built_in function-call counts, 840 in all, are:
-= -- 87
-> -- 32
-< -- 2
-+ -- 10
-- -- 10
-* -- 64
-:= -- 142
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 14
-chr.to.int$ -- 2
-cite$ -- 2
-duplicate$ -- 35
-empty$ -- 53
-format.name$ -- 14
-if$ -- 170
+            629 strings with 8716 characters,
+and the built_in function-call counts, 10293 in all, are:
+= -- 1059
+> -- 344
+< -- 25
++ -- 124
+- -- 110
+* -- 822
+:= -- 1721
+add.period$ -- 80
+call.type$ -- 27
+change.case$ -- 182
+chr.to.int$ -- 27
+cite$ -- 33
+duplicate$ -- 425
+empty$ -- 713
+format.name$ -- 152
+if$ -- 2058
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 12
-num.names$ -- 7
-pop$ -- 15
+missing$ -- 21
+newline$ -- 131
+num.names$ -- 76
+pop$ -- 167
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 190
 quote$ -- 0
-skip$ -- 31
+skip$ -- 353
 stack$ -- 0
-substring$ -- 56
-swap$ -- 10
-text.length$ -- 1
+substring$ -- 771
+swap$ -- 89
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
-warning$ -- 0
-while$ -- 7
+type$ -- 160
+warning$ -- 3
+while$ -- 86
 width$ -- 0
-write$ -- 26
-(There were 9 warnings)
+write$ -- 333
+(There were 3 warnings)
