@@ -1,7 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2015)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: pracamgr.aux
-The style file: plain.bst
+The style file: apalike.bst
 Database file #1: pracamgr.bib.bib
 Warning--I didn't find a database entry for "1"
 Warning--I didn't find a database entry for "2"
@@ -13,44 +13,44 @@ Warning--I didn't find a database entry for "8"
 Warning--I didn't find a database entry for "9"
 Warning--I didn't find a database entry for "11"
 You've used 2 entries,
-            2118 wiz_defined-function locations,
-            513 strings with 4401 characters,
-and the built_in function-call counts, 723 in all, are:
-= -- 74
-> -- 33
+            1935 wiz_defined-function locations,
+            487 strings with 4080 characters,
+and the built_in function-call counts, 840 in all, are:
+= -- 87
+> -- 32
 < -- 2
-+ -- 12
++ -- 10
 - -- 10
-* -- 47
-:= -- 116
+* -- 64
+:= -- 142
 add.period$ -- 6
 call.type$ -- 2
-change.case$ -- 10
-chr.to.int$ -- 0
+change.case$ -- 14
+chr.to.int$ -- 2
 cite$ -- 2
-duplicate$ -- 29
-empty$ -- 50
-format.name$ -- 13
-if$ -- 155
-int.to.chr$ -- 0
-int.to.str$ -- 2
+duplicate$ -- 35
+empty$ -- 53
+format.name$ -- 14
+if$ -- 170
+int.to.chr$ -- 1
+int.to.str$ -- 0
 missing$ -- 1
 newline$ -- 12
-num.names$ -- 6
-pop$ -- 11
+num.names$ -- 7
+pop$ -- 15
 preamble$ -- 1
-purify$ -- 9
+purify$ -- 15
 quote$ -- 0
-skip$ -- 28
+skip$ -- 31
 stack$ -- 0
-substring$ -- 42
-swap$ -- 11
+substring$ -- 56
+swap$ -- 10
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 7
+type$ -- 12
 warning$ -- 0
 while$ -- 7
-width$ -- 3
-write$ -- 21
+width$ -- 0
+write$ -- 26
 (There were 9 warnings)

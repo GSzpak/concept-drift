@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  9 DEC 2016 02:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  9 DEC 2016 02:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -857,7 +857,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  8557 strings out of 493089
  133700 string characters out of 6134843
- 221393 words of memory out of 5000000
+ 221440 words of memory out of 5000000
  11864 multiletter control sequences out of 15000+600000
  27558 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -888,7 +888,7 @@ l/plss10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plssbx10
 .pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plsy10.pfb></usr
 /local/texlive/2015/texmf-dist/fonts/type1/public/pl/plsy8.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (51 pages, 2579001 bytes).
+Output written on pracamgr.pdf (51 pages, 2579013 bytes).
 PDF statistics:
  314 PDF objects out of 1000 (max. 8388607)
  193 compressed objects within 2 object streams
