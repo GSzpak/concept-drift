@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: pracamgr.aux
+The style file: plain.bst
+Database file #1: pracamgr.bib.bib
+Warning--I didn't find a database entry for "1"
+Warning--I didn't find a database entry for "2"
+Warning--I didn't find a database entry for "3"
+Warning--I didn't find a database entry for "4"
+Warning--I didn't find a database entry for "6"
+Warning--I didn't find a database entry for "7"
+Warning--I didn't find a database entry for "8"
+Warning--I didn't find a database entry for "9"
+Warning--I didn't find a database entry for "11"
+You've used 2 entries,
+            2118 wiz_defined-function locations,
+            513 strings with 4401 characters,
+and the built_in function-call counts, 723 in all, are:
+= -- 74
+> -- 33
+< -- 2
++ -- 12
+- -- 10
+* -- 47
+:= -- 116
+add.period$ -- 6
+call.type$ -- 2
+change.case$ -- 10
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 29
+empty$ -- 50
+format.name$ -- 13
+if$ -- 155
+int.to.chr$ -- 0
+int.to.str$ -- 2
+missing$ -- 1
+newline$ -- 12
+num.names$ -- 6
+pop$ -- 11
+preamble$ -- 1
+purify$ -- 9
+quote$ -- 0
+skip$ -- 28
+stack$ -- 0
+substring$ -- 42
+swap$ -- 11
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 7
+warning$ -- 0
+while$ -- 7
+width$ -- 3
+write$ -- 21
+(There were 9 warnings)

@@ -34,6 +34,7 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{cite}
 
 \newcommand\blankpage{%
     \null
@@ -1528,33 +1529,9 @@ lasy losowe  & 2278        & 0.9921            & 0.1647           \\ \hline
 
 \chapter{Podsumowanie}
 
-\begin{thebibliography}{99}
-\addcontentsline{toc}{chapter}{Bibliografia}
-
-\bibitem[1]{1} John Blitzer, Ryan McDonald, Fernando Pereira, \textit{Domain adaptation with structural correspondence learning}
-
-\bibitem[2]{2} Hall Daume, \textit{Frustratingly easy domain adaptation}
-
-\bibitem[3]{3} Andrew Arnold, Ramesh Nallapati, William W. Cohen, \textit{A comparative study of methods for transductive transfer learning}
-
-\bibitem[4]{4} R. K. Ando, T. Zhang, \textit{A framework for learning predictive structures from multiple tasks and unlabeled data}
-
-\bibitem[5]{5} L. Breiman, \textit{Random forests}, Machine Learning, 45(1), 5-32, 2001.
-
-\bibitem[6]{6} Wanpracha Art Chaovalitwongse, Ya-Ju Fan, Rajesh C. Sachdeo, \textit{On the time series k-nearest neighbor
-classification of abnormal brain activity}
-
-\bibitem[7]{7} Alex Nanopoulos, Rob Alcock, Yannis Manolopoulos, \textit{Feature-based classification of time-series data}
-
-\bibitem[8]{8} Seyoung Kim, Padhraic Smyth, \textit{Segmental hidden markov models with random effects for waveform modeling}
-
-\bibitem[9]{9} Chotirat Ann Ratanamahatana, Eamonn Keogh, \textit{Everything you know about Dynamic Time Warping is wrong}
-
-\bibitem[10]{10} Dominique Gay, Romain Guigoures, Marc Boulle, Fabrice Clerot \textit{Feature Extraction over Multiple Representations for Time Series Classification}
-
-\bibitem[11]{11} Jenna Wiens, John V. Guttag, Eric Horvitz, \textit{Patient Risk Stratification for Hospital-Associated C. diff as a Time-Series Classification Task}
-
-\end{thebibliography}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{pracamgr.bib}
 
 \end{document}
 
