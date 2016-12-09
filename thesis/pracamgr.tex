@@ -201,6 +201,11 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 \end{tabular}
 \end{table}
 
+\subsection{Zawarto¶æ merytoryczna pracy} \label{s:content}
+
+Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym. \\
+W rozdziale \ref{r:experiment} przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features} prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction} autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶niej umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce.
+Rozdzia³ \ref{r:other} zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary} znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
 
 \chapter{Opis przeprowadzanego eksperymentu}\label{r:experiment}
 
@@ -336,7 +341,7 @@ Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka
 
 Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} s± ró¿nice w wykonywaniu poszczególnych czynno¶ci miêdzy stra¿akami. Aby siê o tym przekonaæ, nauczono las losowy na $42$ atrybutach opisuj±cych funkcje ¿yciowe, nastêpnie zmierzono jego jako¶æ (u¿ywaj±c miary $BAC$) na zbiorach treningowym i testowym. Do pomiaru jako¶ci na zbiorze treningowym zastosowano trójwarstwow± walidacjê krzy¿ow±. Problem \textit{concept drift} spowodowa³ drastyczne obni¿enie jako¶ci klasyfikatora, która spad³a z $0.993$ na $0.079$. 
 
-\chapter{Ekstrakcja cech z szeregów czasowych} \label{c:features}
+\chapter{Ekstrakcja cech z szeregów czasowych} \label{r:features}
 
 \section{Metody klasyfikacji szeregów czasowych}
 
@@ -1355,7 +1360,7 @@ Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept 
 W rozdziale \ref{r:drift_reduction} przedstawiono generyczn± metodê wyboru podprzestrzeni cech odpornych na zmianê dziedziny. Jedn± z najwiêkszych zalet opisywanej metody jest w³a¶nie jej generyczno¶æ - mo¿e byæ ona stosowana niezale¿nie od typu badanych danych czy algorytmów ucz±cych. Innym znacz±cym plusem jest wydajno¶æ - miejscami osi±gniêto poprawê jako¶ci (mierzon± w mierze $BAC$) siêgaj±c± $0.15$. Du¿± zalet± jest te¿ prostota tego podej¶cia, zarówno pod k±tem ideologicznym, jak i implementacyjnym. \\
 Do wad zaliczyæ nale¿y natomiast zale¿no¶æ skuteczno¶ci metody od danej przestrzeni cech - je¶li dana reprezentacja zawiera niewielk± liczbê atrybutów odpornych na \textit{concept drift}, stosowanie selekcji cech oka¿e siê bezu¿yteczne. Innym istotnym czynnikiem jest wybór miary jako¶ci cech. Jak pokaza³y opisane eksperymenty, dla niektórych miar rozk³ad jako¶ci uniemo¿liwia³ takie dobranie warto¶ci progów $threshold_{drift}$ i $threshold_{class}$, aby usun±æ cechy wra¿liwe na ewolucjê pojêæ i jednocze¶nie zostawiæ atrybuty warto¶ciowe dla klasyfikacji czynno¶ci stra¿aka.
 
-\chapter{Inne metody adaptacji dziedziny}
+\chapter{Inne metody adaptacji dziedziny} \label{r:other}
 
 W poni¿szym rozdziale przedstawione zostan± dwie inne metody adaptacji dziedziny: uczenie iteracyjne oraz metoda zmiany przestrzeni cech zaproponowana przez Daum{\'{e}} w \cite{Daume07}.
 
@@ -1471,7 +1476,7 @@ Zastanówmy siê teraz, co mo¿e zrobiæ algorytm ucz±cy, aby zauwa¿yæ, ¿e "in" powi
 
 \subsection{Eksperymenty i wnioski}
 
-Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{c:features} daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
+Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{r:features} daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
 Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daum{\'{e}} mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przetrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
 
 
@@ -1525,7 +1530,7 @@ lasy losowe  & 2278        & 0.9921            & 0.1647           \\ \hline
     \label{t:augmentation}    
 \end{table}
 
-\chapter{Podsumowanie}
+\chapter{Podsumowanie} \label{r:summary}
 
 \nocite{*}
 \bibliographystyle{apalike}
