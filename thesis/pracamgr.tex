@@ -1226,11 +1226,11 @@ Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu
 
 \begin{figure}[!htbp]
 \centering
-\begin{subfigure}{.55\textwidth}
+\begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.99\linewidth]{clustering_mutual_info.png}
 \end{subfigure}%
-\begin{subfigure}{.55\textwidth}
+\begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=.99\linewidth]{clustering_anova_f.png}
 \end{subfigure}
@@ -1242,7 +1242,7 @@ Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu
 
 \subsubsection{Zysk Giniego}
 
-Sytuacja prezentuje siê znacznie korzystniej, gdy jako miary u¿yje siê zysku Giniego (rys. \ref{clustering_gini}).
+Sytuacja prezentuje siê znacznie korzystniej, gdy jako miary u¿yje siê zysku Giniego (rys. \ref{clustering_gini}). Cechy skupione s± przy osiach $x$ i $y$, co pozwala ³atwo dobraæ dobre warto¶ci progów $threshold_{drift}$ i $threshold_{class}$. Uzyskane rezultatys przedstawiaj± tabele \ref{t:cluster_gini_logit}, \ref{t:cluster_gini_svm} i  \ref{t:cluster_gini_random}.
 
 \begin{figure}[!htbp]
 \centering
@@ -1261,7 +1261,100 @@ Sytuacja prezentuje siê znacznie korzystniej, gdy jako miary u¿yje siê zysku Gin
 \end{figure}
 
 
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu zysku Giniego i regresji logistycznej}
+\label{t:cluster_gini_logit}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 0.4                 & 6027         & 0.9497            & 0.5348           \\ \hline
+0.0                 & 5e-05               & 3900         & 0.9263            & 0.5000           \\ \hline
+0.0                 & 2.5e-05             & 3566         & 0.9314            & 0.4985           \\ \hline
+0.0                 & 1e-05               & 3001         & 0.9193            & 0.5101           \\ \hline
+2.5e-05             & 0.4                 & 2754         & 0.9651            & 0.5284           \\ \hline
+2.5e-05             & 5e-05               & 1661         & 0.9128            & 0.5383           \\ \hline
+2.5e-05             & 2.5e-05             & 1458         & 0.9147            & 0.5372           \\ \hline
+5e-05               & 0.4                 & 2057         & 0.9630            & 0.5311           \\ \hline
+5e-05               & 5e-05               & 1186         & 0.9034            & 0.5641           \\ \hline
+5e-05               & 1.25e-05            & 819          & 0.8789            & 0.5764           \\ \hline
+0.00025             & 0.4                 & 703          & 0.9272            & 0.6193           \\ \hline
+\textbf{0.00025}    & \textbf{0.002}      & \textbf{678} & \textbf{0.9039}   & \textbf{0.6294}  \\ \hline
+0.00025             & 2.5e-05             & 339          & 0.8835            & 0.6161           \\ \hline
+0.001               & 0.4                 & 187          & 0.6823            & 0.5260           \\ \hline
+0.001               & 0.0005              & 172          & 0.6801            & 0.5296           \\ \hline
+0.001               & 5e-05               & 114          & 0.7202            & 0.4882           \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu zysku Giniego i SVM}
+\label{t:cluster_gini_svm}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 0.4                 & 6027         & 0.9586            & 0.5346           \\ \hline
+0.0                 & 5e-05               & 3900         & 0.9264            & 0.4974           \\ \hline
+0.0                 & 2.5e-05             & 3566         & 0.9222            & 0.4821           \\ \hline
+0.0                 & 1e-05               & 3001         & 0.9085            & 0.5064           \\ \hline
+2.5e-05             & 0.4                 & 2754         & 0.9673            & 0.5346           \\ \hline
+2.5e-05             & 5e-05               & 1661         & 0.9308            & 0.5080           \\ \hline
+2.5e-05             & 2.5e-05             & 1458         & 0.9116            & 0.5279           \\ \hline
+5e-05               & 0.4                 & 2057         & 0.9618            & 0.5513           \\ \hline
+5e-05               & 5e-05               & 1186         & 0.9300            & 0.5308           \\ \hline
+5e-05               & 1.25e-05            & 819          & 0.8888            & 0.5760           \\ \hline
+0.00025             & 0.4                 & 703          & 0.9100            & 0.5945           \\ \hline
+\textbf{0.00025}    & \textbf{0.002}      & \textbf{678} & \textbf{0.9169}   & \textbf{0.6287}  \\ \hline
+0.00025             & 2.5e-05             & 339          & 0.8849            & 0.5973           \\ \hline
+0.001               & 0.4                 & 187          & 0.6946            & 0.5908           \\ \hline
+0.001               & 0.0005              & 172          & 0.6849            & 0.4715           \\ \hline
+0.001               & 5e-05               & 114          & 0.6968            & 0.4628           \\ \hline
+\end{tabular}
+\end{table}
+
+\newpage
+
+\begin{table}[!htbp]
+\centering
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu zysku Giniego i lasów losowych}
+\label{t:cluster_gini_random}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
+0.0                 & 0.4                 & 6027         & 0.9948            & 0.7118           \\ \hline
+0.0                 & 5e-05               & 3900         & 0.9926            & 0.7258           \\ \hline
+0.0                 & 2.5e-05             & 3566         & 0.9907            & 0.7366           \\ \hline
+0.0                 & 1e-05               & 3001         & 0.9908            & 0.7359           \\ \hline
+2.5e-05             & 0.4                 & 2754         & 0.9954            & 0.7258           \\ \hline
+2.5e-05             & 5e-05               & 1661         & 0.9937            & 0.7265           \\ \hline
+2.5e-05             & 2.5e-05             & 1458         & 0.9920            & 0.7372           \\ \hline
+5e-05               & 0.4                 & 2057         & 0.9958            & 0.7175           \\ \hline
+5e-05               & 5e-05               & 1186         & 0.9943            & 0.7307           \\ \hline
+5e-05               & 1.25e-05            & 819          & 0.9919            & 0.7337           \\ \hline
+0.00025             & 0.4                 & 703          & 0.9961            & 0.7325           \\ \hline
+0.00025             & 0.002               & 678          & 0.9948            & 0.7417           \\ \hline
+\textbf{0.00025}    & \textbf{2.5e-05}    & \textbf{339} & \textbf{0.9937}   & \textbf{0.7596}  \\ \hline
+0.001               & 0.4                 & 187          & 0.9940            & 0.7209           \\ \hline
+0.001               & 0.0005              & 172          & 0.9917            & 0.7219           \\ \hline
+0.001               & 5e-05               & 114          & 0.9898            & 0.7027           \\ \hline
+\end{tabular}
+\end{table}
+
+
+Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.9$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
+Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}), mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem zachowywaæ siê lepiej ni¿ metoda zaproponowana przez Boulle w (TODO biblio).
+
 \section{Wnioski z przeprowadzonych eksperymentów}
+
+W rozdziale \ref{r:drift_reduction} przedstawiono generyczn± metodê wyboru podprzestrzeni cech odpornych na zmianê dziedziny. Jedn± z najwiêkszych zalet opisywanej metody jest w³a¶nie jej generyczno¶æ - mo¿e byæ ona stosowana niezale¿nie od typu badanych danych czy algorytmów ucz±cych. Innym znacz±cym plusem jest wydajno¶æ - miejscami osi±gniêto poprawê jako¶ci (mierzon± w mierze $BAC$) siêgaj±c± $0.15$. Du¿± zalet± jest te¿ prostota tego podej¶cia, zarówno pod k±tem ideologicznym, jak i implementacyjnym. \\
+Do wad zaliczyæ nale¿y natomiast zale¿no¶æ skuteczno¶ci metody od danej przestrzeni cech - je¶li dana reprezentacja zawiera niewielk± liczbê atrybutów odpornych na \textit{concept drift}, stosowanie selekcji cech oka¿e siê bezu¿yteczne. Innym istotnym czynnikiem jest wybór miary jako¶ci cech. Jak pokaza³y opisane eksperymenty, dla niektórych miar rozk³ad jako¶ci uniemo¿liwia³ takie dobranie warto¶ci progów $threshold_{drift}$ i $threshold_{class}$, aby usun±æ cechy wra¿liwe na ewolucjê pojêæ i jednocze¶nie zostawiæ atrybuty warto¶ciowe dla klasyfikacji czynno¶ci stra¿aka.
 
 \chapter{Inne metody adaptacji dziedziny}
 
