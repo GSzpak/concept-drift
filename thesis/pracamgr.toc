@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1.1}Uczenie z nadzorem a \textit {concept drift}}{5}
 \contentsline {section}{\numberline {1.2}Formalizacja problemu}{6}
 \contentsline {subsection}{\numberline {1.2.1}Paradygmaty uczenia si\k e}{6}
-\contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a \textit {overfitting}}{7}
+\contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a problem przeuczenia}{7}
 \contentsline {subsection}{\numberline {1.2.3}Zawarto\'s\'c merytoryczna pracy}{8}
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{9}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{9}

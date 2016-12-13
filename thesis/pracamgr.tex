@@ -129,19 +129,19 @@ Podstawowym problemem rozwa¿anym w teorii uczenia maszynowego jest problem uczen
 \item zbiór $X$ przyk³adów
 \item zbiór $Y$ decyzji
 \item funkcja $f: X \rightarrow Y$
-\item Parê zbiorów $(X_{train} \subseteq X, Y_{train} \subseteq Y)$ instancji $x_1, x_2, \dots, x_n$ oraz odpowiadaj±cych im decyzji $f(x_1), f(x_2), \dots, f(x_n)$, zwan± \textit{zbiorem treningowym}
+\item Para zbiorów $(X_{train} \subseteq X, Y_{train} \subseteq Y)$ instancji $x_1, x_2, \dots, x_n$ oraz odpowiadaj±cych im decyzji $f(x_1), f(x_2), \dots, f(x_n)$, zwana \textit{zbiorem treningowym}
 \end{itemize}
-Zadanie uczenia z nadzorem polega na wyznaczeniu na podstawie zbioru treningowego oraz przy u¿yciu pewnego algorytmu ucz±cego (\textit{klasyfikatora}) takiej funkcji $c: X \rightarrow Y$ (zwanej \textit{modelem}) bêd±cej dobr± aproksymacj± funkcji $f$. Jako¶æ modelu $c$ okre¶la siê, porównuj±c jego warto¶ci dla elementów skoñczonego \textit{zbioru testowego} $X_{test}$ z rzeczywistymi warto¶ciami funkcji $f$ dla tych elementów. Istotne jest przy tym za³o¿enie, ¿e elementy zbiorów $X_{train}$ oraz $X_{test}$ losowane s± ze zbioru $X$ wed³ug tego samego rozk³adu prawdopodobieñstwa $D$. \\
+Zadanie uczenia z nadzorem polega na wyznaczeniu na podstawie zbioru treningowego oraz przy u¿yciu pewnego algorytmu ucz±cego (\textit{klasyfikatora}) takiej funkcji $c: X \rightarrow Y$ (zwanej \textit{modelem}), która bêdzie dobr± aproksymacj± funkcji $f$. Jako¶æ modelu $c$ okre¶la siê, porównuj±c jego warto¶ci dla elementów skoñczonego \textit{zbioru testowego} $X_{test}$ z rzeczywistymi warto¶ciami funkcji $f$ dla tych elementów. Istotne jest przy tym za³o¿enie, ¿e elementy zbiorów $X_{train}$ oraz $X_{test}$ losowane s± ze zbioru $X$ wed³ug tego samego rozk³adu prawdopodobieñstwa $D$. \\
 Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervised}.
 
 \begin{figure}[t!]
 \centering
-\includegraphics[scale=0.7]{supervised.png}
+\includegraphics[scale=0.6]{supervised.png}
 \caption{Schemat uczenia z nadzorem \label{supervised}}
 \end{figure}
 
 
-Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie spamu, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. \\
+Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie niechcianej poczty, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. \\
 Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Wiele klasyfikatorów cierpi wtedy na znaczny spadek jako¶ci. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
 St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{BlitzerMP06} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daum{\'{e}} w \cite{Daume07}. \\
 
@@ -151,10 +151,10 @@ Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku 
 
 \subsection{Paradygmaty uczenia siê} \label{ss:pardigms}
 
-Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od rozk³adów $D_{train}$, $D_{test}$ oraz od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{ArnoldNC07}) zdefiniowaæ inne paradygmaty uczenia. \\
+Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{ArnoldNC07}) zdefiniowaæ inne paradygmaty uczenia. \\
 I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy do czynienia z \textit{uczeniem bez nadzoru} (ang. \textit{unsupervised learning}). \\
 Gdy zbiór $X_{test}$ nie jest znany podczas uczenia, mowa o \textit{uczeniu indukcyjnym} (ang. \textit{inductive learning}). W przeciwnym razie takie uczenie nazywa siê \textit{uczeniem transdukcyjnym} (ang. transductive learning). \\
-W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ wykorzystywany jest zatem do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{AndoZ05}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
+W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ z rozk³adu $D^{source}$ wykorzystywany jest do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{AndoZ05}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
 
 Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}.
 
@@ -162,7 +162,7 @@ Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}.
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.7\textwidth}
-\caption{Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak³adamy, ¿e zbiór $X_{train}$ jest dostêpny podczas uczenia, podczas gdy zbiór $Y_{test}$ nie jest znany.}
+\caption{Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak³adamy, ¿e zbiór $X_{train}$ jest dostêpny podczas uczenia, podczas gdy zbiór $Y_{test}$ nie jest znany. Dane treningowe pochodz± z rozk³adu $D^{source}$.}
 \label{t:paradigms}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -180,9 +180,9 @@ Paradygmat & $Y_{train}$ dostêpny? & $X_{test}$ dostêpny? & Rozk³ad danych testo
 
 W poni¿szej pracy autor skupi siê na problemie transdukcyjnego uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}.
 
-\subsection{Ewolucja pojêæ a \textit{overfitting}}
+\subsection{Ewolucja pojêæ a problem przeuczenia}
 
-Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczenia (ang. \textit{overfitting}). Polega on na zbudowaniu nadmiernie skomplikowanego modelu, co skutkuje s³ab± jego jako¶ci±. \\
+Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczenia (ang. \textit{overfitting}). Polega on na zbudowaniu modelu nadmiernie dopasowanego do danych treningowych, co skutkuje s³ab± jego jako¶ci±. \\
 Obydwa pojêcia mog± byæ mylone przy niew³a¶ciwym sposobie walidacji modelu. Je¶li jako¶æ klasyfikacji sprawdzana jest wy³±cznie na zbiorach treningowym i testowym, zarówno \textit{concept drift}, jak i \textit{overfitting} daj± podobne objawy - wysoki wynik na zbiorze treningowym oraz niski na zbiorze testowym. W przypadku przeuczenia jest to spowodowane nadmiernym dopasowaniem modelu do danych treningowych i jego nisk± zdolno¶ci± do uogólniania. Je¶li mamy do czynienia z ewoluuj±cymi pojêciami, s³aba jako¶æ modelu jest spowodowana innym rozk³adem dla zbioru testowego. \\
 W rozró¿nienu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
 Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej - w tym przypadku zbiór testowym pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik na zbiorze treningowym (tabela \ref{t:overfit}). \\ 
