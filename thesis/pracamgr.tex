@@ -354,9 +354,9 @@ Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} 
 
 \section{Metody klasyfikacji szeregów czasowych}
 
-Szeregi czasowe obecne s± w wielu ró¿nych dziedzinach ¿ycia - od medycyny, przez finanse, i wyszukiwanie informacji po przetwarzanie sygna³ów oraz prognozê pogody. W ostatnich latach opisanych zosta³o wiele metod do wykrywania wzorców czasowych w takich zadaniach jak: okre¶lanie stanu zdrowia pacjenta na podstawie odczytów elektrokardiografu, przewidywanie wahañ na gie³dzie, analiza mowy czy prognozowanie temperatur. \\
-W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}), w skrócie k-NN - wiêcej w \cite{ChaovalitwongseFS07}), sieci neuronowe (\cite{RavikumarD14}) czy ukryty model Markowa (\cite{KimS06}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{dtwyouknow}. \\
-W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê na ekstrakcji cech opartych na statystycznych w³asno¶ciach szeregów. Cechy te wylliczane s± z ró¿nych reprezentacji danego szeregu. Nastêpnie na tak przekszta³conych danych uczone by³y klasyfikatory opisane w sekcji \ref{s:klasyfikatory}. Jak pokazuj± niektóre badania (przyk³adowo - \cite{RavikumarD14}, \cite{GayGBC13}), takie podej¶cie daje czêsto lepsze wyniki ni¿ algorytmy bazuj±ce na podobieñstwie szeregów.
+Szeregi czasowe obecne s± w wielu ró¿nych dziedzinach ¿ycia - od medycyny, przez finanse, wyszukiwanie informacji, po przetwarzanie sygna³ów oraz prognozê pogody. W ostatnich latach opisanych zosta³o wiele metod do wykrywania wzorców czasowych w takich zadaniach jak: okre¶lanie stanu zdrowia pacjenta na podstawie odczytów elektrokardiografu, przewidywanie wahañ na gie³dzie, analiza mowy czy prognozowanie temperatur. \\
+W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}, w skrócie k-NN - wiêcej w \cite{ChaovalitwongseFS07}), sieci neuronowe (\cite{RavikumarD14}) czy ukryty model Markowa (\cite{KimS06}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{dtwyouknow}. \\
+W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê na ekstrakcji cech opartych na statystycznych w³asno¶ciach szeregów. Cechy te wyliczane s± z ró¿nych reprezentacji danego szeregu. Nastêpnie na tak przekszta³conych danych uczone by³y klasyfikatory opisane w sekcji \ref{s:klasyfikatory}. Jak pokazuj± niektóre badania (przyk³adowo - \\ \cite{RavikumarD14}, \cite{GayGBC13}), takie podej¶cie daje czêsto lepsze wyniki ni¿ algorytmy bazuj±ce na podobieñstwie szeregów.
 
 \section{Proces ekstrakcji cech} \label{s:extraction}
 
@@ -370,17 +370,17 @@ Zacznijmy od formalnego zdefiniowania \textit{szeregu czasowego}.
 \hfill \\
 Proces ekstrakcji cech dla szeregu czasowego przebiega³ nastêpuj±co:
 \begin{enumerate}[label*=\arabic*.]
-\item wyznaczenie pochodnych reprezentacji szeregu czasowego (wiêcej w sekcji \ref{ss:representations})
+\item Wyznaczenie pochodnych reprezentacji szeregu czasowego (wiêcej w sekcji \ref{ss:representations})
 \item Wyliczenie statystyk z wyznaczonych reprezentacji
 \item Dodanie pozosta³ych cech (bazuj±cych miêdzy innymi na korelacji miêdzy szeregami)
 \end{enumerate}
-
+\hfill \\
 W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
 
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
 
 Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w literaturze - ich szerszy przegl±d mo¿na znale¼æ miêdzy innymi w \cite{FulcherJ14}. Celem takich przekszta³ceñ jest wykrycie wzorców charakterystycznych dla klas wynikowych, które nie s± wykrywalne przy u¿yciu podstawowej reprezentacji $T_n$. \\
-Gay i in. w \cite{GayGBC13} podaj± przyk³ad, kiedy to badanie drugiej pochodnej szeregu po czasie znacznie zwiêksza jako¶æ klasyfikacji (rys. \ref{example}). Dzia³aj±c na oryginalnych danych, trudno jest rozró¿nic dwie klasy. Policzenie drugiej pochodnej sprawia, ¿e klasyfikacja staje siê niemal¿e trywialna.
+\cite{GayGBC13} podaje przyk³ad, kiedy to badanie drugiej pochodnej szeregu po czasie znacznie zwiêksza jako¶æ klasyfikacji (rys. \ref{example}). Dzia³aj±c na oryginalnych danych, trudno jest rozró¿nic dwie klasy. Policzenie drugiej pochodnej sprawia, ¿e klasyfikacja staje siê niemal¿e trywialna.
 
 \begin{figure}[ht!]
 \centering
@@ -403,7 +403,7 @@ Autor, poza reprezentacj± oryginaln± $T_n$, zdecydowa³ siê wykorzystaæ w procesi
 Dyskretna pochodna szeregu $T_n = (t_1, x_1), (t_2, x_2), \dots, (t_n, x_n)$ po czasie wyliczana by³a w sposób nastêpuj±cy:
 
 \begin{equation}
-der_{T_n}(i) = \frac{x_i - x_{i - 1}}{t_i - t_{i - 1}}
+der_{T_n}(i) = \frac{x_i - x_{i - 1}}{t_i - t_{i - 1}}, \quad i \geq 1
 \end{equation}
 
 Takie przekszta³cenie pozwala na badanie lokalnej zmienno¶ci (monotoniczno¶ci i jej tempa) danego szeregu. Jako ¿e badane dane (opisywane szerzej w sekcji \ref{ss:data}) sk³ada³y siê z odczytów z sensorów (akcelerometrów i ¿yroskopów), pochodna po czasie mo¿e byæ równie¿ interpretowana w sensie fizycznym. Przyk³adowo, miara zmienno¶ci przyspieszenia w czasie zwana jest zrywem\footnote{https://pl.wikipedia.org/wiki/Zryw}.
@@ -413,13 +413,13 @@ Takie przekszta³cenie pozwala na badanie lokalnej zmienno¶ci (monotoniczno¶ci i 
 Analogicznie do pochodnej zdefiniowaæ mo¿na dyskretn± ca³kê z szeregu \\ $T_n = (t_1, x_1), (t_2, x_2), \dots, (t_n, x_n)$, wyliczan± metod± trapezów:
 
 \begin{equation}
-int_{T_n}(i) = \sum_{j= 1}^i \frac{(x_j + x_{j - 1})(t_i - t_{i - 1})}{2}
+int_{T_n}(i) = \sum_{j= 1}^i \frac{(x_j + x_{j - 1})(t_i - t_{i - 1})}{2}, \quad i \geq 1
 \end{equation}
 
 Tak wyliczonej ca³ce tak¿e mo¿na przypisaæ interpretacjê fizyczn± - dla przyk³adu, warto¶æ $int_{T_n}(i)$ dla odczytu $T_n$ z akcelerometru umieszczonego na lewej rêce stra¿aka oznacza prêdko¶æ, z jak± porusza³a siê ta rêka w czasie $t_i$.  \\
 
 \hfill \\
-Pozosta³e dwa przekszta³cenia (transformata Fouriera oraz transformata falkowa) wyra¿aj± szereg czasowy w bazie pewnej przestrzeni funkcyjnych. \\
+Pozosta³e dwa przekszta³cenia (transformata Fouriera oraz transformata falkowa) wyra¿aj± szereg czasowy w bazie pewnej przestrzeni funkcyjnej. \\
 
 \subsubsection{Transformacja Fouriera}
 
@@ -430,7 +430,7 @@ Transformacja Fouriera jest jednym z najwa¿niejszych przekszta³ceñ u¿ywanych do 
 \includegraphics[scale=0.54]{fourier.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Cosinusowe fale $s_1$, $s_2$, $s_3$ daj± razem bardziej z³o¿ony sygna³ \label{fourier}}
+\caption{Cosinusowe fale $s_1$, $s_2$, $s_3$ daj± po zsumowaniu bardziej z³o¿ony sygna³ \label{fourier}}
 \end{figure}
 
 Formalnie wspó³czynniki dyskretnej transformaty Fouriera zdefiniowane s± nastêpuj±co:
@@ -440,7 +440,7 @@ fourier_{T_n}(k) = \sum_{i = 0}^{n - 1} x_i \cdot (\cos(\frac{-2\pi k i}{n}) + i
 \end{equation}
 
 Wspó³czynniki $fourier_{T_n}(k)$ s± liczbami zespolonymi i reprezentuj± amplitudy oraz fazy sinusoidalnych sk³adowych sygna³u. Dla szeregów o warto¶ciach rzeczywistych, $fourier_{T_n}(i)$ jest zespolonym sprzê¿eniem $fourier_{T_n}(n - i + 1)$ (dla $i = 2, 3, \dots, \frac{n}{2}$). \\
-Istnieje algorytm (zwany \textit{szybk± transformacj± Fouriera}, ang. \textit{fast Fourier Transform}), obliczaj±cy wspó³czynniki transformaty Fouriera w czasie $\mathcal{O}(n\log n)$.
+Istnieje algorytm (zwany \textit{szybk± transformacj± Fouriera}, ang. \textit{fast Fourier transform}), obliczaj±cy wspó³czynniki transformaty Fouriera w czasie $\mathcal{O}(n\log n)$ (\cite{Morchen_2003_time}).
 
 \subsubsection{Transformacja falkowa}
 
@@ -476,7 +476,7 @@ Wykres falki Haara przedstawia rys. \ref{haar}. Funkcja wêgierskiego matematyka 
 \caption{Wykres falki Haara \label{haar}}
 \end{figure}
 
-Podobnie jak w przypadku dyskretnej transformaty Fouriera, tak i tu istnieje szybki algorytm obliczaj±cy wspó³czynniki dyskretnej transformaty falkowej (dzia³aj±cy w czasie $\mathcal{O}(n)$ - \cite{Mallat}). Czyni to obydwa przekszta³cenia niezwykle u¿yteczne w praktyce.
+Podobnie jak w przypadku dyskretnej transformaty Fouriera, tak i tu istnieje szybki algorytm obliczaj±cy wspó³czynniki dyskretnej transformaty falkowej (dzia³aj±cy w czasie $\mathcal{O}(n)$ - \cite{Mallat}). Czyni to obydwa przekszta³cenia niezwykle u¿ytecznymi w praktyce.
 \newpage
 
 \subsection{Statystyki wyliczane z reprezentacji szeregu} \label{ss:feaures}
@@ -555,7 +555,7 @@ first\_argmin(T_n) = \frac{\min(\{i: x_i = min(T_n)\}}{n}
 
 \item \textbf{Wspó³czynnik sko¶no¶ci}
 
-Wspó³czynnik sko¶no¶ci rozk³adu to miara asymetrii rozk³adu. Przyjmuje on warto¶æ zero dla rozk³adu dla rozk³adu symetrycznego, warto¶ci ujemne dla rozk³adów o lewostronnej asymetrii (wyd³u¿one lewe ramiê rozk³adu) i warto¶ci dodatnie dla rozk³adów o prawostronnej asymetrii (wyd³u¿one prawe ramiê rozk³adu) (rys. \ref{skew}). \\
+Wspó³czynnik sko¶no¶ci rozk³adu to miara asymetrii rozk³adu. Przyjmuje on warto¶æ zero dla rozk³adu symetrycznego, warto¶ci ujemne dla rozk³adu o lewostronnej asymetrii (wyd³u¿one lewe ramiê rozk³adu) i warto¶ci dodatnie dla rozk³adów o prawostronnej asymetrii (wyd³u¿one prawe ramiê rozk³adu) (rys. \ref{skew}). \\
 Traktuj±c warto¶ci szeregu jako warto¶ci pewnej próbki statystycznej, mo¿na wyznaczyæ jego wspó³czynnik sko¶no¶ci, zdefiniowany jako:
 \begin{equation}
 skew(T_n) = \frac{3(mean(T_n) - median(T_n))}{std(T_n)}
@@ -589,7 +589,7 @@ kurt(T_n) = \frac{\frac{1}{n}\sum_{i=1}^n(x_i - mean(T_n))^4}{std^4(T_n)} - 3
 
 \item \textbf{¦rednia wa¿ona liniowo}
 
-¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj± Wiens i in. w \cite{WiensGH12}):
+¦rednia wa¿ona warto¶ci w szeregu, przy czym wagi rosn± liniowo wraz z indeksem. W ten sposób nadaje siê najwiêksz± wagê obserwacjom wykonanym najpó¼niej (u¿ycie tej statystyki dla szeregów czasowych opisuj \cite{WiensGH12}):
 \begin{equation}
 linear\_weighted\_mean(T_n) = \frac{2}{n(n + 1)} \sum_{i=1}^n ix_i
 \end{equation}
@@ -640,14 +640,14 @@ count\_above\_mean(T_n) = |\{i: x_i > mean(T_n)\}|
 
 Zdefiniowana formalnie:
 \begin{equation}
-strike\_below\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_{i \leq k \leq j} \; x_k < mean(T_n)\})
+strike\_below\_mean(T_n) = \max(\{j - i\; | \; 1 \leq i \leq j \leq n, \forall_{i < k \leq j} \; x_k < mean(T_n)\})
 \end{equation}
 
 \item \textbf{D³ugo¶æ najd³u¿szego podci±gu o warto¶ciach powy¿ej ¶redniej}
 
 Analogicznie do powy¿szego:
 \begin{equation}
-strike\_above\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_{i \leq k \leq j} \; x_k > mean(T_n)\})
+strike\_above\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_{i < k \leq j} \; x_k > mean(T_n)\})
 \end{equation}
 
 \item \textbf{¦rednia autokorelacja}
@@ -656,7 +656,7 @@ strike\_above\_mean(T_n) = \max(\{j - i \; | \; 1 \leq i \leq j \leq n, \forall_
 \emph{Wspó³czynnik korelacji Pearsona} wektorów prób losowych $\textbf{x}, \textbf{y} \in \mathbb{R}^n$ zdefiniowany jest jako
   $$pearson\_corr(\textbf{x}, \textbf{y}) = \frac{\sum_{i=1}^n(x_i - \mean{x})(y_i - \mean{y})}{\sqrt{\sum_{i=1}^n (x_i - \mean{x})^2}\sqrt{\sum_{i=1}^n (y_i - \mean{y})^2}},$$ gdzie $\mean{x}$, $\mean{y}$ oznaczaj± warto¶ci ¶rednie z tych prób, tj. $\mean{x} = \frac{\sum_{i=1}^n x_i}{n}$, $\mean{y} = \frac{\sum_{i=1}^n y_i}{n}$.
 \end{defi}
-Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowymi i przyjmuje on warto¶ci z przedzia³u $[-1,1]$. Warto¶ci bliskie $1$ oznaczaj± siln± zale¿no¶æ liniow± miêdzy próbkami, warto¶ci bliskie zera - brak liniowej zale¿no¶ci, natomiast warto¶ci bliskie $-1$ - ujemn± liniow± zale¿no¶æ (rys. \ref{pearson}). \\
+Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowymi i przyjmuje warto¶ci z przedzia³u $[-1,1]$. Warto¶ci bliskie $1$ oznaczaj± siln± zale¿no¶æ liniow± miêdzy próbkami, warto¶ci bliskie zera - brak liniowej zale¿no¶ci, natomiast warto¶ci bliskie $-1$ - ujemn± liniow± zale¿no¶æ (rys. \ref{pearson}). \\
 
 \begin{figure}[ht!]
 \centering
@@ -696,7 +696,7 @@ Skoki wykorzystano przy ekstrakcji piêciu kolejnych cech, które oznacza³y (kolej
 \end{itemize}
 
 \hfill \\
-Funkcje $min$, $max$, $mean$, $std$, $quantiles$ nazywane bêd± \textit{statystykami podstawowymi}. Z reprezentacji pochodnych (pochodnej, ca³ki, transformaty Fouriera, transformaty falkowej) wyliczane by³y tylko statystyki podstawowe. Warto¶ci wszystkich opisanych wy¿ej statystyk obliczono tylko dla bazowej reprezentacji szeregu. \\
+Funkcje $min$, $max$, $mean$, $sum$, $std$, $quantiles$ nazywane bêd± \textit{statystykami podstawowymi}. Z reprezentacji pochodnych (pochodnej, ca³ki, transformaty Fouriera, transformaty falkowej) wyliczane by³y tylko statystyki podstawowe. Warto¶ci wszystkich opisanych wy¿ej statystyk obliczono tylko dla bazowej reprezentacji szeregu. \\
 W ten sposób z $42$ szeregów obecnych w zbiorze danych otrzymano oko³o 4500 cech.
 
 \subsection{Pozosta³e cechy} \label{ss:additional}

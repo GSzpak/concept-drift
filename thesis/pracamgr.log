@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  14 DEC 2016 13:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  14 DEC 2016 14:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -565,12 +565,6 @@ Package pdftex.def Info: decision_tree.png used on input line 343.
 
 [15 <./decision_tree.png>] [16]
 Rozdzia\PlPrIeC {\l } 3.
-
-Overfull \hbox (32.99628pt too wide) in paragraph at lines 357--360
-\OT4/cmr/m/n/10.95 to-ry opi-sa-ne w sek-cji 2.2[]. Jak po-ka-zu-j¡ nie-któ-re 
-ba-da-nia (przy-kªa-do-wo - [[]],
- []
-
 [17
 
 ] <example.png, id=99, 526.96875pt x 212.795pt>
@@ -868,7 +862,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (54 pages, 2819381 bytes).
+Output written on pracamgr.pdf (54 pages, 2819488 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  199 compressed objects within 2 object streams
