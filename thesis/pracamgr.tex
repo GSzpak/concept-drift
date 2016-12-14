@@ -740,15 +740,15 @@ Celem tego rozdzia³u bêdzie przedstawienie metody wyboru takiej poprzestrzeni ce
 \item bêdzie mozliwie odpodrna na zmiany dziedziny
 \end{itemize}
 
-Opisywane podej¶cie stanowi rozszerzenie pomys³u zaproponowanego przez Boull{\'{e}} w \cite{Boulle15} oraz \cite{BonduB11}. Intuicja jest nastêpuj±ca: za³ó¿my, ¿e jeste¶my w stanie sprowadziæ problem wykrywania \textit{concept drift} do problemu klasyfikacji (zostanie to opisane szerzej w kolejnych podrozdzia³ach). Za³ó¿my te¿, ¿e mamy dan± funkcjê $f$, która dla danego atrybutu okre¶la jego jako¶æ w odniesieniu do ustalonego problemu klasyfikacji (przyk³adem takich funkcji jest test $\chi^2$.). \\
+Opisywane podej¶cie stanowi rozszerzenie pomys³u zaproponowanego przez Boull{\'{e}} w \\ \cite{Boulle15} oraz \cite{BonduB11}. Intuicja jest nastêpuj±ca: za³ó¿my, ¿e jeste¶my w stanie sprowadziæ problem wykrywania \textit{concept drift} do problemu klasyfikacji (zostanie to opisane szerzej w kolejnych podrozdzia³ach). Za³ó¿my te¿, ¿e mamy dan± funkcjê $f$, która dla danego atrybutu okre¶la jego jako¶æ w odniesieniu do ustalonego problemu klasyfikacji. Przyk³adem takiej funkcji jest test $\chi^2$. \\
 
 Celem jest wybranie tych cech, które jednocze¶nie:
 \begin{itemize}
 \item daj± najwy¿szy wynik dla oryginalnego problemu klasyfikacji,
-\item daj± najni¿szy wynik dla problemu wykrywania ewoluuj±cych pojêæ.
+\item daj± najni¿szy wynik dla problemu klasyfikacji, do którego sprowadzone zosta³o zadanie wykrywania ewoluuj±cych pojêæ.
 \end{itemize}
 
-Przy takim wyborze w oczywisty sposób zostan± spe³nione postawione wcze¶niej wymagania. Intuicyjnie, je¶li bêdziemy wstanie wybraæ reprezentacjê, która daje dobr± jako¶æ klasyfikacji, ale s³abo wykrywa zmianê dziedziny, to nasz klasyfikator bêdzie mniej czu³y na ewolucjê pojêæ, co skutkowaæ bêdzie zmniejszeniem ró¿nic miêdzy zbiorami treningowym a testowym. \\
+Przy takim wyborze w oczywisty sposób zostan± spe³nione postawione wcze¶niej wymagania. Intuicyjnie, je¶li bêdziemy wstanie wybraæ reprezentacjê, która daje dobr± jako¶æ klasyfikacji, ale s³abo wykrywa zmianê dziedziny, to nasz klasyfikator bêdzie mniej czu³y na ewolucjê pojêæ, co skutkowaæ bêdzie zmniejszeniem ró¿nicy jako¶ci miêdzy zbiorami treningowym a testowym. \\
 Rysunek \ref{drift_example} przedstawia rozk³ad jako¶ci cech wraz z przyk³adowym wyborem intuicyjnie "dobrej" reprezentacji.
 
 \begin{figure}[ht!]
@@ -756,7 +756,7 @@ Rysunek \ref{drift_example} przedstawia rozk³ad jako¶ci cech wraz z przyk³adowym
 \includegraphics[scale=0.7]{drift_example.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.7\textwidth}
-\caption{Przyk³adowy rozk³ad jako¶ci cech dla problemu klasyfikacji oraz wykrywania ewoluuj±cych pojêæ \label{drift_example}}
+\caption{Przyk³adowy rozk³ad jako¶ci cech dla problemu klasyfikacji oraz zadania wykrywania ewoluuj±cych pojêæ \label{drift_example}}
 \end{figure}
 
 O¶ $x$ przedstawia jako¶æ cech dla bazowego problemu klasyfikacji, natomiast o¶ $y$ - jako¶æ dla problemu detekcji \textit{concept drift}. Przyk³adowym wyborem jest selekcja cech poni¿ej czerwonej linii (atrybuty s³abo rozró¿niaj±ce ró¿ne dziedziny) oraz na prawo od linii zielonej (cechy o wysokim wyniku dla postawionego problemu klasyfikacji). Oczywi¶cie nie zawsze taki wybór bêdzie mo¿liwy, co poka¿± kolejne podrozdzia³y. \\
@@ -771,7 +771,7 @@ Podstawowe miary jako¶ci atrybutów pochodz± ze statystki oraz teorii informacji.
 \item wspó³czynnik korelacji Pearsona
 \item test $\chi^2$
 \item informacja wzajemna
-\item jednoczynnikowa analiza wariancji (ang. \textit{ANOVA F-value})
+\item jednoczynnikowa analiza wariancji
 \item zysk Giniego
 \end{itemize}
 
@@ -796,7 +796,7 @@ $$H(C) = -\sum_{i=1}^m P_C(c_i) \log P_C(c_i)$$
 \end{defi}
 Niech teraz atrybut $F$ bêdzie atrybutem dyskretnym przyjmuj±cym $k$ warto¶ci $f_1, f_2, \dots, f_k$. Wtedy niepewno¶æ po poznaniu warto¶ci cechy $F$ nazywa siê \textit{entropi± warunkow±}:
 \begin{displaymath}
-H(C | F) = \sum_{i=1}^k P_C(f_i) H(C|F=f_i) = 
+H(C | F) = \sum_{i=1}^k P_F(f_i) H(C|F=f_i) = 
 \end{displaymath}
 \begin{displaymath}
 = -\sum_{i=1}^k P_F(f_i) (\sum_{j=1}^m P_{C|F}(c_j | f_i) \log P_{C|F}(c_j | f_i) )
@@ -814,6 +814,7 @@ Po nietrudnych przekszta³ceniach mo¿na otrzymaæ zwarty wzór na informacjê wzajem
 \begin{equation}
 I(C; F) = \sum_{i=1}^k \sum_{j=1}^m P_{CF}(c_j, f_i) \log(\frac{P_{CF}(c_j, f_i)}{P_C(c_j)P_F(f_i)})
 \end{equation}
+
 \subsubsection{Jednoczynnikowa analiza wariancji}
 
 Jednoczynnikowa analiza wariancji u¿ywa testu statystycznego $F$ do mierzenia jako¶ci cechy. Test $F$ okre¶la, czy warto¶ci oczekiwane danej cechy $X$ wewn±trz $m$ okre¶lonych grup (odpowiadaj±cych $m$ warto¶ciom klasy wynikowej) ró¿ni± siê miêdzy sob±. Warto¶æ $F$-testu zdefiniowana jest jako:
@@ -837,7 +838,7 @@ Niech ponownie zmienna przewidywana $C$ bêdzie zmienn± dyskretn± przyjmuj±c± $m$
 \emph{Indeksem Giniego} zmiennej C nazywa siê warto¶æ
 $$Gini(C) = 1 - \sum_{i=1}^m P_C^2(c_i)$$
 \end{defi}
-Podobnie jak entropia, indeks Giniego jest miar± \textit{niejednorodno¶ci} zbioru. Przyk³adowo, dla jednej klasy indeks Giniego - niejednorodno¶æ zbioru wynosi $1 - 1^2 = 0$. Je¶li rozk³ad klas jest jednorodny (czyli $P_C(c_i) = \frac{1}{m}$, indeks Giniego osi±ga maksimum. \\
+Podobnie jak entropia, indeks Giniego jest miar± \textit{niejednorodno¶ci} zbioru. Przyk³adowo, dla jednej klasy indeks Giniego (niejednorodno¶æ zbioru) wynosi $1 - 1^2 = 0$. Je¶li rozk³ad klas jest jednostajny (czyli $P_C(c_i) = \frac{1}{m}$, indeks Giniego osi±ga maksimum. \\
 Ze wzglêdu na podobieñstwo miêdzy indeksem Giniego a entropi±, \textit{zysk Giniego} definiuje siê analogicznie do informacji wzajemnej. Dla atrybutu dyskretnego $F$ przyjmuj±cego warto¶ci $f_1, f_2, \dots, f_k$ zysk Giniego wyra¿a, o ile zmala³a niejednorodno¶æ zbioru (jego indeks Giniego) po pozaniu warto¶ci cechy $F$:
 \begin{equation}
 GiniGain(C; F) = Gini(C) - Gini(C | F) = Gini(C) - \sum_{i=1}^k P_F(f_i) Gini(C | F = f_i)
@@ -848,13 +849,12 @@ W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê 
 
 \section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym} \label{s:tt}
 
-Wróæmy do problemu wykrywania ewolucji pojêæ. \\
-
-W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w \cite{Boulle15}. Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków i jednocze¶nie s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego.
+Wróæmy do problemu wykrywania ewolucji pojêæ. Przypomnijmy, ¿e celem jest przypisanie instancjom takich klas, aby obiekty pochodz±ce z tej samej dziedziny otrzyma³y tê sam± klasê. Potem mierzona bêdzie jako¶æ poszczególnych atrybutów wobec tak stworzonej klasy wynikowej i wybierane bêd± te cechy, które uzyskaj± najgorszy wynik, czyli takie, które najgorzej rozró¿niaj± pojêcia. \\
+W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w \cite{Boulle15}. Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego i jednocze¶nie dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków.
 
 \subsection{Wyniki eksperymentów}
 
-Poni¿ej zaprezentowane zostan± rezultaty selekcji cech przy u¿yciu trzech miar jako¶ci wspomnianych w poprzedniej sekcji. W opisie ka¿dego z eksperymentów $threshold_{drift}$ bêdzie oznacza³ górny próg warto¶ci miary przy detekcji \textit{concept drift}, natomiast $threshold_{class}$ - dolny próg warto¶ci przy klasyfikacji czynno¶ci wykonywanej przez stra¿aka.
+Poni¿ej zaprezentowane zostan± rezultaty selekcji cech przy u¿yciu trzech miar jako¶ci wspomnianych w poprzedniej sekcji - informacji wzajemnej, jednoczynnikowej analizy wariancji i zysku Giniego. W opisie ka¿dego z eksperymentów $threshold_{drift}$ bêdzie oznacza³ górny próg warto¶ci miary przy zadaniu detekcji \textit{concept drift}, natomiast $threshold_{class}$ - dolny próg jako¶ci cechy przy klasyfikacji czynno¶ci wykonywanej przez stra¿aka (analogicznie do rysunku \ref{drift_example}).
 
 \subsubsection*{Informacja wzajemna}
 
@@ -952,11 +952,11 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech & $X_{train}$ $BAC$ & $X
 \end{tabular}
 \end{table}
 
-Zastosowanie opisanej selekcji cech pomog³o poprawiæ wynik o oko³o $0.045$ w najlepszym przypadku. Oczekiwane rezultaty zaobserwowaæ mo¿na przyk³adowo dla warto¶ci \\ $threshold_{class} = 0.25$ i $threshold_{drift} = 0.05$ - po wybraniu 950 cech, wynik na zbiorze treningowym obni¿y³ siê, podczas gdy wynik na zbiorze testowym wzrós³. Wybrana reprezentacja, mimo ¿e teoretycznie gorsza je¶li chodzi o klasyfikacjê czynno¶ci stra¿aków, okaza³a siê bardziej odporna na zmianê dziedziny.
+Zastosowanie opisanej selekcji cech pomog³o poprawiæ wynik o oko³o $0.045$ w najlepszym przypadku. Oczekiwane rezultaty zaobserwowaæ mo¿na przyk³adowo dla warto¶ci \\ $threshold_{class} = 0.25$ i $threshold_{drift} = 0.05$ przy u¿yciu obydwu klasyfikatorów liniowych - po wybraniu 950 cech, wynik na zbiorze treningowym obni¿y³ siê, podczas gdy wynik na zbiorze testowym wzrós³. Wybrana reprezentacja, mimo ¿e teoretycznie gorsza je¶li chodzi o klasyfikacjê czynno¶ci stra¿aków, okaza³a siê bardziej odporna na zmianê dziedziny.
 
 \subsubsection{Jednoczynnikowa analiza wariancji}
 
-Rozk³ad jako¶ci atrybutów mierzony przy u¿yciu jednoczynnikowej analizy wariancji (wykres \ref{tt_anova}) prezentuje siê du¿o korzystniej ni¿ w poprzednim przypadku. Cechy skupione s± przy osiach $x$ i $y$, zatem wybiór zmienne odporne na zmianê dziedziny nie powinnien powodowaæ spadku jako¶ci klasyfikatora.
+Rozk³ad jako¶ci atrybutów mierzony przy u¿yciu jednoczynnikowej analizy wariancji (wykres \ref{tt_anova}) prezentuje siê du¿o korzystniej ni¿ w poprzednim przypadku. Cechy skupione s± przy osiach $x$ i $y$, zatem wybiór zmiennych odpornych na zmianê dziedziny nie powinnien powodowaæ spadku jako¶ci klasyfikatora.
 
 \begin{figure}[!htbp]
 \centering
@@ -967,7 +967,7 @@ Rozk³ad jako¶ci atrybutów mierzony przy u¿yciu jednoczynnikowej analizy wariancj
 \end{figure}
 
 Znajduje to swoje odwzierciedlenie w otrzymanych rezultatach. Najwiêkszy zysk wydajno¶ci zaobserwowano dla klasyfikatorów liniowych. Wynik na zbiorze testowym dla regresji logistycznej i SVM przy odpowiednich warto¶ci progów poprawi³ siê nawet o $0.15$ (tabele \ref{t:tt_anova_logit} i \ref{t:tt_anova_svm}), przy jednoczesnym niewielkim spadku $BAC$ na zbiorze treningowym. Dla lasów losowych poprawa miary jako¶ci wynios³a oko³o $0.05$ w najlepszym przypadku (tabela \ref{t:tt_anova_random}). Nale¿y przy tym zauwa¿yæ, ¿e polepszenie jako¶ci klasyfikatora nast±pi³a wraz z redukcj± przestrzeni cech - najlepsze wyniki uzyskano dla ok. $1500$ atrybutów. Niesie to ze sob± kolejn± zaletê, jak± jest obni¿enie czasu budowy modelu. \\
-Warto te¿ zwróciæ uwagê na wyniki klasyfikatorów dla ustalonej warto¶ci $threshold_{class}$. Praktycznie w ka¿dym przypadku eliminowanie wiêkszej liczby cech wra¿liwych na zmianê dziedziny skutkuje wzrostem jako¶ci.
+Warto te¿ zwróciæ uwagê na wyniki klasyfikatorów dla ustalonej warto¶ci $threshold_{class}$. Praktycznie w ka¿dym przypadku obni¿anie $threshold_{drift}$ przy ustalonym $threshold_{class}$ (a co za tym idzie - eliminowanie wiêkszej liczby cech wra¿liwych na zmianê dziedziny) skutkuje wzrostem jako¶ci modelu.
 
 \newpage
 
@@ -1167,7 +1167,7 @@ Dla ka¿dego z algorytmów ucz±cych mo¿na ponownie zauwa¿yæ poprawê jako¶ci klasyf
 Warto te¿ zwróciæ uwagê, ¿e mimo korzystnego rozk³adu cech, obni¿anie $threshold_{drift}$ (a co za tym idzie - eliminacja wiêkszej liczby cech wra¿liwych na ewolucjê pojêæ) nie zawsze nios³o ze sob± poprawê jako¶ci klasyfikatora. Najlepiej widaæ to na przyk³adzie regresji logistycznej. Przy $threshold_{class} = 0$, obni¿enie $threshold_{drift}$ z $0.0001$ na $0.00005$ spowodowa³o do¶æ wyra¼ny spadek jako¶ci klasyfikatora - z $0.5472$ na $0.4847$. Jest to o tyle zaskakuj±ce, ¿e:
 \begin{itemize}
 \item na podstawie wykresu \ref{tt_gini} wywnioskowaæ mo¿na, ¿e wiêkszo¶æ wyeliminowanych cech by³a bezu¿yteczna dla klasyfikacji czynno¶ci stra¿aka
-\item Obni¿enie progu nie poskutkowa³o drastycznym spadkiem liczby wybranych cech (z 4386 na 3776)
+\item obni¿enie progu nie poskutkowa³o drastycznym spadkiem liczby wybranych cech (z 4386 na 3776)
 \end{itemize}
 
 \section{Detekcja zmiany dziedziny przy u¿yciu klasteryzacji}

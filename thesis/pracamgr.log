@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  14 DEC 2016 14:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  14 DEC 2016 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -648,12 +648,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 734--736
  []
 
 
-Overfull \hbox (39.07655pt too wide) in paragraph at lines 743--744
-[]\OT4/cmr/m/n/10.95 Opisywane po-dej-±cie sta-no-wi roz-sze-rze-nie po-my-sªu 
-za-pro-po-no-wa-ne-go przez Bo-ull^^Se w [[]]
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 743--744
 
  []
@@ -667,10 +661,6 @@ Package pdftex.def Info: drift_example.png used on input line 756.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
 
 [28 <./drift_example.png>] [29] [30]
-Underfull \hbox (badness 10000) in paragraph at lines 851--852
-
- []
-
 <train_test_mutual_info.png, id=152, 966.9726pt x 433.62pt>
 File: train_test_mutual_info.png Graphic file (type png)
 
@@ -862,7 +852,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (54 pages, 2819488 bytes).
+Output written on pracamgr.pdf (54 pages, 2819805 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  199 compressed objects within 2 object streams
