@@ -1,0 +1,26 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Schemat uczenia z nadzorem \relax }}{6}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Przyk\IeC {\l }ad modelu przeuczonego (zielona linia) i zregularyzowanego (czarna linia) \relax }}{8}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Rozmieszczenie czujnik\'ow na ciele stra\.zaka \relax }}{11}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Rozk\IeC {\l }ad klas w zbiorze treningowym \relax }}{12}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Wykres funkcji logistycznej \relax }}{13}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces P\IeC {\l }aszczyzna $H_1$ nie rozdziela klas. P\IeC {\l }aszczyzna $H_2$ rozdziela je, ale z niewielkim marginesem. P\IeC {\l }aszczyzna $H_3$ rozdziela je z maksymalnym marginesem. \relax }}{14}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Przyk\IeC {\l }adowe drzewo decyzyjne \relax }}{15}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Po lewej wida\'c oryginalny zbi\'or danych, natomiast po prawej - drug\k a pochodn\k a po czasie \relax }}{18}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Cosinusowe fale $s_1$, $s_2$, $s_3$ daj\k a po zsumowaniu bardziej z\IeC {\l }o\.zony sygna\IeC {\l } \relax }}{20}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Wykres falki Haara \relax }}{21}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Rozk\IeC {\l }ady o ujemnym (pierwszy wykres) i dodatnim (drugi wykres) wsp\'o\IeC {\l }czynniku sko\'sno\'sci \relax }}{23}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Kszta\IeC {\l }t rozk\IeC {\l }adu w zale\.zno\'sci od warto\'sci kurtozy \relax }}{23}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Przyk\IeC {\l }adowe wykresy danych $(x, y)$ i odpowiadaj\k ace im warto\'sci wsp\'o\IeC {\l }czynnika korelacji liniowej Pearsona \relax }}{25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Przyk\IeC {\l }adowy rozk\IeC {\l }ad jako\'sci cech dla problemu klasyfikacji oraz zadania wykrywania ewoluuj\k acych poj\k e\'c \relax }}{28}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu informacji wzajemnej \relax }}{32}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu jednoczynnikowej analizy wariancji \relax }}{34}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu zysku Giniego. Wykres po prawej stronie stanowi przybli\.zenie wykresu po stronie lewej\relax }}{36}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Przyk\IeC {\l }ad klastrowania danych przy u\.zyciu algorytmu k-centroid\'ow\relax }}{39}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu informacji wzajemnej (po lewej) i jednoczynnikowej analizy wariancji (po prawej)\relax }}{41}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu zysku Giniego. Wykres po prawej stronie stanowi przybli\.zenie wykresu po stronie lewej\relax }}{41}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

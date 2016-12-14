@@ -1203,7 +1203,7 @@ Przyk³ad obiektów pogrupowanych przy u¿yciu algorytmu k-centroidów przedstawia r
 
 W sekcji \ref{s:tt} wyliczano jako¶æ cech wzglêdem etykiet "train" i "test" w celu wykrycia cech najbardziej odpornych na \textit{concept drift}. Intuicyjnie, lepsze wyniki powinno siê uzyskaæ, u¿ywaj±c jako klas rzeczywistych identyfikatorów dziedzin - w tym przypadku, identyfikatorów stra¿aków. Te identyfikatory nie by³y jednak obecne w zbiorze danych. Jak wspomniano na pocz±tku bie¿±cej sekcji, mo¿na je jednak imitowaæ na podstawie wyników analizy skupieñ. \\
 Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿aków dostarczy³o danych, a nastêpnie wykorzystanie identyfikatorów tak powsta³ych klastrów do wyznaczenia jako¶ci cech. Taka metoda wyda³a siê jednak autorowi niewystarczaj±ca - klastry mog³y skupiaæ w sobie instancje odpowiadaj±ce podobnym czynno¶ciom (tak jak $running$ i $stairs\_up$), a nie pomiary pobrane od jednego stra¿aka. Z tego powodu autor zastosowa³ inny algorytm, w którym grupowanie dokonywane by³o osobno na zbiorach obiektów nale¿±cych do tej samej klasy. Nastêpnie jako¶æ danej cechy dla problemu \textit{concept drift} by³a mierzona osobno na ka¿dym z tych zbiorów, a ostateczny wynik by³ ¶redni± wyników czê¶ciowych. \\
-
+\hfill \\
 Schemat algorytmu dla cechy $f$ i miary $quality\_measure$ przedstawia poni¿szy pseudokod: \\
 
 
@@ -1235,7 +1235,7 @@ Poniewa¿ liczba klastrów by³a z góry ustalona, do klastrowania u¿yto algorytmu k
 \subsubsection{Informacja wzajemna i jednoczynnikowa analiza wariancji}
 
 Analogicznie do eksperymentów opisanych w sekcji \ref{s:tt}, rozpatrzmy rozk³ad jako¶ci cech dla dwóch problemów: klasyfikacji czynno¶ci stra¿aka oraz wykrywania ewoluuj±cych pojêæ. W tym przypadku jako¶æ cechy dla problemu detekcji \textit{concept drift} wyznaczana by³a przy u¿yciu algorytmu \ref{alg_cluster}. \\
-Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu informacji wzajemnej i jednoczynnikowej analizy wariancji jako miar. W obu przypadkach widaæ wysok± korelacjê miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla wykrycia dziedziny. Jak wspomniano w sekcji \ref{s:tt}, znacznie utrudnia to dobranie odpowiednich warto¶ci progów $threshold_{drift}$ oraz $threshold_{class}$. Znalaz³o to swoje odzwierciedlenie w jako¶ci klasyfikacji - w obu przypadkach zastosowanie selekcji atrybutów albo pogarsza³o wynik, albo poprawia³o go nieznacznie. Rezultaty uzyskane dla ró¿nych klasyfikatorów by³y bardzo zbli¿one do tych prezentowanych w tabelach \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm} i \ref{t:tt_mutual_info_random}.
+Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu informacji wzajemnej (rysunek po lewej) i jednoczynnikowej analizy wariancji (rysunek po prawej) jako miar. W obu przypadkach widaæ wysok± korelacjê miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla wykrycia dziedziny. Jak wspomniano w sekcji \ref{s:tt}, znacznie utrudnia to dobranie odpowiednich warto¶ci progów $threshold_{drift}$ oraz $threshold_{class}$. Znalaz³o to swoje odzwierciedlenie w jako¶ci klasyfikacji - w obu przypadkach zastosowanie selekcji atrybutów albo pogarsza³o wynik, albo poprawia³o go nieznacznie. Rezultaty uzyskane dla ró¿nych klasyfikatorów by³y bardzo zbli¿one do tych prezentowanych w tabelach \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm} i \ref{t:tt_mutual_info_random}.
 
 \begin{figure}[!htbp]
 \centering
@@ -1362,7 +1362,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 
 
 Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.9$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
-Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}), mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem zachowywaæ siê lepiej ni¿ metoda zaproponowana przez Boull{\'{e}} w \cite{Boulle15}.
+Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}) przy u¿yciu zysku Giniego, mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem zachowywaæ siê lepiej ni¿ metoda zaproponowana w \cite{Boulle15}.
 
 \section{Wnioski z przeprowadzonych eksperymentów}
 

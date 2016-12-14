@@ -1,0 +1,23 @@
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {1.1}{\ignorespaces Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak\IeC {\l }adamy, \.ze zbi\'or $X_{train}$ jest dost\k epny podczas uczenia, podczas gdy zbi\'or $Y_{test}$ nie jest znany. Dane treningowe pochodz\k a z rozk\IeC {\l }adu $D^{source}$.\relax }}{7}
+\contentsline {table}{\numberline {1.2}{\ignorespaces \textit {Concept drift} a \textit {overfitting} - obni\.zony wynik modelu 1. przy walidacji krzy\.zowej \'swiadczy o przeuczeniu, a nie wyst\k epowaniu ewoluuj\k acych poj\k e\'c. W drugim przypadku model mimo dobrej umiej\k etno\'sci klasyfikacji element\'ow pochodz\k acych z rozk\IeC {\l }adu $D^{source}$, cierpi na spadek jako\'sci przy ewaluacji na zbiorze pochodz\k acym z rozk\IeC {\l }adu $D^{target}$.\relax }}{8}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Jako\'s\'c klasyfikacji na wyekstrahowanych cechach\relax }}{27}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu informacji wzajemnej i regresji logistycznej\relax }}{32}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu informacji wzajemnej i SVM\relax }}{33}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu informacji wzajemnej i las\'ow losowych\relax }}{33}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu analizy wariancji i regresji logistycznej\relax }}{35}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu analizy wariancji i SVM\relax }}{35}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu analizy wariancji i las\'ow losowych\relax }}{36}
+\contentsline {table}{\numberline {4.8}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu zysku Giniego i regresji logistycznej\relax }}{37}
+\contentsline {table}{\numberline {4.9}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu zysku Giniego i SVM\relax }}{37}
+\contentsline {table}{\numberline {4.10}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu zysku Giniego i las\'ow losowych\relax }}{38}
+\contentsline {table}{\numberline {4.11}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu zysku Giniego i regresji logistycznej\relax }}{42}
+\contentsline {table}{\numberline {4.12}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu zysku Giniego i SVM\relax }}{42}
+\contentsline {table}{\numberline {4.13}{\ignorespaces Jako\'s\'c klasyfikacji dla r\'o\.znych warto\'sci progowych przy u\.zyciu zysku Giniego i las\'ow losowych\relax }}{43}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Jako\'s\'c klasyfikatora budowanego przy u\.zyciu uczenia iteracyjnego dla r\'o\.znych algorytm\'ow ucz\k acych i warto\'sci $rows\_percentage$\relax }}{46}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Jako\'s\'c klasyfikatora budowanego przy u\.zyciu metody powi\k ekszania przestrzeni cech\relax }}{48}
+\addvspace {10\p@ }
