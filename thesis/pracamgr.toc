@@ -4,51 +4,51 @@
 \contentsline {subsection}{\numberline {1.2.1}Paradygmaty uczenia si\k e}{6}
 \contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a problem przeuczenia}{7}
 \contentsline {subsection}{\numberline {1.2.3}Zawarto\'s\'c merytoryczna pracy}{8}
-\contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{9}
-\contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{9}
-\contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{9}
-\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{11}
-\contentsline {section}{\numberline {2.2}Opis u\.zytych klasyfikator\'ow}{11}
-\contentsline {subsection}{\numberline {2.2.1}Klasyfikator liniowy}{11}
-\contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej (\textit {logit})}{11}
-\contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{12}
-\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{13}
-\contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{13}
-\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{14}
-\contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{15}
-\contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{15}
-\contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{15}
-\contentsline {subsection}{\numberline {3.2.1}Reprezentacje pochodne szeregu czasowego}{16}
-\contentsline {subsubsection}{Pochodna szeregu po czasie}{16}
-\contentsline {subsubsection}{Ca\IeC {\l }ka szeregu po czasie}{17}
-\contentsline {subsubsection}{Transformacja Fouriera}{17}
-\contentsline {subsubsection}{Transformacja falkowa}{17}
-\contentsline {subsection}{\numberline {3.2.2}Statystyki wyliczane z reprezentacji szeregu}{19}
-\contentsline {subsection}{\numberline {3.2.3}Pozosta\IeC {\l }e cechy}{23}
-\contentsline {chapter}{\numberline {4}Redukcja \textit {concept drift} poprzez selekcj\k e cech}{25}
-\contentsline {section}{\numberline {4.1}Sprowadzenie problemu adaptacji dziedziny do problemu klasyfikacji}{25}
-\contentsline {section}{\numberline {4.2}Miary jako\'sci cech}{27}
-\contentsline {subsubsection}{Wsp\'o\IeC {\l }czynnik korelacji Pearsona}{27}
-\contentsline {subsubsection}{Test $\chi ^2$}{27}
-\contentsline {subsubsection}{Informacja wzajemna}{27}
-\contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{28}
-\contentsline {subsubsection}{Zysk Giniego}{28}
-\contentsline {section}{\numberline {4.3}Wykrywanie ewolucji poj\k e\'c mi\k edzy zbiorem treningowym a testowym}{29}
-\contentsline {subsection}{\numberline {4.3.1}Wyniki eksperyment\'ow}{29}
-\contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{32}
-\contentsline {subsubsection}{Zysk Giniego}{34}
-\contentsline {section}{\numberline {4.4}Detekcja zmiany dziedziny przy u\.zyciu klasteryzacji}{36}
-\contentsline {subsection}{\numberline {4.4.1}Algorytmy klasteryzacji}{37}
-\contentsline {subsection}{\numberline {4.4.2}Opis algorytmu}{38}
-\contentsline {subsection}{\numberline {4.4.3}Wyniki eksperyment\'ow}{38}
-\contentsline {subsubsection}{Informacja wzajemna i jednoczynnikowa analiza wariancji}{38}
-\contentsline {subsubsection}{Zysk Giniego}{39}
-\contentsline {section}{\numberline {4.5}Wnioski z przeprowadzonych eksperyment\'ow}{41}
-\contentsline {chapter}{\numberline {5}Inne metody adaptacji dziedziny}{43}
-\contentsline {section}{\numberline {5.1}Uczenie iteracyjne}{43}
-\contentsline {subsection}{\numberline {5.1.1}Opis algorytmu}{43}
-\contentsline {subsection}{\numberline {5.1.2}Eksperymenty i wnioski}{44}
-\contentsline {section}{\numberline {5.2}Powi\k ekszenie przestrzeni cech}{44}
-\contentsline {subsection}{\numberline {5.2.1}Opis algorytmu}{44}
-\contentsline {subsection}{\numberline {5.2.2}Eksperymenty i wnioski}{45}
-\contentsline {chapter}{\numberline {6}Podsumowanie}{47}
+\contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{11}
+\contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{11}
+\contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{11}
+\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{13}
+\contentsline {section}{\numberline {2.2}Opis u\.zytych klasyfikator\'ow}{13}
+\contentsline {subsection}{\numberline {2.2.1}Klasyfikator liniowy}{13}
+\contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej (\textit {logit})}{13}
+\contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{14}
+\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{15}
+\contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{15}
+\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{16}
+\contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{17}
+\contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{17}
+\contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{17}
+\contentsline {subsection}{\numberline {3.2.1}Reprezentacje pochodne szeregu czasowego}{18}
+\contentsline {subsubsection}{Pochodna szeregu po czasie}{18}
+\contentsline {subsubsection}{Ca\IeC {\l }ka szeregu po czasie}{19}
+\contentsline {subsubsection}{Transformacja Fouriera}{19}
+\contentsline {subsubsection}{Transformacja falkowa}{19}
+\contentsline {subsection}{\numberline {3.2.2}Statystyki wyliczane z reprezentacji szeregu}{21}
+\contentsline {subsection}{\numberline {3.2.3}Pozosta\IeC {\l }e cechy}{25}
+\contentsline {chapter}{\numberline {4}Redukcja \textit {concept drift} poprzez selekcj\k e cech}{27}
+\contentsline {section}{\numberline {4.1}Sprowadzenie problemu adaptacji dziedziny do problemu klasyfikacji}{27}
+\contentsline {section}{\numberline {4.2}Miary jako\'sci cech}{29}
+\contentsline {subsubsection}{Wsp\'o\IeC {\l }czynnik korelacji Pearsona}{29}
+\contentsline {subsubsection}{Test $\chi ^2$}{29}
+\contentsline {subsubsection}{Informacja wzajemna}{29}
+\contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{30}
+\contentsline {subsubsection}{Zysk Giniego}{30}
+\contentsline {section}{\numberline {4.3}Wykrywanie ewolucji poj\k e\'c mi\k edzy zbiorem treningowym a testowym}{31}
+\contentsline {subsection}{\numberline {4.3.1}Wyniki eksperyment\'ow}{31}
+\contentsline {subsubsection}{Jednoczynnikowa analiza wariancji}{34}
+\contentsline {subsubsection}{Zysk Giniego}{36}
+\contentsline {section}{\numberline {4.4}Detekcja zmiany dziedziny przy u\.zyciu klasteryzacji}{38}
+\contentsline {subsection}{\numberline {4.4.1}Algorytmy klasteryzacji}{39}
+\contentsline {subsection}{\numberline {4.4.2}Opis algorytmu}{40}
+\contentsline {subsection}{\numberline {4.4.3}Wyniki eksperyment\'ow}{40}
+\contentsline {subsubsection}{Informacja wzajemna i jednoczynnikowa analiza wariancji}{40}
+\contentsline {subsubsection}{Zysk Giniego}{41}
+\contentsline {section}{\numberline {4.5}Wnioski z przeprowadzonych eksperyment\'ow}{43}
+\contentsline {chapter}{\numberline {5}Inne metody adaptacji dziedziny}{45}
+\contentsline {section}{\numberline {5.1}Uczenie iteracyjne}{45}
+\contentsline {subsection}{\numberline {5.1.1}Opis algorytmu}{45}
+\contentsline {subsection}{\numberline {5.1.2}Eksperymenty i wnioski}{46}
+\contentsline {section}{\numberline {5.2}Powi\k ekszenie przestrzeni cech}{46}
+\contentsline {subsection}{\numberline {5.2.1}Opis algorytmu}{46}
+\contentsline {subsection}{\numberline {5.2.2}Eksperymenty i wnioski}{47}
+\contentsline {chapter}{\numberline {6}Podsumowanie}{49}

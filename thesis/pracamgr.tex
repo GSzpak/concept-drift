@@ -151,7 +151,7 @@ Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku 
 
 \subsection{Paradygmaty uczenia siê} \label{ss:pardigms}
 
-Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od dostêpno¶ci zbiorów $Y_{train}, X_{test}, Y_{test}$, mo¿na (za \cite{ArnoldNC07}) zdefiniowaæ inne paradygmaty uczenia. \\
+Przyjmijmy definicje jak na pocz±tku sekcji \ref{s:superv}. W zale¿no¶ci od dostêpno¶ci zbiorów $Y_{train}$, $X_{test}$, $Y_{test}$, mo¿na (za \cite{ArnoldNC07}) zdefiniowaæ inne paradygmaty uczenia. \\
 I tak, je¶li zbiór $Y_{train}$ jest nieznany w momencie tworzenia modelu, mamy do czynienia z \textit{uczeniem bez nadzoru} (ang. \textit{unsupervised learning}). \\
 Gdy zbiór $X_{test}$ nie jest znany podczas uczenia, mowa o \textit{uczeniu indukcyjnym} (ang. \textit{inductive learning}). W przeciwnym razie takie uczenie nazywa siê \textit{uczeniem transdukcyjnym} (ang. transductive learning). \\
 W powy¿szym przyk³adach istotne jest za³o¿enie, i¿ zbiory $X_{train}$, $X_{test}$ pochodz± z tego samego rozkladu $D$. Odwrotna sytuacja rozpatrywana jest w paradygmacie \textit{uczenia z przeniesieniem wiedzy} (ang. \textit{transfer learning}). Przyjmuje siê w nim, ¿e dane s± dwa ró¿ne rozk³ady $D^{source}$ i $D^{target}$. Model wyuczony na danych treningowych $X^{source}_{train}, Y^{source}_{train}$ z rozk³adu $D^{source}$ wykorzystywany jest do klasyfikacji zbioru testowego $X^{target}_{test}, Y^{target}_{test}$ pochodz±cych z rozk³adu $D^{target}$. W poni¿szej pracy autor skupia siê na problemie \textit{dopasowania dziedziny}, który zak³ada, ¿e zbiór dostêpnych klas $Y$ jest ten sam dla $D^{source}$ i $D^{target}$. Przeciwieñstwem dopasowania dziedziny jest zadanie \textit{uczenia wielozadaniowego} (ang. \textit{multi-task learning}, wiêcej miêdzy innymi w \cite{AndoZ05}), gdzie zbiory $X_{train}$, $ X_{test}$ pochodz± z tego samego rozk³adu, natomiast zbiory $Y_{train}$, $Y_{test}$ s± ró¿ne. \\
@@ -182,10 +182,19 @@ W poni¿szej pracy autor skupi siê na problemie transdukcyjnego uczenia z nadzore
 
 \subsection{Ewolucja pojêæ a problem przeuczenia}
 
-Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczenia (ang. \textit{overfitting}). Polega on na zbudowaniu modelu nadmiernie dopasowanego do danych treningowych, co skutkuje s³ab± jego jako¶ci±. \\
+Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczenia (ang. \textit{overfitting}). Polega on na zbudowaniu modelu nadmiernie dopasowanego do danych treningowych, co skutkuje s³ab± jego jako¶ci± (rys. \ref{overfitting}).
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[scale=0.1]{overfitting.png}
+\captionsetup{justification=centering}
+\captionsetup{width=0.8\textwidth}
+\caption{Przyk³ad modelu przeuczonego (zielona linia) i zregularyzowanego (czarna linia) \label{overfitting}}
+\end{figure}
+
 Obydwa pojêcia mog± byæ mylone przy niew³a¶ciwym sposobie walidacji modelu. Je¶li jako¶æ klasyfikacji sprawdzana jest wy³±cznie na zbiorach treningowym i testowym, zarówno \textit{concept drift}, jak i \textit{overfitting} daj± podobne objawy - wysoki wynik na zbiorze treningowym oraz niski na zbiorze testowym. W przypadku przeuczenia jest to spowodowane nadmiernym dopasowaniem modelu do danych treningowych i jego nisk± zdolno¶ci± do uogólniania. Je¶li mamy do czynienia z ewoluuj±cymi pojêciami, s³aba jako¶æ modelu jest spowodowana innym rozk³adem dla zbioru testowego. \\
 W rozró¿nienu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
-Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej - w tym przypadku zbiór testowym pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik na zbiorze treningowym (tabela \ref{t:overfit}). \\ 
+Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej na $X_{train}$ - w tym przypadku zbiór walidacyjny pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik klasyfikacji na samym zbiorze treningowym (tabela \ref{t:overfit}). \\ 
 
 \begin{table}[ht]
 \centering
