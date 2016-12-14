@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  14 DEC 2016 12:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  14 DEC 2016 13:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -531,7 +531,7 @@ LaTeX Font Info:    External font `plex10' loaded for size
 File: fireman.png Graphic file (type png)
  <use fireman.png>
 Package pdftex.def Info: fireman.png used on input line 230.
-(pdftex.def)             Requested size: 209.57928pt x 174.24791pt.
+(pdftex.def)             Requested size: 183.38786pt x 152.47191pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 234--236
 
@@ -546,29 +546,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 237--239
 File: classes.png Graphic file (type png)
  <use classes.png>
 Package pdftex.def Info: classes.png used on input line 242.
-(pdftex.def)             Requested size: 429.40756pt x 377.0114pt.
-
-Underfull \vbox (badness 1852) has occurred while \output is active []
-
- [12 <./classes.png>] <sigmoid.png, id=70, 642.4pt x 428.60126pt>
+(pdftex.def)             Requested size: 357.836pt x 314.17297pt.
+ [12 <./classes.png>] <sigmoid.png, id=71, 642.4pt x 428.60126pt>
 File: sigmoid.png Graphic file (type png)
  <use sigmoid.png>
 Package pdftex.def Info: sigmoid.png used on input line 282.
 (pdftex.def)             Requested size: 192.72148pt x 128.58136pt.
-
-[13] <svm.png, id=80, 441.65pt x 382.42876pt>
+ [13 <./sigmoid.png>] <svm.png, id=78, 441.65pt x 382.42876pt>
 File: svm.png Graphic file (type png)
  <use svm.png>
 Package pdftex.def Info: svm.png used on input line 309.
 (pdftex.def)             Requested size: 220.82445pt x 191.2139pt.
- [14 <./sigmoid.png> <./svm.png>] <decision_tree.png, id=87, 505.89pt x 288.076
-25pt>
+ [14 <./svm.png>] <decision_tree.png, id=87, 505.89pt x 288.07625pt>
 File: decision_tree.png Graphic file (type png)
-
-<use decision_tree.png>
+ <use decision_tree.png>
 Package pdftex.def Info: decision_tree.png used on input line 343.
 (pdftex.def)             Requested size: 303.53633pt x 172.84708pt.
- [15 <./decision_tree.png>] [16]
+
+[15 <./decision_tree.png>] [16]
 Rozdzia\PlPrIeC {\l } 3.
 
 Overfull \hbox (32.99628pt too wide) in paragraph at lines 357--360
@@ -873,7 +868,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (54 pages, 2819309 bytes).
+Output written on pracamgr.pdf (54 pages, 2819381 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  199 compressed objects within 2 object streams

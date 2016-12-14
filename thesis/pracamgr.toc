@@ -7,14 +7,14 @@
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{11}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{11}
 \contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{11}
-\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{13}
+\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{12}
 \contentsline {section}{\numberline {2.2}Opis u\.zytych klasyfikator\'ow}{13}
 \contentsline {subsection}{\numberline {2.2.1}Klasyfikator liniowy}{13}
 \contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej (\textit {logit})}{13}
 \contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{14}
 \contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{15}
 \contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{15}
-\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{16}
+\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{15}
 \contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{17}
 \contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{17}
 \contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{17}
