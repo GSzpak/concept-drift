@@ -849,7 +849,7 @@ W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê 
 
 \section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym} \label{s:tt}
 
-Wróæmy do problemu wykrywania ewolucji pojêæ. Przypomnijmy, ¿e celem jest przypisanie instancjom takich klas, aby obiekty pochodz±ce z tej samej dziedziny otrzyma³y tê sam± klasê. Potem mierzona bêdzie jako¶æ poszczególnych atrybutów wobec tak stworzonej klasy wynikowej i wybierane bêd± te cechy, które uzyskaj± najgorszy wynik, czyli takie, które najgorzej rozró¿niaj± pojêcia. \\
+Wróæmy do problemu wykrywania ewolucji pojêæ. Przypomnijmy, ¿e celem jest przypisanie instancjom takich klas, aby obiekty pochodz±ce z tej samej dziedziny otrzyma³y tê sam± klasê. Przy tak stworzonej klasie wynikowej mierzona bêdzie jako¶æ poszczególnych atrybutów i wybierane bêd± te cechy, które uzyskaj± najgorszy wynik, czyli takie, które najgorzej rozró¿niaj± dziedziny. \\
 W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w \cite{Boulle15}. Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego i jednocze¶nie dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków.
 
 \subsection{Wyniki eksperymentów}
@@ -1202,7 +1202,7 @@ Przyk³ad obiektów pogrupowanych przy u¿yciu algorytmu k-centroidów przedstawia r
 \subsection{Opis algorytmu}
 
 W sekcji \ref{s:tt} wyliczano jako¶æ cech wzglêdem etykiet "train" i "test" w celu wykrycia cech najbardziej odpornych na \textit{concept drift}. Intuicyjnie, lepsze wyniki powinno siê uzyskaæ, u¿ywaj±c jako klas rzeczywistych identyfikatorów dziedzin - w tym przypadku, identyfikatorów stra¿aków. Te identyfikatory nie by³y jednak obecne w zbiorze danych. Jak wspomniano na pocz±tku bie¿±cej sekcji, mo¿na je jednak imitowaæ na podstawie wyników analizy skupieñ. \\
-Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿aków dostarczy³o danych, a nastêpnie wykorzystanie identyfikatorów tak powsta³ych klastrów do wyznaczenia jako¶ci cech. Taka metoda wyda³a siê jednak autorowi niewystarczaj±ca - klastry mog³y skupiaæ w sobie instancje odpowiadaj±ce podobnym czynno¶ciom (tak jak $running$ i $stairs\_up$), a nie pomiary pobrane od jednego stra¿aka. Z tego powodu autor zastosowa³ inny algorytm, w którym grupowanie dokonywane by³o osobno na zbiorach obiektów nale¿±cych do tej samej klasy. Nastêpnie jako¶æ danej cechy dla problemu \textit{concept drift} by³a mierzona osobno na ka¿dym z tych zbiorów, a ostateczny wynik by³ ¶redni± wyników czê¶ciowych. \\
+Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿aków dostarczy³o dane, a nastêpnie wykorzystanie identyfikatorów tak powsta³ych klastrów do wyznaczenia jako¶ci cech. Taka metoda wyda³a siê jednak autorowi niewystarczaj±ca - klastry mog³y skupiaæ w sobie instancje odpowiadaj±ce podobnym czynno¶ciom (tak jak $running$ i $stairs\_up$), a nie pomiary pobrane od jednego stra¿aka. Z tego powodu autor zastosowa³ inny algorytm, w którym grupowanie dokonywane by³o osobno na zbiorach obiektów nale¿±cych do tej samej klasy. Nastêpnie jako¶æ danej cechy dla problemu \textit{concept drift} by³a mierzona osobno na ka¿dym z tych zbiorów, a ostateczny wynik by³ ¶redni± wyników czê¶ciowych. \\
 \hfill \\
 Schemat algorytmu dla cechy $f$ i miary $quality\_measure$ przedstawia poni¿szy pseudokod: \\
 
@@ -1228,14 +1228,14 @@ def get_quality(f, quality_measure, X_train, y_train):
 \end{lstlisting}
 
 \hfill \\
-Poniewa¿ liczba klastrów by³a z góry ustalona, do klastrowania u¿yto algorytmu k-centroidów. Jako miarê jako¶ci zastosowano, podobnie jak w poprzedniej sekcji: informacjê wzajemn±, jednoczynnikow± analizê wariancji oraz zysk Giniego.
+Poniewa¿ liczba klastrów by³a z góry ustalona, do klastrowania u¿yto algorytmu k-centroidów (przy $k=4$). Jako miarê jako¶ci zastosowano (podobnie jak w poprzedniej sekcji): informacjê wzajemn±, jednoczynnikow± analizê wariancji oraz zysk Giniego.
 
 \subsection{Wyniki eksperymentów}
 
 \subsubsection{Informacja wzajemna i jednoczynnikowa analiza wariancji}
 
 Analogicznie do eksperymentów opisanych w sekcji \ref{s:tt}, rozpatrzmy rozk³ad jako¶ci cech dla dwóch problemów: klasyfikacji czynno¶ci stra¿aka oraz wykrywania ewoluuj±cych pojêæ. W tym przypadku jako¶æ cechy dla problemu detekcji \textit{concept drift} wyznaczana by³a przy u¿yciu algorytmu \ref{alg_cluster}. \\
-Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu informacji wzajemnej (rysunek po lewej) i jednoczynnikowej analizy wariancji (rysunek po prawej) jako miar. W obu przypadkach widaæ wysok± korelacjê miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla wykrycia dziedziny. Jak wspomniano w sekcji \ref{s:tt}, znacznie utrudnia to dobranie odpowiednich warto¶ci progów $threshold_{drift}$ oraz $threshold_{class}$. Znalaz³o to swoje odzwierciedlenie w jako¶ci klasyfikacji - w obu przypadkach zastosowanie selekcji atrybutów albo pogarsza³o wynik, albo poprawia³o go nieznacznie. Rezultaty uzyskane dla ró¿nych klasyfikatorów by³y bardzo zbli¿one do tych prezentowanych w tabelach \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm} i \ref{t:tt_mutual_info_random}.
+Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu informacji wzajemnej (rysunek po lewej) i jednoczynnikowej analizy wariancji (rysunek po prawej) jako miar. W obu przypadkach widaæ wysok± korelacjê miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla wykrycia dziedziny. Jak wspomniano w sekcji \ref{s:tt}, znacznie utrudnia to dobranie odpowiednich warto¶ci progów $threshold_{drift}$ oraz $threshold_{class}$. Znalaz³o to swoje odzwierciedlenie w jako¶ci klasyfikacji - w obu przypadkach zastosowanie selekcji atrybutów albo pogarsza³o wynik, albo poprawia³o go bardzo nieznacznie. Rezultaty uzyskane dla ró¿nych klasyfikatorów by³y zbli¿one do tych prezentowanych w tabelach \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm} i \ref{t:tt_mutual_info_random}.
 
 \begin{figure}[!htbp]
 \centering
@@ -1278,7 +1278,7 @@ Sytuacja prezentuje siê znacznie korzystniej, gdy jako miary u¿yje siê zysku Gin
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu zysku Giniego i regresji logistycznej}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu algorytmu \ref{alg_cluster}, zysku Giniego i regresji logistycznej}
 \label{t:cluster_gini_logit}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -1306,7 +1306,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu zysku Giniego i SVM}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu algorytmu \ref{alg_cluster}, zysku Giniego i SVM}
 \label{t:cluster_gini_svm}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -1336,7 +1336,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu zysku Giniego i lasów losowych}
+\caption{Jako¶æ klasyfikacji dla ró¿nych warto¶ci progowych przy u¿yciu algorytmu \ref{alg_cluster}, zysku Giniego i lasów losowych}
 \label{t:cluster_gini_random}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
