@@ -213,8 +213,8 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 \subsection{Zawarto¶æ merytoryczna pracy} \label{s:content}
 
 Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym. \\
-W rozdziale \ref{r:experiment} przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features} prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction} autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶niej umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce.
-Rozdzia³ \ref{r:other} zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary} znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
+W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶niej umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce.
+Rozdzia³ \ref{r:other}. zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary}. znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
 
 \chapter{Opis przeprowadzanego eksperymentu}\label{r:experiment}
 
@@ -1362,7 +1362,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 
 
 Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.9$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
-Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}) przy u¿yciu zysku Giniego, mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem zachowywaæ siê lepiej ni¿ metoda zaproponowana w \cite{Boulle15}.
+Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}) przy u¿yciu zysku Giniego, mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem konkurowaæ z metod± zaproponowan± w \cite{Boulle15}, co czyni j± z pewno¶ci± wart± uwagi.
 
 \section{Wnioski z przeprowadzonych eksperymentów}
 
@@ -1485,7 +1485,7 @@ Zastanówmy siê teraz, co mo¿e zrobiæ algorytm ucz±cy, aby zauwa¿yæ, ¿e "in" powi
 
 \subsection{Eksperymenty i wnioski}
 
-Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{r:features} daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
+Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{r:features}. daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Damue z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
 Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daum{\'{e}} mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przetrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
 
 
@@ -1551,7 +1551,7 @@ Ca³y proces ekstrakcji cech zosta³ opisany w rozdziale \ref{r:features}. Warto z
 
 Kolejnym krokiem by³a redukcja problemu ewoluuj±cych pojêæ. G³ównym celem autora by³o rozwiniêcie metody opisanej w \cite{Boulle15} i dok³adne przetestowanie jej jako¶ci dla ró¿nych kombinacji miar jako¶ci cech i algorytmów ucz±cych. Uzyskane wyniki mo¿na uznaæ za satysfakcjonuj±ce - poprawa wyniku siêga³a nawet 30\%. Dodatkowo zaproponowane zosta³o rozszerzenie tego podej¶cia przez zastosowanie analizy skupieñ. Autor u¿y³ algorytmu k-centroidów do identyfikacji ¼ród³a, z którego pochodz± obiekty. Takie podej¶cie wydaje siê autorowi obiecuj±ce i zas³uguj±ce na dalsze badania w przysz³o¶ci. \\
 
-W rozdziale \ref{r:other} opisano dwie inne metody stosowane do rozwi±zania problemu adaptacji dziedziny - uczenie iteracyjne oraz powiêkszanie przestrzeni cech zaproponowane w \cite{Daume07}. Obie okaza³y siê nieskuteczne - wyniki otrzymane przy ich u¿yciu by³y du¿o gorsze ni¿ te uzyskane przy zastosowaniu selekcji cech. Potwierdza to tylko fakt, ¿e metoda przedstawiona w rozdziale \ref{r:drift_reduction} jest warta rozwijania.
+W rozdziale \ref{r:other}. opisano dwie inne metody stosowane do rozwi±zania problemu adaptacji dziedziny - uczenie iteracyjne oraz powiêkszanie przestrzeni cech zaproponowane w \cite{Daume07}. Obie okaza³y siê nieskuteczne - wyniki otrzymane przy ich u¿yciu by³y du¿o gorsze ni¿ te uzyskane przy zastosowaniu selekcji cech. Potwierdza to tylko fakt, ¿e metoda przedstawiona w rozdziale \ref{r:drift_reduction}. jest warta rozwijania.
 
 \nocite{*}
 \bibliographystyle{apalike}
