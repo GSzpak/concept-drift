@@ -162,7 +162,7 @@ Powy¿sze rozwa¿ania podsumowuje tabela \ref{t:paradigms}.
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.7\textwidth}
-\caption{Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak³adamy, ¿e zbiór $X_{train}$ jest dostêpny podczas uczenia, podczas gdy zbiór $Y_{test}$ nie jest znany. Dane treningowe pochodz± z rozk³adu $D^{source}$.}
+\caption[Paradygmaty uczenia w teorii uczenia maszynowego]{Paradygmaty uczenia w teorii uczenia maszynowego. We wszystkich przypadkach zak³adamy, ¿e zbiór $X_{train}$ jest dostêpny podczas uczenia, podczas gdy zbiór $Y_{test}$ nie jest znany. Dane treningowe pochodz± z rozk³adu $D^{source}$.}
 \label{t:paradigms}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -189,7 +189,7 @@ Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczeni
 \includegraphics[scale=0.1]{overfitting.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Przyk³ad modelu przeuczonego (zielona linia) i zregularyzowanego (czarna linia) \label{overfitting}}
+\caption[Przyk³ad przeuczenia]{Przyk³ad modelu przeuczonego (zielona linia) i zregularyzowanego (czarna linia) \label{overfitting}}
 \end{figure}
 
 Obydwa pojêcia mog± byæ mylone przy niew³a¶ciwym sposobie walidacji modelu. Je¶li jako¶æ klasyfikacji sprawdzana jest wy³±cznie na zbiorach treningowym i testowym, zarówno \textit{concept drift}, jak i \textit{overfitting} daj± podobne objawy - wysoki wynik na zbiorze treningowym oraz niski na zbiorze testowym. W przypadku przeuczenia jest to spowodowane nadmiernym dopasowaniem modelu do danych treningowych i jego nisk± zdolno¶ci± do uogólniania. Je¶li mamy do czynienia z ewoluuj±cymi pojêciami, s³aba jako¶æ modelu jest spowodowana innym rozk³adem dla zbioru testowego. \\
@@ -200,7 +200,7 @@ Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{\textit{Concept drift} a \textit{overfitting} - obni¿ony wynik modelu 1. przy walidacji krzy¿owej ¶wiadczy o przeuczeniu, a nie wystêpowaniu ewoluuj±cych pojêæ. W drugim przypadku model mimo dobrej umiejêtno¶ci klasyfikacji elementów pochodz±cych z rozk³adu $D^{source}$, cierpi na spadek jako¶ci przy ewaluacji na zbiorze pochodz±cym z rozk³adu $D^{target}$.}
+\caption[\textit{Concept drift} a \textit{overfitting}]{\textit{Concept drift} a \textit{overfitting} - obni¿ony wynik modelu 1. przy walidacji krzy¿owej ¶wiadczy o przeuczeniu, a nie wystêpowaniu ewoluuj±cych pojêæ. W drugim przypadku model mimo dobrej umiejêtno¶ci klasyfikacji elementów pochodz±cych z rozk³adu $D^{source}$, cierpi na spadek jako¶ci przy ewaluacji na zbiorze pochodz±cym z rozk³adu $D^{target}$.}
 \label{t:overfit}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -309,7 +309,7 @@ Innym typem klasyfikatora liniowego jest (ang. \textit{support vector machine}, 
 \includegraphics[scale=0.5]{svm.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{P³aszczyzna $H_1$ nie rozdziela klas. \\ P³aszczyzna $H_2$ rozdziela je, ale z niewielkim marginesem. \\P³aszczyzna $H_3$ rozdziela je z maksymalnym marginesem. \label{svm}}
+\caption[Przyk³ad klasyfikacji za pomoc± SVM]{P³aszczyzna $H_1$ nie rozdziela klas. \\ P³aszczyzna $H_2$ rozdziela je, ale z niewielkim marginesem. \\P³aszczyzna $H_3$ rozdziela je z maksymalnym marginesem. \label{svm}}
 \end{figure}
 
 Za³o¿enie o liniowej separowalno¶ci klas jest jednak rzadko spe³nione. Uczenie klasyfikatora SVM polega wiêc na znalezieniu hiperp³aszczyzny $\textbf{w}$, która minimalizuje funkcjê
@@ -387,7 +387,7 @@ Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w liter
 \includegraphics[scale=0.8]{example.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Po lewej widaæ oryginalny zbiór danych, natomiast po prawej - drug± pochodn± po czasie \label{example}}
+\caption[Przyk³ad korzy¶ci z badania reprezentacji pochodnych szeregu]{Po lewej widaæ oryginalny zbiór danych, natomiast po prawej - drug± pochodn± po czasie \label{example}}
 \end{figure}
 
 Autor, poza reprezentacj± oryginaln± $T_n$, zdecydowa³ siê wykorzystaæ w procesie ekstrakcji cech cztery inn reprezentacje: 
@@ -430,7 +430,7 @@ Transformacja Fouriera jest jednym z najwa¿niejszych przekszta³ceñ u¿ywanych do 
 \includegraphics[scale=0.54]{fourier.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Cosinusowe fale $s_1$, $s_2$, $s_3$ daj± po zsumowaniu bardziej z³o¿ony sygna³ \label{fourier}}
+\caption[Przyk³ad transformacji Fouriera]{Cosinusowe fale $s_1$, $s_2$, $s_3$ daj± po zsumowaniu bardziej z³o¿ony sygna³ \label{fourier}}
 \end{figure}
 
 Formalnie wspó³czynniki dyskretnej transformaty Fouriera zdefiniowane s± nastêpuj±co:
@@ -566,7 +566,7 @@ skew(T_n) = \frac{3(mean(T_n) - median(T_n))}{std(T_n)}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
 \includegraphics[scale=0.6]{skewness.png}
-\caption{Rozk³ady o ujemnym (pierwszy wykres) i dodatnim (drugi wykres) wspó³czynniku sko¶no¶ci \label{skew}}
+\caption[Rozk³ady o ujemnym i dodatnim wspó³czynniku sko¶no¶ci]{Rozk³ady o ujemnym (pierwszy wykres) i dodatnim (drugi wykres) wspó³czynniku sko¶no¶ci \label{skew}}
 \end{figure}
 
 \item \textbf{Kurtoza}
@@ -663,7 +663,7 @@ Wspó³czynnik Pearsona okre¶la poziom zale¿no¶ci liniowej miêdzy zmiennymi losowy
 \includegraphics[scale=0.35]{pearson.png}
 \captionsetup{justification=centering}
 \captionsetup{width=0.7\textwidth}
-\caption{Przyk³adowe wykresy danych $(x, y)$ i odpowiadaj±ce im warto¶ci wspó³czynnika korelacji liniowej Pearsona \label{pearson}}
+\caption[Przyk³adowe wykresy danych i odpowiadaj±ce im warto¶ci wspó³czynnika korelacji liniowej Pearsona]{Przyk³adowe wykresy danych $(x, y)$ i odpowiadaj±ce im warto¶ci wspó³czynnika korelacji liniowej Pearsona \label{pearson}}
 \end{figure}
 
 
@@ -1076,7 +1076,7 @@ Rysunek \ref{tt_gini} przedstawia rozk³ad jako¶ci cech przy u¿yciu zysku Giniego
 \end{subfigure}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego. Wykres po prawej stronie stanowi przybli¿enie wykresu po stronie lewej}
+\caption[Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego]{Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego. Wykres po prawej stronie stanowi przybli¿enie wykresu po stronie lewej}
 \label{tt_gini}
 \end{figure}
 
@@ -1249,7 +1249,7 @@ Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu
 \end{subfigure}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej (po lewej) i jednoczynnikowej analizy wariancji (po prawej)}
+\caption[Rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej i jednoczynnikowej analizy wariancji mierzonej za pomoc± algorytmu \ref{alg_cluster}]{Rozk³ad jako¶ci cech przy u¿yciu informacji wzajemnej (po lewej) i jednoczynnikowej analizy wariancji (po prawej) mierzonej za pomoc± algorytmu \ref{alg_cluster}}
 \label{clustering_mutual_anova}
 \end{figure}
 
@@ -1259,17 +1259,17 @@ Sytuacja prezentuje siê znacznie korzystniej, gdy jako miary u¿yje siê zysku Gin
 
 \begin{figure}[!htbp]
 \centering
-\begin{subfigure}{.5\textwidth}
+\begin{subfigure}{.45\textwidth}
   \centering
   \includegraphics[width=.99\linewidth]{clustering_gini.png}
 \end{subfigure}%
-\begin{subfigure}{.5\textwidth}
+\begin{subfigure}{.45\textwidth}
   \centering
   \includegraphics[width=.99\linewidth]{clustering_gini_zoomed.png}
 \end{subfigure}
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption{Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego. Wykres po prawej stronie stanowi przybli¿enie wykresu po stronie lewej}
+\caption[Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego i algorytmu \ref{alg_cluster}]{Rozk³ad jako¶ci cech przy u¿yciu zysku Giniego i algorytmu \ref{alg_cluster}. Wykres po prawej stronie stanowi przybli¿enie wykresu po stronie lewej}
 \label{clustering_gini}
 \end{figure}
 
@@ -1552,6 +1552,10 @@ Ca³y proces ekstrakcji cech zosta³ opisany w rozdziale \ref{r:features}. Warto z
 Kolejnym krokiem by³a redukcja problemu ewoluuj±cych pojêæ. G³ównym celem autora by³o rozwiniêcie metody opisanej w \cite{Boulle15} i dok³adne przetestowanie jej jako¶ci dla ró¿nych kombinacji miar jako¶ci cech i algorytmów ucz±cych. Uzyskane wyniki mo¿na uznaæ za satysfakcjonuj±ce - poprawa wyniku siêga³a nawet 30\%. Dodatkowo zaproponowane zosta³o rozszerzenie tego podej¶cia przez zastosowanie analizy skupieñ. Autor u¿y³ algorytmu k-centroidów do identyfikacji ¼ród³a, z którego pochodz± obiekty. Takie podej¶cie wydaje siê autorowi obiecuj±ce i zas³uguj±ce na dalsze badania w przysz³o¶ci. \\
 
 W rozdziale \ref{r:other}. opisano dwie inne metody stosowane do rozwi±zania problemu adaptacji dziedziny - uczenie iteracyjne oraz powiêkszanie przestrzeni cech zaproponowane w \cite{Daume07}. Obie okaza³y siê nieskuteczne - wyniki otrzymane przy ich u¿yciu by³y du¿o gorsze ni¿ te uzyskane przy zastosowaniu selekcji cech. Potwierdza to tylko fakt, ¿e metoda przedstawiona w rozdziale \ref{r:drift_reduction}. jest warta rozwijania.
+
+\listoffigures
+ 
+\listoftables
 
 \nocite{*}
 \bibliographystyle{apalike}
