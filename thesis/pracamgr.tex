@@ -210,7 +210,7 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 \end{tabular}
 \end{table}
 
-\subsection{Zawarto¶æ merytoryczna pracy} \label{s:content}
+\subsection{Uk³ad pracy} \label{s:content}
 
 Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym. \\
 W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶niej umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce.
@@ -685,7 +685,7 @@ TRAS_{k}(T_n) = \frac{1}{n - 2k} \sum_{i = 0}^{n - 2k} x_{i + 2k}^2 \cdot x_{i +
 \end{equation}
 Jako cechy wykorzystane zosta³y warto¶ci $TRAS$ dla $k = 25, 50, 100, 200$.
 
-\item \textbf{Infromacje o skokach}
+\item \textbf{Informacje o skokach}
 
 \begin{defi}\label{d:peak}
 \emph{Skokiem o wsparciu $n$} nazwiemy podci±g szeregu $T_n$, w którym istnieje warto¶æ $x$ bêd±ca wiêksza ni¿ $n$ warto¶ci wystêpuj±cych bezpo¶rednio przed ni± oraz $n$ warto¶ci wystêpuj±cych bezpo¶rednio po niej.
@@ -1361,7 +1361,7 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 \end{table}
 
 
-Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.9$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
+Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.09$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
 Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}) przy u¿yciu zysku Giniego, mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem konkurowaæ z metod± zaproponowan± w \cite{Boulle15}, co czyni j± z pewno¶ci± wart± uwagi.
 
 \section{Wnioski z przeprowadzonych eksperymentów}
@@ -1432,7 +1432,7 @@ $rows\_percentage$ & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
         
 \begin{tabular}{|c|c|c|}
 \hline
-$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{train}$ $BAC$ \\ \hline
+$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
 -                & 0.9586            & 0.5348             \\ \hline
 0.5                & 0.9535            & 0.537             \\ \hline
 0.34               & 0.9457            & 0.5389            \\ \hline
@@ -1446,7 +1446,7 @@ $rows\_percentage$ & $X_{train}$ $BAC$ & $X_{train}$ $BAC$ \\ \hline
 
 \begin{tabular}{|c|c|c|}
 \hline
-$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{train}$ $BAC$ \\ \hline
+$rows\_percentage$ & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
 -              & 0.9948      & 0.7118     \\ \hline
 0.5             & 0.9949      & 0.7249     \\ \hline
 0.34            & 0.9945      & 0.7257     \\ \hline

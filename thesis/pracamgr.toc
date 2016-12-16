@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.2}Formalizacja problemu}{6}
 \contentsline {subsection}{\numberline {1.2.1}Paradygmaty uczenia si\k e}{6}
 \contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a problem przeuczenia}{7}
-\contentsline {subsection}{\numberline {1.2.3}Zawarto\'s\'c merytoryczna pracy}{8}
+\contentsline {subsection}{\numberline {1.2.3}Uk\IeC {\l }ad pracy}{8}
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{11}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{11}
 \contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{11}
