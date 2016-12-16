@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.2}Formalizacja problemu}{6}
 \contentsline {subsection}{\numberline {1.2.1}Paradygmaty uczenia si\k e}{6}
 \contentsline {subsection}{\numberline {1.2.2}Ewolucja poj\k e\'c a problem przeuczenia}{7}
-\contentsline {subsection}{\numberline {1.2.3}Uk\IeC {\l }ad pracy}{8}
+\contentsline {subsection}{\numberline {1.2.3}Uk\IeC {\l }ad pracy}{9}
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{11}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{11}
 \contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{11}
@@ -14,7 +14,7 @@
 \contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{14}
 \contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{15}
 \contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{15}
-\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{15}
+\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{16}
 \contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{17}
 \contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{17}
 \contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{17}

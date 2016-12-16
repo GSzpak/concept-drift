@@ -178,7 +178,8 @@ Paradygmat & $Y_{train}$ dostêpny? & $X_{test}$ dostêpny? & Rozk³ad danych testo
 \end{tabular}
 \end{table}
 
-W poni¿szej pracy autor skupi siê na problemie transdukcyjnego uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}.
+W poni¿szej pracy autor skupi siê na problemie uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}. \\
+Warto zwróciæ uwagê na fakt, ¿e bardziej powszechna jest sytuacja, gdy zbiór testowy nie jest znany podczas uczenia (czyli du¿o czê¶ciej mamy do czynienia z podproblemem uczenia indukcyjnego). Istotnie, w wielu sytuacjach dziedzin, z których mog± pochodziæ dane, jest tak wiele, ¿e ciê¿ko by³oby zawrzeæ w $X_{test}$ reprezentatywn± próbkê dla ka¿dej z nich. Przyk³adem bêdzie zbiór przedstawiony w rozdziale \ref{r:experiment}. Z tego powodu autor proponuje w rozdziale \ref{r:drift_reduction}. metodê selekcji cech niewra¿liwych na zmianê dziedziny niewymagaj±c± posiadania zbioru testowego.
 
 \subsection{Ewolucja pojêæ a problem przeuczenia}
 
@@ -249,7 +250,6 @@ Standardow± miar± jako¶ci jest prezycja (ang. \textit{accuracy}):
 \begin{displaymath}
 ACC(c) = \frac{1}{n} \sum_{i=1}^n \mathbf{1}[c(\textbf{x}_i) = y_i]
 \end{displaymath}
-
 W opisywanym konkursie zastosowano modyfikacjê tej miary zwan± \textit{balanced accuracy}, zdefiniowan± nastêpuj±co:
 
 \begin{equation}
@@ -259,7 +259,12 @@ ACC_i(c) = \frac{|j: \,c(\textbf{x}_j) = y_j = i|}{|j: y_j = i|} \\
 \begin{equation} \label{bac}
 BAC(c) = \frac{\sum_{i=1}^l ACC_i(c)}{l} 
 \end{equation}
-Nietrudno zauwa¿yæ, ¿e miara $BAC$ jest bardziej wra¿liwa na b³êdn± klasyfikacjê rzadkich klas ni¿ standardowa miara $ACC$.
+Nietrudno zauwa¿yæ, ¿e miara $BAC$ jest bardziej wra¿liwa na b³êdn± klasyfikacjê rzadkich klas ni¿ standardowa miara $ACC$. \\
+Jak wspomniano wcze¶niej, zadaniem w konkursie by³a klasyfikacja zarówno postury, jak i czynno¶ci stra¿aka. Ostateczny wynik w zawodach obliczany by³ przez:
+\begin{equation}
+score(c_p, c_a) = \frac{BAC(c_p) + 2 \cdot BAC(c_a)}{3},
+\end{equation}
+gdzie $c_p$ by³ modelem dla postury, a $c_a$ - modelem dla czynno¶ci. Poniewa¿ autor niniejszej pracy analizuje wy³±cznie czynno¶ci wykonywane przez stra¿aków, prezentowanych wyników nie mo¿na bezpo¶rednio porównywaæ z rezultatami uzyskanymi przez uczestników konkursu.
 
 \section{Opis u¿ytych klasyfikatorów} \label{s:klasyfikatory}
 
