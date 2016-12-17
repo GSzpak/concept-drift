@@ -351,10 +351,6 @@ Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy p
 
 Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka¿dego na losowej podprzestrzeni atrybutów. Finalna klasa wyznaczana jest na podstawie wyników pojedynczych drzew. Lasy losowe, podobnie jak drzewa decyzyjne, wspieraj± klasyfikacjê wieloklasow±. Pe³en algorytm uczenia lasów losowych opisany jest w \cite{Breiman01}.
 
-\section{Przyk³ad Ewolucji pojêæ w analizowanym zbiorze} \label{s:data_concept_drift}
-
-Okazuje siê, ¿e g³ównym wyzwaniem w konkursie opisywanym w sekcji \ref{ss:data} s± ró¿nice w wykonywaniu poszczególnych czynno¶ci miêdzy stra¿akami. Aby siê o tym przekonaæ, nauczono las losowy na $42$ atrybutach opisuj±cych funkcje ¿yciowe, nastêpnie zmierzono jego jako¶æ (u¿ywaj±c miary $BAC$) na zbiorach treningowym i testowym. Do pomiaru jako¶ci na zbiorze treningowym zastosowano trójwarstwow± walidacjê krzy¿ow±. Okaza³o siê, ¿e problem \textit{concept drift} spowodowa³ drastyczne obni¿enie jako¶ci klasyfikatora - wynik obni¿y³ siê z $0.993$ na $0.079$. 
-
 \chapter{Ekstrakcja cech z szeregów czasowych} \label{r:features}
 
 \section{Metody klasyfikacji szeregów czasowych}
@@ -737,7 +733,7 @@ Lasy losowe & 0.99 & 0.71 \\ \hline
 \end{table}
 
 \hfill \\
-Ponownie widoczny jest problem ewoluuj±cych pojêæ. Mimo rewelacyjnych wyników na zborze treningowym (klasyfikator bazuj±cy na lasach losowych  by³ niemal¿e bezb³êdny), jako¶æ predyktorów testowanych na innej grupie stra¿aków okaza³a siê du¿o ni¿sza - wynik pogorszy³ siê o ok. $0.3$ w przypadku lasów losowych oraz o prawie $0.5$ dla klasyfikatorów liniowych. \\
+Okazuje siê, ¿e problem ewoluuj±cych pojêæ by³ g³ówn± przeszkod± przy budowie wydajnego modelu dla zadanego problemu. Mówi±c bardziej szczegó³owo, wystêpowa³y wyra¼ne ró¿nice w wykonywaniu poszczególnych czynno¶ci miêdzy stra¿akami. Widaæ to po rezultatach prezentowanych w tabeli \ref{t:res1}. Mimo rewelacyjnych wyników na zborze treningowym (klasyfikator bazuj±cy na lasach losowych  by³ niemal¿e bezb³êdny), jako¶æ predyktorów testowanych na innej grupie stra¿aków okaza³a siê du¿o ni¿sza - wynik pogorszy³ siê o ok. $0.3$ w przypadku lasów losowych oraz o prawie $0.5$ dla klasyfikatorów liniowych. \\
 
 Celem tego rozdzia³u bêdzie przedstawienie metody wyboru takiej poprzestrzeni cech, która bêdzie spe³niaæ dwa wymogi:
 \begin{itemize}
@@ -766,7 +762,6 @@ Rysunek \ref{drift_example} przedstawia rozk³ad jako¶ci cech wraz z przyk³adowym
 
 O¶ $x$ przedstawia jako¶æ cech dla bazowego problemu klasyfikacji, natomiast o¶ $y$ - jako¶æ dla problemu detekcji \textit{concept drift}. Przyk³adowym wyborem jest selekcja cech poni¿ej czerwonej linii (atrybuty s³abo rozró¿niaj±ce ró¿ne dziedziny) oraz na prawo od linii zielonej (cechy o wysokim wyniku dla postawionego problemu klasyfikacji). Oczywi¶cie nie zawsze taki wybór bêdzie mo¿liwy, co poka¿± kolejne podrozdzia³y. \\
 G³ównym wyzwaniem w opisywanym podej¶ciu jest sprowadzenie problemu wykrywania zmiennej dziedziny do problemu klasyfikacji. Zanim jednak poruszona zostanie ta kwestia, autor zaprezentuje u¿ywane najczê¶ciej miary jako¶ci cech.
-\newpage
 
 \section{Miary jako¶ci cech}
 

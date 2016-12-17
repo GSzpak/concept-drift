@@ -14,7 +14,6 @@
 \contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{14}
 \contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{15}
 \contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{15}
-\contentsline {section}{\numberline {2.3}Przyk\IeC {\l }ad Ewolucji poj\k e\'c w analizowanym zbiorze}{16}
 \contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{17}
 \contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{17}
 \contentsline {section}{\numberline {3.2}Proces ekstrakcji cech}{17}
