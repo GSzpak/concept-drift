@@ -201,8 +201,6 @@ Mówi±c o problemie ewoluuj±cych pojêæ, nale¿y wspomnieæ o zagadnieniu przeuczeni
 \end{figure}
 
 Obydwa pojêcia mog± byæ mylone przy niew³a¶ciwym sposobie walidacji modelu. Je¶li jako¶æ klasyfikacji sprawdzana jest wy³±cznie na zbiorach treningowym i testowym, zarówno \textit{concept drift}, jak i \textit{overfitting} daj± podobne objawy - wysoki wynik na zbiorze treningowym oraz niski na zbiorze testowym. W przypadku przeuczenia jest to spowodowane nadmiernym dopasowaniem modelu do danych treningowych i jego nisk± zdolno¶ci± do uogólniania. Je¶li mamy do czynienia z ewoluuj±cymi pojêciami, s³aba jako¶æ modelu jest spowodowana innym rozk³adem dla zbioru testowego. \\
-W rozró¿nienu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
-Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej na $X_{train}$ - w tym przypadku zbiór walidacyjny pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik klasyfikacji na samym zbiorze treningowym (tabela \ref{t:overfit}). \\ 
 
 \begin{table}[ht]
 \centering
@@ -217,6 +215,9 @@ Model 1  & 0.98 & 0.73 & 0.68 \\ \hline
 Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 \end{tabular}
 \end{table}
+
+W rozró¿nienu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
+Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej na $X_{train}$ - w tym przypadku zbiór walidacyjny pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik klasyfikacji na samym zbiorze treningowym (tabela \ref{t:overfit}).
 
 \subsection{Uk³ad pracy} \label{s:content}
 
