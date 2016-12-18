@@ -132,6 +132,13 @@ Mallat, S. (1999).
 \newblock {\em A wavelet tour of signal processing {(2.} ed.)}.
 \newblock Academic Press.
 
+\bibitem[Meina et~al., 2015]{MeinaJRSCK15}
+Meina, M., Janusz, A., Rykaczewski, K., Slezak, D., Celmer, B., and Krasuski,
+  A. (2015).
+\newblock Tagging firefighter activities at the emergency scene: Summary of
+  aaia'15 data mining competition at knowledge pit.
+\newblock In \cite{DBLP:conf/fedcsis/2015}, pages 367--373.
+
 \bibitem[M\"{o}rchen, 2003]{Morchen_2003_time}
 M\"{o}rchen, F. (2003).
 \newblock {Time series feature extraction for data mining using DWT and DFT}.

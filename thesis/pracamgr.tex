@@ -238,9 +238,10 @@ Na potrzeby konkursu zebrano odczyty pochodz±ce z "inteligentnego kombinezonu", 
 
 Ka¿da instancja w zbiorze danych sk³ada³a siê z zebranych w krótkich odcinkach czasu (oko³o 1.8 s) odczytów z zamontowanych sensorów. Dla ka¿dego akcelerometru oraz ¿yroskopu zebrano po 400 odczytów wzd³u¿ osi $x$, $y$, $z$, wraz ze wzglêdnym czasem wykonania odczytu. Dla ka¿dego wiersza daje to 42-wymiarowy szereg czasowy o d³ugo¶ci 400. Jak ³atwo wywnioskowaæ, ¶redni odstêp miêdzy kolejnymi odczytami wynosi³ oko³o 4.5 ms. Zestaw atrybutów uzupe³nia³y dodatkowo 42 agregaty ze wskazañ urz±dzeñ monitoruj±cych funkcje ¿yciowe stra¿aka (takie jak EKG, czêstotliwo¶æ oddechu, temperatura skóry). Nieprzetworzone dane zawiera³y wiêc $400 * 43 + 42 = 17242$ atrybuty. Zarówno zbiór treningowy, jak i testowy sk³ada³y siê z $20000$ przyk³adów. Bardzo istotny dla dla analizy tego zbioru danych okaza³ siê fakt, ¿e dane treningowe i testowe pochodzi³y od ró¿nych czteroosobowych grup stra¿aków. \\
 Zadaniem uczestników konkursu by³o przypisanie ka¿dej instancji w zbiorze postury stra¿aka w danym momencie oraz wykonywanej przez niego czynno¶ci. Zastosowane algorytmy mia³y pomóc w stworzeniu systemu monitoruj±cego bezpieczeñstwo stra¿aka podczas akcji. \\
+Szczegó³owe podsumowanie konkursu (miêdzy innymi opis procedury zbierania danych, miary u¿ytej do ewaluacji wyników oraz rezultatów uzyskanych przez uczestników) znale¼æ mo¿na w \cite{MeinaJRSCK15}.
 
 Jako ¿e problem klasyfikacji wieloetykietowej nie jest tematem niniejszej pracy, autor postanowi³ skupiæ siê na problemie przewidywania czynno¶ci wykonywanej przez stra¿aka. Zbiór klas liczy³ wiêc $16$ elementów. Postawiony problem utrudnia³ dodatkowo fakt, ¿e klasy by³y wysoce niezbalansowane - najczêstsza klasa ($manipulating$) wyst±pi³a w zbiorze treningowym $6349$ razy, podczas gdy najrzadsza ($signal\_hose\_pullback$) - jedynie 98 razy.\\
-Rozk³ad klas przedstawia rys. \ref{classes}. \\
+Rozk³ad klas przedstawia rys. \ref{classes}.
 
 \begin{figure}[ht!]
 \centering
@@ -345,7 +346,7 @@ c(\textbf{x}) = arg \min_{j \in 1\dots k} \,  l_j(\textbf{x})
 
 
 \subsection{Lasy losowe} \label{ss:random_forest}
-Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy prostszy klasyfikator - drzewo decyzyjne. Drzewo decyzyjne to etykietowane drzewo, którego ka¿dy wêze³ odpowiada przeprowadzeniu pewnego testu na warto¶ciach atrybutów. Z wêz³a wewnêtrznego wychodzi tyle ga³êzi, ile jest mo¿liwych wyników testu odpowiadaj±cego temu wêz³owi. Ka¿dy li¶æ zawiera decyzjê o klasyfikacji obiektu. Przyk³adowe drzewo decyzyjne przedstawia rys. \ref{dec_tree}.
+Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy prostszy klasyfikator - drzewo decyzyjne.
 
 \begin{figure}[ht!]
 \centering
@@ -353,6 +354,7 @@ Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy p
 \caption{Przyk³adowe drzewo decyzyjne \label{dec_tree}}
 \end{figure}
 
+Drzewo decyzyjne to etykietowane drzewo, którego ka¿dy wêze³ odpowiada przeprowadzeniu pewnego testu na warto¶ciach atrybutów. Z wêz³a wewnêtrznego wychodzi tyle ga³êzi, ile jest mo¿liwych wyników testu odpowiadaj±cego temu wêz³owi. Ka¿dy li¶æ zawiera decyzjê o klasyfikacji obiektu. Przyk³adowe drzewo decyzyjne przedstawia rys. \ref{dec_tree}. \\
 Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka¿dego na losowej podprzestrzeni atrybutów. Finalna klasa wyznaczana jest na podstawie wyników pojedynczych drzew. Lasy losowe, podobnie jak drzewa decyzyjne, wspieraj± klasyfikacjê wieloklasow±. Pe³en algorytm uczenia lasów losowych opisany jest w \cite{Breiman01}.
 
 \chapter{Ekstrakcja cech z szeregów czasowych} \label{r:features}

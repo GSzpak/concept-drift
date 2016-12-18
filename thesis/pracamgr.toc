@@ -8,12 +8,12 @@
 \contentsline {chapter}{\numberline {2}Opis przeprowadzanego eksperymentu}{13}
 \contentsline {section}{\numberline {2.1}Przedstawienie badanego problemu}{13}
 \contentsline {subsection}{\numberline {2.1.1}Opis zbioru danych}{13}
-\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{14}
+\contentsline {subsection}{\numberline {2.1.2}Ewaluacja jako\'sci klasyfikatora}{15}
 \contentsline {section}{\numberline {2.2}Opis u\.zytych klasyfikator\'ow}{15}
 \contentsline {subsection}{\numberline {2.2.1}Klasyfikator liniowy}{15}
 \contentsline {subsubsection}{Klasyfikacja oparta na regresji logistycznej (\textit {logit})}{15}
 \contentsline {subsubsection}{Maszyna wektor\'ow no\'snych}{16}
-\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{17}
+\contentsline {subsubsection}{Klasyfikator "jeden przeciwko wszystkim"}{16}
 \contentsline {subsection}{\numberline {2.2.2}Lasy losowe}{17}
 \contentsline {chapter}{\numberline {3}Ekstrakcja cech z szereg\'ow czasowych}{19}
 \contentsline {section}{\numberline {3.1}Metody klasyfikacji szereg\'ow czasowych}{19}
