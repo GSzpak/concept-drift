@@ -119,12 +119,16 @@
 %\listoffigures
 %\listoftables
 
+\chapter*{Wprowadzenie}
+\addcontentsline{toc}{chapter}{Wprowadzenie}
+Lalala TODO
 
-\chapter{Wprowadzenie}\label{r:wprowadzenie}
+\chapter{Podstawowe pojêcia}\label{r:wprowadzenie}
 
 \section{Uczenie z nadzorem a \textit{concept drift}} \label{s:superv}
 
-Podstawowym problemem rozwa¿anym w teorii uczenia maszynowego jest problem uczenia z nadzorem (ang. \textit{supervised learning}). Niech dane bêd±:
+Rozwa¿my nastêpuj±cy problem: na podstawie zbioru informacji personalnych (takich jak wiek, dochody, stan cywilny) napisaæ algorytm, który bêdzie umia³ z du¿± dok³adno¶ci± okre¶liæ ryzyko kredytowe danej osoby i na tej podstawie podj±æ decyzjê o udzieleniu kredytu. Takie zadanie w teorii uczenia maszynowego nazywa siê problemem \textit{uczenia z nadzorem} (ang. \textit{supervised learning}). Dany zbiór informacji nazywa siê \textit{zbiorem treningowym}. Zbiór decyzji (w tym przypadku dwuelementowy) nazywa siê z kolei \textit{klasami} b±d¼ \textit{etykietami}. \\
+Mówi±c bardziej formalnie, niech dane bêd±:
 \begin{itemize}
 \item zbiór $X$ przyk³adów
 \item zbiór $Y$ decyzji
@@ -145,7 +149,7 @@ Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów uc
 Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Wiele klasyfikatorów cierpi wtedy na znaczny spadek jako¶ci. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
 St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{BlitzerMP06} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daum{\'{e}} w \cite{Daume07}. \\
 
-Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku klasyfikacji szeregów czasowych. W poni¿szej pracy autor przedstawia sposoby radzenia sobie z \textit{concept drift} podczas klasyfikacji szeregów czasowych oraz wykonuje studium przypadku na wybranym zbiorze danych.
+Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku klasyfikacji szeregów czasowych. W poni¿szej pracy autor przedstawia sposoby radzenia sobie z adaptacj± dziedziny podczas klasyfikacji szeregów czasowych oraz wykonuje studium przypadku na wybranym zbiorze danych.
 
 \section{Formalizacja problemu}
 

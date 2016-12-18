@@ -1,26 +1,26 @@
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Schemat uczenia z nadzorem \relax }}{6}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Przyk\IeC {\l }ad przeuczenia}}{8}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Schemat uczenia z nadzorem \relax }}{8}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Przyk\IeC {\l }ad przeuczenia}}{10}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Rozmieszczenie czujnik\'ow na ciele stra\.zaka \relax }}{11}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Rozk\IeC {\l }ad klas w zbiorze treningowym \relax }}{12}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Wykres funkcji logistycznej \relax }}{14}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Przyk\IeC {\l }ad klasyfikacji za pomoc\k a SVM}}{14}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Przyk\IeC {\l }adowe drzewo decyzyjne \relax }}{15}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Rozmieszczenie czujnik\'ow na ciele stra\.zaka \relax }}{13}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Rozk\IeC {\l }ad klas w zbiorze treningowym \relax }}{14}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Wykres funkcji logistycznej \relax }}{16}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Przyk\IeC {\l }ad klasyfikacji za pomoc\k a SVM}}{16}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Przyk\IeC {\l }adowe drzewo decyzyjne \relax }}{17}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Przyk\IeC {\l }ad korzy\'sci z badania reprezentacji pochodnych szeregu}}{18}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Przyk\IeC {\l }ad transformacji Fouriera}}{20}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Wykres falki Haara \relax }}{21}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Rozk\IeC {\l }ady o ujemnym i dodatnim wsp\'o\IeC {\l }czynniku sko\'sno\'sci}}{23}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Kszta\IeC {\l }t rozk\IeC {\l }adu w zale\.zno\'sci od warto\'sci kurtozy \relax }}{23}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Przyk\IeC {\l }adowe wykresy danych i odpowiadaj\k ace im warto\'sci wsp\'o\IeC {\l }czynnika korelacji liniowej Pearsona}}{25}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Przyk\IeC {\l }ad korzy\'sci z badania reprezentacji pochodnych szeregu}}{20}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Przyk\IeC {\l }ad transformacji Fouriera}}{22}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Wykres falki Haara \relax }}{23}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Rozk\IeC {\l }ady o ujemnym i dodatnim wsp\'o\IeC {\l }czynniku sko\'sno\'sci}}{25}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Kszta\IeC {\l }t rozk\IeC {\l }adu w zale\.zno\'sci od warto\'sci kurtozy \relax }}{25}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Przyk\IeC {\l }adowe wykresy danych i odpowiadaj\k ace im warto\'sci wsp\'o\IeC {\l }czynnika korelacji liniowej Pearsona}}{27}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Przyk\IeC {\l }adowy rozk\IeC {\l }ad jako\'sci cech dla problemu klasyfikacji oraz zadania wykrywania ewoluuj\k acych poj\k e\'c \relax }}{28}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu informacji wzajemnej \relax }}{32}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu jednoczynnikowej analizy wariancji \relax }}{34}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu zysku Giniego}}{36}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Przyk\IeC {\l }ad klastrowania danych przy u\.zyciu algorytmu k-centroid\'ow\relax }}{39}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu informacji wzajemnej i jednoczynnikowej analizy wariancji mierzonej za pomoc\k a algorytmu 4.1\hbox {}}}{41}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu zysku Giniego i algorytmu 4.1\hbox {}}}{41}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Przyk\IeC {\l }adowy rozk\IeC {\l }ad jako\'sci cech dla problemu klasyfikacji oraz zadania wykrywania ewoluuj\k acych poj\k e\'c \relax }}{30}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu informacji wzajemnej \relax }}{34}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu jednoczynnikowej analizy wariancji \relax }}{36}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu zysku Giniego}}{38}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Przyk\IeC {\l }ad klastrowania danych przy u\.zyciu algorytmu k-centroid\'ow\relax }}{41}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu informacji wzajemnej i jednoczynnikowej analizy wariancji mierzonej za pomoc\k a algorytmu 4.1\hbox {}}}{43}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Rozk\IeC {\l }ad jako\'sci cech przy u\.zyciu zysku Giniego i algorytmu 4.1\hbox {}}}{43}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
