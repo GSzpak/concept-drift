@@ -6,45 +6,47 @@ Database file #1: pracamgr.bib.bib
 Warning--to sort, need editor or key in DBLP:conf/icdm/2007w
 Warning--to sort, need editor or key in DBLP:conf/cidm/2014
 Warning--to sort, need editor or key in DBLP:conf/ijcnn/2011
-You've used 28 entries,
+Warning--to sort, need editor or key in DBLP:conf/iccv/2013
+Warning--to sort, need editor or key in DBLP:conf/cvpr/2011
+You've used 36 entries,
             1935 wiz_defined-function locations,
-            634 strings with 8975 characters,
-and the built_in function-call counts, 10886 in all, are:
-= -- 1120
-> -- 377
-< -- 26
-+ -- 136
-- -- 122
-* -- 873
-:= -- 1818
-add.period$ -- 83
-call.type$ -- 28
-change.case$ -- 193
-chr.to.int$ -- 28
-cite$ -- 34
-duplicate$ -- 444
-empty$ -- 742
-format.name$ -- 165
-if$ -- 2178
-int.to.chr$ -- 1
+            670 strings with 10505 characters,
+and the built_in function-call counts, 13968 in all, are:
+= -- 1443
+> -- 482
+< -- 31
++ -- 173
+- -- 156
+* -- 1114
+:= -- 2311
+add.period$ -- 107
+call.type$ -- 36
+change.case$ -- 246
+chr.to.int$ -- 35
+cite$ -- 46
+duplicate$ -- 581
+empty$ -- 952
+format.name$ -- 209
+if$ -- 2812
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 22
-newline$ -- 136
-num.names$ -- 79
-pop$ -- 176
+missing$ -- 26
+newline$ -- 172
+num.names$ -- 99
+pop$ -- 238
 preamble$ -- 1
-purify$ -- 201
+purify$ -- 258
 quote$ -- 0
-skip$ -- 374
+skip$ -- 485
 stack$ -- 0
-substring$ -- 815
-swap$ -- 98
-text.length$ -- 10
+substring$ -- 1035
+swap$ -- 135
+text.length$ -- 13
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 166
-warning$ -- 3
-while$ -- 91
+type$ -- 214
+warning$ -- 5
+while$ -- 112
 width$ -- 0
-write$ -- 346
-(There were 3 warnings)
+write$ -- 439
+(There were 5 warnings)

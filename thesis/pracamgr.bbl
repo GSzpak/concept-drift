@@ -6,10 +6,21 @@
   on Data Mining {(ICDM} 2007), October 28-31, 2007, Omaha, Nebraska, {USA}}.
   {IEEE} Computer Society.
 
-\bibitem[DBL, 2011]{DBLP:conf/ijcnn/2011}
- (2011).
+\bibitem[DBL, 2011a]{DBLP:conf/ijcnn/2011}
+ (2011a).
 \newblock {\em The 2011 International Joint Conference on Neural Networks,
   {IJCNN} 2011, San Jose, California, USA, July 31 - August 5, 2011}. {IEEE}.
+
+\bibitem[DBL, 2011b]{DBLP:conf/cvpr/2011}
+ (2011b).
+\newblock {\em The 24th {IEEE} Conference on Computer Vision and Pattern
+  Recognition, {CVPR} 2011, Colorado Springs, CO, USA, 20-25 June 2011}. {IEEE}
+  Computer Society.
+
+\bibitem[DBL, 2013]{DBLP:conf/iccv/2013}
+ (2013).
+\newblock {\em {IEEE} International Conference on Computer Vision, {ICCV} 2013,
+  Sydney, Australia, December 1-8, 2013}. {IEEE} Computer Society.
 
 \bibitem[DBL, 2014]{DBLP:conf/cidm/2014}
  (2014).
@@ -48,6 +59,12 @@ Battiti, R. (1994).
   net learning.
 \newblock {\em {IEEE} Trans. Neural Networks}, 5(4):537--550.
 
+\bibitem[Blitzer et~al., 2007]{BlitzerDP07}
+Blitzer, J., Dredze, M., and Pereira, F. (2007).
+\newblock Biographies, bollywood, boom-boxes and blenders: Domain adaptation
+  for sentiment classification.
+\newblock In \cite{DBLP:conf/acl/2007}.
+
 \bibitem[Blitzer et~al., 2006]{BlitzerMP06}
 Blitzer, J., McDonald, R.~T., and Pereira, F. (2006).
 \newblock Domain adaptation with structural correspondence learning.
@@ -68,6 +85,18 @@ Boull{\'{e}}, M. (2015).
 Breiman, L. (2001).
 \newblock Random forests.
 \newblock {\em Machine Learning}, 45(1):5--32.
+
+\bibitem[Brodley and Stone, 2014]{DBLP:conf/aaai/2014}
+Brodley, C.~E. and Stone, P., editors (2014).
+\newblock {\em Proceedings of the Twenty-Eighth {AAAI} Conference on Artificial
+  Intelligence, July 27 -31, 2014, Qu{\'{e}}bec City, Qu{\'{e}}bec, Canada}.
+  {AAAI} Press.
+
+\bibitem[Carroll et~al., 2007]{DBLP:conf/acl/2007}
+Carroll, J.~A., van~den Bosch, A., and Zaenen, A., editors (2007).
+\newblock {\em {ACL} 2007, Proceedings of the 45th Annual Meeting of the
+  Association for Computational Linguistics, June 23-30, 2007, Prague, Czech
+  Republic}. The Association for Computational Linguistics.
 
 \bibitem[Chaovalitwongse et~al., 2007]{ChaovalitwongseFS07}
 Chaovalitwongse, W.~A., Fan, Y., and Sachdeo, R.~C. (2007).
@@ -127,6 +156,12 @@ Kim, S. and Smyth, P. (2006).
   modeling.
 \newblock {\em Journal of Machine Learning Research}, 7:945--969.
 
+\bibitem[Kulis et~al., 2011]{KulisSD11}
+Kulis, B., Saenko, K., and Darrell, T. (2011).
+\newblock What you saw is not what you get: Domain adaptation using asymmetric
+  kernel transforms.
+\newblock In \cite{DBLP:conf/cvpr/2011}, pages 1785--1792.
+
 \bibitem[Mallat, 1999]{Mallat}
 Mallat, S. (1999).
 \newblock {\em A wavelet tour of signal processing {(2.} ed.)}.
@@ -138,6 +173,11 @@ Meina, M., Janusz, A., Rykaczewski, K., Slezak, D., Celmer, B., and Krasuski,
 \newblock Tagging firefighter activities at the emergency scene: Summary of
   aaia'15 data mining competition at knowledge pit.
 \newblock In \cite{DBLP:conf/fedcsis/2015}, pages 367--373.
+
+\bibitem[Mirrashed and Rastegari, 2013]{MirrashedR13}
+Mirrashed, F. and Rastegari, M. (2013).
+\newblock Domain adaptive classification.
+\newblock In \cite{DBLP:conf/iccv/2013}, pages 2608--2615.
 
 \bibitem[M\"{o}rchen, 2003]{Morchen_2003_time}
 M\"{o}rchen, F. (2003).
@@ -154,6 +194,12 @@ Wiens, J., Guttag, J.~V., and Horvitz, E. (2012).
 \newblock Patient risk stratification for hospital-associated c. diff as a
   time-series classification task.
 \newblock In \cite{DBLP:conf/nips/2012}, pages 476--484.
+
+\bibitem[Xia et~al., 2014]{XiaYXW14}
+Xia, R., Yu, J., Xu, F., and Wang, S. (2014).
+\newblock Instance-based domain adaptation in {NLP} via in-target-domain
+  logistic approximation.
+\newblock In \cite{DBLP:conf/aaai/2014}, pages 1600--1606.
 
 \bibitem[Zagorecki, 2015]{DBLP:conf/fedcsis/Zagorecki15}
 Zagorecki, A. (2015).

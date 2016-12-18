@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  18 DEC 2016 17:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  18 DEC 2016 21:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -481,31 +481,31 @@ LaTeX Font Info:    External font `plex10' loaded for size
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 133.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 136.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
 
 <supervised.png, id=35, 587.19376pt x 413.545pt>
 File: supervised.png Graphic file (type png)
  <use supervised.png>
-Package pdftex.def Info: supervised.png used on input line 143.
+Package pdftex.def Info: supervised.png used on input line 146.
 (pdftex.def)             Requested size: 352.31897pt x 248.1289pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 148--151
+Underfull \hbox (badness 10000) in paragraph at lines 151--154
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 158--162
+Underfull \hbox (badness 10000) in paragraph at lines 161--165
 
  []
 
 [8 <./supervised.png>]
-Overfull \hbox (3.90472pt too wide) in paragraph at lines 171--183
+Overfull \hbox (3.90472pt too wide) in paragraph at lines 174--186
  [][] 
  []
 
@@ -516,10 +516,10 @@ Underfull \vbox (badness 3525) has occurred while \output is active []
 <overfitting.png, id=52, 2007.5pt x 2007.5pt>
 File: overfitting.png Graphic file (type png)
  <use overfitting.png>
-Package pdftex.def Info: overfitting.png used on input line 194.
+Package pdftex.def Info: overfitting.png used on input line 197.
 (pdftex.def)             Requested size: 200.76175pt x 200.76175pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--203
+Underfull \hbox (badness 10000) in paragraph at lines 203--206
 
  []
 
@@ -528,18 +528,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 200--203
 ]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 230.
+(Font)              <9> on input line 233.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 230.
+(Font)              <5> on input line 233.
 <fireman.png, id=64, 523.9575pt x 435.6275pt>
 File: fireman.png Graphic file (type png)
  <use fireman.png>
-Package pdftex.def Info: fireman.png used on input line 235.
+Package pdftex.def Info: fireman.png used on input line 238.
 (pdftex.def)             Requested size: 183.38786pt x 152.47191pt.
  [13 <./fireman.png>] <classes.png, id=71, 715.67375pt x 628.3475pt>
 File: classes.png Graphic file (type png)
  <use classes.png>
-Package pdftex.def Info: classes.png used on input line 248.
+Package pdftex.def Info: classes.png used on input line 251.
 (pdftex.def)             Requested size: 357.836pt x 314.17297pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -547,18 +547,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [14 <./classes.png>] <sigmoid.png, id=76, 642.4pt x 428.60126pt>
 File: sigmoid.png Graphic file (type png)
  <use sigmoid.png>
-Package pdftex.def Info: sigmoid.png used on input line 292.
+Package pdftex.def Info: sigmoid.png used on input line 295.
 (pdftex.def)             Requested size: 192.72148pt x 128.58136pt.
 
 [15] <svm.png, id=83, 441.65pt x 382.42876pt>
 File: svm.png Graphic file (type png)
  <use svm.png>
-Package pdftex.def Info: svm.png used on input line 319.
+Package pdftex.def Info: svm.png used on input line 322.
 (pdftex.def)             Requested size: 220.82445pt x 191.2139pt.
  [16 <./sigmoid.png>] <decision_tree.png, id=92, 505.89pt x 288.07625pt>
 File: decision_tree.png Graphic file (type png)
  <use decision_tree.png>
-Package pdftex.def Info: decision_tree.png used on input line 353.
+Package pdftex.def Info: decision_tree.png used on input line 356.
 (pdftex.def)             Requested size: 303.53633pt x 172.84708pt.
 
 [17 <./svm.png> <./decision_tree.png>] [18]
@@ -568,31 +568,31 @@ Rozdzia\PlPrIeC {\l } 3.
 ] <example.png, id=105, 526.96875pt x 212.795pt>
 File: example.png Graphic file (type png)
  <use example.png>
-Package pdftex.def Info: example.png used on input line 394.
+Package pdftex.def Info: example.png used on input line 397.
 (pdftex.def)             Requested size: 421.57556pt x 170.2362pt.
  [20 <./example.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 426--427
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 428--430
+Underfull \hbox (badness 10000) in paragraph at lines 431--433
 
  []
 
 <fourier.png, id=110, 552.0625pt x 420.57124pt>
 File: fourier.png Graphic file (type png)
  <use fourier.png>
-Package pdftex.def Info: fourier.png used on input line 437.
+Package pdftex.def Info: fourier.png used on input line 440.
 (pdftex.def)             Requested size: 298.1093pt x 227.10509pt.
  [21]
 <haar.png, id=114, 1304.875pt x 978.65625pt>
 File: haar.png Graphic file (type png)
  <use haar.png>
-Package pdftex.def Info: haar.png used on input line 480.
+Package pdftex.def Info: haar.png used on input line 483.
 (pdftex.def)             Requested size: 195.72281pt x 146.7921pt.
  [22 <./fourier.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 491--493
+Underfull \hbox (badness 10000) in paragraph at lines 494--496
 
  []
 
@@ -600,26 +600,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 491--493
 File: skewness.png Graphic file (type png)
 
 <use skewness.png>
-Package pdftex.def Info: skewness.png used on input line 575.
+Package pdftex.def Info: skewness.png used on input line 578.
 (pdftex.def)             Requested size: 268.60556pt x 95.75847pt.
  <kurthosis.png, id=125, 421.575pt x 273.02pt>
 File: kurthosis.png Graphic file (type png)
 
 <use kurthosis.png>
-Package pdftex.def Info: kurthosis.png used on input line 586.
+Package pdftex.def Info: kurthosis.png used on input line 589.
 (pdftex.def)             Requested size: 210.78697pt x 136.50966pt.
  [24] [25 <./skewness.png> <./kurthosis.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 666--667
+Underfull \hbox (badness 10000) in paragraph at lines 669--670
 
  []
 
 <pearson.png, id=133, 827.09pt x 347.2975pt>
 File: pearson.png Graphic file (type png)
  <use pearson.png>
-Package pdftex.def Info: pearson.png used on input line 670.
+Package pdftex.def Info: pearson.png used on input line 673.
 (pdftex.def)             Requested size: 289.48582pt x 121.55594pt.
  [26]
-Overfull \hbox (0.61414pt too wide) in paragraph at lines 711--714
+Overfull \hbox (0.61414pt too wide) in paragraph at lines 714--717
 \OT4/cmr/m/n/10.95 au-to-ko-re-la-cji, ko-re-la-cj¦ mi¦-dzy sze-re-ga-mi $\OML/
 plm/m/it/10.95 T[] \OT4/cmr/m/n/10.95 = (\OML/plm/m/it/10.95 t[]; x[]\OT4/cmr/m
 /n/10.95 )\OML/plm/m/it/10.95 ; [] ; \OT4/cmr/m/n/10.95 (\OML/plm/m/it/10.95 t[
@@ -629,24 +629,24 @@ mr/m/n/10.95 (\OML/plm/m/it/10.95 t[]; x[]\OT4/cmr/m/n/10.95 )$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 711--714
+Underfull \hbox (badness 10000) in paragraph at lines 714--717
 
  []
 
 [27 <./pearson.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 715--716
+Underfull \hbox (badness 10000) in paragraph at lines 718--719
 
  []
 
 [28]
 Rozdzia\PlPrIeC {\l } 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--743
+Underfull \hbox (badness 10000) in paragraph at lines 744--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 750--751
+Underfull \hbox (badness 10000) in paragraph at lines 753--754
 
  []
 
@@ -655,7 +655,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 750--751
 ] <drift_example.png, id=147, 578.16pt x 433.62pt>
 File: drift_example.png Graphic file (type png)
  <use drift_example.png>
-Package pdftex.def Info: drift_example.png used on input line 763.
+Package pdftex.def Info: drift_example.png used on input line 766.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
 
 [30 <./drift_example.png>] [31] [32] [33]
@@ -663,10 +663,10 @@ Package pdftex.def Info: drift_example.png used on input line 763.
 File: train_test_mutual_info.png Graphic file (type png)
 
 <use train_test_mutual_info.png>
-Package pdftex.def Info: train_test_mutual_info.png used on input line 873.
+Package pdftex.def Info: train_test_mutual_info.png used on input line 876.
 (pdftex.def)             Requested size: 483.4851pt x 216.80946pt.
 
-Overfull \hbox (42.46738pt too wide) in paragraph at lines 873--876
+Overfull \hbox (42.46738pt too wide) in paragraph at lines 876--879
  [][] 
  []
 
@@ -678,14 +678,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: train_test_anova_f.png Graphic file (type png)
 
 <use train_test_anova_f.png>
-Package pdftex.def Info: train_test_anova_f.png used on input line 970.
+Package pdftex.def Info: train_test_anova_f.png used on input line 973.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
  [36 <./train_test_anova_f.png>] [37]
 <train_test_random_forest.png, id=178, 578.16pt x 433.62pt>
 File: train_test_random_forest.png Graphic file (type png)
 
 <use train_test_random_forest.png>
-Package pdftex.def Info: train_test_random_forest.png used on input line 1078.
+Package pdftex.def Info: train_test_random_forest.png used on input line 1081.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <train_test_random_forest_zoomed.png, id=179, 578.16pt x 433.62pt>
@@ -693,63 +693,63 @@ File: train_test_random_forest_zoomed.png Graphic file (type png)
 
 <use train_test_random_forest_zoomed.png>
 Package pdftex.def Info: train_test_random_forest_zoomed.png used on input line
- 1082.
+ 1085.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
  [38 <./train_test_random_forest.png> <./train_test_random_forest_zoomed.png>] 
 [39] [40]
 <kmeans.png, id=191, 734.9859pt x 373.6359pt>
 File: kmeans.png Graphic file (type png)
  <use kmeans.png>
-Package pdftex.def Info: kmeans.png used on input line 1200.
+Package pdftex.def Info: kmeans.png used on input line 1203.
 (pdftex.def)             Requested size: 404.24348pt x 205.50037pt.
  [41 <./kmeans.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1215
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1218
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1211--1215
+Underfull \hbox (badness 10000) in paragraph at lines 1214--1218
 
  []
 
-LaTeX Font Info:    Try loading font information for OT4+cmss on input line 121
-7.
+LaTeX Font Info:    Try loading font information for OT4+cmss on input line 122
+0.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/polski/ot4cmss.fd
 File: ot4cmss.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1217--1217
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1220--1220
 [][] 
  []
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 121
-7.
+Package Listings Warning: Text dropped after begin of listing on input line 122
+0.
 
 [42] <clustering_mutual_info.png, id=202, 578.16pt x 433.62pt>
 File: clustering_mutual_info.png Graphic file (type png)
 
 <use clustering_mutual_info.png>
-Package pdftex.def Info: clustering_mutual_info.png used on input line 1251.
+Package pdftex.def Info: clustering_mutual_info.png used on input line 1254.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <clustering_anova_f.png, id=203, 578.16pt x 433.62pt>
 File: clustering_anova_f.png Graphic file (type png)
 
 <use clustering_anova_f.png>
-Package pdftex.def Info: clustering_anova_f.png used on input line 1255.
+Package pdftex.def Info: clustering_anova_f.png used on input line 1258.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <clustering_gini.png, id=204, 578.16pt x 433.62pt>
 File: clustering_gini.png Graphic file (type png)
  <use clustering_gini.png>
-Package pdftex.def Info: clustering_gini.png used on input line 1271.
+Package pdftex.def Info: clustering_gini.png used on input line 1274.
 (pdftex.def)             Requested size: 196.47313pt x 147.34944pt.
 
 <clustering_gini_zoomed.png, id=205, 578.16pt x 433.62pt>
 File: clustering_gini_zoomed.png Graphic file (type png)
 
 <use clustering_gini_zoomed.png>
-Package pdftex.def Info: clustering_gini_zoomed.png used on input line 1275.
+Package pdftex.def Info: clustering_gini_zoomed.png used on input line 1278.
 (pdftex.def)             Requested size: 196.47313pt x 147.34944pt.
  [43 <./clustering_mutual_info.png> <./clustering_anova_f.png> <./clustering_gi
 ni.png> <./clustering_gini_zoomed.png>]
@@ -758,56 +758,56 @@ ni.png> <./clustering_gini_zoomed.png>]
 ]
 Rozdzia\PlPrIeC {\l } 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1395--1396
+Underfull \hbox (badness 10000) in paragraph at lines 1398--1399
 
  []
 
 
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1397--1397
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1400--1400
 [][] 
  []
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 139
-7.
+Package Listings Warning: Text dropped after begin of listing on input line 140
+0.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1403
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1406
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1403.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1406.
 
  [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1420--1421
+Underfull \hbox (badness 10000) in paragraph at lines 1423--1424
 
  []
 
 
-Overfull \hbox (44.10446pt too wide) in paragraph at lines 1424--1467
+Overfull \hbox (44.10446pt too wide) in paragraph at lines 1427--1470
 []$[]$$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1424--1467
+Underfull \hbox (badness 10000) in paragraph at lines 1427--1470
 
  []
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1500--1545
+Underfull \hbox (badness 10000) in paragraph at lines 1503--1548
 
  []
 
 [49] [50]
 Rozdzia\PlPrIeC {\l } 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1557--1558
+Underfull \hbox (badness 10000) in paragraph at lines 1560--1561
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
+Underfull \hbox (badness 10000) in paragraph at lines 1562--1563
 
  []
 
@@ -828,18 +828,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 1559--1560
  (./pracamgr.bbl [55]
 [56
 
-] [57]
-Underfull \hbox (badness 1077) in paragraph at lines 153--157
+] [57] [58]
+Underfull \hbox (badness 1077) in paragraph at lines 193--197
 []\OT4/cmr/m/n/10.95 Wiens, J., Gut-tag, J. V., and Ho-rvitz, E. (2012).  Pa-ti
 ent risk
  []
 
-) [58] (./pracamgr.aux) ) 
+) [59] (./pracamgr.aux) ) 
 Here is how much of TeX's memory you used:
- 8499 strings out of 493089
- 133087 string characters out of 6134843
- 221188 words of memory out of 5000000
- 11802 multiletter control sequences out of 15000+600000
+ 8507 strings out of 493089
+ 133218 string characters out of 6134843
+ 221358 words of memory out of 5000000
+ 11810 multiletter control sequences out of 15000+600000
  27011 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,46p,1048b,1267s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -869,10 +869,10 @@ st/fonts/type1/public/pl/plss10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/pl/plssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/pls
 y8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (60 pages, 2825206 bytes).
+Output written on pracamgr.pdf (61 pages, 2829062 bytes).
 PDF statistics:
- 345 PDF objects out of 1000 (max. 8388607)
- 212 compressed objects within 3 object streams
+ 349 PDF objects out of 1000 (max. 8388607)
+ 215 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  116 words of extra memory for PDF output out of 10000 (max. 10000000)
 
