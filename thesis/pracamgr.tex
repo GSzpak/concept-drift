@@ -89,7 +89,7 @@
 %11.0 Matematyka, Informatyka:\\ 
 %11.1 Matematyka\\ 
 %11.2 Statystyka\\ 
-11.3 Informatyka TODO\\ 
+11.3 Informatyka\\ 
 %11.4 Sztuczna inteligencja\\ 
 %11.5 Nauki aktuarialne\\
 %11.9 Inne nauki matematyczne i informatyczne
@@ -186,7 +186,7 @@ Paradygmat & $Y_{train}$ dostêpny? & $X_{test}$ dostêpny? & Rozk³ad danych testo
 \end{table}
 
 W poni¿szej pracy autor skupi siê na problemie uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}. \\
-Warto jednak zwróciæ uwagê na fakt, ¿e bardziej powszechna jest sytuacja, gdy zbiór testowy nie jest znany podczas uczenia - czyli du¿o czê¶ciej mamy do czynienia z podproblemem uczenia indukcyjnego. Istotnie, w wielu sytuacjach dziedzin, z których mog± pochodziæ dane, jest tak wiele, ¿e ciê¿ko by³oby zawrzeæ w $X_{test}$ reprezentatywn± próbkê dla ka¿dej z nich. Przyk³adem bêdzie zbiór przedstawiony w rozdziale \ref{r:experiment}. Z tego powodu autor proponuje w rozdziale \ref{r:drift_reduction}. metodê selekcji cech niewra¿liwych na zmianê dziedziny niewymagaj±c± posiadania zbioru testowego podczas uczenia.
+Warto jednak zwróciæ uwagê na fakt, ¿e bardziej powszechna jest sytuacja, gdy zbiór testowy nie jest znany podczas uczenia - czyli du¿o czê¶ciej mamy do czynienia z podproblemem uczenia indukcyjnego. Istotnie, w wielu sytuacjach dziedzin, z których mog± pochodziæ dane, jest tak wiele, ¿e ciê¿ko by³oby zawrzeæ w $X_{test}$ reprezentatywn± próbkê dla ka¿dej z nich. Przyk³adem bêdzie zbiór przedstawiony w rozdziale \ref{r:experiment}. Z tego powodu autor proponuje w rozdziale \ref{r:drift_reduction}. metodê selekcji cech niewra¿liwych na zmianê dziedziny niewymagaj±c± posiadania zbioru testowego podczas uczenia. TODO dlaczego
 
 \subsection{Ewolucja pojêæ a problem przeuczenia}
 
@@ -219,15 +219,15 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 W rozró¿nienu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
 Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej na $X_{train}$ - w tym przypadku zbiór walidacyjny pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik klasyfikacji na samym zbiorze treningowym (tabela \ref{t:overfit}).
 
-\subsection{Uk³ad pracy} \label{s:content}
+\section{Uk³ad pracy} \label{s:content}
 
 Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym. \\
 W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶niej umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce.
 Rozdzia³ \ref{r:other}. zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary}. znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
 
-\chapter{Opis przeprowadzanego eksperymentu}\label{r:experiment}
-
-\section{Przedstawienie badanego problemu} \label{s:problem}
+\chapter{Problem klasyfikacji danych z sensorów inercyjnych}\label{r:experiment}
+TODO Klasyfikacja aktywno¶ci na podstawie odczytów z czujników inercyjnych, przenie¶æ pracê do wstêpu + ICRA + praca o ICRA
+\section{Studium przypadku} \label{s:problem}
 
 \subsection{Opis zbioru danych} \label{ss:data}
 
@@ -1560,9 +1560,11 @@ G³ównym celem pracy by³o zbudowanie wydajnego klasyfikatora na zbiorze wielowymi
 
 Ca³y proces ekstrakcji cech zosta³ opisany w rozdziale \ref{r:features}. Warto zauwa¿yæ, ¿e zastosowane podej¶cie jest bardzo ogólne - mo¿e byæ u¿yte dla dowolnych szeregów czasowych i nie wymaga specjalistycznej wiedzy z dziedziny, z której pochodz± dane. Dodatkowo pozwala na otrzymanie sensownej liczby cech (z 42 szeregów czasowych o d³ugo¶ci 400 uzyskano 6000 atrybutów) w stosunkowo niewielkim czasie (oko³o dwóch godzin na komputerze przeznaczonym do u¿ytku domowego). Nale¿y przy tym zwróciæ uwagê na fakt, i¿ cechy wyliczane by³y sekwencyjnie - zastosowanie mocniejszej maszyny i zrównoleglenia ca³ego procesu mog³oby znacznie obni¿yæ czas dzia³ania. \\
 
-Kolejnym krokiem by³a redukcja problemu ewoluuj±cych pojêæ. G³ównym celem autora by³o rozwiniêcie metody opisanej w \cite{Boulle15} i dok³adne przetestowanie jej dla ró¿nych kombinacji miar jako¶ci cech i algorytmów ucz±cych. Uzyskane rezultaty mo¿na uznaæ za satysfakcjonuj±ce - poprawa wyniku siêga³a nawet 30\%. Inn± du¿± zalet± metody zaproponowanej w rozdziale \ref{r:drift_reduction}. jest mo¿liwo¶æ stosowania jej z ró¿nymi funkcjami mierz±cymi jako¶æ atrybutów - nawet przy pozornie niekorzystnym rozk³adzie jako¶ci cech zastosowanie opisywanego podej¶cia prowadzi³o do poprawy wyników klasyfikatora. Wad± jest natomiast problem automatyzacji metody dla ró¿nych miar - ka¿da funkcja wymaga przeanalizowania rozk³adu istotno¶ci atrybutów w celu wyznaczenia potencjalnie dobrych warto¶ci progów $threshold_{drift}$ i $threshold_{class}$. \\
-Istotnym wk³adem niniejszej pracy jest tak¿e zaproponowanie usprawnienia powy¿szego podej¶cia, które to usprawnienie polega na wykrywaniu ¼ród³a danych bezpo¶rednio ze zbioru treningowego. W tym celu zastosowano analizê skupieñ, a konkretnie algorytm k-centroidów. Takie spojrzenie niesie ze sob± wiele zalet. Przede wszystkim czyni opisywan± metodê u¿yteczn± w przypadku uczenia indukcyjnego (czyli w przypadku, gdy zbiór testowy jest niedostêpny). Pozwala te¿ na lepsze okre¶lenie jako¶ci cech dla problemu detekcji \textit{concept drift} - ranga atrybutów jest mierzona wzglêdem identyfikatorów ¼róde³. Z wymienionych powodów autor wierzy, ¿e to podej¶cie bêdzie dalej rozwijane i analizowane - przyk³adowo przez wykorzystanie innych algorytmów klasteryzacji. \\
-Warte zastanowienia jest równie¿ pytanie, jak zachowa³aby siê metoda opisywana w rozdziale \ref{r:drift_reduction}., gdyby badany zbiór danych zawiera³ identyfikatory ¼róde³ danych (w tym przypadku - identyfikatory stra¿aków). Autor liczy na to, ¿e posiadanie informacji o pochodzeniu danej instancji mog³oby wyra¼nie poprawiæ uzyskane rezultaty. Jest to o tyle istotne, ¿e w codziennym ¿yciu dodanie takiej informacji do zbioru danych jest zwykle niek³opotliwe. \\
+Kolejnym krokiem by³a redukcja problemu ewoluuj±cych pojêæ. Celem autora by³o rozwiniêcie metody opisanej w \cite{Boulle15} i dok³adne przetestowanie jej dla ró¿nych kombinacji miar jako¶ci cech i algorytmów ucz±cych. Uzyskane rezultaty mo¿na uznaæ za satysfakcjonuj±ce - poprawa wyniku siêga³a nawet 30\%. Inn± du¿± zalet± metody zaproponowanej w rozdziale \ref{r:drift_reduction}. jest mo¿liwo¶æ stosowania jej z ró¿nymi funkcjami mierz±cymi jako¶æ atrybutów - nawet przy pozornie niekorzystnym rozk³adzie jako¶ci cech zastosowanie opisywanego podej¶cia prowadzi³o do poprawy wyników klasyfikatora. Wad± jest natomiast problem automatyzacji metody dla ró¿nych miar - ka¿da funkcja wymaga przeanalizowania rozk³adu istotno¶ci atrybutów w celu wyznaczenia potencjalnie dobrych warto¶ci progów $threshold_{drift}$ i $threshold_{class}$. \\
+
+G³ównym wk³adem niniejszej pracy jest tak¿e zaproponowanie usprawnienia powy¿szego podej¶cia, które to usprawnienie polega na wykrywaniu klastrów odpowiadaj±cych ewoluuj±cym pojêciom bezpo¶rednio ze zbioru treningowego. W tym celu zastosowano analizê skupieñ, a konkretnie algorytm k-centroidów. Takie spojrzenie niesie ze sob± wiele zalet. Przede wszystkim czyni opisywan± metodê u¿yteczn± w przypadku uczenia indukcyjnego (czyli w przypadku, gdy zbiór testowy jest niedostêpny). Pozwala te¿ na lepsze okre¶lenie jako¶ci cech dla problemu detekcji \textit{concept drift} - ranga atrybutów jest mierzona wzglêdem identyfikatorów ¼róde³. Z wymienionych powodów autor wierzy, ¿e to podej¶cie bêdzie dalej rozwijane i analizowane - przyk³adowo przez wykorzystanie innych algorytmów klasteryzacji. \\
+
+Warte zastanowienia jest pytanie, jak zachowa³aby siê metoda opisywana w rozdziale \ref{r:drift_reduction}., gdyby badany zbiór danych zawiera³ identyfikatory ¼róde³ danych (w tym przypadku - identyfikatory stra¿aków). Autor liczy na to, ¿e posiadanie informacji o pochodzeniu danej instancji mog³oby wyra¼nie poprawiæ uzyskane rezultaty. Jest to o tyle istotne, ¿e w codziennym ¿yciu dodanie takiej informacji do zbioru danych jest zwykle niek³opotliwe. TODO \\
 
 W rozdziale \ref{r:other}. opisano dwie inne metody stosowane do rozwi±zania problemu adaptacji dziedziny - uczenie iteracyjne oraz powiêkszanie przestrzeni cech zaproponowane w \cite{Daume07}. Obie okaza³y siê nieskuteczne - wyniki otrzymane przy ich u¿yciu by³y du¿o gorsze ni¿ te uzyskane przy zastosowaniu selekcji cech. Potwierdza to tylko fakt, ¿e metoda przedstawiona w rozdziale \ref{r:drift_reduction}. zas³uguje na rozwiniêcie i dalsze badania.
 

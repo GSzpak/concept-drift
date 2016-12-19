@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  19 DEC 2016 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  19 DEC 2016 17:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -799,13 +799,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 1561--1562
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1563--1566
+Underfull \hbox (badness 10000) in paragraph at lines 1563--1564
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1565--1566
 
  []
 
 [51
 
-] [52] (./pracamgr.lof)
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1567--1568
+
+ []
+
+[52] (./pracamgr.lof)
 \tf@lof=\write5
 \openout5 = `pracamgr.lof'.
 
@@ -817,10 +827,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1563--1566
 \tf@lot=\write6
 \openout6 = `pracamgr.lot'.
 
- (./pracamgr.bbl [55]
-[56
+ (./pracamgr.bbl [55] [56
 
-] [57] [58]
+]
+[57] [58]
 Underfull \hbox (badness 1077) in paragraph at lines 193--197
 []\OT4/cmr/m/n/10.95 Wiens, J., Gut-tag, J. V., and Ho-rvitz, E. (2012).  Pa-ti
 ent risk
@@ -834,7 +844,7 @@ ent risk
 Here is how much of TeX's memory you used:
  8093 strings out of 493014
  129272 string characters out of 6133351
- 215655 words of memory out of 5000000
+ 215653 words of memory out of 5000000
  11453 multiletter control sequences out of 15000+600000
  27011 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -865,7 +875,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (61 pages, 2830480 bytes).
+Output written on pracamgr.pdf (61 pages, 2830715 bytes).
 PDF statistics:
  349 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams
