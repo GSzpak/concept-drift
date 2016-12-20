@@ -52,3 +52,6 @@
 \contentsline {subsection}{\numberline {5.2.1}Opis algorytmu}{48}
 \contentsline {subsection}{\numberline {5.2.2}Eksperymenty i wnioski}{49}
 \contentsline {chapter}{\numberline {6}Podsumowanie}{51}
+\contentsline {chapter}{Spis rysunk\'ow}{53}
+\contentsline {chapter}{Spis tabel}{55}
+\contentsline {chapter}{Bibliografia}{57}
