@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  20 DEC 2016 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  20 DEC 2016 15:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -802,14 +802,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 1585--1586
 
  []
 
+[51
 
+]
 Underfull \hbox (badness 10000) in paragraph at lines 1591--1592
 
  []
 
-[51
-
-] [52] (./pracamgr.lof)
+[52] (./pracamgr.lof)
 \tf@lof=\write5
 \openout5 = `pracamgr.lof'.
 
@@ -821,10 +821,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 1591--1592
 \tf@lot=\write6
 \openout6 = `pracamgr.lot'.
 
- (./pracamgr.bbl [55]
-[56
+ (./pracamgr.bbl [55] [56
 
-] [57] [58]
+]
+[57] [58]
 Underfull \hbox (badness 1077) in paragraph at lines 205--209
 []\OT4/cmr/m/n/10.95 Wiens, J., Gut-tag, J. V., and Ho-rvitz, E. (2012).  Pa-ti
 ent risk
@@ -869,7 +869,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (61 pages, 2833125 bytes).
+Output written on pracamgr.pdf (61 pages, 2833278 bytes).
 PDF statistics:
  349 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams
