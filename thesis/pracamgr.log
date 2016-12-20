@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  20 DEC 2016 23:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.2.6)  21 DEC 2016 00:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -665,15 +665,19 @@ File: drift_example.png Graphic file (type png)
 Package pdftex.def Info: drift_example.png used on input line 782.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
 
-[30 <./drift_example.png>] [31] [32] [33]
-<train_test_mutual_info.png, id=161, 966.9726pt x 433.62pt>
+[30 <./drift_example.png>] [31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 875--876
+
+ []
+
+[33] <train_test_mutual_info.png, id=161, 966.9726pt x 433.62pt>
 File: train_test_mutual_info.png Graphic file (type png)
 
 <use train_test_mutual_info.png>
-Package pdftex.def Info: train_test_mutual_info.png used on input line 894.
+Package pdftex.def Info: train_test_mutual_info.png used on input line 898.
 (pdftex.def)             Requested size: 483.4851pt x 216.80946pt.
 
-Overfull \hbox (42.46738pt too wide) in paragraph at lines 894--897
+Overfull \hbox (42.46738pt too wide) in paragraph at lines 898--901
  [][] 
  []
 
@@ -685,14 +689,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: train_test_anova_f.png Graphic file (type png)
 
 <use train_test_anova_f.png>
-Package pdftex.def Info: train_test_anova_f.png used on input line 991.
+Package pdftex.def Info: train_test_anova_f.png used on input line 995.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
  [36 <./train_test_anova_f.png>] [37]
 <train_test_random_forest.png, id=178, 578.16pt x 433.62pt>
 File: train_test_random_forest.png Graphic file (type png)
 
 <use train_test_random_forest.png>
-Package pdftex.def Info: train_test_random_forest.png used on input line 1100.
+Package pdftex.def Info: train_test_random_forest.png used on input line 1104.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <train_test_random_forest_zoomed.png, id=179, 578.16pt x 433.62pt>
@@ -700,63 +704,63 @@ File: train_test_random_forest_zoomed.png Graphic file (type png)
 
 <use train_test_random_forest_zoomed.png>
 Package pdftex.def Info: train_test_random_forest_zoomed.png used on input line
- 1104.
+ 1108.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
  [38 <./train_test_random_forest.png> <./train_test_random_forest_zoomed.png>] 
 [39] [40]
 <kmeans.png, id=191, 734.9859pt x 373.6359pt>
 File: kmeans.png Graphic file (type png)
  <use kmeans.png>
-Package pdftex.def Info: kmeans.png used on input line 1223.
+Package pdftex.def Info: kmeans.png used on input line 1228.
 (pdftex.def)             Requested size: 404.24348pt x 205.50037pt.
  [41 <./kmeans.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1236--1239
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1244
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1236--1239
+Underfull \hbox (badness 10000) in paragraph at lines 1241--1244
 
  []
 
 LaTeX Font Info:    Try loading font information for OT4+cmss on input line 124
-1.
+6.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/polski/ot4cmss.fd
 File: ot4cmss.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1241--1241
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1246--1246
 [][] 
  []
 
 
 Package Listings Warning: Text dropped after begin of listing on input line 124
-1.
+6.
 
 [42] <clustering_mutual_info.png, id=202, 578.16pt x 433.62pt>
 File: clustering_mutual_info.png Graphic file (type png)
 
 <use clustering_mutual_info.png>
-Package pdftex.def Info: clustering_mutual_info.png used on input line 1276.
+Package pdftex.def Info: clustering_mutual_info.png used on input line 1281.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <clustering_anova_f.png, id=203, 578.16pt x 433.62pt>
 File: clustering_anova_f.png Graphic file (type png)
 
 <use clustering_anova_f.png>
-Package pdftex.def Info: clustering_anova_f.png used on input line 1280.
+Package pdftex.def Info: clustering_anova_f.png used on input line 1285.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <clustering_gini.png, id=204, 578.16pt x 433.62pt>
 File: clustering_gini.png Graphic file (type png)
  <use clustering_gini.png>
-Package pdftex.def Info: clustering_gini.png used on input line 1296.
+Package pdftex.def Info: clustering_gini.png used on input line 1301.
 (pdftex.def)             Requested size: 196.47313pt x 147.34944pt.
 
 <clustering_gini_zoomed.png, id=205, 578.16pt x 433.62pt>
 File: clustering_gini_zoomed.png Graphic file (type png)
 
 <use clustering_gini_zoomed.png>
-Package pdftex.def Info: clustering_gini_zoomed.png used on input line 1300.
+Package pdftex.def Info: clustering_gini_zoomed.png used on input line 1305.
 (pdftex.def)             Requested size: 196.47313pt x 147.34944pt.
  [43 <./clustering_mutual_info.png> <./clustering_anova_f.png> <./clustering_gi
 ni.png> <./clustering_gini_zoomed.png>]
@@ -765,63 +769,63 @@ ni.png> <./clustering_gini_zoomed.png>]
 ]
 Rozdzia\PlPrIeC {\l } 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1422--1423
+Underfull \hbox (badness 10000) in paragraph at lines 1427--1428
 
  []
 
 
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1424--1424
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1429--1429
 [][] 
  []
 
 
 Package Listings Warning: Text dropped after begin of listing on input line 142
-4.
+9.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1430
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1435
 .
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1430.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1435.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1441--1443
+Underfull \hbox (badness 10000) in paragraph at lines 1446--1448
 
  []
 
 [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1448--1449
+Underfull \hbox (badness 10000) in paragraph at lines 1453--1454
 
  []
 
 
-Overfull \hbox (44.10446pt too wide) in paragraph at lines 1452--1495
+Overfull \hbox (44.10446pt too wide) in paragraph at lines 1457--1500
 []$[]$$[]$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1452--1495
+Underfull \hbox (badness 10000) in paragraph at lines 1457--1500
 
  []
 
 [48]
-Underfull \hbox (badness 10000) in paragraph at lines 1532--1577
+Underfull \hbox (badness 10000) in paragraph at lines 1537--1582
 
  []
 
 [49] [50]
 Rozdzia\PlPrIeC {\l } 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1589--1590
+Underfull \hbox (badness 10000) in paragraph at lines 1594--1595
 
  []
 
 [51
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1595--1596
+Underfull \hbox (badness 10000) in paragraph at lines 1600--1601
 
  []
 
@@ -881,7 +885,7 @@ st/fonts/type1/public/pl/plss10.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
 ype1/public/pl/plssbx10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/pub
 lic/pl/plsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/pls
 y8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (61 pages, 2833393 bytes).
+Output written on pracamgr.pdf (61 pages, 2833509 bytes).
 PDF statistics:
  349 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams

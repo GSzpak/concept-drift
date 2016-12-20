@@ -290,7 +290,7 @@ W kolejnych rozdzia³ach przedstawione zostan± metody maj±ce na celu zwiêkszenie 
 
 \subsection{Klasyfikator liniowy} \label{ss:linear}
 
-Regresja logistyczna i maszyna wektorów wspieraj±cych nale¿± do grupy klasyfikatorów liniowych. Przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Za³ó¿my, ¿e zbiór klas $Y$ jest dwuelementowy - dla uproszczenia niech $Y = \{+1, -1 \}$. Niech dalej $y \in Y$ bêdzie decyzj± dla elementu $\textbf{x} = (x_1, x_2, \dots, x_m) \in X \subseteq \mathbb{R}^m$. Klasyfikatorem liniowym nazywamy $m - 1$ - wymiarow± hiper³aszczyznê rozdzielaj±c± punkty z $X$. Niech $\textbf{w} = (w_1, w_2, \dots, w_m) \in \mathbb{R}^m$ bêdzie wektorem wspó³czynników tej hiperp³aszczyzny. Uczenie klasyfikatora liniowego zwykle polega na minimalizacji warto¶ci pewnej funkcji b³êdu $l(\textbf{w})$ na zbiorze treningowym.
+Regresja logistyczna i maszyna wektorów wspieraj±cych nale¿± do grupy klasyfikatorów liniowych. Przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Za³ó¿my, ¿e zbiór klas $Y$ jest dwuelementowy - dla uproszczenia niech $Y = \{+1, -1 \}$. Niech dalej $y \in Y$ bêdzie decyzj± dla elementu $\textbf{x} = (x_1, x_2, \dots, x_m) \in X \subseteq \mathbb{R}^m$. Klasyfikatorem liniowym nazywamy $m - 1$ - wymiarow± hiperp³aszczyznê rozdzielaj±c± punkty z $X$. Niech $\textbf{w} = (w_1, w_2, \dots, w_m) \in \mathbb{R}^m$ bêdzie wektorem wspó³czynników tej hiperp³aszczyzny. Uczenie klasyfikatora liniowego zwykle polega na minimalizacji warto¶ci pewnej funkcji b³êdu $l(\textbf{w})$ na zbiorze treningowym.
 
 \subsubsection{Klasyfikacja oparta na regresji logistycznej (\textit{logit})}
 
@@ -785,7 +785,8 @@ Rysunek \ref{drift_example} przedstawia rozk³ad jako¶ci cech wraz z przyk³adowym
 \caption{Przyk³adowy rozk³ad jako¶ci cech dla problemu klasyfikacji oraz zadania wykrywania ewoluuj±cych pojêæ \label{drift_example}}
 \end{figure}
 
-O¶ $x$ przedstawia jako¶æ cech dla bazowego problemu klasyfikacji, natomiast o¶ $y$ - jako¶æ dla problemu detekcji \textit{concept drift}. Przyk³adowym wyborem jest selekcja cech poni¿ej czerwonej linii (atrybuty s³abo rozró¿niaj±ce ró¿ne dziedziny) oraz na prawo od linii zielonej (cechy o wysokim wyniku dla postawionego problemu klasyfikacji). Oczywi¶cie nie zawsze taki wybór bêdzie mo¿liwy, co poka¿± kolejne podrozdzia³y. \\
+O¶ $x$ przedstawia jako¶æ cech dla bazowego problemu klasyfikacji, natomiast o¶ $y$ - jako¶æ dla problemu detekcji \textit{concept drift}. Przyk³adowym wyborem jest selekcja cech poni¿ej czerwonej linii (atrybuty s³abo rozró¿niaj±ce ró¿ne dziedziny) oraz na prawo od linii zielonej (cechy o wysokim wyniku dla postawionego problemu klasyfikacji). Oczywi¶cie nie zawsze taki wybór bêdzie mo¿liwy, co poka¿± kolejne podrozdzia³y.
+
 G³ównym wyzwaniem w opisywanym podej¶ciu jest sprowadzenie problemu wykrywania zmiennej dziedziny do problemu klasyfikacji. Zanim jednak poruszona zostanie ta kwestia, autor zaprezentuje u¿ywane najczê¶ciej miary jako¶ci cech.
 
 \section{Miary jako¶ci cech}
@@ -808,8 +809,9 @@ Zdefiniowany w \ref{d:pearson} wspó³czynnik korelacji liniowej Pearsona mo¿e byæ
 
 \subsubsection{Test $\chi^2$}
 
-W statystyce testu $\chi^2$ u¿ywa siê do badania niezale¿no¶ci dwóch zdarzeñ $A$ i $B$, gdzie dwa zdarzenia s± uznawane za niezale¿ne, je¶li $P(A \cap B) = P(A)P(B)$, b±d¼ równowa¿nie: $P(A | B) = P(A)$ i analogicznie $P(B | A) = P(B)$. W uczeniu maszynowym test $\chi^2$ stosowany jest do badania niezale¿no¶ci pomiêdzy atrybutami a klas± wynikow±. Za warto¶ciowe uwa¿ane s± te cechy, które nie s± niezale¿nie od przewidywanej zmiennej. \\
-Test ten mo¿e byæ zastosowany tylko w przypadku gdy zarówno atrybut, jak i klasa wynikowa s± zmiennymi kategorycznymi. W przypadku zmiennych ci±g³ych stosuje siê dyskretyzacjê.
+W statystyce testu $\chi^2$ u¿ywa siê do badania niezale¿no¶ci dwóch zdarzeñ $A$ i $B$, gdzie dwa zdarzenia s± uznawane za niezale¿ne, je¶li $P(A \cap B) = P(A)P(B)$, b±d¼ równowa¿nie: $P(A | B) = P(A)$ i analogicznie $P(B | A) = P(B)$. W uczeniu maszynowym test $\chi^2$ stosowany jest do badania niezale¿no¶ci pomiêdzy atrybutami a klas± wynikow±. Za warto¶ciowe uwa¿ane s± te cechy, które nie s± niezale¿nie od przewidywanej zmiennej.
+
+Test ten mo¿e byæ zastosowany tylko w przypadku, gdy zarówno atrybut, jak i klasa wynikowa s± zmiennymi kategorycznymi. W przypadku zmiennych ci±g³ych stosuje siê dyskretyzacjê.
 
 \subsubsection{Informacja wzajemna}
 
@@ -830,7 +832,8 @@ Zachodzi wtedy:
 \begin{displaymath}
 H(C | F) \leq H(C),
 \end{displaymath}
-czyli entropia warunkowa jest nie wiêksza ni¿ entropia pocz±tkowa. Równo¶æ zachodzi wtedy i tylko wtedy, gdy zmienne $C$ i $F$ s± niezale¿ne. \\
+czyli entropia warunkowa jest nie wiêksza ni¿ entropia pocz±tkowa. Równo¶æ zachodzi wtedy i tylko wtedy, gdy zmienne $C$ i $F$ s± niezale¿ne.
+
 \textit{Informacjê wzajemn±} $I(C; F)$ definiuje siê wtedy jako warto¶æ, o jak± pocz±tkowa niepewno¶æ odno¶nie klasy wynikowej zosta³a pomniejszona po poznaniu warto¶ci cechy $F$, czyli formalnie:
 \begin{equation}
 I(C; F) = H(C) - H(C | F)
@@ -869,7 +872,8 @@ Ze wzglêdu na podobieñstwo miêdzy indeksem Giniego a entropi±, \textit{zysk Gini
 GiniGain(C; F) = Gini(C) - Gini(C | F) = Gini(C) - \sum_{i=1}^k P_F(f_i) Gini(C | F = f_i)
 \end{equation}
 
-\hfill \\  
+\hfill \\ 
+
 W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê wzajemn±, jednoczynnikow± analizê wariancji oraz zysk Giniego.
 
 \section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym} \label{s:tt}
@@ -1218,6 +1222,7 @@ Klasteryzacja (inaczej analiza skupieñ) jest metod± uczenia bez nadzoru (por. z 
 \item powtarzanie algorytmu a¿ do osi±gniêcia kryterium zbie¿no¶ci
 \end{enumerate}
 Przyk³ad obiektów pogrupowanych przy u¿yciu algorytmu k-centroidów przedstawia rys. \ref{kcentroids}.
+
 \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.55]{kmeans.png}
