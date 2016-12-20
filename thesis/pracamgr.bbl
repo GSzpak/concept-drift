@@ -115,6 +115,12 @@ Ganzha, M., Maciaszek, L.~A., and Paprzycki, M., editors (2015).
 \newblock {\em 2015 Federated Conference on Computer Science and Information
   Systems, FedCSIS 2015, L{\'{o}}dz, Poland, September 13-16, 2015}. {IEEE}.
 
+\bibitem[Ganzha et~al., 2016]{DBLP:conf/fedcsis/2016}
+Ganzha, M., Maciaszek, L.~A., and Paprzycki, M., editors (2016).
+\newblock {\em Proceedings of the 2016 Federated Conference on Computer Science
+  and Information Systems, FedCSIS 2016, Gda{\'{n}}sk, Poland, September 11-14,
+  2016}.
+
 \bibitem[Gay et~al., 2013]{GayGBC13}
 Gay, D., Guigour{\`{e}}s, R., Boull{\'{e}}, M., and Cl{\'{e}}rot, F. (2013).
 \newblock Feature extraction over multiple representations for time series
@@ -126,6 +132,12 @@ Gr{\"{u}}nauer, A. and Vincze, M. (2015).
 \newblock Using dimension reduction to improve the classification of
   high-dimensional data.
 \newblock {\em CoRR}, abs/1505.06907.
+
+\bibitem[Grzegorowski, 2016]{Grzegorowski16}
+Grzegorowski, M. (2016).
+\newblock Massively parallel feature extraction framework application in
+  predicting dangerous seismic events.
+\newblock In \cite{DBLP:conf/fedcsis/2016}, pages 225--229.
 
 \bibitem[Guyon and Elisseeff, 2003]{GuyonE03}
 Guyon, I. and Elisseeff, A. (2003).

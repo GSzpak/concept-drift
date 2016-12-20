@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  19 DEC 2016 17:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  20 DEC 2016 12:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -631,6 +631,13 @@ mr/m/n/10.95 (\OML/plm/m/it/10.95 t[]; x[]\OT4/cmr/m/n/10.95 )$
  []
 
 
+Overfull \hbox (1.85918pt too wide) in paragraph at lines 715--718
+\OT4/cmr/m/n/10.95 de-fi-niu-je si¦ ja-ko ko-re-la-cj¦ Pe-ar-so-na (def 3.2.2[]
+) mi¦-dzy wek-to-ra-mi $(\OML/plm/m/it/10.95 x[]; [] x[]\OT4/cmr/m/n/10.95 )$ o
+raz $(\OML/plm/m/it/10.95 x[]; [] ; x[]\OT4/cmr/m/n/10.95 )$. 
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 715--718
 
  []
@@ -831,7 +838,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 1567--1568
 
 ]
 [57] [58]
-Underfull \hbox (badness 1077) in paragraph at lines 193--197
+Underfull \hbox (badness 1077) in paragraph at lines 205--209
 []\OT4/cmr/m/n/10.95 Wiens, J., Gut-tag, J. V., and Ho-rvitz, E. (2012).  Pa-ti
 ent risk
  []
@@ -842,10 +849,10 @@ ent risk
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 8093 strings out of 493014
- 129272 string characters out of 6133351
- 215653 words of memory out of 5000000
- 11453 multiletter control sequences out of 15000+600000
+ 8095 strings out of 493014
+ 129312 string characters out of 6133351
+ 215691 words of memory out of 5000000
+ 11455 multiletter control sequences out of 15000+600000
  27011 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,14n,46p,1048b,6958s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -875,7 +882,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (61 pages, 2830715 bytes).
+Output written on pracamgr.pdf (61 pages, 2831052 bytes).
 PDF statistics:
  349 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams

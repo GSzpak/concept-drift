@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2015)
+This is BibTeX, Version 0.99d (TeX Live 2016)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: pracamgr.aux
 The style file: apalike.bst
@@ -8,45 +8,45 @@ Warning--to sort, need editor or key in DBLP:conf/cidm/2014
 Warning--to sort, need editor or key in DBLP:conf/ijcnn/2011
 Warning--to sort, need editor or key in DBLP:conf/iccv/2013
 Warning--to sort, need editor or key in DBLP:conf/cvpr/2011
-You've used 36 entries,
+You've used 38 entries,
             1935 wiz_defined-function locations,
-            670 strings with 10505 characters,
-and the built_in function-call counts, 13968 in all, are:
-= -- 1443
-> -- 482
-< -- 31
-+ -- 173
-- -- 156
-* -- 1114
-:= -- 2311
-add.period$ -- 107
-call.type$ -- 36
-change.case$ -- 246
-chr.to.int$ -- 35
-cite$ -- 46
-duplicate$ -- 581
-empty$ -- 952
-format.name$ -- 209
-if$ -- 2812
+            680 strings with 11000 characters,
+and the built_in function-call counts, 14740 in all, are:
+= -- 1523
+> -- 508
+< -- 33
++ -- 181
+- -- 164
+* -- 1171
+:= -- 2438
+add.period$ -- 112
+call.type$ -- 38
+change.case$ -- 259
+chr.to.int$ -- 37
+cite$ -- 48
+duplicate$ -- 616
+empty$ -- 1004
+format.name$ -- 219
+if$ -- 2970
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 26
-newline$ -- 172
-num.names$ -- 99
-pop$ -- 238
+missing$ -- 27
+newline$ -- 181
+num.names$ -- 106
+pop$ -- 253
 preamble$ -- 1
-purify$ -- 258
+purify$ -- 272
 quote$ -- 0
-skip$ -- 485
+skip$ -- 515
 stack$ -- 0
-substring$ -- 1035
-swap$ -- 135
-text.length$ -- 13
+substring$ -- 1091
+swap$ -- 145
+text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 214
+type$ -- 226
 warning$ -- 5
-while$ -- 112
+while$ -- 119
 width$ -- 0
-write$ -- 439
+write$ -- 462
 (There were 5 warnings)
