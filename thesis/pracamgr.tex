@@ -148,8 +148,10 @@ Schemat rozwi±zywania problemu uczenia z nadzorem przedstawia rys. \ref{supervis
 \end{figure}
 
 
-Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie niechcianej poczty, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. \\
-Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Wiele klasyfikatorów cierpi wtedy na znaczny spadek jako¶ci. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.\\
+Na przestrzeni ostatnich dziesiêcioleci opracowanych zosta³o wiele algorytmów ucz±cych wykazuj±cych siê du¿± skuteczno¶ci± w przeró¿nych dziedzinach: od rozpoznawania obrazów, przez klasyfikacjê tekstów, rekomendacjê produktów, wykrywanie niechcianej poczty, po przewidywanie zmian na gie³dzie czy diagnostykê medyczn±. 
+
+Sytuacja zmienia siê diametralnie, gdy pominiemy za³o¿enie o równo¶ci rozk³adów dla zbiorów treningowych i testowych. Wiele klasyfikatorów cierpi wtedy na znaczny spadek jako¶ci. Problem ten nazywa siê \textit{ewolucj± pojêæ} (ang. \textit{concept drift}) lub \textit{dopasowaniem dziedziny} (ang. \textit{domain adaptation}). Jest on szczególnie widoczny w zadaniach przetwarzania jêzyka naturalnego (ang. \textit{natural language processing}, w skrócie NLP). Rozpatrzmy dla przyk³adu problem rozpoznawania nazw w³asnych (ang. \textit{named entity recognition}). Za³ó¿my, ¿e klasyfikator uczony jest na podstawie danych encyklopedycznych oraz testowany na danych pochodz±cych z komunikatora internetowego. Obydwa zbiory, jakkolwiek powi±zane, ró¿ni± siê w znacz±cy sposób - przyk³adowo, szukanie wielkich liter mo¿e byæ bardzo pomocne w pierwszej dziedzinie, a nie¶æ znacznie mniej informacji w wiadomo¶ciach z komunikatora.
+
 St±d te¿ w³a¶nie w dziedzinie NLP powsta³o najwiêcej metod maj±cych rozwi±zaæ problem ewoluuj±cych pojêæ. Przyk³adami takich metod s± algorytm \textit{structural correspondence learning} opisywany w \cite{BlitzerMP06} czy metoda odpowiedniego dopasowania przestrzeni parametrów zaproponowana przez Daum{\'{e}} w \cite{Daume07}. \\
 
 Problem \textit{domain adaptation} nie jest jednak czêsto poruszany w przypadku klasyfikacji szeregów czasowych. W poni¿szej pracy autor przedstawia sposoby radzenia sobie z adaptacj± dziedziny podczas klasyfikacji szeregów czasowych oraz wykonuje studium przypadku na wybranym zbiorze danych.
@@ -185,7 +187,8 @@ Paradygmat & $Y_{train}$ dostêpny? & $X_{test}$ dostêpny? & Rozk³ad danych testo
 \end{tabular}
 \end{table}
 
-W poni¿szej pracy autor skupi siê na problemie uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}. \\
+W poni¿szej pracy autor skupi siê na problemie uczenia z nadzorem z przeniesieniem wiedzy. Przedstawione zostan± algorytmy, które wykorzystuj± dostêpny zbiór $X_{test}$ do znalezienia reprezentacji odpornej na zmiany rozk³adu, co skutkowaæ bêdzie zwiêkszon± jako¶ci± klasyfikacji w stosunku do standardowego podej¶cia opisanego w \ref{s:superv}.
+
 Warto jednak zwróciæ uwagê na fakt, ¿e bardziej powszechna jest sytuacja, gdy zbiór testowy nie jest znany podczas uczenia - czyli du¿o czê¶ciej mamy do czynienia z podproblemem uczenia indukcyjnego. Istotnie, w wielu sytuacjach dziedzin, z których mog± pochodziæ dane, jest tak wiele, ¿e ciê¿ko by³oby zawrzeæ w $X_{test}$ reprezentatywn± próbkê dla ka¿dej z nich. Przyk³adem bêdzie zbiór przedstawiony w rozdziale \ref{r:experiment}. Z tego powodu autor proponuje w rozdziale \ref{r:drift_reduction}. metodê selekcji cech niewra¿liwych na zmianê dziedziny niewymagaj±c± posiadania zbioru testowego podczas uczenia. TODO dlaczego
 
 \subsection{Ewolucja pojêæ a problem przeuczenia}
@@ -216,14 +219,15 @@ Model 2  & 0.97 & 0.92 & 0.76 \\ \hline
 \end{tabular}
 \end{table}
 
-W rozró¿nieniu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli. \\
+W rozró¿nieniu obydwu sytuacji pomagaæ mo¿e zastosowanie \textit{walidacji krzy¿owej} (ang. \textit{cross-validation}) na zbiorze treningowym. Walidacja krzy¿owa polega na podziale zbioru treningowego na $n$ równolicznych czê¶ci. Nastêpnie budowane jest $n$ modeli, przy czym $n - 1$ czê¶ci tworzy zbiór treningowy, natomiast pozosta³a czê¶æ - zbiór testowy. Ostateczny wynik jest ¶rednim wynikiem powsta³ych $n$ modeli.
+
 Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿yæ znacznego spadku jako¶ci modelu przy wykonaniu walidacji krzy¿owej na $X_{train}$ - w tym przypadku zbiór walidacyjny pochodzi z tej samej dziedziny co treningowy. Inaczej bêdzie w przypadku przeuczenia - tu wynik walidacji krzy¿owej bêdzie wyra¼nie ni¿szy ni¿ wynik klasyfikacji na samym zbiorze treningowym (tabela \ref{t:overfit}).
 
 \section{Uk³ad pracy} \label{s:content}
 
-Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym. \\
-W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶nie umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce.
-Rozdzia³ \ref{r:other}. zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary}. znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
+Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym.
+
+W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶nie umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce. Rozdzia³ \ref{r:other}. zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary}. znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
 
 \chapter{Problem klasyfikacji danych z sensorów inercyjnych}\label{r:experiment}
 TODO Klasyfikacja aktywno¶ci na podstawie odczytów z czujników inercyjnych, przenie¶æ pracê do wstêpu + ICRA + praca o ICRA
@@ -231,8 +235,7 @@ TODO Klasyfikacja aktywno¶ci na podstawie odczytów z czujników inercyjnych, prze
 
 \subsection{Opis zbioru danych} \label{ss:data}
 
-Dane, na których sprawdzana by³a jako¶æ analizowanych algorytmów, pochodz± z konkursu \textit{AAIA'15 Data Mining Competition: Tagging Firefighter Activities at a Fire Scene}\footnote{https://knowledgepit.fedcsis.org/contest/view.php?id=106} organizowanego przez Uniwersytet Warszawski oraz Szko³ê G³ówn± S³u¿by Po¿arniczej w Warszawie. \\
-Na potrzeby konkursu zebrano odczyty pochodz±ce z "inteligentnego kombinezonu", który monitoruje ruchy oraz funkcje ¿yciowe stra¿aka. W sk³ad kombinezonu wchodzi³o po siedem akcelerometrów i ¿yroskopów umieszczonych na: tu³owiu, ramionach, d³oniach i nogach (rys. \ref{fireman}).
+Dane, na których sprawdzana by³a jako¶æ analizowanych algorytmów, pochodz± z konkursu \textit{AAIA'15 Data Mining Competition: Tagging Firefighter Activities at a Fire Scene}\footnote{https://knowledgepit.fedcsis.org/contest/view.php?id=106} organizowanego przez Uniwersytet Warszawski oraz Szko³ê G³ówn± S³u¿by Po¿arniczej w Warszawie. Na potrzeby konkursu zebrano odczyty pochodz±ce z "inteligentnego kombinezonu", który monitoruje ruchy oraz funkcje ¿yciowe stra¿aka. W sk³ad kombinezonu wchodzi³o po siedem akcelerometrów i ¿yroskopów umieszczonych na: tu³owiu, ramionach, d³oniach i nogach (rys. \ref{fireman}).
 
 \begin{figure}[ht!]
 \centering
@@ -240,9 +243,11 @@ Na potrzeby konkursu zebrano odczyty pochodz±ce z "inteligentnego kombinezonu", 
 \caption{Rozmieszczenie czujników na ciele stra¿aka \label{fireman}}
 \end{figure}
 
-Ka¿da instancja w zbiorze danych sk³ada³a siê z zebranych w krótkich odcinkach czasu (oko³o 1.8 s) odczytów z zamontowanych sensorów. Dla ka¿dego akcelerometru oraz ¿yroskopu zebrano po 400 odczytów wzd³u¿ osi $x$, $y$, $z$, wraz ze wzglêdnym czasem wykonania odczytu. Dla ka¿dego wiersza daje to 42-wymiarowy szereg czasowy o d³ugo¶ci 400. Jak ³atwo wywnioskowaæ, ¶redni odstêp miêdzy kolejnymi odczytami wynosi³ oko³o 4.5 ms. Zestaw atrybutów uzupe³nia³y dodatkowo 42 agregaty ze wskazañ urz±dzeñ monitoruj±cych funkcje ¿yciowe stra¿aka (takie jak EKG, czêstotliwo¶æ oddechu, temperatura skóry). Nieprzetworzone dane zawiera³y wiêc $400 * 43 + 42 = 17242$ atrybuty. Zarówno zbiór treningowy, jak i testowy sk³ada³y siê z $20000$ przyk³adów. Bardzo istotny dla dla analizy tego zbioru danych okaza³ siê fakt, ¿e dane treningowe i testowe pochodzi³y od ró¿nych czteroosobowych grup stra¿aków. \\
-Zadaniem uczestników konkursu by³o przypisanie ka¿dej instancji w zbiorze postury stra¿aka w danym momencie oraz wykonywanej przez niego czynno¶ci. Zastosowane algorytmy mia³y pomóc w stworzeniu systemu monitoruj±cego bezpieczeñstwo stra¿aka podczas akcji. \\
-Szczegó³owe podsumowanie konkursu (miêdzy innymi opis procedury zbierania danych, miary u¿ytej do ewaluacji wyników oraz rezultatów uzyskanych przez uczestników) znale¼æ mo¿na w \cite{MeinaJRSCK15}.
+Ka¿da instancja w zbiorze danych sk³ada³a siê z zebranych w krótkich odcinkach czasu (oko³o 1.8 s) odczytów z zamontowanych sensorów. Dla ka¿dego akcelerometru oraz ¿yroskopu zebrano po 400 odczytów wzd³u¿ osi $x$, $y$, $z$, wraz ze wzglêdnym czasem wykonania odczytu. Dla ka¿dego wiersza daje to 42-wymiarowy szereg czasowy o d³ugo¶ci 400. Jak ³atwo wywnioskowaæ, ¶redni odstêp miêdzy kolejnymi odczytami wynosi³ oko³o 4.5 ms. Zestaw atrybutów uzupe³nia³y dodatkowo 42 agregaty ze wskazañ urz±dzeñ monitoruj±cych funkcje ¿yciowe stra¿aka (takie jak EKG, czêstotliwo¶æ oddechu, temperatura skóry). Nieprzetworzone dane zawiera³y wiêc $400 * 43 + 42 = 17242$ atrybuty. Zarówno zbiór treningowy, jak i testowy sk³ada³y siê z $20000$ przyk³adów. Bardzo istotny dla dla analizy tego zbioru danych okaza³ siê fakt, ¿e dane treningowe i testowe pochodzi³y od ró¿nych czteroosobowych grup stra¿aków.
+
+Zadaniem uczestników konkursu by³o przypisanie ka¿dej instancji w zbiorze postury stra¿aka w danym momencie oraz wykonywanej przez niego czynno¶ci. Zastosowane algorytmy mia³y pomóc w stworzeniu systemu monitoruj±cego bezpieczeñstwo stra¿aka podczas akcji.
+
+Szczegó³owe podsumowanie konkursu (miêdzy innymi opis procedury zbierania danych, miary u¿ytej do ewaluacji wyników oraz rezultatów uzyskanych przez uczestników) znale¼æ mo¿na w \cite{MeinaJRSCK15}. \\
 
 Jako ¿e problem klasyfikacji wieloetykietowej nie jest tematem niniejszej pracy, autor postanowi³ skupiæ siê na problemie przewidywania czynno¶ci wykonywanej przez stra¿aka. Zbiór klas liczy³ wiêc $16$ elementów. Postawiony problem utrudnia³ dodatkowo fakt, ¿e klasy by³y wysoce niezbalansowane - najczêstsza klasa ($manipulating$) wyst±pi³a w zbiorze treningowym $6349$ razy, podczas gdy najrzadsza ($signal\_hose\_pullback$) - jedynie 98 razy.\\
 Rozk³ad klas przedstawia rys. \ref{classes}.
@@ -358,15 +363,18 @@ Innym typem klasyfikatora jest las losowy. Jest to klasyfikator wykorzystuj±cy p
 \caption{Przyk³adowe drzewo decyzyjne \label{dec_tree}}
 \end{figure}
 
-Drzewo decyzyjne to etykietowane drzewo, którego ka¿dy wêze³ odpowiada przeprowadzeniu pewnego testu na warto¶ciach atrybutów. Z wêz³a wewnêtrznego wychodzi tyle ga³êzi, ile jest mo¿liwych wyników testu odpowiadaj±cego temu wêz³owi. Ka¿dy li¶æ zawiera decyzjê o klasyfikacji obiektu. Przyk³adowe drzewo decyzyjne przedstawia rys. \ref{dec_tree}. \\
+Drzewo decyzyjne to etykietowane drzewo, którego ka¿dy wêze³ odpowiada przeprowadzeniu pewnego testu na warto¶ciach atrybutów. Z wêz³a wewnêtrznego wychodzi tyle ga³êzi, ile jest mo¿liwych wyników testu odpowiadaj±cego temu wêz³owi. Ka¿dy li¶æ zawiera decyzjê o klasyfikacji obiektu. Przyk³adowe drzewo decyzyjne przedstawia rys. \ref{dec_tree}.
+
 Uczenie lasu losowego polega na uczeniu okre¶lonej liczby drzew decyzyjnych - ka¿dego na losowej podprzestrzeni atrybutów. Finalna klasa wyznaczana jest na podstawie wyników pojedynczych drzew. Lasy losowe, podobnie jak drzewa decyzyjne, wspieraj± klasyfikacjê wieloklasow±. Pe³en algorytm uczenia lasów losowych opisany jest w \cite{Breiman01}.
 
 \chapter{Ekstrakcja cech z szeregów czasowych} \label{r:features}
 
 \section{Metody klasyfikacji szeregów czasowych}
 
-Szeregi czasowe obecne s± w wielu ró¿nych dziedzinach ¿ycia - od medycyny, przez finanse, wyszukiwanie informacji, po przetwarzanie sygna³ów oraz prognozê pogody. W ostatnich latach opisanych zosta³o wiele metod do wykrywania wzorców czasowych w takich zadaniach jak: okre¶lanie stanu zdrowia pacjenta na podstawie odczytów elektrokardiografu, przewidywanie wahañ na gie³dzie, analiza mowy czy prognozowanie temperatur. \\
-W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}, w skrócie k-NN - wiêcej w \cite{ChaovalitwongseFS07}), sieci neuronowe (\cite{RavikumarD14}) czy ukryty model Markowa (\cite{KimS06}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{dtwyouknow}. \\
+Szeregi czasowe obecne s± w wielu ró¿nych dziedzinach ¿ycia - od medycyny, przez finanse, wyszukiwanie informacji, po przetwarzanie sygna³ów oraz prognozê pogody. W ostatnich latach opisanych zosta³o wiele metod do wykrywania wzorców czasowych w takich zadaniach jak: okre¶lanie stanu zdrowia pacjenta na podstawie odczytów elektrokardiografu, przewidywanie wahañ na gie³dzie, analiza mowy czy prognozowanie temperatur.
+
+W¶ród metod zaproponowanych do klasyfikacji szeregów czasowych znale¼æ mo¿na wiêkszo¶æ najbardziej znanych algorytmów uczenia siê: metodê k-najbli¿szych s±siadów (ang. \textit{k-nearest neighbours}, w skrócie k-NN - wiêcej w \cite{ChaovalitwongseFS07}), sieci neuronowe (\cite{RavikumarD14}) czy ukryty model Markowa (\cite{KimS06}). Wci±¿ jednak najszerzej u¿ywane (i uznawane za najbardziej skuteczne) s± warianty algorytmu k-NN z u¿yciem ró¿nych metryk, takich jak odleg³o¶æ euklidesowa czy Dynamic Time Warping (w skrócie DTW) - wiêcej o DTW przeczytaæ mo¿na miêdzy innymi w \cite{dtwyouknow}.
+
 W poni¿szej pracy zastosowano nieco odmienne podej¶cie.  Autor koncentruje siê na ekstrakcji cech opartych na statystycznych w³asno¶ciach szeregów. Cechy te wyliczane s± z ró¿nych reprezentacji danego szeregu. Nastêpnie na tak przekszta³conych danych uczone by³y klasyfikatory opisane w sekcji \ref{s:klasyfikatory}. Jak pokazuj± niektóre badania (przyk³adowo - \\ \cite{RavikumarD14}, \cite{GayGBC13}), takie podej¶cie daje czêsto lepsze wyniki ni¿ algorytmy bazuj±ce na podobieñstwie szeregów. Opisy innych metod ekstrakcji cech znale¼æ mo¿na miêdzy innymi w \cite{Grzegorowski16} lub \cite{WiensGH12}.
 
 \section{Proces ekstrakcji cech} \label{s:extraction}
@@ -390,7 +398,8 @@ W kolejnych sekcjach zostanie omówiony ka¿dy z powy¿szych kroków.
 
 \subsection{Reprezentacje pochodne szeregu czasowego} \label{ss:representations}
 
-Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w literaturze - ich szerszy przegl±d mo¿na znale¼æ miêdzy innymi w \cite{FulcherJ14}. Celem takich przekszta³ceñ jest wykrycie wzorców charakterystycznych dla klas wynikowych, które nie s± wykrywalne przy u¿yciu podstawowej reprezentacji $T_n$. \\
+Wiele przekszta³ceñ i reprezentacji szeregów czasowych zosta³o opisanych w literaturze - ich szerszy przegl±d mo¿na znale¼æ miêdzy innymi w \cite{FulcherJ14}. Celem takich przekszta³ceñ jest wykrycie wzorców charakterystycznych dla klas wynikowych, które nie s± wykrywalne przy u¿yciu podstawowej reprezentacji $T_n$.
+
 \cite{GayGBC13} podaje przyk³ad, kiedy to badanie drugiej pochodnej szeregu po czasie znacznie zwiêksza jako¶æ klasyfikacji (rys. \ref{example}). Dzia³aj±c na oryginalnych danych, trudno jest rozró¿niæ dwie klasy. Policzenie drugiej pochodnej sprawia, ¿e klasyfikacja staje siê niemal¿e trywialna.
 
 \begin{figure}[ht!]
@@ -455,7 +464,8 @@ Istnieje algorytm (zwany \textit{szybk± transformacj± Fouriera}, ang. \textit{fa
 
 \subsubsection{Transformacja falkowa}
 
-Przekszta³ceniem podobnym do transformaty Fouriera jest transformacja falkowa. Jej g³ówn± przewag± nad transformacj± opracowan± przez francuskiego matematyka jest zachowywanie informacji zarówno o czêstotliwo¶ci, jak i o czasie. Podczas gdy przekszta³cenie Fouriera rzutuje sygna³ z dziedziny czasu na dziedzinê czêstotliwo¶ci, transformata falkowa mierzy czêstotliwo¶æ w ró¿nych momentach czasu - sygna³ jest wiêc rzutowany na p³aszczyznê czasu i czêstotliwo¶ci. \\
+Przekszta³ceniem podobnym do transformaty Fouriera jest transformacja falkowa. Jej g³ówn± przewag± nad transformacj± opracowan± przez francuskiego matematyka jest zachowywanie informacji zarówno o czêstotliwo¶ci, jak i o czasie. Podczas gdy przekszta³cenie Fouriera rzutuje sygna³ z dziedziny czasu na dziedzinê czêstotliwo¶ci, transformata falkowa mierzy czêstotliwo¶æ w ró¿nych momentach czasu - sygna³ jest wiêc rzutowany na p³aszczyznê czasu i czêstotliwo¶ci.
+
 \textit{Dyskretna transformacja falkowa} równie¿ polega na przedstawieniu sygna³u jako sumy sygna³ów podstawowych. Podczas gdy transformata Fouriera u¿ywa³a funkcji sinusoidalnych, tutaj funkcjê podstawow± nazywa siê \textit{falk±}. Funkcje falkowe s± postaci:
 
 \begin{displaymath}
@@ -712,7 +722,8 @@ W ten sposób z $42$ szeregów obecnych w zbiorze danych otrzymano oko³o 4500 cech
 
 \subsection{Pozosta³e cechy} \label{ss:additional}
 
-M\"{o}rchen udowadnia w \cite{Morchen_2003_time}, ¿e u¿yteczne przy klasyfikacji szeregów czasowych jest $k$ najwiêkszych wspó³czynników transformaty Fouriera oraz transformaty falkowej. Autor zdecydowa³ siê wiêc dodaæ po 10 najwiêkszych wspó³czynników dla obydwu transformat wyliczonych dla ka¿dego z szeregów. \\
+M\"{o}rchen udowadnia w \cite{Morchen_2003_time}, ¿e u¿yteczne przy klasyfikacji szeregów czasowych jest $k$ najwiêkszych wspó³czynników transformaty Fouriera oraz transformaty falkowej. Autor zdecydowa³ siê wiêc dodaæ po 10 najwiêkszych wspó³czynników dla obydwu transformat wyliczonych dla ka¿dego z szeregów.
+
 Kolejne cechy oparte by³y na korelacji miêdzy dwoma szeregami czasowymi. Analogicznie do autokorelacji, korelacjê miêdzy szeregami  $T_n = (t_1, x_1), \dots, (t_n, x_n)$  i  
 $T'_n = (t_1, x'_1), \dots, (t_n, x'_n)$ definiuje siê jako korelacjê Pearsona (def \ref{d:pearson}) miêdzy wektorami $(x_1, \dots x_n)$ oraz $(x_1', \dots, x_n')$. \\
 
@@ -742,7 +753,7 @@ Lasy losowe & 0.99 & 0.71 \\ \hline
 \end{tabular}
 \end{table}
 
-\hfill \\
+
 Okazuje siê, ¿e problem ewoluuj±cych pojêæ by³ g³ówn± przeszkod± przy budowie wydajnego modelu dla zadanego problemu. Mówi±c bardziej szczegó³owo, wystêpowa³y wyra¼ne ró¿nice w wykonywaniu poszczególnych czynno¶ci miêdzy stra¿akami. Widaæ to po rezultatach prezentowanych w tabeli \ref{t:res1}. Mimo rewelacyjnych wyników na zborze treningowym (klasyfikator bazuj±cy na lasach losowych  by³ niemal¿e bezb³êdny), jako¶æ predyktorów testowanych na innej grupie stra¿aków okaza³a siê du¿o ni¿sza - wynik pogorszy³ siê o ok. $0.3$ w przypadku lasów losowych oraz o prawie $0.5$ dla klasyfikatorów liniowych. \\
 
 Celem tego rozdzia³u bêdzie przedstawienie metody wyboru takiej podprzestrzeni cech, która bêdzie spe³niaæ dwa wymogi:
@@ -859,8 +870,10 @@ W dalszych eksperymentach autor wykorzysta³ trzy miary jako¶ci cech: informacjê 
 
 \section{Wykrywanie ewolucji pojêæ miêdzy zbiorem treningowym a testowym} \label{s:tt}
 
-Wróæmy do problemu wykrywania ewolucji pojêæ. Przypomnijmy, ¿e celem jest przypisanie instancjom takich klas, aby obiekty pochodz±ce z tej samej dziedziny otrzyma³y tê sam± klasê. Przy tak stworzonej klasie wynikowej mierzona bêdzie jako¶æ poszczególnych atrybutów i wybierane bêd± te cechy, które uzyskaj± najgorszy wynik, czyli takie, które najgorzej rozró¿niaj± dziedziny. \\
-W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w \cite{Boulle15}. Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego i jednocze¶nie dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków. \\
+Wróæmy do problemu wykrywania ewolucji pojêæ. Przypomnijmy, ¿e celem jest przypisanie instancjom takich klas, aby obiekty pochodz±ce z tej samej dziedziny otrzyma³y tê sam± klasê. Przy tak stworzonej klasie wynikowej mierzona bêdzie jako¶æ poszczególnych atrybutów i wybierane bêd± te cechy, które uzyskaj± najgorszy wynik, czyli takie, które najgorzej rozró¿niaj± dziedziny.
+
+W celu wykrycia \textit{concept drift} miêdzy zbiorem treningowym a zbiorem testowym wykorzystany zosta³ pomys³ opisywany w \cite{Boulle15}. Zbiory $X_{train}$ i $X_{test}$ zosta³y po³±czone w jeden: $X = X_{train} \cup X_{test}$. Klasa wynikowa by³a dwuelementowa i przyjmowa³a warto¶æ "train" dla obiektów ze zbioru treningowego oraz "test" dla zbioru testowego. Nastêpnie wybierane by³y te cechy, które s³abo rozró¿nia³y obiekty ze zbioru treningowego od obiektów ze zbioru testowego i jednocze¶nie dobrze przewidywa³y czynno¶ci wykonywane przez stra¿aków.
+
 Opisana metoda, jakkolwiek obiecuj±ca ze wzglêdu na swoj± prostotê (zarówno ideologiczn±, jak i implementacyjn±), nie ma jednak zastosowania w przypadku uczenia indukcyjnego (por. tabela \ref{t:paradigms}). W istocie, za³o¿enie posiadania zbioru testowego w momencie uczenia znacznie ogranicza mo¿liwo¶ci wykorzystania przedstawionego podej¶cia w praktyce. Jak bowiem wspomniano wcze¶niej, podproblem uczenia indukcyjnego z przeniesieniem wiedzy wystêpuje czê¶ciej ni¿ podproblem uczenia transdukcyjnego.
 
 \subsection{Wyniki eksperymentów}
@@ -977,7 +990,8 @@ Rozk³ad jako¶ci atrybutów mierzony przy u¿yciu jednoczynnikowej analizy wariancj
 \caption{Rozk³ad jako¶ci cech przy u¿yciu jednoczynnikowej analizy wariancji \label{tt_anova}}
 \end{figure}
 
-Znajduje to swoje odzwierciedlenie w otrzymanych rezultatach. Najwiêkszy zysk wydajno¶ci zaobserwowano dla klasyfikatorów liniowych. Wynik na zbiorze testowym dla regresji logistycznej i SVM przy odpowiednich warto¶ci progów poprawi³ siê nawet o $0.15$ (tabele \ref{t:tt_anova_logit} i \ref{t:tt_anova_svm}), przy jednoczesnym niewielkim spadku $BAC$ na zbiorze treningowym. Dla lasów losowych poprawa miary jako¶ci wynios³a oko³o $0.05$ w najlepszym przypadku (tabela \ref{t:tt_anova_random}). Nale¿y przy tym zauwa¿yæ, ¿e polepszenie jako¶ci klasyfikatora nast±pi³a wraz z redukcj± przestrzeni cech - najlepsze wyniki uzyskano dla ok. $1500$ atrybutów. Niesie to ze sob± kolejn± zaletê, jak± jest obni¿enie czasu budowy modelu. \\
+Znajduje to swoje odzwierciedlenie w otrzymanych rezultatach. Najwiêkszy zysk wydajno¶ci zaobserwowano dla klasyfikatorów liniowych. Wynik na zbiorze testowym dla regresji logistycznej i SVM przy odpowiednich warto¶ci progów poprawi³ siê nawet o $0.15$ (tabele \ref{t:tt_anova_logit} i \ref{t:tt_anova_svm}), przy jednoczesnym niewielkim spadku $BAC$ na zbiorze treningowym. Dla lasów losowych poprawa miary jako¶ci wynios³a oko³o $0.05$ w najlepszym przypadku (tabela \ref{t:tt_anova_random}). Nale¿y przy tym zauwa¿yæ, ¿e polepszenie jako¶ci klasyfikatora nast±pi³a wraz z redukcj± przestrzeni cech - najlepsze wyniki uzyskano dla ok. $1500$ atrybutów. Niesie to ze sob± kolejn± zaletê, jak± jest obni¿enie czasu budowy modelu.
+
 Warto te¿ zwróciæ uwagê na wyniki klasyfikatorów dla ustalonej warto¶ci $threshold_{class}$. Praktycznie w ka¿dym przypadku obni¿anie $threshold_{drift}$ przy ustalonym $threshold_{class}$ (a co za tym idzie - eliminowanie wiêkszej liczby cech wra¿liwych na zmianê dziedziny) skutkuje wzrostem jako¶ci modelu.
 
 \newpage
@@ -1174,7 +1188,8 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 \end{tabular}
 \end{table}
 
-Dla ka¿dego z algorytmów ucz±cych mo¿na ponownie zauwa¿yæ poprawê jako¶ci klasyfikatora. Wzrost $BAC$, chocia¿ nie tak wyra¼ny jak w przypadku ANOVA, jest te¿ znaczny i wyniós³ kolejno: $0.08$ dla regresji logistycznej, $0.06$ dla maszyny wektorów no¶nych i $0.04$ dla lasów losowych. \\
+Dla ka¿dego z algorytmów ucz±cych mo¿na ponownie zauwa¿yæ poprawê jako¶ci klasyfikatora. Wzrost $BAC$, chocia¿ nie tak wyra¼ny jak w przypadku ANOVA, jest te¿ znaczny i wyniós³ kolejno: $0.08$ dla regresji logistycznej, $0.06$ dla maszyny wektorów no¶nych i $0.04$ dla lasów losowych.
+
 Warto te¿ zwróciæ uwagê, ¿e mimo korzystnego rozk³adu cech, obni¿anie $threshold_{drift}$ (a co za tym idzie - eliminacja wiêkszej liczby cech wra¿liwych na ewolucjê pojêæ) nie zawsze nios³o ze sob± poprawê jako¶ci klasyfikatora. Najlepiej widaæ to na przyk³adzie regresji logistycznej. Przy $threshold_{class} = 0$, obni¿enie $threshold_{drift}$ z $0.0001$ na $0.00005$ spowodowa³o do¶æ wyra¼ny spadek jako¶ci klasyfikatora - z $0.5472$ na $0.4847$. Jest to o tyle zaskakuj±ce, ¿e:
 \begin{itemize}
 \item na podstawie wykresu \ref{tt_gini} wywnioskowaæ mo¿na, ¿e wiêkszo¶æ wyeliminowanych cech by³a bezu¿yteczna dla klasyfikacji czynno¶ci stra¿aka
@@ -1212,7 +1227,8 @@ Przyk³ad obiektów pogrupowanych przy u¿yciu algorytmu k-centroidów przedstawia r
 
 \subsection{Opis algorytmu}
 
-W sekcji \ref{s:tt} wyliczano jako¶æ cech wzglêdem etykiet "train" i "test" w celu wykrycia cech najbardziej odpornych na \textit{concept drift}. Intuicyjnie, lepsze wyniki powinno siê uzyskaæ, u¿ywaj±c jako klas rzeczywistych identyfikatorów dziedzin - w tym przypadku, identyfikatorów stra¿aków. Te identyfikatory nie by³y jednak obecne w zbiorze danych. Jak wspomniano na pocz±tku bie¿±cej sekcji, mo¿na je jednak imitowaæ na podstawie wyników analizy skupieñ. \\
+W sekcji \ref{s:tt} wyliczano jako¶æ cech wzglêdem etykiet "train" i "test" w celu wykrycia cech najbardziej odpornych na \textit{concept drift}. Intuicyjnie, lepsze wyniki powinno siê uzyskaæ, u¿ywaj±c jako klas rzeczywistych identyfikatorów dziedzin - w tym przypadku, identyfikatorów stra¿aków. Te identyfikatory nie by³y jednak obecne w zbiorze danych. Jak wspomniano na pocz±tku bie¿±cej sekcji, mo¿na je jednak imitowaæ na podstawie wyników analizy skupieñ.
+
 Nasuwaj±cym siê pomys³em jest wiêc pogrupowanie obiektów w tyle grup, ilu stra¿aków dostarczy³o dane, a nastêpnie wykorzystanie identyfikatorów tak powsta³ych klastrów do wyznaczenia jako¶ci cech. Taka metoda wyda³a siê jednak autorowi niewystarczaj±ca - klastry mog³y skupiaæ w sobie instancje odpowiadaj±ce podobnym czynno¶ciom (tak jak $running$ i $stairs\_up$), a nie pomiary pobrane od jednego stra¿aka. Z tego powodu autor zastosowa³ inny algorytm, w którym grupowanie dokonywane by³o osobno na zbiorach obiektów nale¿±cych do tej samej klasy. Nastêpnie jako¶æ danej cechy dla problemu \textit{concept drift} by³a mierzona osobno na ka¿dym z tych zbiorów, a ostateczny wynik by³ ¶redni± wyników czê¶ciowych. \\
 \hfill \\
 Schemat algorytmu dla cechy $f$ i miary $quality\_measure$ przedstawia poni¿szy pseudokod: \\
@@ -1245,7 +1261,8 @@ Poniewa¿ liczba klastrów by³a z góry ustalona, do klastrowania u¿yto algorytmu k
 
 \subsubsection{Informacja wzajemna i jednoczynnikowa analiza wariancji}
 
-Analogicznie do eksperymentów opisanych w sekcji \ref{s:tt}, rozpatrzmy rozk³ad jako¶ci cech dla dwóch problemów: klasyfikacji czynno¶ci stra¿aka oraz wykrywania ewoluuj±cych pojêæ. W tym przypadku jako¶æ cechy dla problemu detekcji \textit{concept drift} wyznaczana by³a przy u¿yciu algorytmu \ref{alg_cluster}. \\
+Analogicznie do eksperymentów opisanych w sekcji \ref{s:tt}, rozpatrzmy rozk³ad jako¶ci cech dla dwóch problemów: klasyfikacji czynno¶ci stra¿aka oraz wykrywania ewoluuj±cych pojêæ. W tym przypadku jako¶æ cechy dla problemu detekcji \textit{concept drift} wyznaczana by³a przy u¿yciu algorytmu \ref{alg_cluster}.
+
 Rys. \ref{clustering_mutual_anova} przedstawia rozk³ad jako¶ci przy zastosowaniu informacji wzajemnej (rysunek po lewej) i jednoczynnikowej analizy wariancji (rysunek po prawej) jako miar. W obu przypadkach widaæ wysok± korelacjê miêdzy jako¶ci± cechy dla klasyfikacji a jej jako¶ci± dla wykrycia dziedziny. Jak wspomniano w sekcji \ref{s:tt}, znacznie utrudnia to dobranie odpowiednich warto¶ci progów $threshold_{drift}$ oraz $threshold_{class}$. Znalaz³o to swoje odzwierciedlenie w jako¶ci klasyfikacji - w obu przypadkach zastosowanie selekcji atrybutów albo pogarsza³o wynik, albo poprawia³o go bardzo nieznacznie. Rezultaty uzyskane dla ró¿nych klasyfikatorów by³y zbli¿one do tych prezentowanych w tabelach \ref{t:tt_mutual_info_logit}, \ref{t:tt_mutual_info_lsvm} i \ref{t:tt_mutual_info_random}.
 
 \begin{figure}[!htbp]
@@ -1372,12 +1389,14 @@ $threshold_{class}$ & $threshold_{drift}$ & Liczba cech  & $X_{train}$ $BAC$ & $
 \end{table}
 
 
-Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.09$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia. \\
+Ponownie dla ka¿dego z klasyfikatorów zauwa¿yæ mo¿na wzrost jako¶ci (wynosz±cy oko³o $0.09$ dla klasyfikatorów liniowych i prawie $0.05$ dla lasów losowych). Warto przy tym zwróciæ uwagê, ¿e najwy¿sze wyniki otrzymano dla niewielkiej liczby wybranych atrybutów - 678 w przypadku regresji logistycznej i SVM oraz 339 dla lasów losowych. Znaczne zmniejszenie wymiarowo¶ci mo¿e mieæ wiele pozytywnych skutków w biznesowych zastosowaniach modelu, znacznie obni¿aj±c czas i zasoby potrzebne do uczenia.
+
 Porównuj±c rezultaty z wynikami otrzymanymi dla metody detekcji \textit{concept drift} z sekcji \ref{s:tt} (tabele \ref{t:tt_gini_logit}, \ref{t:tt_gini_svm} i \ref{t:tt_gini_random}) przy u¿yciu zysku Giniego, mo¿na zauwa¿yæ niewielk± poprawê. Autorska metoda wykrywania ewoluuj±cych pojêæ mo¿e zatem konkurowaæ z metod± zaproponowan± w \cite{Boulle15}, co czyni j± z pewno¶ci± wart± uwagi.
 
 \section{Wnioski z przeprowadzonych eksperymentów}
 
-W rozdziale \ref{r:drift_reduction} przedstawiono generyczn± metodê wyboru podprzestrzeni cech odpornych na zmianê dziedziny. Jedn± z najwiêkszych zalet opisywanej metody jest w³a¶nie jej generyczno¶æ - mo¿e byæ ona stosowana niezale¿nie od typu badanych danych czy algorytmów ucz±cych. Innym znacz±cym plusem jest wydajno¶æ - miejscami osi±gniêto poprawê jako¶ci (mierzon± w mierze $BAC$) siêgaj±c± $0.15$. Du¿± zalet± jest te¿ prostota tego podej¶cia, zarówno pod k±tem ideologicznym, jak i implementacyjnym. \\
+W rozdziale \ref{r:drift_reduction} przedstawiono generyczn± metodê wyboru podprzestrzeni cech odpornych na zmianê dziedziny. Jedn± z najwiêkszych zalet opisywanej metody jest w³a¶nie jej generyczno¶æ - mo¿e byæ ona stosowana niezale¿nie od typu badanych danych czy algorytmów ucz±cych. Innym znacz±cym plusem jest wydajno¶æ - miejscami osi±gniêto poprawê jako¶ci (mierzon± w mierze $BAC$) siêgaj±c± $0.15$. Du¿± zalet± jest te¿ prostota tego podej¶cia, zarówno pod k±tem ideologicznym, jak i implementacyjnym.
+
 Do wad zaliczyæ nale¿y natomiast zale¿no¶æ skuteczno¶ci metody od danej przestrzeni cech - je¶li dana reprezentacja zawiera niewielk± liczbê atrybutów odpornych na \textit{concept drift}, stosowanie selekcji cech oka¿e siê bezu¿yteczne. Innym istotnym czynnikiem jest wybór miary jako¶ci cech. Jak pokaza³y opisane eksperymenty, dla niektórych miar rozk³ad jako¶ci uniemo¿liwia³ takie dobranie warto¶ci progów $threshold_{drift}$ i $threshold_{class}$, aby usun±æ cechy wra¿liwe na ewolucjê pojêæ i jednocze¶nie zostawiæ atrybuty warto¶ciowe dla klasyfikacji czynno¶ci stra¿aka.
 
 \chapter{Inne metody adaptacji dziedziny} \label{r:other}
@@ -1417,6 +1436,7 @@ def iterative_learning(classifier, X_train, y_train,
 
 \hfill \\
 Argument $rows\_percentage$ jest liczb± z przedzia³u $(0, 1]$ i okre¶la, jaka czê¶æ zbioru testowego jest do³±czana do zbioru treningowego w ka¿dej iteracji. \\
+
 Jedn± z zalet uczenia iteracyjnego jest z pewno¶ci± prostota implementacji. Kolejn± - mo¿liwo¶æ stosowania go dla dowolnych danych oraz klasyfikatora bazowego. Wad± mo¿e natomiast okazaæ siê zwiêkszona czas uczenia - w zale¿no¶ci od warto¶ci $rows\_percentage$, model trenowany jest kilka razy.
 
 \subsection{Eksperymenty i wnioski}
@@ -1472,14 +1492,14 @@ $rows\_percentage$ & $X_{train}$ $BAC$ & $X_{test}$ $BAC$ \\ \hline
     \label{t:iterative}    
 \end{table}
 
-Zastosowanie \textit{iterative learning} nie mia³o znacz±cego wp³ywu na jako¶æ klasyfikacji. Mo¿na zauwa¿yæ, ¿e w przypadku "s³abszych" algorytmów (regresji logistycznej i SVM) nast±pi³o obni¿enie wyniku. By³o to najpewniej spowodowane tym, ¿e klasyfikator z ka¿d± iteracj± dopasowywa³ siê coraz bardziej do du¿ej liczby b³êdnie sklasyfikowanych obiektów. Jest to jedna z wad uczenia iteracyjnego - dla klasyfikatora bazowego miernej jako¶ci wynik najpewniej nie ulegnie poprawie. \\
-W przypadku lasów losowych mo¿na z kolei zauwa¿yæ nieznaczny, ale sta³y wzrost jako¶ci przy obni¿aniu warto¶ci $rows\_percentage$.
+Zastosowanie \textit{iterative learning} nie mia³o znacz±cego wp³ywu na jako¶æ klasyfikacji. Mo¿na zauwa¿yæ, ¿e w przypadku "s³abszych" algorytmów (regresji logistycznej i SVM) nast±pi³o obni¿enie wyniku. By³o to najpewniej spowodowane tym, ¿e klasyfikator z ka¿d± iteracj± dopasowywa³ siê coraz bardziej do du¿ej liczby b³êdnie sklasyfikowanych obiektów. Jest to jedna z wad uczenia iteracyjnego - dla klasyfikatora bazowego miernej jako¶ci wynik najpewniej nie ulegnie poprawie. W przypadku lasów losowych mo¿na z kolei zauwa¿yæ nieznaczny, ale sta³y wzrost jako¶ci przy obni¿aniu warto¶ci $rows\_percentage$.
 
 \section{Powiêkszenie przestrzeni cech}
 
 \subsection{Opis algorytmu}
 
-Adaptacja dziedziny przez powiêkszenie przestrzeni cech zosta³a zaproponowana przez Daum{\'{e}} w \cite{Daume07}. Jak wiêkszo¶æ tego typu metod, pochodzi ona z dziedziny przetwarzania jêzyka naturalnego. Powiêkszenie przestrzeni cech polega na zast±pieniu ka¿dego atrybutu jego trzema wersjami: wersj± ogóln±, wersj± odpowiadaj±c± dziedzinie ¼ród³owej $D^{source}$ oraz wersj± odpowiadaj±c± dziedzinie docelowej $D^{target}$. \\
+Adaptacja dziedziny przez powiêkszenie przestrzeni cech zosta³a zaproponowana przez Daum{\'{e}} w \cite{Daume07}. Jak wiêkszo¶æ tego typu metod, pochodzi ona z dziedziny przetwarzania jêzyka naturalnego. Powiêkszenie przestrzeni cech polega na zast±pieniu ka¿dego atrybutu jego trzema wersjami: wersj± ogóln±, wersj± odpowiadaj±c± dziedzinie ¼ród³owej $D^{source}$ oraz wersj± odpowiadaj±c± dziedzinie docelowej $D^{target}$.
+
 Aby zdefiniowaæ tê operacjê bardziej formalnie, przyjmijmy oznaczenia jak w sekcji \ref{s:superv}. Niech dla czytelno¶ci $X = \mathbb{R}^F$, dla pewnego $F > 0$. Wtedy powiêkszona przestrzeñ przyk³adów zdefiniowana jest jako $\hat{X} = \mathbb{R}^{3F}$.
 Nastêpnie definiuje siê funkcje:
 \begin{displaymath}
@@ -1489,14 +1509,18 @@ oraz
 \begin{displaymath}
 \Phi^{test}: X_{test} \rightarrow \hat{X}, \quad \Phi^{test}(\textbf{x}) = (\textbf{x}, \textbf{0}, \textbf{x}),
 \end{displaymath}
-gdzie $\textbf{0} = (0, 0, \dots, 0) \in \mathbb{R}^F$. Funkcje te mapuj± instancje ze zbioru treningowego (pochodz±ce z za³o¿enia z dziedziny $D^{source}$) oraz testowego (pochodz±ce z $D^{target}$) w rozszerzon± przestrzeñ atrybutów $\hat{X}$. \\
-Spróbujmy wyja¶niæ intuicjê stoj±c± za takim podej¶ciem. Rozwa¿my problem rozpoznawania czê¶ci mowy (ang. \textit{Part-of-speech tagging}, w skrócie POS), gdzie zbiór treningowy tworz± artyku³y z Wall Street Journal\footnote{http://www.wsj.com}, a zbiór testowy - anglojêzyczne artyku³y o sprzêcie komputerowym. Przy tak postawionym problemie, s³owo "in" powinno byæ traktowane w obu dziedzinach jako przyimek, podczas gdy s³owo "monitor" powinno byæ traktowane jako czasownik w dziedzinie treningowej oraz rzeczownik w dziedzinie testowej. \\
-Rozwa¿my prosty przypadek, w którym $X = \mathbb{R}^2$, gdzie wymiar $x_1$ odpowiada s³owu "in", a wymiar $x_2$ - s³owu "monitor". Wtedy, w $\hat{X}$, $\hat{x}_1$ i $\hat{x}_2$ odpowiadaj± "ogólnym" znaczeniom tych s³ów, $\hat{x}_3$ i $\hat{x}_4$ - znaczeniom w dziedzinie artyku³ów finansowych, a $\hat{x}_5$ i $\hat{x}_6$ - znaczeniom w dziedzinie artyku³ów komputerowych. \\
+gdzie $\textbf{0} = (0, 0, \dots, 0) \in \mathbb{R}^F$. Funkcje te mapuj± instancje ze zbioru treningowego (pochodz±ce z za³o¿enia z dziedziny $D^{source}$) oraz testowego (pochodz±ce z $D^{target}$) w rozszerzon± przestrzeñ atrybutów $\hat{X}$.
+
+Spróbujmy wyja¶niæ intuicjê stoj±c± za takim podej¶ciem. Rozwa¿my problem rozpoznawania czê¶ci mowy (ang. \textit{Part-of-speech tagging}, w skrócie POS), gdzie zbiór treningowy tworz± artyku³y z Wall Street Journal\footnote{http://www.wsj.com}, a zbiór testowy - anglojêzyczne artyku³y o sprzêcie komputerowym. Przy tak postawionym problemie, s³owo "in" powinno byæ traktowane w obu dziedzinach jako przyimek, podczas gdy s³owo "monitor" powinno byæ traktowane jako czasownik w dziedzinie treningowej oraz rzeczownik w dziedzinie testowej.
+
+Rozwa¿my prosty przypadek, w którym $X = \mathbb{R}^2$, gdzie wymiar $x_1$ odpowiada s³owu "in", a wymiar $x_2$ - s³owu "monitor". Wtedy, w $\hat{X}$, $\hat{x}_1$ i $\hat{x}_2$ odpowiadaj± "ogólnym" znaczeniom tych s³ów, $\hat{x}_3$ i $\hat{x}_4$ - znaczeniom w dziedzinie artyku³ów finansowych, a $\hat{x}_5$ i $\hat{x}_6$ - znaczeniom w dziedzinie artyku³ów komputerowych.
+
 Zastanówmy siê teraz, co mo¿e zrobiæ algorytm ucz±cy, aby zauwa¿yæ, ¿e "in" powinno byæ traktowane jako przyimek w obydwu dziedzinach, natomiast klasyfikacja s³owa "monitor" mo¿e siê ró¿niæ w zale¿no¶ci od dziedziny. W tym przypadku, wektor wag odpowiadaj±cy klasie "przyimek" bêdzie wygl±da³ nastêpuj±co: $(1, 0, 0, 0, 0, 0)$. Podkre¶la to, ¿e "in" jest przyimkiem niezale¿nie od dziedziny. Z kolei wektor wag dla klasy "rzeczownik" bêdzie postaci $(0, 0, 0, 0, 0, 1)$, co oznacza, ¿e "monitor" jest rzeczownikiem tylko w zbiorze testowym. Analogicznie, wektor dla klasy "czasownik" bêdzie postaci $(0, 0, 0, 1, 0, 0)$.
 
 \subsection{Eksperymenty i wnioski}
 
-Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{r:features}. daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Daum{\'{e}} z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech. \\
+Prezentowana metoda znacznie powiêksza przestrzeñ cech. Przy 6000 atrybutach otrzymanych w rozdziale \ref{r:features}. daje ona 18000 cech, co jest stosunkowo du¿± liczb± dla 20000 instancji treningowych. Z tego powodu autor postanowi³ po³±czyæ metodê Daum{\'{e}} z metod± selekcji cech opisan± w rozdziale \ref{r:drift_reduction}. Do selekcji cech u¿yto jednoczynnikowej analizy wariancji (por. tabele \ref{t:tt_anova_logit}, \ref{t:tt_anova_svm}, \ref{t:tt_anova_svm}). Wyniki przedstawia tabela \ref{t:easy_augmented}. Dla czytelno¶ci, tabela \ref{t:easy_original} przedstawia jako¶æ klasyfikacji na oryginalnej (niepowiêkszonej) przestrzeni cech.
+
 Rezultaty s± bardzo interesuj±ce. W przypadku klasyfikatorów liniowych zwiêkszenie liczby atrybutów mia³o praktycznie zerowy wp³yw na jako¶æ klasyfikacji - zarówno regresja logistyczna, jak i SVM zdaj± siê ignorowaæ dodane cechy. Dla lasów losowych metoda Daum{\'{e}} mia³a jednak katastrofalne skutki - wynik spad³ z oko³o $0.7$ do oko³o $0.15$! Mo¿na zatem wyci±gn±æ wniosek, ¿e metoda powiêkszania przestrzeni cech nie ma szerszego zastosowania poza dziedzin± przetwarzania jêzyka naturalnego.
 
 
@@ -1560,11 +1584,11 @@ G³ównym celem pracy by³o zbudowanie wydajnego klasyfikatora na zbiorze wielowymi
 
 Ca³y proces ekstrakcji cech zosta³ opisany w rozdziale \ref{r:features}. Warto zauwa¿yæ, ¿e zastosowane podej¶cie jest bardzo ogólne - mo¿e byæ u¿yte dla dowolnych szeregów czasowych i nie wymaga specjalistycznej wiedzy z dziedziny, z której pochodz± dane. Dodatkowo pozwala na otrzymanie sensownej liczby cech (z 42 szeregów czasowych o d³ugo¶ci 400 uzyskano 6000 atrybutów) w stosunkowo niewielkim czasie (oko³o dwóch godzin na komputerze przeznaczonym do u¿ytku domowego). Nale¿y przy tym zwróciæ uwagê na fakt, i¿ cechy wyliczane by³y sekwencyjnie - zastosowanie mocniejszej maszyny i zrównoleglenia ca³ego procesu mog³oby znacznie obni¿yæ czas dzia³ania. \\
 
-Kolejnym krokiem by³a redukcja problemu ewoluuj±cych pojêæ. Celem autora by³o rozwiniêcie metody opisanej w \cite{Boulle15} i dok³adne przetestowanie jej dla ró¿nych kombinacji miar jako¶ci cech i algorytmów ucz±cych. Uzyskane rezultaty mo¿na uznaæ za satysfakcjonuj±ce - poprawa wyniku siêga³a nawet 30\%. Inn± du¿± zalet± metody zaproponowanej w rozdziale \ref{r:drift_reduction}. jest mo¿liwo¶æ stosowania jej z ró¿nymi funkcjami mierz±cymi jako¶æ atrybutów - nawet przy pozornie niekorzystnym rozk³adzie jako¶ci cech zastosowanie opisywanego podej¶cia prowadzi³o do poprawy wyników klasyfikatora. Wad± jest natomiast problem automatyzacji metody dla ró¿nych miar - ka¿da funkcja wymaga przeanalizowania rozk³adu istotno¶ci atrybutów w celu wyznaczenia potencjalnie dobrych warto¶ci progów $threshold_{drift}$ i $threshold_{class}$. \\
+Kolejnym krokiem by³a redukcja problemu ewoluuj±cych pojêæ. Celem autora by³o rozwiniêcie metody opisanej w \cite{Boulle15} i dok³adne przetestowanie jej dla ró¿nych kombinacji miar jako¶ci cech i algorytmów ucz±cych. Uzyskane rezultaty mo¿na uznaæ za satysfakcjonuj±ce - poprawa wyniku siêga³a nawet 30\%. Inn± du¿± zalet± metody zaproponowanej w rozdziale \ref{r:drift_reduction}. jest mo¿liwo¶æ stosowania jej z ró¿nymi funkcjami mierz±cymi jako¶æ atrybutów - nawet przy pozornie niekorzystnym rozk³adzie jako¶ci cech zastosowanie opisywanego podej¶cia prowadzi³o do poprawy wyników klasyfikatora. Wad± jest natomiast problem automatyzacji metody dla ró¿nych miar - ka¿da funkcja wymaga przeanalizowania rozk³adu istotno¶ci atrybutów w celu wyznaczenia potencjalnie dobrych warto¶ci progów $threshold_{drift}$ i $threshold_{class}$.
 
-G³ównym wk³adem niniejszej pracy jest tak¿e zaproponowanie usprawnienia powy¿szego podej¶cia, które to usprawnienie polega na wykrywaniu klastrów odpowiadaj±cych ewoluuj±cym pojêciom bezpo¶rednio ze zbioru treningowego. W tym celu zastosowano analizê skupieñ, a konkretnie algorytm k-centroidów. Takie spojrzenie niesie ze sob± wiele zalet. Przede wszystkim czyni opisywan± metodê u¿yteczn± w przypadku uczenia indukcyjnego (czyli w przypadku, gdy zbiór testowy jest niedostêpny). Pozwala te¿ na lepsze okre¶lenie jako¶ci cech dla problemu detekcji \textit{concept drift} - ranga atrybutów jest mierzona wzglêdem identyfikatorów ¼róde³. Z wymienionych powodów autor wierzy, ¿e to podej¶cie bêdzie dalej rozwijane i analizowane - przyk³adowo przez wykorzystanie innych algorytmów klasteryzacji. \\
+G³ównym wk³adem niniejszej pracy jest tak¿e zaproponowanie usprawnienia powy¿szego podej¶cia, które to usprawnienie polega na wykrywaniu klastrów odpowiadaj±cych ewoluuj±cym pojêciom bezpo¶rednio ze zbioru treningowego. W tym celu zastosowano analizê skupieñ, a konkretnie algorytm k-centroidów. Takie spojrzenie niesie ze sob± wiele zalet. Przede wszystkim czyni opisywan± metodê u¿yteczn± w przypadku uczenia indukcyjnego (czyli w przypadku, gdy zbiór testowy jest niedostêpny). Pozwala te¿ na lepsze okre¶lenie jako¶ci cech dla problemu detekcji \textit{concept drift} - ranga atrybutów jest mierzona wzglêdem identyfikatorów ¼róde³. Z wymienionych powodów autor wierzy, ¿e to podej¶cie bêdzie dalej rozwijane i analizowane - przyk³adowo przez wykorzystanie innych algorytmów klasteryzacji.
 
-Warte zastanowienia jest pytanie, jak zachowa³aby siê metoda opisywana w rozdziale \ref{r:drift_reduction}., gdyby badany zbiór danych zawiera³ identyfikatory ¼róde³ danych (w tym przypadku - identyfikatory stra¿aków). Autor liczy na to, ¿e posiadanie informacji o pochodzeniu danej instancji mog³oby wyra¼nie poprawiæ uzyskane rezultaty. Jest to o tyle istotne, ¿e w codziennym ¿yciu dodanie takiej informacji do zbioru danych jest zwykle niek³opotliwe. TODO \\
+Warte zastanowienia jest pytanie, jak zachowa³aby siê metoda opisywana w rozdziale \ref{r:drift_reduction}., gdyby badany zbiór danych zawiera³ identyfikatory ¼róde³ danych (w tym przypadku - identyfikatory stra¿aków). Autor liczy na to, ¿e posiadanie informacji o pochodzeniu danej instancji mog³oby wyra¼nie poprawiæ uzyskane rezultaty. Jest to o tyle istotne, ¿e w codziennym zastosowaniu dodanie takiej informacji do zbioru danych bywa niek³opotliwe. TODO \\
 
 W rozdziale \ref{r:other}. opisano dwie inne metody stosowane do rozwi±zania problemu adaptacji dziedziny - uczenie iteracyjne oraz powiêkszanie przestrzeni cech zaproponowane w \cite{Daume07}. Obie okaza³y siê nieskuteczne - wyniki otrzymane przy ich u¿yciu by³y du¿o gorsze ni¿ te uzyskane przy zastosowaniu selekcji cech. Potwierdza to tylko fakt, ¿e metoda przedstawiona w rozdziale \ref{r:drift_reduction}. zas³uguje na rozwiniêcie i dalsze badania.
 
