@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  20 DEC 2016 14:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.12.1)  20 DEC 2016 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -341,20 +341,20 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 (./pracamgr.aux)
 \openout1 = `pracamgr.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 112.
+LaTeX Font Info:    ... okay on input line 112.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
@@ -421,48 +421,43 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \c@lstlisting=\count129
-LaTeX Font Info:    Try loading font information for OML+plm on input line 111.
+LaTeX Font Info:    Try loading font information for OML+plm on input line 113.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/omlplm.fd
 File: omlplm.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMS+plsy on input line 111
+LaTeX Font Info:    Try loading font information for OMS+plsy on input line 113
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/omsplsy.fd
 File: omsplsy.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-LaTeX Font Info:    Try loading font information for OMX+plex on input line 111
+LaTeX Font Info:    Try loading font information for OMX+plex on input line 113
 .
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/omxplex.fd
 File: omxplex.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <12> on input line 111.
+(Font)              <12> on input line 113.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <8> on input line 111.
+(Font)              <8> on input line 113.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <6> on input line 111.
-LaTeX Font Info:    Try loading font information for U+msa on input line 111.
+(Font)              <6> on input line 113.
+LaTeX Font Info:    Try loading font information for U+msa on input line 113.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 111.
+LaTeX Font Info:    Try loading font information for U+msb on input line 113.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Underfull \hbox (badness 10000) in paragraph at lines 116--116
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--116
+Underfull \hbox (badness 10000) in paragraph at lines 118--118
 
  []
 
@@ -483,31 +478,31 @@ LaTeX Font Info:    External font `plex10' loaded for size
 
 ]
 Rozdzia\PlPrIeC {\l } 1.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 136.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 138.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 136.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 138.
 
 <supervised.png, id=35, 587.19376pt x 413.545pt>
 File: supervised.png Graphic file (type png)
  <use supervised.png>
-Package pdftex.def Info: supervised.png used on input line 146.
+Package pdftex.def Info: supervised.png used on input line 148.
 (pdftex.def)             Requested size: 352.31897pt x 248.1289pt.
  [7]
-Underfull \hbox (badness 10000) in paragraph at lines 155--156
+Underfull \hbox (badness 10000) in paragraph at lines 157--158
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 163--167
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
 
  []
 
 [8 <./supervised.png>]
-Overfull \hbox (3.90472pt too wide) in paragraph at lines 176--188
+Overfull \hbox (3.90472pt too wide) in paragraph at lines 178--190
  [][] 
  []
 
@@ -518,10 +513,10 @@ Underfull \vbox (badness 2035) has occurred while \output is active []
 <overfitting.png, id=52, 2007.5pt x 2007.5pt>
 File: overfitting.png Graphic file (type png)
  <use overfitting.png>
-Package pdftex.def Info: overfitting.png used on input line 200.
+Package pdftex.def Info: overfitting.png used on input line 202.
 (pdftex.def)             Requested size: 200.76175pt x 200.76175pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 206--207
+Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
 
@@ -530,34 +525,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 206--207
 ]
 Rozdzia\PlPrIeC {\l } 2.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <9> on input line 234.
+(Font)              <9> on input line 236.
 LaTeX Font Info:    External font `plex10' loaded for size
-(Font)              <5> on input line 234.
+(Font)              <5> on input line 236.
 <fireman.png, id=64, 523.9575pt x 435.6275pt>
 File: fireman.png Graphic file (type png)
  <use fireman.png>
-Package pdftex.def Info: fireman.png used on input line 242.
+Package pdftex.def Info: fireman.png used on input line 244.
 (pdftex.def)             Requested size: 183.38786pt x 152.47191pt.
  [13 <./fireman.png>] <classes.png, id=71, 715.67375pt x 628.3475pt>
 File: classes.png Graphic file (type png)
  <use classes.png>
-Package pdftex.def Info: classes.png used on input line 255.
+Package pdftex.def Info: classes.png used on input line 257.
 (pdftex.def)             Requested size: 357.836pt x 314.17297pt.
  [14 <./classes.png>] <sigmoid.png, id=76, 642.4pt x 428.60126pt>
 File: sigmoid.png Graphic file (type png)
  <use sigmoid.png>
-Package pdftex.def Info: sigmoid.png used on input line 299.
+Package pdftex.def Info: sigmoid.png used on input line 301.
 (pdftex.def)             Requested size: 192.72148pt x 128.58136pt.
 
 [15] <svm.png, id=83, 441.65pt x 382.42876pt>
 File: svm.png Graphic file (type png)
  <use svm.png>
-Package pdftex.def Info: svm.png used on input line 326.
+Package pdftex.def Info: svm.png used on input line 328.
 (pdftex.def)             Requested size: 220.82445pt x 191.2139pt.
  [16 <./sigmoid.png>] <decision_tree.png, id=92, 505.89pt x 288.07625pt>
 File: decision_tree.png Graphic file (type png)
  <use decision_tree.png>
-Package pdftex.def Info: decision_tree.png used on input line 360.
+Package pdftex.def Info: decision_tree.png used on input line 362.
 (pdftex.def)             Requested size: 303.53633pt x 172.84708pt.
 
 [17 <./svm.png> <./decision_tree.png>] [18]
@@ -567,31 +562,31 @@ Rozdzia\PlPrIeC {\l } 3.
 ] <example.png, id=105, 526.96875pt x 212.795pt>
 File: example.png Graphic file (type png)
  <use example.png>
-Package pdftex.def Info: example.png used on input line 405.
+Package pdftex.def Info: example.png used on input line 407.
 (pdftex.def)             Requested size: 421.57556pt x 170.2362pt.
  [20 <./example.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 437--438
+Underfull \hbox (badness 10000) in paragraph at lines 439--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 439--441
+Underfull \hbox (badness 10000) in paragraph at lines 441--443
 
  []
 
 <fourier.png, id=110, 552.0625pt x 420.57124pt>
 File: fourier.png Graphic file (type png)
  <use fourier.png>
-Package pdftex.def Info: fourier.png used on input line 448.
+Package pdftex.def Info: fourier.png used on input line 450.
 (pdftex.def)             Requested size: 298.1093pt x 227.10509pt.
  [21]
 <haar.png, id=114, 1304.875pt x 978.65625pt>
 File: haar.png Graphic file (type png)
  <use haar.png>
-Package pdftex.def Info: haar.png used on input line 492.
+Package pdftex.def Info: haar.png used on input line 494.
 (pdftex.def)             Requested size: 195.72281pt x 146.7921pt.
  [22 <./fourier.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 503--505
+Underfull \hbox (badness 10000) in paragraph at lines 505--507
 
  []
 
@@ -599,26 +594,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 503--505
 File: skewness.png Graphic file (type png)
 
 <use skewness.png>
-Package pdftex.def Info: skewness.png used on input line 587.
+Package pdftex.def Info: skewness.png used on input line 589.
 (pdftex.def)             Requested size: 268.60556pt x 95.75847pt.
  <kurthosis.png, id=125, 421.575pt x 273.02pt>
 File: kurthosis.png Graphic file (type png)
 
 <use kurthosis.png>
-Package pdftex.def Info: kurthosis.png used on input line 598.
+Package pdftex.def Info: kurthosis.png used on input line 600.
 (pdftex.def)             Requested size: 210.78697pt x 136.50966pt.
  [24] [25 <./skewness.png> <./kurthosis.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 678--679
+Underfull \hbox (badness 10000) in paragraph at lines 680--681
 
  []
 
 <pearson.png, id=133, 827.09pt x 347.2975pt>
 File: pearson.png Graphic file (type png)
  <use pearson.png>
-Package pdftex.def Info: pearson.png used on input line 682.
+Package pdftex.def Info: pearson.png used on input line 684.
 (pdftex.def)             Requested size: 289.48582pt x 121.55594pt.
  [26]
-Overfull \hbox (14.60582pt too wide) in paragraph at lines 725--727
+Overfull \hbox (14.60582pt too wide) in paragraph at lines 727--729
 \OT4/cmr/m/n/10.95 do au-to-ko-re-la-cji, ko-re-la-cj¦ mi¦-dzy sze-re-ga-mi $\O
 ML/plm/m/it/10.95 T[] \OT4/cmr/m/n/10.95 = (\OML/plm/m/it/10.95 t[]; x[]\OT4/cm
 r/m/n/10.95 )\OML/plm/m/it/10.95 ; [] ; \OT4/cmr/m/n/10.95 (\OML/plm/m/it/10.95
@@ -628,31 +623,31 @@ r/m/n/10.95 )\OML/plm/m/it/10.95 ; [] ; \OT4/cmr/m/n/10.95 (\OML/plm/m/it/10.95
  []
 
 
-Overfull \hbox (1.85918pt too wide) in paragraph at lines 725--727
+Overfull \hbox (1.85918pt too wide) in paragraph at lines 727--729
 \OT4/cmr/m/n/10.95 de-fi-niu-je si¦ ja-ko ko-re-la-cj¦ Pe-ar-so-na (def 3.2.2[]
 ) mi¦-dzy wek-to-ra-mi $(\OML/plm/m/it/10.95 x[]; [] x[]\OT4/cmr/m/n/10.95 )$ o
 raz $(\OML/plm/m/it/10.95 x[]; [] ; x[]\OT4/cmr/m/n/10.95 )$. 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--727
+Underfull \hbox (badness 10000) in paragraph at lines 727--729
 
  []
 
 [27 <./pearson.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 728--729
+Underfull \hbox (badness 10000) in paragraph at lines 730--731
 
  []
 
 [28]
 Rozdzia\PlPrIeC {\l } 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 755--756
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 763--764
+Underfull \hbox (badness 10000) in paragraph at lines 765--766
 
  []
 
@@ -661,7 +656,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 763--764
 ] <drift_example.png, id=147, 578.16pt x 433.62pt>
 File: drift_example.png Graphic file (type png)
  <use drift_example.png>
-Package pdftex.def Info: drift_example.png used on input line 776.
+Package pdftex.def Info: drift_example.png used on input line 778.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
 
 [30 <./drift_example.png>] [31] [32] [33]
@@ -669,10 +664,10 @@ Package pdftex.def Info: drift_example.png used on input line 776.
 File: train_test_mutual_info.png Graphic file (type png)
 
 <use train_test_mutual_info.png>
-Package pdftex.def Info: train_test_mutual_info.png used on input line 888.
+Package pdftex.def Info: train_test_mutual_info.png used on input line 890.
 (pdftex.def)             Requested size: 483.4851pt x 216.80946pt.
 
-Overfull \hbox (42.46738pt too wide) in paragraph at lines 888--891
+Overfull \hbox (42.46738pt too wide) in paragraph at lines 890--893
  [][] 
  []
 
@@ -684,14 +679,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: train_test_anova_f.png Graphic file (type png)
 
 <use train_test_anova_f.png>
-Package pdftex.def Info: train_test_anova_f.png used on input line 985.
+Package pdftex.def Info: train_test_anova_f.png used on input line 987.
 (pdftex.def)             Requested size: 404.70924pt x 303.53192pt.
  [36 <./train_test_anova_f.png>] [37]
 <train_test_random_forest.png, id=178, 578.16pt x 433.62pt>
 File: train_test_random_forest.png Graphic file (type png)
 
 <use train_test_random_forest.png>
-Package pdftex.def Info: train_test_random_forest.png used on input line 1094.
+Package pdftex.def Info: train_test_random_forest.png used on input line 1096.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <train_test_random_forest_zoomed.png, id=179, 578.16pt x 433.62pt>
@@ -699,63 +694,63 @@ File: train_test_random_forest_zoomed.png Graphic file (type png)
 
 <use train_test_random_forest_zoomed.png>
 Package pdftex.def Info: train_test_random_forest_zoomed.png used on input line
- 1098.
+ 1100.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
  [38 <./train_test_random_forest.png> <./train_test_random_forest_zoomed.png>] 
 [39] [40]
 <kmeans.png, id=191, 734.9859pt x 373.6359pt>
 File: kmeans.png Graphic file (type png)
  <use kmeans.png>
-Package pdftex.def Info: kmeans.png used on input line 1217.
+Package pdftex.def Info: kmeans.png used on input line 1219.
 (pdftex.def)             Requested size: 404.24348pt x 205.50037pt.
  [41 <./kmeans.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1230--1233
+Underfull \hbox (badness 10000) in paragraph at lines 1232--1235
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1230--1233
+Underfull \hbox (badness 10000) in paragraph at lines 1232--1235
 
  []
 
 LaTeX Font Info:    Try loading font information for OT4+cmss on input line 123
-5.
+7.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/polski/ot4cmss.fd
 File: ot4cmss.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 )
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1235--1235
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1237--1237
 [][] 
  []
 
 
 Package Listings Warning: Text dropped after begin of listing on input line 123
-5.
+7.
 
 [42] <clustering_mutual_info.png, id=202, 578.16pt x 433.62pt>
 File: clustering_mutual_info.png Graphic file (type png)
 
 <use clustering_mutual_info.png>
-Package pdftex.def Info: clustering_mutual_info.png used on input line 1270.
+Package pdftex.def Info: clustering_mutual_info.png used on input line 1272.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <clustering_anova_f.png, id=203, 578.16pt x 433.62pt>
 File: clustering_anova_f.png Graphic file (type png)
 
 <use clustering_anova_f.png>
-Package pdftex.def Info: clustering_anova_f.png used on input line 1274.
+Package pdftex.def Info: clustering_anova_f.png used on input line 1276.
 (pdftex.def)             Requested size: 218.30498pt x 163.72528pt.
 
 <clustering_gini.png, id=204, 578.16pt x 433.62pt>
 File: clustering_gini.png Graphic file (type png)
  <use clustering_gini.png>
-Package pdftex.def Info: clustering_gini.png used on input line 1290.
+Package pdftex.def Info: clustering_gini.png used on input line 1292.
 (pdftex.def)             Requested size: 196.47313pt x 147.34944pt.
 
 <clustering_gini_zoomed.png, id=205, 578.16pt x 433.62pt>
 File: clustering_gini_zoomed.png Graphic file (type png)
 
 <use clustering_gini_zoomed.png>
-Package pdftex.def Info: clustering_gini_zoomed.png used on input line 1294.
+Package pdftex.def Info: clustering_gini_zoomed.png used on input line 1296.
 (pdftex.def)             Requested size: 196.47313pt x 147.34944pt.
  [43 <./clustering_mutual_info.png> <./clustering_anova_f.png> <./clustering_gi
 ni.png> <./clustering_gini_zoomed.png>]
@@ -764,51 +759,51 @@ ni.png> <./clustering_gini_zoomed.png>]
 ]
 Rozdzia\PlPrIeC {\l } 5.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1416--1417
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1419
 
  []
 
 
-Overfull \hbox (17.0pt too wide) in paragraph at lines 1418--1418
+Overfull \hbox (17.0pt too wide) in paragraph at lines 1420--1420
 [][] 
  []
 
 
-Package Listings Warning: Text dropped after begin of listing on input line 141
-8.
+Package Listings Warning: Text dropped after begin of listing on input line 142
+0.
 
-LaTeX Font Info:    Try loading font information for OML+cmr on input line 1424
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 1426
 .
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1424.
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 1426.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1435--1437
+Underfull \hbox (badness 10000) in paragraph at lines 1437--1439
 
  []
 
 [47]
-Underfull \hbox (badness 10000) in paragraph at lines 1442--1443
+Underfull \hbox (badness 10000) in paragraph at lines 1444--1445
 
  []
 
 
-Overfull \hbox (44.10446pt too wide) in paragraph at lines 1446--1489
+Overfull \hbox (44.10446pt too wide) in paragraph at lines 1448--1491
 []$[]$$[]$
  []
 
 [48] [49] [50]
 Rozdzia\PlPrIeC {\l } 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1583--1584
+Underfull \hbox (badness 10000) in paragraph at lines 1585--1586
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1589--1590
+Underfull \hbox (badness 10000) in paragraph at lines 1591--1592
 
  []
 
@@ -843,7 +838,7 @@ ent risk
 Here is how much of TeX's memory you used:
  8095 strings out of 493014
  129312 string characters out of 6133351
- 214691 words of memory out of 5000000
+ 214747 words of memory out of 5000000
  11455 multiletter control sequences out of 15000+600000
  27011 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -874,7 +869,7 @@ type1/public/pl/plss10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/publ
 ic/pl/plssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/pl
 sy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plsy8.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/pl/plti10.pfb>
-Output written on pracamgr.pdf (61 pages, 2833072 bytes).
+Output written on pracamgr.pdf (61 pages, 2833125 bytes).
 PDF statistics:
  349 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams
