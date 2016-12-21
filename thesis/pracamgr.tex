@@ -97,9 +97,12 @@
 }
 
 %Klasyfikacja tematyczna wedlug AMS (matematyka) lub ACM (informatyka)
-\klasyfikacja{I. Computing Methodologies \\
-I.2 Artificial Intelligence \\
-I.2.6 Learning
+\klasyfikacja{
+Computing methodologies\\
+Machine learning\\
+Learning paradigms\\
+Multi-task learning\\
+Learning under covariate shift\\
 }
 
 % S³owa kluczowe:
@@ -215,7 +218,7 @@ Obydwa pojêcia mog± byæ mylone przy niew³a¶ciwym sposobie walidacji modelu. Je¶l
 \centering
 \captionsetup{justification=centering}
 \captionsetup{width=0.8\textwidth}
-\caption[\textit{Concept drift} a \textit{overfitting}]{\textit{Concept drift} a \textit{overfitting} - obni¿ony wynik modelu 1. przy walidacji krzy¿owej ¶wiadczy o przeuczeniu, a nie wystêpowaniu ewoluuj±cych pojêæ. W drugim przypadku model mimo dobrej umiejêtno¶ci klasyfikacji elementów pochodz±cych z rozk³adu $D^{source}$, cierpi na spadek jako¶ci przy ewaluacji na zbiorze pochodz±cym z rozk³adu $D^{target}$.}
+\caption[\textit{Concept drift} a \textit{overfitting}]{\textit{Concept drift} a \textit{overfitting} - obni¿ony wynik modelu 1. przy walidacji krzy¿owej ¶wiadczy o przeuczeniu, a nie wystêpowaniu ewoluuj±cych pojêæ. W drugim przypadku model, mimo dobrej umiejêtno¶ci klasyfikacji elementów pochodz±cych z rozk³adu $D^{source}$, cierpi na spadek jako¶ci przy ewaluacji na zbiorze pochodz±cym z rozk³adu $D^{target}$.}
 \label{t:overfit}
 \begin{tabular}{|c|c|c|c|}
 \hline
@@ -233,7 +236,7 @@ Nietrudno zauwa¿yæ, ¿e w przypadku \textit{concept drift} nie powinno siê zauwa¿
 
 Celem niniejszej pracy jest zbudowanie wydajnego klasyfikatora dla zbioru danych z³o¿onego z wielowymiarowych szeregów czasowych, w którym obecny jest problem ewolucji pojêæ miêdzy zbiorem treningowym a testowym.
 
-W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ oraz daje przyk³ad obecno¶ci \textit{concept drift} w analizowanym zbiorze. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶nie umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce. Rozdzia³ \ref{r:other}. zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary}. znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
+W rozdziale \ref{r:experiment}. przedstawiony jest badany zbiór danych. Autor opisuje równie¿ pokrótce klasyfikatory wykorzystane podczas badañ. Rozdzia³ \ref{r:features}. prezentuje proces ekstrakcji cech z szeregów czasowych. W rozdziale \ref{r:drift_reduction}. autor opisuje metodê wyboru takiej podprzestrzeni cech, która bêdzie odporna na efekt ewolucji pojêæ i jednocze¶nie umo¿liwi wydajn± klasyfikacjê zadanych szeregów. Przedstawione s± najbardziej znane miary jako¶ci atrybutów jak równie¿ dwa algorytmy wykrywania zmiany dziedziny. Autor prezentuje tak¿e wyniki szeregu eksperymentów maj±cych sprawdziæ wydajno¶æ opisywanej metody w praktyce. Rozdzia³ \ref{r:other}. zawiera opis dwóch innych algorytmów adaptacji dziedziny - uczenia iteracyjnego oraz powiêkszania przestrzeni cech. W rozdziale \ref{r:summary}. znajduje siê podsumowanie ca³ej pracy oraz wnioski z niej p³yn±ce.
 
 \chapter{Problem klasyfikacji danych z sensorów inercyjnych}\label{r:experiment}
 
@@ -277,7 +280,8 @@ ACC_i(c) = \frac{|j: \,c(\textbf{x}_j) = y_j = i|}{|j: y_j = i|} \\
 \begin{equation} \label{bac}
 BAC(c) = \frac{\sum_{i=1}^l ACC_i(c)}{l} 
 \end{equation}
-Nietrudno zauwa¿yæ, ¿e miara $BAC$ jest bardziej wra¿liwa na b³êdn± klasyfikacjê rzadkich klas ni¿ standardowa miara $ACC$. \\
+Nietrudno zauwa¿yæ, ¿e miara $BAC$ jest bardziej wra¿liwa na b³êdn± klasyfikacjê rzadkich klas ni¿ standardowa miara $ACC$.
+
 Jak wspomniano wcze¶niej, zadaniem w konkursie by³a klasyfikacja zarówno postury, jak i czynno¶ci stra¿aka. Ostateczny wynik w zawodach obliczany by³ przez:
 \begin{equation}
 score(c_p, c_a) = \frac{BAC(c_p) + 2 \cdot BAC(c_a)}{3},
